@@ -41,79 +41,90 @@ export function Hero() {
   };
 
   const HomeView = () => (
-    <div className="h-full flex flex-col">
-      {/* Image hero (your photo) */}
-      <div className="relative shrink-0 h-[160px] md:h-[280px] overflow-hidden">
-        <img
-          src="/tama-monorail.jpg"
-          alt="立川のモノレール"
-          className="absolute inset-0 w-full h-full object-cover"
-          loading="eager"
-          decoding="async"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
-        <div className="absolute top-3 left-3 md:top-6 md:left-6 inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-[10px] md:text-xs font-bold text-white backdrop-blur border border-white/15">
-          <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#059669]" />
-          立川・東京 / 実店舗向け
-        </div>
-
-        <div className="absolute bottom-3 left-3 right-3 md:bottom-6 md:left-6 md:right-6">
-          <div className="text-white font-bold tracking-tight leading-tight">
-            <div className="text-xl md:text-4xl" style={{ fontWeight: 800 }}>
-              東京の実店舗に、<span className="text-[#34d399]">成果が出る</span>Webを。
-            </div>
-            <div className="mt-1 md:mt-2 text-[11px] md:text-sm text-white/85 font-semibold">
-              最短4日で公開。検索・導線・信頼を「最初から」整えます。
-            </div>
-          </div>
-        </div>
+    <div className="h-full flex flex-col relative overflow-hidden group">
+      {/* Background Image with Cinematic Overlay */}
+      <div className="absolute inset-0 z-0">
+        <motion.div 
+          initial={{ scale: 1.1 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 10, ease: "easeOut" }}
+          className="w-full h-full"
+        >
+          <img
+            src="/tama-monorail.jpg"
+            alt="Tokyo Cityscape"
+            className="w-full h-full object-cover"
+          />
+        </motion.div>
+        {/* Advanced Gradient Overlay: Top dark for text readability, clear center, bottom dark for stats */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/10 to-black/80" />
+        <div className="absolute inset-0 bg-[#0f172a]/20 mix-blend-multiply" /> {/* Brand navy tint */}
       </div>
 
-      {/* Body */}
-      <div className="flex-1 min-h-0 px-3 py-3 md:px-6 md:py-6">
-        <div className="grid grid-cols-3 gap-2 md:gap-4">
-          {[
-            { k: "+32%", l: "問い合わせ率", s: "導線最適化" },
-            { k: "+41%", l: "検索流入", s: "構造SEO" },
-            { k: "2.1倍", l: "来店予約", s: "スマホ導線" },
-          ].map((x) => (
-            <div
-              key={x.l}
-              className="rounded-2xl border border-gray-200 bg-white/70 backdrop-blur p-3 md:p-4 shadow-sm"
-            >
-              <div className="text-[#059669] text-sm md:text-xl font-extrabold">
-                {x.k}
-              </div>
-              <div className="text-[10px] md:text-xs text-gray-900 font-bold mt-0.5">
-                {x.l}
-              </div>
-              <div className="text-[9px] md:text-[11px] text-gray-600 font-semibold mt-1">
-                {x.s}
-              </div>
-            </div>
-          ))}
-        </div>
+      {/* Large Hero Branding Overlay - Cinematic Entrance */}
+      <div className="relative z-10 flex-1 flex flex-col justify-center items-center text-center px-4 md:px-0">
+        <motion.div
+          initial={{ opacity: 0, y: 20, scale: 0.95 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+          className="mb-6 md:mb-8"
+        >
+          <div className="inline-flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-[10px] md:text-xs font-bold tracking-wider uppercase shadow-lg">
+            <span className="w-2 h-2 rounded-full bg-[#059669] animate-pulse" />
+            Tokyo Quality Global Standard
+          </div>
+          <h1 className="text-4xl md:text-7xl font-extrabold tracking-tighter text-white leading-tight drop-shadow-xl">
+            Tokyo <span className="text-[#34d399]">Websites</span>
+          </h1>
+          <p className="mt-4 text-sm md:text-lg text-white/90 font-medium max-w-lg mx-auto leading-relaxed drop-shadow-md">
+            立川発。実店舗の<span className="text-[#34d399] font-bold">デジタルブランド</span>を再定義する。
+          </p>
+        </motion.div>
 
-        <div className="mt-3 md:mt-6 flex items-center gap-2 md:gap-3">
-          <button
-            onClick={() => navigate("contact")}
-            className="flex-1 inline-flex items-center justify-center gap-2 rounded-full bg-[#059669] text-white py-3 md:py-3.5 text-xs md:text-sm font-bold shadow-lg shadow-emerald-200 hover:bg-emerald-600 transition-colors"
-          >
-            無料相談へ
-            <ArrowRight className="w-4 h-4" />
-          </button>
+        {/* Action Buttons */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="flex flex-row gap-3 md:gap-4 w-full max-w-sm px-4 md:px-0"
+        >
           <button
             onClick={() => navigate("service")}
-            className="flex-1 inline-flex items-center justify-center gap-2 rounded-full bg-white text-gray-900 py-3 md:py-3.5 text-xs md:text-sm font-bold border border-gray-200 hover:border-emerald-300 hover:text-[#059669] transition-colors"
+            className="flex-1 bg-white text-gray-900 h-12 md:h-14 rounded-full font-bold text-xs md:text-sm flex items-center justify-center gap-2 hover:bg-gray-100 transition-all active:scale-95 shadow-xl"
           >
-            できること
-            <Sparkles className="w-4 h-4" />
+            サービスを見る
           </button>
-        </div>
+          <button
+            onClick={() => navigate("contact")}
+            className="flex-1 bg-[#059669] text-white h-12 md:h-14 rounded-full font-bold text-xs md:text-sm flex items-center justify-center gap-2 hover:bg-emerald-600 transition-all active:scale-95 shadow-xl shadow-emerald-900/20"
+          >
+            無料相談 <ArrowRight className="w-4 h-4" />
+          </button>
+        </motion.div>
+      </div>
 
-        <div className="mt-2 md:mt-4 text-center text-[10px] md:text-xs text-gray-500 font-semibold">
-          ※ これはサンプルUIです（クリックでページが切り替わります）
-        </div>
+      {/* Floating Glass Stats - Bottom */}
+      <div className="relative z-10 p-4 md:p-8">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.8 }}
+          className="grid grid-cols-3 gap-2 md:gap-4 max-w-3xl mx-auto"
+        >
+          {[
+            { k: "+32%", l: "問い合わせ率", i: "📈" },
+            { k: "+41%", l: "検索流入", i: "🔍" },
+            { k: "4Days", l: "最短納期", i: "⚡" },
+          ].map((x, i) => (
+            <div
+              key={i}
+              className="bg-white/10 backdrop-blur-md border border-white/10 rounded-xl p-3 md:p-4 text-center text-white shadow-lg hover:bg-white/15 transition-colors"
+            >
+              <div className="text-xl md:text-2xl font-extrabold text-[#34d399] mb-1">{x.k}</div>
+              <div className="text-[10px] md:text-xs font-bold text-white/80">{x.l}</div>
+            </div>
+          ))}
+        </motion.div>
       </div>
     </div>
   );
