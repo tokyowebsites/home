@@ -53,92 +53,74 @@ export function Hero() {
           className="max-w-6xl mx-auto"
         >
           <MiniBrowser url="tokyowebsites.com/home" className="rounded-2xl shadow-2xl border-gray-700 bg-gray-900" dark>
-            <div className="h-[700px] bg-white relative">
-              <div ref={scrollRef} className="h-full overflow-y-auto custom-scrollbar scroll-smooth">
+            <div className="h-[450px] md:h-[700px] bg-white relative group">
+              {/* Mobile: No scroll (static preview). Desktop: Scrollable. */}
+              <div ref={scrollRef} className="h-full overflow-hidden md:overflow-y-auto custom-scrollbar scroll-smooth">
                 
                 {/* --- FAKE SITE CONTENT --- */}
-                <div className="bg-white text-gray-900 font-sans relative">
+                <div className="bg-white text-gray-900 font-sans relative min-h-full">
                   
-                  {/* Fake Header (no brand name text) */}
+                  {/* Fake Header */}
                   <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100">
-                    <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+                    <div className="max-w-5xl mx-auto px-4 md:px-6 h-14 md:h-16 flex items-center justify-between">
                       <div className="flex items-center gap-2">
-                        <div className="h-8 w-8 rounded-lg bg-[#059669] text-white flex items-center justify-center text-xs font-bold shadow-lg shadow-emerald-200">
+                        <div className="h-7 w-7 md:h-8 md:w-8 rounded-lg bg-[#059669] text-white flex items-center justify-center text-[10px] md:text-xs font-bold shadow-lg shadow-emerald-200">
                           TW
                         </div>
                       </div>
 
                       <nav className="hidden md:flex items-center gap-8 text-sm text-gray-700" style={{ fontWeight: 600 }}>
-                        <motion.button
-                          onClick={() => handleNavClick("service")}
-                          whileHover={{ scale: 1.05, color: "#059669" }}
-                          whileTap={{ scale: 0.95 }}
-                          className={`cursor-pointer transition-colors ${activeNav === "service" ? "text-[#059669]" : ""}`}
-                        >
-                          サービス
-                        </motion.button>
-                        <motion.button
-                          onClick={() => handleNavClick("works")}
-                          whileHover={{ scale: 1.05, color: "#059669" }}
-                          whileTap={{ scale: 0.95 }}
-                          className={`cursor-pointer transition-colors ${activeNav === "works" ? "text-[#059669]" : ""}`}
-                        >
-                          実績
-                        </motion.button>
-                        <motion.button
-                          onClick={() => handleNavClick("about")}
-                          whileHover={{ scale: 1.05, color: "#059669" }}
-                          whileTap={{ scale: 0.95 }}
-                          className={`cursor-pointer transition-colors ${activeNav === "about" ? "text-[#059669]" : ""}`}
-                        >
-                          料金
-                        </motion.button>
+                        {['service', 'works', 'about'].map((item) => (
+                           <motion.button
+                            key={item}
+                            onClick={() => handleNavClick(item)}
+                            whileHover={{ scale: 1.05, color: "#059669" }}
+                            whileTap={{ scale: 0.95 }}
+                            className={`cursor-pointer transition-colors uppercase text-xs ${activeNav === item ? "text-[#059669]" : ""}`}
+                          >
+                            {item}
+                          </motion.button>
+                        ))}
                       </nav>
 
                       <motion.button
                         onClick={() => handleNavClick("contact")}
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        className="px-5 py-2.5 bg-[#059669] text-white text-xs font-bold rounded-full hover:bg-emerald-600 transition-colors shadow-lg shadow-emerald-200"
+                        className="px-4 py-2 md:px-5 md:py-2.5 bg-[#059669] text-white text-[10px] md:text-xs font-bold rounded-full hover:bg-emerald-600 transition-colors shadow-lg shadow-emerald-200"
                         style={{ fontWeight: 700 }}
                       >
-                        {activeNav === "contact" ? "✓ 送信済み" : "無料相談"}
+                        {activeNav === "contact" ? "✓" : "無料相談"}
                       </motion.button>
                     </div>
                   </header>
 
                   {/* Fake Hero Section */}
-                  <div className="relative pt-24 pb-32 px-6 overflow-hidden">
+                  <div className="relative pt-12 pb-16 md:pt-24 md:pb-32 px-4 md:px-6 overflow-hidden">
                     <div className="max-w-4xl mx-auto text-center relative z-10">
                       
-                      <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight mb-8 leading-[1.1]" style={{ fontWeight: 700 }}>
+                      <h1 className="text-3xl md:text-7xl font-extrabold tracking-tight mb-6 md:mb-8 leading-[1.1]" style={{ fontWeight: 700 }}>
                         <span className="block"><span className="text-[#059669]">新時代</span><span className="text-[#0f172a]">の</span></span>
-                        <span className="block"><span className="text-[#059669]">ウェブコンサルティング</span><span className="text-[#0f172a]">。</span></span>
+                        <span className="block"><span className="text-[#059669]">ウェブコンサル</span><span className="text-[#0f172a]">。</span></span>
                       </h1>
                       
-                      <p className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto mb-8 leading-relaxed" style={{ fontWeight: 600 }}>
-                        “見た目が良い”だけで終わらせません。<br />
-                        <span className="text-gray-900" style={{ fontWeight: 700 }}>検索で見つかる</span>・
-                        <span className="text-gray-900" style={{ fontWeight: 700 }}>問い合わせが増える</span>・
-                        <span className="text-gray-900" style={{ fontWeight: 700 }}>信頼が伝わる</span>。\n                        <br />
-                        東京の小規模実店舗に特化した、<span className="text-[#059669]" style={{ fontWeight: 700 }}>新時代のウェブコンサル</span>です。
+                      <p className="text-xs md:text-lg text-gray-600 max-w-2xl mx-auto mb-8 leading-relaxed font-medium">
+                        “見た目が良い”だけで終わらせません。<br className="md:hidden" />
+                        <span className="text-gray-900 font-bold">検索で見つかる</span>・
+                        <span className="text-gray-900 font-bold">信頼が伝わる</span>。
                       </p>
 
-                      <div className="relative flex flex-col sm:flex-row items-center justify-center gap-4">
+                      <div className="relative flex flex-row items-center justify-center gap-3 md:gap-4">
                         <motion.button 
                           onClick={handleButtonClick}
                           whileHover={{ scale: 1.05, y: -2 }}
                           whileTap={{ scale: 0.95 }}
-                          className="px-8 py-4 bg-[#059669] text-white font-bold rounded-full shadow-xl shadow-emerald-200 hover:shadow-emerald-300 transition-all duration-300 flex items-center gap-2 group"
+                          className="px-5 py-3 md:px-8 md:py-4 bg-[#059669] text-white font-bold rounded-full shadow-xl shadow-emerald-200 hover:shadow-emerald-300 transition-all duration-300 flex items-center gap-2 group text-xs md:text-sm"
                           style={{ fontWeight: 700 }}
                         >
-                          {buttonClicked ? (
+                          {buttonClicked ? <CheckCircle size={16} /> : (
                             <>
-                              <CheckCircle size={18} /> 送信完了
-                            </>
-                          ) : (
-                            <>
-                              プロジェクトを開始 <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                              開始 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                             </>
                           )}
                         </motion.button>
@@ -146,26 +128,11 @@ export function Hero() {
                           onClick={handleCtaClick}
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.95 }}
-                          className="px-8 py-4 bg-white text-gray-900 font-bold rounded-full border border-gray-200 hover:border-[#059669] hover:text-[#059669] transition-all duration-300"
+                          className="px-5 py-3 md:px-8 md:py-4 bg-white text-gray-900 font-bold rounded-full border border-gray-200 hover:border-[#059669] hover:text-[#059669] transition-all duration-300 text-xs md:text-sm"
                           style={{ fontWeight: 600 }}
                         >
-                          {ctaClicked ? '✓ 実績ページへ' : '制作実績を見る'}
+                          実績
                         </motion.button>
-                      </div>
-
-                      {/* Outcome strip: shows \"digital presence\" impact when interacting */}
-                      <div className="mt-8 grid grid-cols-3 gap-3 max-w-2xl mx-auto">
-                        {[
-                          { kpi: "+32%", label: "問い合わせ率", hint: "導線/CTA最適化" },
-                          { kpi: "+41%", label: "検索流入", hint: "構造/SEO改善" },
-                          { kpi: "2.1x", label: "来店予約", hint: "スマホ導線強化" },
-                        ].map((x, i) => (
-                          <div key={i} className="bg-white rounded-2xl border border-gray-200 p-4 shadow-sm">
-                            <div className="text-lg text-[#059669]" style={{ fontWeight: 800 }}>{x.kpi}</div>
-                            <div className="text-xs text-gray-900" style={{ fontWeight: 700 }}>{x.label}</div>
-                            <div className="text-[10px] text-gray-600 mt-1" style={{ fontWeight: 600 }}>{x.hint}</div>
-                          </div>
-                        ))}
                       </div>
 
                       {/* Persistent roaming cursor (desktop only) */}
@@ -194,8 +161,8 @@ export function Hero() {
                     </div>
                   </div>
 
-                  {/* Fake Features Grid */}
-                  <div ref={detailsRef} className="bg-gray-50 py-24 px-6 border-t border-gray-100 relative z-10">
+                  {/* Fake Features Grid (Desktop Only) */}
+                  <div ref={detailsRef} className="hidden md:block bg-gray-50 py-24 px-6 border-t border-gray-100 relative z-10">
                     <div className="max-w-5xl mx-auto">
                       <div className="text-center mb-16">
                         <h2 className="text-3xl font-bold mb-4 text-gray-900" style={{ fontWeight: 700 }}>
@@ -236,6 +203,9 @@ export function Hero() {
                 {/* --- END FAKE SITE --- */}
 
               </div>
+              
+              {/* Mobile overlay to indicate interactivity isn't scrolling */}
+              <div className="md:hidden absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-white to-transparent pointer-events-none" />
             </div>
           </MiniBrowser>
         </motion.div>
