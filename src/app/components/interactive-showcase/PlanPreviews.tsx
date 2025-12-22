@@ -100,7 +100,7 @@ export function EntryPreview() {
       <div className="relative h-64 bg-gray-900 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10" />
         <img 
-          src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&q=80" 
+          src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&q=60&w=800" 
           alt="Bar Interior" 
           className="w-full h-full object-cover opacity-80"
         />
@@ -154,14 +154,14 @@ export function EntryPreview() {
         <div className="grid grid-cols-2 gap-3">
           <div className="bg-white p-3 rounded-xl border border-gray-100 shadow-sm">
             <div className="aspect-square bg-gray-100 rounded-lg mb-2 overflow-hidden">
-               <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&q=80" className="w-full h-full object-cover" />
+               <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&q=60&w=400" className="w-full h-full object-cover" />
             </div>
             <div className="text-xs font-bold">Old Fashioned</div>
             <div className="text-[10px] text-[#059669] font-bold">¥1,200</div>
           </div>
            <div className="bg-white p-3 rounded-xl border border-gray-100 shadow-sm">
             <div className="aspect-square bg-gray-100 rounded-lg mb-2 overflow-hidden">
-               <img src="https://images.unsplash.com/photo-1572116469696-31de0f17cc34?auto=format&fit=crop&q=80" className="w-full h-full object-cover" />
+               <img src="https://images.unsplash.com/photo-1572116469696-31de0f17cc34?auto=format&fit=crop&q=60&w=400" className="w-full h-full object-cover" />
             </div>
             <div className="text-xs font-bold">Gin Tonic</div>
             <div className="text-[10px] text-[#059669] font-bold">¥900</div>
@@ -223,7 +223,7 @@ export function StandardPreview() {
       <div className="relative h-80 bg-gradient-to-br from-slate-900 to-slate-700 overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <img 
-            src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&q=80" 
+            src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&q=60&w=800" 
             alt="Office" 
             className="w-full h-full object-cover"
           />
@@ -342,7 +342,7 @@ export function BusinessPreview() {
       <div className="relative h-72 bg-gradient-to-br from-slate-900 to-slate-700 mb-6 group overflow-hidden">
         <div className="absolute inset-0 opacity-20">
           <img 
-            src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80" 
+            src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=60&w=800" 
             alt="Store" 
             className="w-full h-full object-cover"
           />
@@ -378,10 +378,10 @@ export function BusinessPreview() {
         </div>
         <div className="grid grid-cols-2 gap-4">
           {[
-            { name: "ワイヤレスイヤホン", price: "¥8,980", tag: "NEW", img: "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&q=80&w=400" },
-            { name: "スマートウォッチ", price: "¥15,800", tag: "人気", img: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&q=80&w=400" },
-            { name: "モバイルバッテリー", price: "¥3,980", tag: "SALE", img: "https://images.unsplash.com/photo-1609091839311-d5365f9ff1c5?auto=format&fit=crop&q=80&w=400" },
-            { name: "ワイヤレス充電器", price: "¥4,580", tag: "", img: "https://images.unsplash.com/photo-1591290619762-d7b36440a45e?auto=format&fit=crop&q=80&w=400" },
+            { name: "ワイヤレスイヤホン", price: "¥8,980", tag: "NEW", img: "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&q=60&w=400" },
+            { name: "スマートウォッチ", price: "¥15,800", tag: "人気", img: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&q=60&w=400" },
+            { name: "モバイルバッテリー", price: "¥3,980", tag: "SALE", img: "https://images.unsplash.com/photo-1609091839311-d5365f9ff1c5?auto=format&fit=crop&q=60&w=400" },
+            { name: "ワイヤレス充電器", price: "¥4,580", tag: "", img: "https://images.unsplash.com/photo-1591290619762-d7b36440a45e?auto=format&fit=crop&q=60&w=400" },
           ].map((product, i) => (
             <div key={i} className="group cursor-pointer">
               <div className="aspect-square bg-white rounded-xl mb-3 overflow-hidden relative border border-gray-200 shadow-sm">
@@ -437,9 +437,9 @@ export function BusinessPreview() {
 export function PremiumPreview() {
   const [activeImg, setActiveImg] = useState(0);
   const images = [
-    "https://images.unsplash.com/photo-1600607686527-6fb886090705?auto=format&fit=crop&q=80",
-    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80",
-    "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&q=80"
+    "https://images.unsplash.com/photo-1600607686527-6fb886090705?auto=format&fit=crop&q=60&w=1200",
+    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=60&w=1200",
+    "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&q=60&w=1200"
   ];
 
   return (
@@ -515,8 +515,8 @@ export function PremiumPreview() {
 
         <div className="grid gap-8">
           {[
-            { t: "Residential", img: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80" },
-            { t: "Commercial", img: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80" },
+            { t: "Residential", img: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=60&w=600" },
+            { t: "Commercial", img: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=60&w=600" },
           ].map((item, i) => (
             <div key={i} className="group cursor-pointer">
               <div className="aspect-[4/3] overflow-hidden mb-4 bg-gray-100">

@@ -1,8 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, lazy, Suspense } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { X, Check, ArrowRight, Zap, FileText, Files, Building2, Sparkles } from "lucide-react";
+import { X, Check, ArrowRight, Zap, FileText, Files, Building2, Sparkles, Loader2 } from "lucide-react";
 import { MiniBrowser } from "./MiniBrowser";
-import { EntryPreview, StandardPreview, BusinessPreview, PremiumPreview } from "./PlanPreviews";
+
+const EntryPreview = lazy(() => import("./PlanPreviews").then(module => ({ default: module.EntryPreview })));
+const StandardPreview = lazy(() => import("./PlanPreviews").then(module => ({ default: module.StandardPreview })));
+const BusinessPreview = lazy(() => import("./PlanPreviews").then(module => ({ default: module.BusinessPreview })));
+const PremiumPreview = lazy(() => import("./PlanPreviews").then(module => ({ default: module.PremiumPreview })));
 
 // --- Plans Data ---
 
@@ -223,7 +227,15 @@ export function InteractiveShowcase() {
                         <div className="absolute inset-0 overflow-y-auto custom-scrollbar -webkit-overflow-scrolling-touch">
                           {(() => {
                             const Component = plans[selectedPlan].component;
-                            return <Component />;
+                            return (
+                              <Suspense fallback={
+                                <div className="h-full w-full flex items-center justify-center bg-slate-50">
+                                  <Loader2 className="w-8 h-8 text-[#059669] animate-spin" />
+                                </div>
+                              }>
+                                <Component />
+                              </Suspense>
+                            );
                           })()}
                         </div>
                       </div>
