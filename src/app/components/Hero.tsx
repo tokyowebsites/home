@@ -1,5 +1,6 @@
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import {
+  ArrowLeft, // Added ArrowLeft
   ArrowRight,
   Building2,
   CheckCircle,
@@ -51,9 +52,9 @@ export function Hero() {
             className="w-full h-full object-cover"
           />
         </motion.div>
-        {/* Stronger overlay for logo pop */}
-        <div className="absolute inset-0 bg-black/70" />
-        <div className="absolute inset-0 bg-[#0f172a]/40 mix-blend-multiply" />
+        {/* Lighter overlay for better image visibility */}
+        <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute inset-0 bg-[#0f172a]/20 mix-blend-multiply" />
       </div>
 
       {/* Large Hero Branding Overlay */}
@@ -70,7 +71,8 @@ export function Hero() {
           </h1>
           <p className="mt-6 text-sm md:text-lg text-white/90 font-medium max-w-xl mx-auto leading-relaxed drop-shadow-md">
             平均的な制作費用の<span className="text-[#34d399] font-bold">1/3以下の価格</span>で、<br className="hidden md:block"/>
-            あなたのビジネスのデジタルプレゼンスを劇的に向上させます。
+            あなたのビジネスのデジタルプレゼンスを劇的に向上させます。<br/>
+            <span className="text-xs md:text-sm opacity-80 mt-2 block font-bold">※ 最短4日で納品可能</span>
           </p>
         </motion.div>
 
@@ -87,21 +89,6 @@ export function Hero() {
           >
             なぜ安いのか？
           </button>
-        </motion.div>
-      </div>
-
-      {/* Single Floating Glass Stat - 4 Days Only */}
-      <div className="relative z-10 p-4 md:p-8">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
-          className="max-w-[160px] mx-auto"
-        >
-          <div className="bg-white/10 backdrop-blur-md border border-white/10 rounded-xl p-3 md:p-4 text-center text-white shadow-lg hover:bg-white/15 transition-colors">
-            <div className="text-xl md:text-2xl font-extrabold text-[#34d399] mb-1">4 Days</div>
-            <div className="text-[10px] md:text-xs font-bold text-white/80">最短納期</div>
-          </div>
         </motion.div>
       </div>
     </div>
