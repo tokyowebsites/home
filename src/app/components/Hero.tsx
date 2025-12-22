@@ -1,12 +1,13 @@
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import {
-  ArrowLeft, // Added ArrowLeft
+  ArrowLeft,
   ArrowRight,
   Building2,
   CheckCircle,
   FileText,
   Home,
   Mail,
+  MousePointer2,
   Phone,
   Sparkles,
   Zap,
