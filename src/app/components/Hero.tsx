@@ -335,32 +335,37 @@ export function Hero() {
               <div ref={viewportRef} className="h-full overflow-hidden">
                 <div className="h-full bg-white text-gray-900 font-sans flex flex-col">
                   {/* Fake Site Header */}
-                  <header className="shrink-0 bg-white/90 backdrop-blur-md border-b border-gray-100">
-                    <div className="h-14 md:h-16 px-3 md:px-6 flex items-center justify-between">
-                      <button
-                        type="button"
-                        onClick={() => navigate("home")}
-                        className="flex items-center gap-2"
-                        aria-label="ホームへ"
-                      >
-                        <div className="h-8 w-8 rounded-xl bg-[#059669] text-white flex items-center justify-center text-xs font-extrabold shadow-lg shadow-emerald-200 gap-[1px]">
-                          <span style={{ fontFamily: 'Inter, sans-serif' }}>T</span>
-                          <span style={{ fontFamily: 'Playfair Display, serif' }}>W</span>
-                        </div>
-                        <div className="hidden md:block leading-tight text-left">
-                          <div className="text-sm font-extrabold text-gray-900 flex items-center gap-1">
-                            <span style={{ fontFamily: 'Inter, sans-serif' }}>Tokyo</span>
-                            <span style={{ fontFamily: 'Playfair Display, serif' }}>Websites</span>
-                          </div>
-                        </div>
-                      </button>
+                  <header className="shrink-0 bg-white/90 backdrop-blur-md border-b border-gray-100 relative z-20">
+                    <div className="h-14 md:h-16 px-3 md:px-6 flex items-center justify-between relative">
+                      <div className="flex items-center gap-3 md:gap-4">
+                        {/* Back Arrow */}
+                        <button 
+                          type="button"
+                          onClick={() => currentView !== 'home' ? navigate('home') : null}
+                          className={`p-1.5 rounded-full transition-colors ${currentView !== 'home' ? 'text-gray-700 hover:bg-gray-100' : 'text-gray-300 cursor-default'}`}
+                        >
+                          <ArrowLeft size={18} className="md:w-5 md:h-5" />
+                        </button>
 
-                      {/* Desktop nav */}
-                      <nav className="hidden md:flex items-center gap-2">
                         <button
                           type="button"
                           onClick={() => navigate("home")}
-                          className={`px-4 py-2 rounded-full text-xs font-extrabold border transition-colors ${
+                          className="flex items-center gap-2"
+                          aria-label="ホームへ"
+                        >
+                          <div className="h-8 w-8 rounded-xl bg-[#059669] text-white flex items-center justify-center text-xs font-extrabold shadow-lg shadow-emerald-200 gap-[1px]">
+                            <span style={{ fontFamily: 'Inter, sans-serif' }}>T</span>
+                            <span style={{ fontFamily: 'Playfair Display, serif' }}>W</span>
+                          </div>
+                        </button>
+                      </div>
+
+                      {/* Desktop nav - Centered */}
+                      <nav className="hidden md:flex items-center gap-2 absolute left-1/2 -translate-x-1/2">
+                        <button
+                          type="button"
+                          onClick={() => navigate("home")}
+                          className={`px-5 py-2 rounded-full text-xs font-extrabold border transition-colors ${
                             currentView === "home"
                               ? "bg-emerald-50 border-emerald-200 text-emerald-800"
                               : "bg-white border-gray-200 text-gray-700 hover:border-emerald-200 hover:text-[#059669]"
@@ -369,9 +374,10 @@ export function Hero() {
                           Home
                         </button>
                         <button
+                          id="service-tab-btn" // ID for cursor target
                           type="button"
                           onClick={() => navigate("service")}
-                          className={`px-4 py-2 rounded-full text-xs font-extrabold border transition-colors ${
+                          className={`px-5 py-2 rounded-full text-xs font-extrabold border transition-colors ${
                             currentView === "service"
                               ? "bg-emerald-50 border-emerald-200 text-emerald-800"
                               : "bg-white border-gray-200 text-gray-700 hover:border-emerald-200 hover:text-[#059669]"
@@ -380,8 +386,41 @@ export function Hero() {
                           選ばれる理由
                         </button>
                       </nav>
+
+                      <button
+                        type="button"
+                        onClick={() => navigate("contact")}
+                        className="ml-2 px-4 py-2 md:px-5 md:py-2 rounded-full bg-[#059669] text-white text-[10px] md:text-xs font-extrabold shadow-lg shadow-emerald-200 hover:bg-emerald-600 transition-colors"
+                      >
+                        無料相談
+                      </button>
                     </div>
                   </header>
+
+                  {/* Demo Cursor Animation */}
+                  <motion.div
+                    className="hidden md:block absolute z-50 pointer-events-none"
+                    initial={{ x: "80%", y: "80%", opacity: 0 }}
+                    animate={{ 
+                      x: ["80%", "50%", "50%", "20%", "20%"],
+                      y: ["80%", "50%", "15px", "15px", "80%"], // Target the header area approx
+                      opacity: [0, 1, 1, 1, 0]
+                    }}
+                    transition={{
+                      duration: 8,
+                      repeat: Infinity,
+                      repeatDelay: 5,
+                      times: [0, 0.2, 0.4, 0.6, 1],
+                      ease: "easeInOut"
+                    }}
+                  >
+                    <MousePointer2 className="w-5 h-5 text-black fill-black drop-shadow-md" />
+                    <motion.div
+                      className="absolute -top-3 -left-3 w-10 h-10 rounded-full bg-black/10"
+                      animate={{ scale: [0, 1.5], opacity: [0.5, 0] }}
+                      transition={{ duration: 0.5, repeat: Infinity, repeatDelay: 7.5, delay: 3.2 }} // Time with the click position
+                    />
+                  </motion.div>
 
                   {/* Dynamic content area */}
                   <div className="flex-1 min-h-0 relative overflow-hidden">
