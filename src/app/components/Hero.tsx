@@ -81,7 +81,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="flex flex-row gap-3 md:gap-4 w-full max-w-xs px-4 md:px-0"
+          className="flex flex-row gap-3 md:gap-4 w-full max-w-xs px-4 md:px-0 relative"
         >
           <button
             onClick={() => navigate("service")}
@@ -89,6 +89,32 @@ export function Hero() {
           >
             なぜ安いのか？
           </button>
+
+          {/* Fake Cursor Animation */}
+          <motion.div
+            className="absolute z-50 pointer-events-none"
+            initial={{ opacity: 0, x: 100, y: 100 }}
+            animate={{ 
+              opacity: [0, 1, 1, 0],
+              x: [60, 40, 40], // Move towards button
+              y: [60, 20, 20],
+              scale: [1, 1, 0.9, 1] // Click effect
+            }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              repeatDelay: 2,
+              ease: "easeInOut",
+              times: [0, 0.2, 0.8, 1]
+            }}
+          >
+            <MousePointer2 className="w-6 h-6 text-black fill-white drop-shadow-xl" />
+            <motion.div
+              className="absolute -top-2 -left-2 w-8 h-8 rounded-full bg-[#059669]/30"
+              animate={{ scale: [0, 1.5], opacity: [0, 0.8, 0] }}
+              transition={{ duration: 0.5, delay: 2.2, repeat: Infinity, repeatDelay: 4.5 }}
+            />
+          </motion.div>
         </motion.div>
       </div>
     </div>
