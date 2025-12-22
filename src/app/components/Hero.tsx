@@ -302,20 +302,3 @@ export function Hero() {
     </section>
   );
 }
-        </motion.div>
-
-        {/* Real CTA Below Browser */}
-        <div className="mt-12 text-center">
-          <p className="text-sm text-gray-500 mb-6 font-medium" style={{ fontWeight: 600 }}>Helping Tokyo companies' digital image since 2025</p>
-          <a
-            href="#plans"
-            className="inline-flex items-center gap-2 text-sm font-bold text-gray-900 border-b border-gray-900 pb-0.5 hover:text-[#059669] hover:border-[#059669] transition-colors"
-            style={{ fontWeight: 700 }}
-          >
-            料金プランを見る <ArrowRight size={14} />
-          </a>
-        </div>
-      </div>
-    </section>
-  );
-}
