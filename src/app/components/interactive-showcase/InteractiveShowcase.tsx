@@ -168,43 +168,65 @@ export function InteractiveShowcase() {
               >
                 <button
                   onClick={() => setSelectedPlan(null)}
-                  className="absolute top-4 right-4 z-50 p-2 bg-white/80 backdrop-blur rounded-full hover:bg-white transition-colors shadow-sm hover:rotate-90 duration-300"
+                  className="absolute top-3 right-3 md:top-4 md:right-4 z-50 p-2 bg-white/90 backdrop-blur rounded-full hover:bg-white transition-colors shadow-md hover:rotate-90 duration-300"
                 >
-                  <X size={20} className="text-gray-900" />
+                  <X size={18} className="text-gray-900" />
                 </button>
 
-                <div className="md:w-[350px] shrink-0 bg-gray-50 p-5 md:p-8 border-r border-gray-100 overflow-y-auto md:overflow-y-auto max-h-[25vh] md:max-h-full">
-                              <div className="mb-4 md:mb-8">
-                                 <div className={`inline-flex p-3 rounded-xl mb-2 md:mb-4 ${plans[selectedPlan].color}`}>
-                                    {(() => {
-                                      const Icon = plans[selectedPlan].icon;
-                                      return <Icon size={24} />;
-                                    })()}
-                                 </div>
-                                <div className="flex flex-col md:block">
-                                  <h3 className="text-lg md:text-2xl font-bold text-gray-900 mb-1">{plans[selectedPlan].nameJa}</h3>
-                                  <div className="flex items-center gap-2 md:block">
-                                    <div className="text-xs md:text-sm text-gray-500 font-bold uppercase tracking-wider">{plans[selectedPlan].nameEn}</div>
-                                    {/* Mobile: Price inline */}
-                                    <div className="md:hidden text-lg font-bold text-[#059669] ml-auto">{plans[selectedPlan].price}</div>
-                                  </div>
-                                </div>
-                              </div>
+                {/* Mobile: Ultra-compact info bar */}
+                <div className="md:hidden shrink-0 bg-white border-b border-gray-100 px-4 py-3">
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="flex items-center gap-3 min-w-0">
+                      <div className={`shrink-0 p-2 rounded-lg ${plans[selectedPlan].color}`}>
+                        {(() => {
+                          const Icon = plans[selectedPlan].icon;
+                          return <Icon size={18} />;
+                        })()}
+                      </div>
+                      <div className="min-w-0">
+                        <h3 className="text-base font-bold text-gray-900 truncate">{plans[selectedPlan].nameJa}</h3>
+                        <div className="text-[10px] text-gray-500 font-bold uppercase">{plans[selectedPlan].nameEn}</div>
+                      </div>
+                    </div>
+                    <div className="shrink-0 text-right">
+                      <div className="text-lg font-bold text-[#059669]">{plans[selectedPlan].price}</div>
+                      <a 
+                        href="#contact" 
+                        onClick={() => setSelectedPlan(null)}
+                        className="text-[10px] font-bold text-[#059669] underline"
+                      >
+                        相談する →
+                      </a>
+                    </div>
+                  </div>
+                </div>
 
-                              <div className="mb-4 md:mb-8">
-                                {/* Desktop: Price block */}
-                                <div className="hidden md:block text-4xl font-bold text-gray-900 mb-2">{plans[selectedPlan].price}</div>
-                                <p className="text-xs md:text-sm text-gray-600 leading-relaxed">
-                                  {plans[selectedPlan].desc}
-                                </p>
-                              </div>
+                {/* Desktop: Full info panel */}
+                <div className="hidden md:flex md:w-[320px] shrink-0 bg-gray-50 p-6 border-r border-gray-100 flex-col">
+                  <div className="mb-6">
+                    <div className={`inline-flex p-3 rounded-xl mb-3 ${plans[selectedPlan].color}`}>
+                      {(() => {
+                        const Icon = plans[selectedPlan].icon;
+                        return <Icon size={24} />;
+                      })()}
+                    </div>
+                    <h3 className="text-2xl font-bold text-gray-900 mb-1">{plans[selectedPlan].nameJa}</h3>
+                    <div className="text-sm text-gray-500 font-bold uppercase tracking-wider">{plans[selectedPlan].nameEn}</div>
+                  </div>
 
-                  <div className="mb-4 md:mb-8">
-                    <h4 className="text-[10px] md:text-xs font-bold text-gray-900 uppercase tracking-wider mb-2 md:mb-4">含まれる機能</h4>
-                    <ul className="space-y-2 md:space-y-3">
+                  <div className="mb-6">
+                    <div className="text-3xl font-bold text-[#059669] mb-2">{plans[selectedPlan].price}</div>
+                    <p className="text-sm text-gray-600 leading-relaxed">
+                      {plans[selectedPlan].desc}
+                    </p>
+                  </div>
+
+                  <div className="mb-6 flex-1">
+                    <h4 className="text-xs font-bold text-gray-900 uppercase tracking-wider mb-3">含まれる機能</h4>
+                    <ul className="space-y-2">
                       {plans[selectedPlan].features.map((feature, i) => (
-                        <li key={i} className="flex items-start gap-3 text-xs md:text-sm text-gray-600">
-                          <Check size={16} className="text-[#0f172a] mt-0.5 shrink-0" />
+                        <li key={i} className="flex items-center gap-2 text-sm text-gray-600">
+                          <Check size={14} className="text-[#059669] shrink-0" />
                           <span className="font-medium">{feature}</span>
                         </li>
                       ))}
@@ -214,30 +236,31 @@ export function InteractiveShowcase() {
                   <a 
                     href="#contact" 
                     onClick={() => setSelectedPlan(null)}
-                    className="block w-full py-3 md:py-4 bg-[#059669] hover:bg-emerald-600 text-white font-bold rounded-xl text-center shadow-lg shadow-emerald-200 transition-all active:scale-[0.98] text-sm md:text-base"
+                    className="block w-full py-3 bg-[#059669] hover:bg-emerald-600 text-white font-bold rounded-xl text-center shadow-lg shadow-emerald-200 transition-all active:scale-[0.98] text-sm mt-auto"
                     style={{ fontWeight: 700 }}
                   >
                     このプランで相談する
                   </a>
                 </div>
 
-                <div className="flex-1 bg-slate-100 p-2 md:p-8 flex flex-col min-h-0 relative">
-                  <div className="text-center mb-4 hidden md:block">
-                    <span className="bg-white/50 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-gray-500 border border-gray-200/50">
-                       インタラクティブ・プレビュー
+                {/* Preview area - takes remaining space */}
+                <div className="flex-1 bg-slate-200 p-2 md:p-6 flex flex-col min-h-0 relative">
+                  <div className="text-center mb-2 hidden md:block">
+                    <span className="bg-white/70 backdrop-blur px-3 py-1 rounded-full text-[10px] font-bold text-gray-500 border border-gray-200/50">
+                      サンプルプレビュー
                     </span>
                   </div>
                   
-                  <div className="flex-1 min-h-0 relative h-full">
-                    <MiniBrowser url={plans[selectedPlan].url} className="h-full w-full rounded-xl shadow-lg border border-gray-700" dark>
-                      <div className="h-full w-full bg-slate-50 relative group">
-                        <div className="absolute inset-0 overflow-y-auto custom-scrollbar -webkit-overflow-scrolling-touch">
+                  <div className="flex-1 min-h-0 relative">
+                    <MiniBrowser url={plans[selectedPlan].url} className="h-full w-full rounded-lg md:rounded-xl shadow-lg border border-gray-700" dark>
+                      <div className="h-full w-full bg-white relative">
+                        <div className="absolute inset-0 overflow-y-auto custom-scrollbar" style={{ WebkitOverflowScrolling: 'touch' }}>
                           {(() => {
                             const Component = plans[selectedPlan].component;
                             return (
                               <Suspense fallback={
-                                <div className="h-full w-full flex items-center justify-center bg-slate-50">
-                                  <Loader2 className="w-8 h-8 text-[#059669] animate-spin" />
+                                <div className="h-full w-full flex items-center justify-center bg-white">
+                                  <Loader2 className="w-6 h-6 text-[#059669] animate-spin" />
                                 </div>
                               }>
                                 <Component />
