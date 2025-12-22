@@ -173,31 +173,36 @@ export function InteractiveShowcase() {
                   <X size={20} className="text-gray-900" />
                 </button>
 
-                <div className="md:w-[350px] shrink-0 bg-gray-50 p-5 md:p-8 border-r border-gray-100 overflow-y-auto md:overflow-y-auto max-h-[25vh] md:max-h-full">
-                  <div className="mb-4 md:mb-8">
-                     <div className={`inline-flex p-3 rounded-xl mb-2 md:mb-4 ${plans[selectedPlan].color}`}>
+                <div className="md:w-[350px] shrink-0 bg-gray-50 p-5 md:p-8 border-r border-gray-100 overflow-y-auto md:overflow-y-auto max-h-[20vh] md:max-h-full">
+                  {/* Compact header with price inline on mobile */}
+                  <div className="mb-4 md:mb-6 flex items-start gap-3">
+                     <div className={`inline-flex p-2 md:p-3 rounded-xl shrink-0 ${plans[selectedPlan].color}`}>
                         {(() => {
                           const Icon = plans[selectedPlan].icon;
-                          return <Icon size={24} />;
+                          return <Icon size={20} className="md:w-6 md:h-6" />;
                         })()}
                      </div>
-                    <h3 className="text-lg md:text-2xl font-bold text-gray-900 mb-1">{plans[selectedPlan].nameJa}</h3>
-                    <div className="text-xs md:text-sm text-gray-500 font-bold uppercase tracking-wider">{plans[selectedPlan].nameEn}</div>
+                     <div className="flex-1 min-w-0">
+                       <div className="flex items-baseline gap-2 mb-0.5">
+                         <h3 className="text-base md:text-2xl font-bold text-gray-900">{plans[selectedPlan].nameJa}</h3>
+                         <span className="text-lg md:text-3xl font-bold text-[#059669] whitespace-nowrap">{plans[selectedPlan].price}</span>
+                       </div>
+                       <div className="text-[10px] md:text-sm text-gray-500 font-bold uppercase tracking-wider">{plans[selectedPlan].nameEn}</div>
+                     </div>
                   </div>
 
-                  <div className="mb-4 md:mb-8">
-                    <div className="text-2xl md:text-4xl font-bold text-gray-900 mb-2">{plans[selectedPlan].price}</div>
+                  <div className="mb-4 md:mb-6">
                     <p className="text-xs md:text-sm text-gray-600 leading-relaxed">
                       {plans[selectedPlan].desc}
                     </p>
                   </div>
 
-                  <div className="mb-4 md:mb-8">
-                    <h4 className="text-[10px] md:text-xs font-bold text-gray-900 uppercase tracking-wider mb-2 md:mb-4">含まれる機能</h4>
-                    <ul className="space-y-2 md:space-y-3">
+                  <div className="mb-4 md:mb-6">
+                    <h4 className="text-[10px] md:text-xs font-bold text-gray-900 uppercase tracking-wider mb-2 md:mb-3">含まれる機能</h4>
+                    <ul className="space-y-1.5 md:space-y-2">
                       {plans[selectedPlan].features.map((feature, i) => (
-                        <li key={i} className="flex items-start gap-3 text-xs md:text-sm text-gray-600">
-                          <Check size={16} className="text-[#0f172a] mt-0.5 shrink-0" />
+                        <li key={i} className="flex items-start gap-2 text-[11px] md:text-sm text-gray-600">
+                          <Check size={14} className="text-[#059669] mt-0.5 shrink-0" />
                           <span className="font-medium">{feature}</span>
                         </li>
                       ))}
