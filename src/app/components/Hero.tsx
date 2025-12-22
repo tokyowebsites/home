@@ -424,30 +424,32 @@ export function Hero() {
                     </div>
                   </header>
 
-                  {/* Demo Cursor Animation */}
-                  <motion.div
-                    className="hidden md:block absolute z-50 pointer-events-none"
-                    initial={{ x: "80%", y: "80%", opacity: 0 }}
-                    animate={{ 
-                      x: ["80%", "50%", "50%", "20%", "20%"],
-                      y: ["80%", "50%", "15px", "15px", "80%"], // Target the header area approx
-                      opacity: [0, 1, 1, 1, 0]
-                    }}
-                    transition={{
-                      duration: 8,
-                      repeat: Infinity,
-                      repeatDelay: 5,
-                      times: [0, 0.2, 0.4, 0.6, 1],
-                      ease: "easeInOut"
-                    }}
-                  >
-                    <MousePointer2 className="w-5 h-5 text-black fill-black drop-shadow-md" />
+                  {/* Demo Cursor Animation - Only on sub-pages to suggest "Back" */}
+                  {currentView !== "home" && (
                     <motion.div
-                      className="absolute -top-3 -left-3 w-10 h-10 rounded-full bg-black/10"
-                      animate={{ scale: [0, 1.5], opacity: [0.5, 0] }}
-                      transition={{ duration: 0.5, repeat: Infinity, repeatDelay: 7.5, delay: 3.2 }} // Time with the click position
-                    />
-                  </motion.div>
+                      className="hidden md:block absolute z-50 pointer-events-none"
+                      initial={{ x: "50%", y: "50%", opacity: 0 }}
+                      animate={{ 
+                        x: ["50%", "5%", "5%", "50%"], // Move to back arrow (top-left)
+                        y: ["50%", "2%", "2%", "50%"],
+                        opacity: [0, 1, 1, 0]
+                      }}
+                      transition={{
+                        duration: 4,
+                        repeat: Infinity,
+                        repeatDelay: 2,
+                        ease: "easeInOut",
+                        times: [0, 0.4, 0.6, 1]
+                      }}
+                    >
+                      <MousePointer2 className="w-5 h-5 text-black fill-black drop-shadow-md" />
+                      <motion.div
+                        className="absolute -top-3 -left-3 w-10 h-10 rounded-full bg-black/10"
+                        animate={{ scale: [0, 1.5], opacity: [0.5, 0] }}
+                        transition={{ duration: 0.5, repeat: Infinity, repeatDelay: 3.5, delay: 1.6 }}
+                      />
+                    </motion.div>
+                  )}
 
                   {/* Dynamic content area */}
                   <div className="flex-1 min-h-0 relative overflow-hidden">
