@@ -17,7 +17,7 @@ const plans = [
     nameEn: "Entry Plan",
     price: "¥20,000",
     desc: "名刺代わりの1ページ。スマホ対応で、まずはWeb上の拠点を作りたい方に。",
-    features: ["1 Page Landing", "Mobile Optimized", "Google Maps", "Social Links", "Contact Form"],
+    features: ["1ページ構成", "スマホ対応", "Googleマップ", "SNSリンク", "お問い合わせフォーム"],
     url: "tokyowebsites.com/entry-sample",
     component: EntryPreview,
     icon: FileText,
@@ -27,21 +27,9 @@ const plans = [
     id: "standard",
     nameJa: "スタンダード",
     nameEn: "Standard Plan",
-    price: "¥50,000",
-    desc: "3〜5ページの本格構成。サービス紹介や会社概要など、信頼感を高める標準プラン。",
-    features: ["3-5 Pages", "CMS Integration", "SEO Basics", "Blog Function", "Analytics"],
-    url: "tokyowebsites.com/standard-sample",
-    component: StandardPreview,
-    icon: Files,
-    color: "bg-emerald-50 text-emerald-900",
-  },
-  {
-    id: "business",
-    nameJa: "ビジネス",
-    nameEn: "Business Plan",
-    price: "¥80,000",
-    desc: "CMS（ブログ）機能付きで、自分たちで更新可能。集客と情報発信を強化したい企業へ。",
-    features: ["Custom CMS", "Advanced SEO", "Multi-language Ready", "Newsletter", "Priority Support"],
+    price: "¥70,000",
+    desc: "自分たちでニュースやブログを更新できるプランです。お店のファンを増やしたい方に。",
+    features: ["ブログ機能（更新機能）", "検索対策（SEO）", "多言語対応（準備）", "ニュースレター", "優先サポート"],
     url: "tokyowebsites.com/business-sample",
     component: BusinessPreview,
     icon: Building2,
@@ -51,9 +39,9 @@ const plans = [
     id: "premium",
     nameJa: "プレミアム",
     nameEn: "Premium Plan",
-    price: "¥120,000~",
-    desc: "EC機能や予約システムなど、高度な機能を搭載。ビジネスを加速させるフルオーダー。",
-    features: ["E-commerce / Booking", "Custom Animation", "API Integration", "Brand Strategy", "24/7 Support"],
+    price: "¥100,000~",
+    desc: "ネットショップや予約システムなど、やりたいことを全部叶えるプランです。",
+    features: ["ネットショップ / 予約", "アニメーション", "外部システム連携", "ブランド戦略", "24時間サポート"],
     url: "tokyowebsites.com/premium-sample",
     component: PremiumPreview,
     icon: Sparkles,
@@ -91,20 +79,25 @@ export function InteractiveShowcase() {
           <h2 className="text-4xl font-bold tracking-tight text-white mb-4">
             明確な料金プラン。
           </h2>
-          <p className="text-gray-400 text-lg">
+          <p className="text-gray-400 text-lg mb-6">
             追加料金なしの明朗会計。<br className="hidden sm:block"/>
             ビジネスの規模に合わせて最適なプランをお選びください。
           </p>
+          
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-gray-300 text-xs font-medium">
+            <span>🌐</span>
+            <span>日本語・英語・韓国語・中国語に対応しています</span>
+          </div>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
+        <div className="grid md:grid-cols-3 gap-6 relative z-10 max-w-5xl mx-auto">
           {plans.map((plan, index) => {
              const Icon = plan.icon;
              return (
               <div
                 key={plan.id}
                 onClick={() => setSelectedPlan(index)}
-                className="group relative bg-white border border-gray-200 rounded-2xl p-6 hover:shadow-xl hover:shadow-blue-200/50 hover:border-blue-500/50 transition-all duration-300 cursor-pointer flex flex-col h-full overflow-hidden"
+                className="group relative bg-white border border-gray-200 rounded-2xl p-6 hover:shadow-xl hover:shadow-blue-200/50 hover:border-blue-500/50 transition-all duration-300 cursor-pointer flex flex-col h-auto min-h-0 overflow-visible"
               >
                 <div className={`absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-300 pointer-events-none ${plan.color.split(" ")[0]}`}></div>
 
@@ -123,11 +116,11 @@ export function InteractiveShowcase() {
                   </div>
                 </div>
 
-                <p className="relative text-sm text-gray-600 leading-relaxed mb-6 flex-grow">
+                <p className="relative text-sm text-gray-600 leading-relaxed mb-6">
                   {plan.desc}
                 </p>
 
-                <ul className="relative space-y-3 mb-8">
+                <ul className="relative space-y-3 mb-8 flex-grow">
                   {plan.features.slice(0, 3).map((feature, i) => (
                     <li key={i} className="flex items-center gap-3 text-xs font-bold text-gray-500">
                       <Check size={14} className="text-[#0f172a] shrink-0" />
@@ -174,28 +167,27 @@ export function InteractiveShowcase() {
                 </button>
 
                 {/* Mobile: Ultra-compact info bar */}
-                <div className="md:hidden shrink-0 bg-white border-b border-gray-100 px-4 py-3">
-                  <div className="flex items-center justify-between gap-3">
-                    <div className="flex items-center gap-3 min-w-0">
-                      <div className={`shrink-0 p-2 rounded-lg ${plans[selectedPlan].color}`}>
+                <div className="md:hidden shrink-0 bg-white border-b border-gray-100 px-3 py-2">
+                  <div className="flex items-center justify-between gap-2">
+                    <div className="flex items-center gap-2 min-w-0">
+                      <div className={`shrink-0 p-1.5 rounded-lg ${plans[selectedPlan].color}`}>
                         {(() => {
                           const Icon = plans[selectedPlan].icon;
-                          return <Icon size={18} />;
+                          return <Icon size={14} />;
                         })()}
                       </div>
-                      <div className="min-w-0">
-                        <h3 className="text-base font-bold text-gray-900 truncate">{plans[selectedPlan].nameJa}</h3>
-                        <div className="text-[10px] text-gray-500 font-bold uppercase">{plans[selectedPlan].nameEn}</div>
+                      <div className="min-w-0 flex flex-col justify-center">
+                        <h3 className="text-sm font-bold text-gray-900 truncate leading-tight">{plans[selectedPlan].nameJa}</h3>
+                        <div className="text-[9px] font-bold text-[#059669] leading-tight">{plans[selectedPlan].price}</div>
                       </div>
                     </div>
                     <div className="shrink-0 text-right">
-                      <div className="text-lg font-bold text-[#059669]">{plans[selectedPlan].price}</div>
                       <a 
                         href="#contact" 
                         onClick={() => setSelectedPlan(null)}
-                        className="text-[10px] font-bold text-[#059669] underline"
+                        className="inline-block px-3 py-1.5 rounded-full bg-[#059669] text-white text-[10px] font-bold shadow-sm"
                       >
-                        相談する →
+                        相談する
                       </a>
                     </div>
                   </div>

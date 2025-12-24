@@ -4,10 +4,12 @@ import { InteractiveShowcase } from "./components/interactive-showcase/Interacti
 import { ProcessTimeline } from "./components/ProcessTimeline";
 import { Contact } from "./components/Contact";
 import { BackgroundGradient } from "./components/ui/BackgroundGradient";
+import { Toaster } from "sonner";
 
 export default function App() {
   return (
     <div className="min-h-screen bg-white overflow-x-hidden font-sans text-gray-900">
+      <Toaster position="top-center" />
       <Header />
       <Hero />
       <InteractiveShowcase />

@@ -16,7 +16,7 @@ import { useMemo, useRef, useState } from "react";
 
 import { MiniBrowser } from "./interactive-showcase/MiniBrowser";
 
-type HeroView = "home" | "service";
+type HeroView = "home" | "service" | "works" | "about" | "contact";
 
 export function Hero() {
   const reduceMotion = useReducedMotion();
@@ -40,7 +40,7 @@ export function Hero() {
   const HomeView = () => (
     <div className="h-full flex flex-col relative overflow-hidden group">
       {/* Background Image with Stronger Overlay */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 bg-[#0f172a]">
         <motion.div 
           initial={{ scale: 1.1 }}
           animate={{ scale: 1 }}
@@ -64,13 +64,13 @@ export function Hero() {
           initial={{ opacity: 0, y: 20, scale: 0.95 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          className="mb-6 md:mb-8"
+          className="mb-4 md:mb-8"
         >
-          <h1 className="text-5xl md:text-8xl font-extrabold tracking-tighter text-white leading-tight drop-shadow-2xl flex items-center justify-center gap-2 md:gap-4">
+          <h1 className="text-4xl sm:text-5xl md:text-8xl font-extrabold tracking-tighter text-white leading-tight drop-shadow-2xl flex items-center justify-center gap-2 md:gap-4">
             <span style={{ fontFamily: 'Inter, sans-serif' }}>Tokyo</span>
             <span style={{ fontFamily: 'Playfair Display, serif' }} className="text-[#34d399]">Websites</span>
           </h1>
-          <p className="mt-6 text-sm md:text-lg text-white/90 font-medium max-w-xl mx-auto leading-relaxed drop-shadow-md">
+          <p className="mt-4 md:mt-6 text-sm md:text-lg text-white/90 font-medium max-w-xl mx-auto leading-relaxed drop-shadow-md">
             平均的な制作費用の<span className="text-[#34d399] font-bold">1/3以下の価格</span>で、<br className="hidden md:block"/>
             あなたのビジネスのデジタルプレゼンスを劇的に向上させます。<br/>
             <span className="text-xs md:text-sm opacity-80 mt-2 block font-bold">※ 最短4日で納品可能</span>
@@ -82,13 +82,23 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="flex flex-row gap-3 md:gap-4 w-full max-w-xs px-4 md:px-0 relative"
+          className="flex flex-row gap-3 md:gap-4 w-full max-w-md px-4 md:px-0 relative"
         >
           <button
             onClick={() => navigate("service")}
             className="flex-1 bg-white text-gray-900 h-12 md:h-14 rounded-full font-bold text-xs md:text-sm flex items-center justify-center gap-2 hover:bg-gray-100 transition-all active:scale-95 shadow-xl"
           >
             なぜ安いのか？
+          </button>
+
+          <button
+            onClick={() => {
+              const contactSection = document.getElementById('contact');
+              if(contactSection) contactSection.scrollIntoView({ behavior: 'smooth' });
+            }}
+            className="flex-1 bg-[#059669] text-white h-12 md:h-14 rounded-full font-bold text-xs md:text-sm flex items-center justify-center gap-2 hover:bg-emerald-600 transition-all active:scale-95 shadow-xl"
+          >
+            無料相談 <ArrowRight className="w-4 h-4" />
           </button>
 
           {/* Fake Cursor Animation */}
@@ -122,35 +132,37 @@ export function Hero() {
   );
 
   const ServiceView = () => (
-    <div className="h-full flex flex-col px-6 py-8 md:px-12 md:py-12 justify-center">
-      <div className="text-center mb-8">
-        <h2 className="text-2xl md:text-4xl font-extrabold text-gray-900 mb-4">
+    <div className="h-full flex flex-col px-4 py-4 md:px-12 md:py-12 justify-center">
+      <div className="text-center mb-4 md:mb-8">
+        <h2 className="text-xl md:text-4xl font-extrabold text-gray-900 mb-2 md:mb-4">
           高品質なWebサイトを、<br/><span className="text-[#059669]">適正価格</span>で。
         </h2>
-        <p className="text-sm md:text-base text-gray-600 font-medium max-w-2xl mx-auto">
+        <p className="text-xs md:text-base text-gray-600 font-medium max-w-2xl mx-auto">
           私たちは「立川ウェブサイト・コンサルティング」として、無駄なコストを徹底的に削減。<br/>
           大手の数分の一の価格で、成果の出るデジタルリニューアルを提供します。
         </p>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-4 md:gap-6 max-w-4xl mx-auto w-full">
-        <div className="bg-emerald-50 border border-emerald-100 p-6 rounded-2xl">
-          <Zap className="w-8 h-8 text-[#059669] mb-3" />
-          <h3 className="font-bold text-gray-900 mb-2">圧倒的なコストパフォーマンス</h3>
-          <p className="text-xs md:text-sm text-gray-600">
-            営業コストやオフィス賃料をカットし、制作費に還元。高品質なデザインを低価格で実現します。
+      <div className="grid md:grid-cols-2 gap-3 md:gap-6 max-w-4xl mx-auto w-full">
+        <div className="bg-emerald-50 border border-emerald-100 p-4 md:p-6 rounded-2xl flex flex-col justify-center h-full">
+          <Zap className="w-6 h-6 md:w-8 md:h-8 text-[#059669] mb-2 md:mb-3 shrink-0" />
+          <h3 className="font-bold text-gray-900 mb-1 md:mb-2 text-sm md:text-base shrink-0">中間マージンを完全カット</h3>
+          <p className="text-[10px] md:text-sm text-gray-600 leading-relaxed">
+            営業や広告のコストを排除し、クリエイター直結で制作。
+            さらに最新AI活用で工数を大幅に圧縮し、高品質と低価格を両立しました。
           </p>
         </div>
-        <div className="bg-slate-50 border border-slate-100 p-6 rounded-2xl">
-          <CheckCircle className="w-8 h-8 text-[#0f172a] mb-3" />
-          <h3 className="font-bold text-gray-900 mb-2">実店舗に特化したノウハウ</h3>
-          <p className="text-xs md:text-sm text-gray-600">
-            「見られる」「来店につながる」導線を熟知。ただ作るだけでなく、ビジネスに貢献します。
+        <div className="bg-slate-50 border border-slate-100 p-4 md:p-6 rounded-2xl flex flex-col justify-center h-full">
+          <CheckCircle className="w-6 h-6 md:w-8 md:h-8 text-[#0f172a] mb-2 md:mb-3 shrink-0" />
+          <h3 className="font-bold text-gray-900 mb-1 md:mb-2 text-sm md:text-base shrink-0">実店舗に特化したノウハウ</h3>
+          <p className="text-[10px] md:text-sm text-gray-600 leading-relaxed">
+            「見られる」だけでなく「来店につながる」導線を設計。
+            地域密着ビジネスの成功パターンを熟知したチームが担当します。
           </p>
         </div>
       </div>
       
-      <div className="mt-8 text-center">
+      <div className="mt-4 md:mt-8 text-center">
         <button
           onClick={() => {
              const plansSection = document.getElementById('plans');
@@ -165,7 +177,7 @@ export function Hero() {
   );
 
   const WorksView = () => (
-    <div className="h-full flex flex-col px-4 py-4 md:px-8 md:py-8">
+    <div className="h-full flex flex-col px-4 py-3 md:px-8 md:py-8">
       <div className="shrink-0 flex items-end justify-between gap-3">
         <div>
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-50 text-slate-800 border border-slate-200 text-[10px] md:text-xs font-bold">
@@ -187,7 +199,7 @@ export function Hero() {
         </button>
       </div>
 
-      <div className="mt-4 md:mt-6 grid grid-cols-2 gap-3 md:gap-4 flex-1 min-h-0">
+      <div className="mt-2 md:mt-6 grid grid-cols-2 gap-3 md:gap-4 flex-1 min-h-0">
         {[
           { tag: "飲食店", title: "予約が増えるLP", sub: "立川 / バー" },
           { tag: "士業", title: "信頼感の会社サイト", sub: "東京 / 法律" },
@@ -197,7 +209,7 @@ export function Hero() {
           <button
             key={w.title}
             onClick={() => navigate("contact")}
-            className="group text-left rounded-2xl border border-gray-200 bg-white p-4 md:p-5 shadow-sm hover:shadow-md transition-shadow overflow-hidden"
+            className="group text-left rounded-2xl border border-gray-200 bg-white p-3 md:p-5 shadow-sm hover:shadow-md transition-shadow overflow-hidden"
           >
             <div className="flex items-center justify-between gap-2">
               <div className="inline-flex items-center gap-2 text-[10px] md:text-xs font-bold text-gray-700">
@@ -208,13 +220,13 @@ export function Hero() {
                 事例0{i + 1}
               </div>
             </div>
-            <div className="mt-2 text-sm md:text-lg font-extrabold text-gray-900 group-hover:text-[#059669] transition-colors">
+            <div className="mt-1 md:mt-2 text-xs md:text-lg font-extrabold text-gray-900 group-hover:text-[#059669] transition-colors">
               {w.title}
             </div>
             <div className="mt-1 text-[10px] md:text-xs text-gray-600 font-semibold">
               {w.sub}
             </div>
-            <div className="mt-3 h-[6px] rounded-full bg-gray-100 overflow-hidden">
+            <div className="mt-2 md:mt-3 h-[6px] rounded-full bg-gray-100 overflow-hidden">
               <div
                 className="h-full bg-gradient-to-r from-[#059669] to-[#0f172a]"
                 style={{ width: `${70 + i * 7}%` }}
@@ -227,7 +239,7 @@ export function Hero() {
   );
 
   const AboutView = () => (
-    <div className="h-full flex flex-col px-4 py-4 md:px-10 md:py-10">
+    <div className="h-full flex flex-col px-4 py-3 md:px-10 md:py-10">
       <div className="shrink-0">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white text-gray-900 border border-gray-200 text-[10px] md:text-xs font-bold">
           <Building2 className="w-4 h-4 text-[#059669]" />
@@ -241,7 +253,7 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="mt-4 md:mt-6 grid gap-3 md:gap-4">
+      <div className="mt-3 md:mt-6 grid gap-2 md:gap-4">
         {[
           { k: "拠点", v: "東京都立川市" },
           { k: "納期", v: "最短4日（要件により）" },
@@ -249,7 +261,7 @@ export function Hero() {
         ].map((r) => (
           <div
             key={r.k}
-            className="rounded-2xl border border-gray-200 bg-gray-50 p-4 md:p-5"
+            className="rounded-2xl border border-gray-200 bg-gray-50 p-3 md:p-5"
           >
             <div className="text-[10px] md:text-xs font-bold text-gray-500">
               {r.k}
@@ -261,7 +273,7 @@ export function Hero() {
         ))}
       </div>
 
-      <div className="mt-auto pt-3">
+      <div className="mt-auto pt-2 md:pt-3">
         <button
           onClick={() => navigate("contact")}
           className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-[#0f172a] text-white py-3 text-xs md:text-sm font-bold hover:bg-slate-800 transition-colors"
@@ -273,7 +285,7 @@ export function Hero() {
   );
 
   const ContactView = () => (
-    <div className="h-full flex flex-col px-4 py-4 md:px-10 md:py-10">
+    <div className="h-full flex flex-col px-4 py-3 md:px-10 md:py-10">
       <div className="shrink-0">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-100 text-[10px] md:text-xs font-bold">
           <Mail className="w-4 h-4" />
@@ -287,22 +299,22 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="mt-4 md:mt-6 grid gap-3">
-        <div className="rounded-2xl border border-gray-200 bg-white p-4">
+      <div className="mt-2 md:mt-6 grid gap-2 md:gap-3">
+        <div className="rounded-2xl border border-gray-200 bg-white p-3 md:p-4">
           <div className="text-[10px] font-bold text-gray-500">お名前</div>
-          <div className="mt-2 h-10 rounded-xl bg-gray-50 border border-gray-200" />
+          <div className="mt-1 md:mt-2 h-9 md:h-10 rounded-xl bg-gray-50 border border-gray-200" />
         </div>
-        <div className="rounded-2xl border border-gray-200 bg-white p-4">
+        <div className="rounded-2xl border border-gray-200 bg-white p-3 md:p-4">
           <div className="text-[10px] font-bold text-gray-500">メール</div>
-          <div className="mt-2 h-10 rounded-xl bg-gray-50 border border-gray-200" />
+          <div className="mt-1 md:mt-2 h-9 md:h-10 rounded-xl bg-gray-50 border border-gray-200" />
         </div>
-        <div className="rounded-2xl border border-gray-200 bg-white p-4">
+        <div className="rounded-2xl border border-gray-200 bg-white p-3 md:p-4">
           <div className="text-[10px] font-bold text-gray-500">相談内容</div>
-          <div className="mt-2 h-16 rounded-xl bg-gray-50 border border-gray-200" />
+          <div className="mt-1 md:mt-2 h-14 md:h-16 rounded-xl bg-gray-50 border border-gray-200" />
         </div>
       </div>
 
-      <div className="mt-auto pt-3 grid grid-cols-2 gap-2">
+      <div className="mt-auto pt-2 md:pt-3 grid grid-cols-2 gap-2">
         <button
           onClick={() => navigate("home")}
           className="inline-flex items-center justify-center gap-2 rounded-full bg-white text-gray-900 py-3 text-xs font-bold border border-gray-200 hover:border-emerald-300 hover:text-[#059669] transition-colors"
@@ -322,7 +334,7 @@ export function Hero() {
         </button>
       </div>
 
-      <div className="mt-3 flex items-center justify-center gap-2 text-[10px] text-gray-600 font-semibold">
+      <div className="mt-2 md:mt-3 flex items-center justify-center gap-2 text-[10px] text-gray-600 font-semibold">
         <Phone className="w-3.5 h-3.5 text-[#059669]" />
         電話でもOK（準備中）
       </div>
@@ -414,13 +426,6 @@ export function Hero() {
                         </button>
                       </nav>
 
-                      <button
-                        type="button"
-                        onClick={() => navigate("contact")}
-                        className="ml-2 px-4 py-2 md:px-5 md:py-2 rounded-full bg-[#059669] text-white text-[10px] md:text-xs font-extrabold shadow-lg shadow-emerald-200 hover:bg-emerald-600 transition-colors"
-                      >
-                        無料相談
-                      </button>
                     </div>
                   </header>
 
@@ -452,12 +457,12 @@ export function Hero() {
                   )}
 
                   {/* Dynamic content area */}
-                  <div className="flex-1 min-h-0 relative overflow-hidden">
+                  <div className="flex-1 relative">
                     <AnimatePresence mode="wait">
                       {currentView === "home" && (
                         <motion.div
                           key="home"
-                          className="absolute inset-0"
+                          className="w-full h-full"
                           initial={{ opacity: 0, y: reduceMotion ? 0 : 8 }}
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0 }}
@@ -469,13 +474,49 @@ export function Hero() {
                       {currentView === "service" && (
                         <motion.div
                           key="service"
-                          className="absolute inset-0"
+                          className="w-full h-full"
                           initial={{ opacity: 0, y: reduceMotion ? 0 : 8 }}
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0 }}
                           transition={{ duration: reduceMotion ? 0 : 0.25 }}
                         >
                           <ServiceView />
+                        </motion.div>
+                      )}
+                      {currentView === "works" && (
+                        <motion.div
+                          key="works"
+                          className="w-full h-full"
+                          initial={{ opacity: 0, y: reduceMotion ? 0 : 8 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0 }}
+                          transition={{ duration: reduceMotion ? 0 : 0.25 }}
+                        >
+                          <WorksView />
+                        </motion.div>
+                      )}
+                      {currentView === "about" && (
+                        <motion.div
+                          key="about"
+                          className="w-full h-full"
+                          initial={{ opacity: 0, y: reduceMotion ? 0 : 8 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0 }}
+                          transition={{ duration: reduceMotion ? 0 : 0.25 }}
+                        >
+                          <AboutView />
+                        </motion.div>
+                      )}
+                      {currentView === "contact" && (
+                        <motion.div
+                          key="contact"
+                          className="w-full h-full"
+                          initial={{ opacity: 0, y: reduceMotion ? 0 : 8 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0 }}
+                          transition={{ duration: reduceMotion ? 0 : 0.25 }}
+                        >
+                          <ContactView />
                         </motion.div>
                       )}
                     </AnimatePresence>

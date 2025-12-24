@@ -1,5 +1,7 @@
-import { Mail, MapPin, Clock, ArrowRight } from "lucide-react";
+import { Mail, MapPin, Clock, ArrowRight, CheckCircle, Loader2 } from "lucide-react";
 import { useState } from "react";
+import { db } from "../lib/db";
+import { toast } from "sonner";
 
 export function Contact() {
   const [formData, setFormData] = useState({
@@ -11,15 +13,26 @@ export function Contact() {
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setTimeout(() => {
-      alert("お問い合わせありがとうございます。24時間以内にご返信いたします。");
+    
+    try {
+      await db.createInquiry(formData);
+      setIsSuccess(true);
+      toast.success("お問い合わせを受け付けました。");
       setFormData({ name: "", email: "", phone: "", plan: "", message: "" });
+      
+      // Reset success message after a delay
+      setTimeout(() => setIsSuccess(false), 5000);
+    } catch (error) {
+      console.error(error);
+      toast.error("送信に失敗しました。もう一度お試しください。");
+    } finally {
       setIsSubmitting(false);
-    }, 1500);
+    }
   };
 
   const handleChange = (
@@ -139,12 +152,23 @@ export function Contact() {
 
               <button
                 type="submit"
-                disabled={isSubmitting}
-                className="w-full bg-[#0f172a] hover:bg-emerald-700 text-white font-bold py-4 rounded-xl transition-all flex items-center justify-center gap-2 group"
+                disabled={isSubmitting || isSuccess}
+                className="w-full bg-[#059669] text-white font-bold py-4 rounded-xl shadow-lg hover:bg-emerald-600 transition-all active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
               >
-                {isSubmitting ? "送信中..." : (
+                {isSubmitting ? (
                   <>
-                    送信する <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                    <Loader2 className="w-5 h-5 animate-spin" />
+                    送信中...
+                  </>
+                ) : isSuccess ? (
+                  <>
+                    <CheckCircle className="w-5 h-5" />
+                    送信完了
+                  </>
+                ) : (
+                  <>
+                    無料相談を申し込む
+                    <ArrowRight className="w-5 h-5" />
                   </>
                 )}
               </button>
