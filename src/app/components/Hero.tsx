@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import { useMemo, useRef, useState } from "react";
 
+import heroImage from "../../assets/tama-monorail.jpg";
 import { MiniBrowser } from "./interactive-showcase/MiniBrowser";
 
 type HeroView = "home" | "service" | "works" | "about" | "contact";
@@ -48,7 +49,7 @@ export function Hero() {
           className="w-full h-full"
         >
           <img
-            src="tama-monorail.jpg"
+            src={heroImage}
             alt="Tokyo Cityscape"
             className="w-full h-full object-cover"
           />
@@ -377,16 +378,24 @@ export function Hero() {
                 className="h-full overflow-y-auto no-scrollbar"
                 style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
               >
-                <div className="min-h-full bg-white text-gray-900 font-sans flex flex-col">
+                <div className={`min-h-full font-sans flex flex-col transition-colors duration-500 ${currentView === 'home' ? 'bg-[#0f172a]' : 'bg-white text-gray-900'}`}>
                   {/* Fake Site Header */}
-                  <header className="shrink-0 bg-white/90 backdrop-blur-md border-b border-gray-100 relative z-20">
+                  <header className={`shrink-0 backdrop-blur-md border-b relative z-20 transition-colors duration-500 ${
+                    currentView === 'home' 
+                      ? 'bg-[#0f172a]/90 border-white/10 text-white' 
+                      : 'bg-white/90 border-gray-100 text-gray-900'
+                  }`}>
                     <div className="h-14 md:h-16 px-3 md:px-6 flex items-center justify-between relative">
                       <div className="flex items-center gap-3 md:gap-4">
                         {/* Back Arrow */}
                         <button 
                           type="button"
                           onClick={() => currentView !== 'home' ? navigate('home') : null}
-                          className={`p-1.5 rounded-full transition-colors ${currentView !== 'home' ? 'text-gray-700 hover:bg-gray-100' : 'text-gray-300 cursor-default'}`}
+                          className={`p-1.5 rounded-full transition-colors ${
+                            currentView === 'home'
+                              ? 'text-gray-600 cursor-default'
+                              : 'text-gray-700 hover:bg-gray-100'
+                          }`}
                         >
                           <ArrowLeft size={18} className="md:w-5 md:h-5" />
                         </button>
@@ -411,7 +420,7 @@ export function Hero() {
                           onClick={() => navigate("home")}
                           className={`px-5 py-2 rounded-full text-xs font-extrabold border transition-colors ${
                             currentView === "home"
-                              ? "bg-emerald-50 border-emerald-200 text-emerald-800"
+                              ? "bg-emerald-500/10 border-emerald-500/50 text-emerald-400"
                               : "bg-white border-gray-200 text-gray-700 hover:border-emerald-200 hover:text-[#059669]"
                           }`}
                         >
@@ -424,7 +433,9 @@ export function Hero() {
                           className={`px-5 py-2 rounded-full text-xs font-extrabold border transition-colors ${
                             currentView === "service"
                               ? "bg-emerald-50 border-emerald-200 text-emerald-800"
-                              : "bg-white border-gray-200 text-gray-700 hover:border-emerald-200 hover:text-[#059669]"
+                              : currentView === 'home'
+                                ? "bg-transparent border-white/10 text-gray-300 hover:bg-white/5 hover:text-white"
+                                : "bg-white border-gray-200 text-gray-700 hover:border-emerald-200 hover:text-[#059669]"
                           }`}
                         >
                           選ばれる理由
@@ -528,7 +539,11 @@ export function Hero() {
                   </div>
 
                   {/* Mobile bottom tabs (so the fake site feels like an app) */}
-                  <div className="md:hidden shrink-0 border-t border-gray-100 bg-white">
+                  <div className={`md:hidden shrink-0 border-t transition-colors duration-500 ${
+                    currentView === 'home' 
+                      ? 'bg-[#0f172a] border-white/10' 
+                      : 'bg-white border-gray-100'
+                  }`}>
                     <div className="grid grid-cols-2">
                       {tabs.map((t) => {
                         const Icon = t.icon;
@@ -538,8 +553,14 @@ export function Hero() {
                             key={t.id}
                             type="button"
                             onClick={() => navigate(t.id)}
-                            className={`py-3 flex flex-col items-center justify-center gap-1 ${
-                              active ? "text-[#059669] bg-emerald-50/50" : "text-gray-500"
+                            className={`py-3 flex flex-col items-center justify-center gap-1 transition-colors ${
+                              active 
+                                ? "text-[#34d399]" 
+                                : currentView === 'home' ? "text-gray-400" : "text-gray-500"
+                            } ${
+                              active && currentView !== 'home' ? "bg-emerald-50/50" : ""
+                            } ${
+                               active && currentView === 'home' ? "bg-emerald-500/10" : ""
                             }`}
                             aria-label={t.label}
                           >
