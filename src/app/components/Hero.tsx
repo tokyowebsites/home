@@ -38,7 +38,7 @@ export function Hero() {
   };
 
   const HomeView = () => (
-    <div className="min-h-full flex flex-col relative overflow-hidden group py-10 md:py-0">
+    <div className="h-full w-full flex flex-col relative overflow-hidden group">
       {/* Background Gradient */}
       <div className="absolute inset-0 z-0 bg-gradient-to-br from-[#0f172a] via-[#1e293b] to-[#0f172a]">
         {/* Subtle animated gradient overlay */}
@@ -51,7 +51,7 @@ export function Hero() {
       </div>
 
       {/* Large Hero Branding Overlay */}
-      <div className="relative z-10 flex-1 flex flex-col justify-center items-center text-center px-4 md:px-0">
+      <div className="relative z-10 flex-1 flex flex-col justify-center items-center text-center px-4 md:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20, scale: 0.95 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -362,14 +362,14 @@ export function Hero() {
             className="rounded-2xl shadow-2xl border-gray-700 bg-gray-900"
             dark
           >
-            <div className="h-[520px] sm:h-[560px] md:h-[760px] bg-white relative">
+            <div className="h-[520px] sm:h-[560px] md:h-[760px] bg-white relative overflow-hidden">
               {/* Internal scrolling enabled for content that exceeds height */}
               <div 
                 ref={viewportRef} 
                 className="h-full overflow-y-auto no-scrollbar"
                 style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
               >
-                <div className={`min-h-full font-sans flex flex-col transition-colors duration-500 ${currentView === 'home' ? 'bg-[#0f172a]' : 'bg-white text-gray-900'}`}>
+                <div className={`h-full font-sans flex flex-col transition-colors duration-500 ${currentView === 'home' ? 'bg-[#0f172a]' : 'bg-white text-gray-900'}`}>
                   {/* Fake Site Header */}
                   <header className={`shrink-0 backdrop-blur-md border-b relative z-20 transition-colors duration-500 ${
                     currentView === 'home' 
@@ -464,12 +464,12 @@ export function Hero() {
                   )}
 
                   {/* Dynamic content area */}
-                  <div className="flex-1 relative">
+                  <div className="flex-1 relative min-h-0">
                     <AnimatePresence mode="wait">
                       {currentView === "home" && (
                         <motion.div
                           key="home"
-                          className="w-full min-h-full"
+                          className="w-full h-full"
                           initial={{ opacity: 0, y: reduceMotion ? 0 : 8 }}
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0 }}
