@@ -38,7 +38,7 @@ export function Hero() {
   };
 
   const HomeView = () => (
-    <div className="h-full flex flex-col relative overflow-hidden group">
+    <div className="min-h-full flex flex-col relative overflow-hidden group py-10 md:py-0">
       {/* Background Image with Stronger Overlay */}
       <div className="absolute inset-0 z-0 bg-[#0f172a]">
         <motion.div 
@@ -66,7 +66,7 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
           className="mb-4 md:mb-8"
         >
-          <h1 className="text-4xl sm:text-5xl md:text-8xl font-extrabold tracking-tighter text-white leading-tight drop-shadow-2xl flex items-center justify-center gap-2 md:gap-4">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tighter text-white leading-tight drop-shadow-2xl flex items-center justify-center gap-2 md:gap-4">
             <span style={{ fontFamily: 'Inter, sans-serif' }}>Tokyo</span>
             <span style={{ fontFamily: 'Playfair Display, serif' }} className="text-[#34d399]">Websites</span>
           </h1>
@@ -467,7 +467,7 @@ export function Hero() {
                       {currentView === "home" && (
                         <motion.div
                           key="home"
-                          className="w-full h-full"
+                          className="w-full min-h-full"
                           initial={{ opacity: 0, y: reduceMotion ? 0 : 8 }}
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0 }}
@@ -479,7 +479,7 @@ export function Hero() {
                       {currentView === "service" && (
                         <motion.div
                           key="service"
-                          className="w-full h-full"
+                          className="w-full min-h-full"
                           initial={{ opacity: 0, y: reduceMotion ? 0 : 8 }}
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0 }}
@@ -491,7 +491,7 @@ export function Hero() {
                       {currentView === "works" && (
                         <motion.div
                           key="works"
-                          className="w-full h-full"
+                          className="w-full min-h-full"
                           initial={{ opacity: 0, y: reduceMotion ? 0 : 8 }}
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0 }}
@@ -503,7 +503,7 @@ export function Hero() {
                       {currentView === "about" && (
                         <motion.div
                           key="about"
-                          className="w-full h-full"
+                          className="w-full min-h-full"
                           initial={{ opacity: 0, y: reduceMotion ? 0 : 8 }}
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0 }}
@@ -515,7 +515,7 @@ export function Hero() {
                       {currentView === "contact" && (
                         <motion.div
                           key="contact"
-                          className="w-full h-full"
+                          className="w-full min-h-full"
                           initial={{ opacity: 0, y: reduceMotion ? 0 : 8 }}
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0 }}
