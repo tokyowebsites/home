@@ -87,15 +87,15 @@ const PlanCard = ({ plan, index, onClick }: { plan: typeof plans[0]; index: numb
             {feature}
           </li>
         ))}
-        {plan.features.length > 3 && !expanded && (
+        {plan.features.length > 3 && (
           <li
-            className="text-xs text-gray-400 pl-7 cursor-pointer hover:text-emerald-600 transition-colors"
+            className="text-xs text-gray-400 pl-7 cursor-pointer hover:text-emerald-600 transition-colors flex items-center gap-1"
             onClick={(e) => {
               e.stopPropagation();
-              setExpanded(true);
+              setExpanded(!expanded);
             }}
           >
-            + more
+            {expanded ? "- less" : "+ more"}
           </li>
         )}
       </ul>

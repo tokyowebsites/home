@@ -5,6 +5,7 @@ import { ProcessTimeline } from "./components/ProcessTimeline";
 import { Contact } from "./components/Contact";
 import { About } from "./components/About";
 import { BackgroundGradient } from "./components/ui/BackgroundGradient";
+import { Customers } from "./components/Customers";
 import { Toaster } from "sonner";
 
 export default function App() {
@@ -16,6 +17,8 @@ export default function App() {
       
       {/* About / Mission Section */}
       <About />
+
+      <Customers />
 
       <InteractiveShowcase />
       

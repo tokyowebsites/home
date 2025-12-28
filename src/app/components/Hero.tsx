@@ -48,7 +48,7 @@ export function Hero() {
           className="w-full h-full"
         >
           <img
-            src="/tama-monorail.jpg"
+            src="tama-monorail.jpg"
             alt="Tokyo Cityscape"
             className="w-full h-full object-cover"
           />
@@ -371,9 +371,13 @@ export function Hero() {
             dark
           >
             <div className="h-[520px] sm:h-[560px] md:h-[760px] bg-white relative">
-              {/* No internal scrolling: everything must fit. */}
-              <div ref={viewportRef} className="h-full overflow-hidden">
-                <div className="h-full bg-white text-gray-900 font-sans flex flex-col">
+              {/* Internal scrolling enabled for content that exceeds height */}
+              <div 
+                ref={viewportRef} 
+                className="h-full overflow-y-auto no-scrollbar"
+                style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+              >
+                <div className="min-h-full bg-white text-gray-900 font-sans flex flex-col">
                   {/* Fake Site Header */}
                   <header className="shrink-0 bg-white/90 backdrop-blur-md border-b border-gray-100 relative z-20">
                     <div className="h-14 md:h-16 px-3 md:px-6 flex items-center justify-between relative">
