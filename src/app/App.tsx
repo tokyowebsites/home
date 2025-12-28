@@ -3,6 +3,7 @@ import { Hero } from "./components/Hero";
 import { InteractiveShowcase } from "./components/interactive-showcase/InteractiveShowcase";
 import { ProcessTimeline } from "./components/ProcessTimeline";
 import { Contact } from "./components/Contact";
+import { About } from "./components/About";
 import { BackgroundGradient } from "./components/ui/BackgroundGradient";
 import { Toaster } from "sonner";
 
@@ -12,6 +13,10 @@ export default function App() {
       <Toaster position="top-center" />
       <Header />
       <Hero />
+      
+      {/* About / Mission Section */}
+      <About />
+
       <InteractiveShowcase />
       
       {/* Process Section with Hero Gradient */}

@@ -201,10 +201,11 @@ export function Hero() {
 
       <div className="mt-2 md:mt-6 grid grid-cols-2 gap-3 md:gap-4 flex-1 min-h-0">
         {[
-          { tag: "飲食店", title: "予約が増えるLP", sub: "立川 / バー" },
-          { tag: "士業", title: "信頼感の会社サイト", sub: "東京 / 法律" },
-          { tag: "小売", title: "商品が探しやすいEC", sub: "多摩 / 雑貨" },
-          { tag: "美容", title: "指名が増える導線", sub: "中央線沿線" },
+          { tag: "リラクゼーション", title: "Ren Thai Massage", sub: "岐阜県多治見市" },
+          { tag: "飲食店", title: "Sakura Bistro", sub: "東京都立川市" },
+          { tag: "士業", title: "Law Office K", sub: "東京都新宿区" },
+          { tag: "IT", title: "TechStart Inc.", sub: "東京都渋谷区" },
+          { tag: "カフェ", title: "Green Leaf Cafe", sub: "埼玉県所沢市" },
         ].map((w, i) => (
           <button
             key={w.title}

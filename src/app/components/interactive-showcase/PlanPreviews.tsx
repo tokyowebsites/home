@@ -189,7 +189,7 @@ export function EntryPreview() {
 export function StandardPreview() {
   return (
     <div className="min-h-full bg-white relative">
-      <MiniHeader title="TOKYO LEGAL" subtitle="法律事務所" links={["サービス", "実績"]} />
+      <MiniHeader title="TOKYO DENTAL" subtitle="地域密着の歯科医院" links={["診療案内", "お知らせ"]} />
       
       {/* Random Cursors */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -198,73 +198,77 @@ export function StandardPreview() {
       </div>
 
       {/* Hero Section */}
-      <div className="relative h-44 sm:h-56 bg-gradient-to-br from-slate-900 to-slate-700 overflow-hidden">
-        <div className="absolute inset-0 opacity-20">
-          <img 
-            src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&q=80&w=800" 
-            alt="Office" 
-            className="w-full h-full object-cover"
-            loading="lazy"
-          />
-        </div>
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-center p-4 z-10">
-          <div className="inline-flex items-center gap-1 px-2 py-0.5 bg-emerald-500/30 border border-emerald-400/50 rounded-full text-[10px] font-bold mb-2 text-emerald-300">
-            <ShieldCheck size={10} />
-            創業25年
+      <div className="relative h-44 sm:h-56 overflow-hidden">
+        <img 
+          src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=800" 
+          alt="Clinic" 
+          className="w-full h-full object-cover"
+          loading="lazy"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-teal-50/90 to-transparent flex flex-col justify-center px-6">
+          <div className="inline-block bg-teal-600 text-white text-[10px] font-bold px-2 py-1 rounded mb-2 w-fit">
+            WEB予約受付中
           </div>
-          <h1 className="text-xl sm:text-2xl font-bold mb-2 leading-tight">
-            ビジネスを法律面から支える。
+          <h1 className="text-xl sm:text-2xl font-bold text-teal-900 mb-2 leading-tight">
+            痛みの少ない<br />優しい治療を。
           </h1>
-          <p className="text-[10px] sm:text-xs opacity-90 max-w-xs mb-3">
-            企業法務から個人相談まで、経験豊富な弁護士がサポート。
+          <p className="text-[10px] sm:text-xs text-teal-700 max-w-xs mb-3">
+            平日20時まで診療。キッズスペース完備で<br />
+            ご家族皆様で通っていただけます。
           </p>
-          <button className="bg-emerald-600 text-white px-4 py-2 rounded-lg text-xs font-bold hover:bg-emerald-500 transition-colors shadow-lg">
-            無料相談を予約
+          <button className="bg-teal-600 text-white px-4 py-2 rounded-full text-xs font-bold hover:bg-teal-500 transition-colors shadow-md w-fit">
+            初診予約はこちら
           </button>
         </div>
       </div>
 
-      {/* Features Grid */}
-      <div className="py-4 px-3 bg-gray-50">
-        <div className="grid grid-cols-3 gap-2 mb-4">
-          {[
-            { title: "初回相談", value: "無料", icon: Sparkles, color: "bg-emerald-50 text-emerald-700" },
-            { title: "対応実績", value: "1,200+", icon: Star, color: "bg-blue-50 text-blue-700" },
-            { title: "即日対応", value: "可能", icon: Clock, color: "bg-amber-50 text-amber-700" },
-          ].map((k, i) => (
-            <div key={i} className={`${k.color} rounded-lg p-2 text-center`}>
-              <k.icon className="w-4 h-4 mx-auto mb-1" />
-              <div className="text-[9px] font-bold">{k.title}</div>
-              <div className="text-sm font-bold">{k.value}</div>
-            </div>
-          ))}
+      {/* News/Blog Section (CMS Feature) */}
+      <div className="py-4 px-3 bg-white">
+        <div className="flex justify-between items-center mb-3">
+          <h2 className="text-sm font-bold text-gray-900 border-l-4 border-teal-500 pl-2">お知らせ・ブログ</h2>
+          <span className="text-[10px] text-gray-400">記事一覧 →</span>
         </div>
-
-        {/* Practice Areas */}
-        <h2 className="text-sm font-bold text-gray-900 mb-3 text-center">取扱分野</h2>
-        <div className="grid grid-cols-2 gap-2">
+        <div className="space-y-3">
           {[
-            { icon: "🏢", title: "企業法務", price: "¥50,000~/月" },
-            { icon: "⚖️", title: "訴訟・紛争", price: "¥300,000~" },
-            { icon: "🏠", title: "不動産法務", price: "¥150,000~" },
-            { icon: "👨‍👩‍👧", title: "相続・遺言", price: "¥200,000~" },
-          ].map((item, i) => (
-            <div key={i} className="bg-white rounded-lg border border-gray-200 p-3">
-              <div className="text-lg mb-1">{item.icon}</div>
-              <h3 className="font-bold text-xs text-gray-900">{item.title}</h3>
-              <div className="text-[10px] font-bold text-emerald-600">{item.price}</div>
+            { date: "2025.04.01", cat: "お知らせ", title: "ゴールデンウィークの診療について" },
+            { date: "2025.03.28", cat: "ブログ", title: "歯のホワイトニングキャンペーン実施中！" },
+            { date: "2025.03.15", cat: "ブログ", title: "正しい歯磨きの方法、教えます" },
+          ].map((news, i) => (
+            <div key={i} className="group cursor-pointer">
+              <div className="flex items-center gap-2 mb-1">
+                <span className="text-[10px] text-gray-400 font-mono">{news.date}</span>
+                <span className="text-[9px] bg-gray-100 text-gray-600 px-1.5 py-0.5 rounded">{news.cat}</span>
+              </div>
+              <div className="text-xs text-gray-800 font-bold group-hover:text-teal-600 transition-colors">
+                {news.title}
+              </div>
+              <div className="mt-2 border-b border-gray-100" />
             </div>
           ))}
         </div>
       </div>
 
-      {/* CTA Section */}
-      <div className="bg-slate-900 text-white py-6 px-4 text-center">
-        <h2 className="text-sm font-bold mb-2">まずは無料でご相談</h2>
-        <p className="text-[10px] opacity-80 mb-3">24時間以内に返信</p>
-        <button className="bg-emerald-600 text-white py-2 px-6 rounded-lg font-bold text-xs">
-          📞 お電話する
-        </button>
+      {/* Features Grid */}
+      <div className="py-4 px-3 bg-teal-50">
+        <h2 className="text-sm font-bold text-gray-900 mb-3 text-center">当院の特徴</h2>
+        <div className="grid grid-cols-2 gap-2">
+          {[
+            { title: "土日診療", desc: "お忙しい方も安心", icon: Clock },
+            { title: "個室完備", desc: "プライバシー重視", icon: ShieldCheck },
+            { title: "バリアフリー", desc: "ベビーカーOK", icon: User },
+            { title: "駐車場あり", desc: "お車での来院も", icon: MapPin },
+          ].map((item, i) => (
+            <div key={i} className="bg-white rounded-lg p-3 shadow-sm flex items-start gap-2">
+              <div className="bg-teal-100 p-1.5 rounded-full text-teal-600 shrink-0">
+                <item.icon size={12} />
+              </div>
+              <div>
+                <div className="text-[10px] font-bold text-gray-900">{item.title}</div>
+                <div className="text-[9px] text-gray-500">{item.desc}</div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
 
       <MiniFooter />
@@ -326,7 +330,7 @@ export function BusinessPreview() {
             { name: "ワイヤレスイヤホン", price: "¥8,980", tag: "NEW", img: "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&q=80&w=400" },
             { name: "スマートウォッチ", price: "¥15,800", tag: "人気", img: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&q=80&w=400" },
             { name: "モバイルバッテリー", price: "¥3,980", tag: "SALE", img: "https://images.unsplash.com/photo-1609091839311-d5365f9ff1c5?auto=format&fit=crop&q=80&w=400" },
-            { name: "ワイヤレス充電器", price: "¥4,580", tag: "", img: "https://images.unsplash.com/photo-1591290619762-d7b36440a45e?auto=format&fit=crop&q=80&w=400" },
+            { name: "高性能マウス", price: "¥4,580", tag: "", img: "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?auto=format&fit=crop&q=80&w=400" },
           ].map((product, i) => (
             <div key={i} className="group cursor-pointer">
               <div className="aspect-square bg-white rounded-lg mb-1.5 overflow-hidden relative border border-gray-200 shadow-sm">

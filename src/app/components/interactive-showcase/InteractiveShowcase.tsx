@@ -30,8 +30,8 @@ const plans = [
     price: "¥70,000",
     desc: "自分たちでニュースやブログを更新できるプランです。お店のファンを増やしたい方に。",
     features: ["ブログ機能（更新機能）", "検索対策（SEO）", "多言語対応（準備）", "ニュースレター", "優先サポート"],
-    url: "tokyowebsites.com/business-sample",
-    component: BusinessPreview,
+    url: "tokyowebsites.com/standard-sample",
+    component: StandardPreview,
     icon: Building2,
     color: "bg-emerald-50 text-emerald-900",
   },
@@ -40,14 +40,74 @@ const plans = [
     nameJa: "プレミアム",
     nameEn: "Premium Plan",
     price: "¥100,000~",
-    desc: "ネットショップや予約システムなど、やりたいことを全部叶えるプランです。",
+    desc: "ネットショップや予約システムなど、高度な機能でビジネスを加速させます。",
     features: ["ネットショップ / 予約", "アニメーション", "外部システム連携", "ブランド戦略", "24時間サポート"],
     url: "tokyowebsites.com/premium-sample",
-    component: PremiumPreview,
+    component: BusinessPreview,
     icon: Sparkles,
     color: "bg-emerald-50 text-emerald-900",
   },
 ];
+
+// --- Plan Card Component ---
+const PlanCard = ({ plan, index, onClick }: { plan: typeof plans[0]; index: number; onClick: () => void }) => {
+  const Icon = plan.icon;
+  const [expanded, setExpanded] = useState(false);
+
+  return (
+    <div
+      onClick={onClick}
+      className="group relative bg-white border border-gray-200 rounded-2xl p-6 hover:shadow-xl hover:shadow-blue-200/50 hover:border-blue-500/50 transition-all duration-300 cursor-pointer flex flex-col h-auto min-h-0 overflow-visible"
+    >
+      <div className={`absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-300 pointer-events-none ${plan.color.split(" ")[0]}`}></div>
+
+      <div className="relative mb-6">
+        <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 ${plan.color}`}>
+          <Icon size={24} />
+        </div>
+        <h3 className="text-xl font-bold text-gray-900">{plan.nameJa}</h3>
+        <div className="text-xs text-gray-500 font-bold uppercase tracking-wider mt-1">{plan.nameEn}</div>
+      </div>
+
+      <div className="relative mb-6 pb-6 border-b border-gray-100">
+        <div className="flex items-baseline gap-1">
+          <span className="text-3xl font-bold text-[#059669] tracking-tight" style={{ fontWeight: 700 }}>{plan.price}</span>
+          <span className="text-xs text-gray-500 font-bold" style={{ fontWeight: 600 }}>/ one-time</span>
+        </div>
+      </div>
+
+      <p className="relative text-sm text-gray-600 leading-relaxed mb-6">
+        {plan.desc}
+      </p>
+
+      <ul className="relative space-y-3 mb-8 flex-grow">
+        {(expanded ? plan.features : plan.features.slice(0, 3)).map((feature, i) => (
+          <li key={i} className="flex items-center gap-3 text-xs font-bold text-gray-500">
+            <Check size={14} className="text-[#0f172a] shrink-0" />
+            {feature}
+          </li>
+        ))}
+        {plan.features.length > 3 && !expanded && (
+          <li
+            className="text-xs text-gray-400 pl-7 cursor-pointer hover:text-emerald-600 transition-colors"
+            onClick={(e) => {
+              e.stopPropagation();
+              setExpanded(true);
+            }}
+          >
+            + more
+          </li>
+        )}
+      </ul>
+
+      <div className="relative mt-auto">
+        <button className="w-full py-3 rounded-xl bg-[#059669] text-white text-sm font-bold group-hover:bg-emerald-600 transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-emerald-200" style={{ fontWeight: 700 }}>
+          詳細・サンプルを見る <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+        </button>
+      </div>
+    </div>
+  );
+};
 
 export function InteractiveShowcase() {
   const [selectedPlan, setSelectedPlan] = useState<number | null>(null);
@@ -91,55 +151,14 @@ export function InteractiveShowcase() {
         </div>
 
         <div className="grid md:grid-cols-3 gap-6 relative z-10 max-w-5xl mx-auto">
-          {plans.map((plan, index) => {
-             const Icon = plan.icon;
-             return (
-              <div
-                key={plan.id}
-                onClick={() => setSelectedPlan(index)}
-                className="group relative bg-white border border-gray-200 rounded-2xl p-6 hover:shadow-xl hover:shadow-blue-200/50 hover:border-blue-500/50 transition-all duration-300 cursor-pointer flex flex-col h-auto min-h-0 overflow-visible"
-              >
-                <div className={`absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-300 pointer-events-none ${plan.color.split(" ")[0]}`}></div>
-
-                <div className="relative mb-6">
-                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 ${plan.color}`}>
-                    <Icon size={24} />
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900">{plan.nameJa}</h3>
-                  <div className="text-xs text-gray-500 font-bold uppercase tracking-wider mt-1">{plan.nameEn}</div>
-                </div>
-
-                <div className="relative mb-6 pb-6 border-b border-gray-100">
-                  <div className="flex items-baseline gap-1">
-                    <span className="text-3xl font-bold text-[#059669] tracking-tight" style={{ fontWeight: 700 }}>{plan.price}</span>
-                    <span className="text-xs text-gray-500 font-bold" style={{ fontWeight: 600 }}>/ one-time</span>
-                  </div>
-                </div>
-
-                <p className="relative text-sm text-gray-600 leading-relaxed mb-6">
-                  {plan.desc}
-                </p>
-
-                <ul className="relative space-y-3 mb-8 flex-grow">
-                  {plan.features.slice(0, 3).map((feature, i) => (
-                    <li key={i} className="flex items-center gap-3 text-xs font-bold text-gray-500">
-                      <Check size={14} className="text-[#0f172a] shrink-0" />
-                      {feature}
-                    </li>
-                  ))}
-                  {plan.features.length > 3 && (
-                    <li className="text-xs text-gray-400 pl-7">+ more</li>
-                  )}
-                </ul>
-
-                <div className="relative mt-auto">
-                  <button className="w-full py-3 rounded-xl bg-[#059669] text-white text-sm font-bold group-hover:bg-emerald-600 transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-emerald-200" style={{ fontWeight: 700 }}>
-                    詳細・サンプルを見る <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-                  </button>
-                </div>
-              </div>
-            );
-          })}
+          {plans.map((plan, index) => (
+            <PlanCard 
+              key={plan.id} 
+              plan={plan} 
+              index={index} 
+              onClick={() => setSelectedPlan(index)} 
+            />
+          ))}
         </div>
 
         <AnimatePresence>
