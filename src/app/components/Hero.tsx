@@ -14,7 +14,6 @@ import {
 } from "lucide-react";
 import { useMemo, useRef, useState } from "react";
 
-import heroImage from "../../assets/tama-monorail.jpg";
 import { MiniBrowser } from "./interactive-showcase/MiniBrowser";
 
 type HeroView = "home" | "service" | "works" | "about" | "contact";
@@ -40,23 +39,15 @@ export function Hero() {
 
   const HomeView = () => (
     <div className="min-h-full flex flex-col relative overflow-hidden group py-10 md:py-0">
-      {/* Background Image with Stronger Overlay */}
-      <div className="absolute inset-0 z-0 bg-[#0f172a]">
+      {/* Background Gradient */}
+      <div className="absolute inset-0 z-0 bg-gradient-to-br from-[#0f172a] via-[#1e293b] to-[#0f172a]">
+        {/* Subtle animated gradient overlay */}
         <motion.div 
-          initial={{ scale: 1.1 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 10, ease: "easeOut" }}
-          className="w-full h-full"
-        >
-          <img
-            src={heroImage}
-            alt="Tokyo Cityscape"
-            className="w-full h-full object-cover"
-          />
-        </motion.div>
-        {/* Lighter overlay for better image visibility */}
-        <div className="absolute inset-0 bg-black/40" />
-        <div className="absolute inset-0 bg-[#0f172a]/20 mix-blend-multiply" />
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 2 }}
+          className="absolute inset-0 bg-gradient-to-br from-emerald-900/20 via-transparent to-[#059669]/10"
+        />
       </div>
 
       {/* Large Hero Branding Overlay */}
