@@ -25,8 +25,6 @@ export default function App() {
       <InteractiveShowcase />
 
       <ConsultingSuite />
-
-      <Testimonials />
       
       {/* Process Section with Hero Gradient */}
       <div className="relative bg-gray-50 overflow-hidden min-h-[600px]">
