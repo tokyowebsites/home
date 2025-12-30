@@ -2,6 +2,7 @@ import { useState, useEffect, lazy, Suspense } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { X, Check, ArrowRight, Zap, FileText, Files, Building2, Sparkles, Loader2 } from "lucide-react";
 import { MiniBrowser } from "./MiniBrowser";
+import { CountdownTimer } from "../CountdownTimer";
 
 const EntryPreview = lazy(() => import("./PlanPreviews").then(module => ({ default: module.EntryPreview })));
 const StandardPreview = lazy(() => import("./PlanPreviews").then(module => ({ default: module.StandardPreview })));
@@ -14,38 +15,69 @@ const plans = [
   {
     id: "entry",
     nameJa: "エントリー",
-    nameEn: "Entry Plan",
+    nameEn: "Basic (Entry)",
     price: "¥20,000",
+    originalPrice: null,
+    turnaround: "5–7 Days",
     desc: "名刺代わりの1ページ。スマホ対応で、まずはWeb上の拠点を作りたい方に。",
-    features: ["1ページ構成", "スマホ対応", "Googleマップ", "SNSリンク", "お問い合わせフォーム"],
+    features: [
+      "1 Page / Single Plan",
+      "Limited Redesigns",
+      "No Google Maps integration included",
+      "スマホ対応",
+      "SNSリンク",
+      "お問い合わせフォーム"
+    ],
     url: "tokyowebsites.com/entry-sample",
     component: EntryPreview,
     icon: FileText,
     color: "bg-emerald-50 text-emerald-900",
+    highlighted: false,
   },
   {
     id: "standard",
     nameJa: "スタンダード",
-    nameEn: "Standard Plan",
-    price: "¥70,000",
+    nameEn: "Standard (Target)",
+    price: "¥30,000",
+    originalPrice: "¥70,000",
+    turnaround: "3–5 Days",
     desc: "自分たちでニュースやブログを更新できるプランです。お店のファンを増やしたい方に。",
-    features: ["ブログ機能（更新機能）", "検索対策（SEO）", "多言語対応（準備）", "ニュースレター", "優先サポート"],
+    features: [
+      "Highlighted on Website",
+      "Multi-page structure",
+      "2 Redesigns allowed",
+      "Includes Google Maps Assistance",
+      "Access to extra features",
+      "検索対策（SEO）",
+      "優先サポート"
+    ],
     url: "tokyowebsites.com/standard-sample",
     component: StandardPreview,
     icon: Building2,
     color: "bg-emerald-50 text-emerald-900",
+    highlighted: true,
   },
   {
     id: "premium",
     nameJa: "プレミアム",
-    nameEn: "Premium Plan",
-    price: "¥100,000~",
+    nameEn: "Premium (Business)",
+    price: "¥55,000",
+    originalPrice: null,
+    turnaround: "2 Days",
     desc: "ネットショップや予約システムなど、高度な機能でビジネスを加速させます。",
-    features: ["ネットショップ / 予約", "アニメーション", "外部システム連携", "ブランド戦略", "24時間サポート"],
+    features: [
+      "Priority delivery (Business Speed)",
+      "Up to 10 Redesigns",
+      "Full consultation suite",
+      "外部システム連携",
+      "ブランド戦略",
+      "24時間サポート"
+    ],
     url: "tokyowebsites.com/premium-sample",
     component: BusinessPreview,
     icon: Sparkles,
     color: "bg-emerald-50 text-emerald-900",
+    highlighted: false,
   },
 ];
 
@@ -53,12 +85,25 @@ const plans = [
 const PlanCard = ({ plan, index, onClick }: { plan: typeof plans[0]; index: number; onClick: () => void }) => {
   const Icon = plan.icon;
   const [expanded, setExpanded] = useState(false);
+  const isHighlighted = plan.highlighted;
 
   return (
     <div
       onClick={onClick}
-      className="group relative bg-white border border-gray-200 rounded-2xl p-6 hover:shadow-xl hover:shadow-blue-200/50 hover:border-blue-500/50 transition-all duration-300 cursor-pointer flex flex-col h-auto min-h-0 overflow-visible"
+      className={`group relative bg-white border rounded-2xl p-6 hover:shadow-xl transition-all duration-300 cursor-pointer flex flex-col h-auto min-h-0 overflow-visible ${
+        isHighlighted 
+          ? "border-2 border-emerald-500 shadow-lg shadow-emerald-200/50 scale-105 md:scale-110" 
+          : "border-gray-200 hover:shadow-blue-200/50 hover:border-blue-500/50"
+      }`}
     >
+      {isHighlighted && (
+        <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+          <div className="bg-red-500 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">
+            JANUARY SALE
+          </div>
+        </div>
+      )}
+      
       <div className={`absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-300 pointer-events-none ${plan.color.split(" ")[0]}`}></div>
 
       <div className="relative mb-6">
@@ -69,11 +114,25 @@ const PlanCard = ({ plan, index, onClick }: { plan: typeof plans[0]; index: numb
         <div className="text-xs text-gray-500 font-bold uppercase tracking-wider mt-1">{plan.nameEn}</div>
       </div>
 
+      {isHighlighted && (
+        <div className="relative mb-4">
+          <CountdownTimer />
+        </div>
+      )}
+
       <div className="relative mb-6 pb-6 border-b border-gray-100">
-        <div className="flex items-baseline gap-1">
-          <span className="text-3xl font-bold text-[#059669] tracking-tight" style={{ fontWeight: 700 }}>{plan.price}</span>
+        <div className="flex items-baseline gap-1 flex-wrap">
+          {plan.originalPrice && (
+            <span className="text-lg text-gray-400 line-through font-bold">{plan.originalPrice}</span>
+          )}
+          <span className={`text-3xl font-bold tracking-tight ${isHighlighted ? "text-red-500" : "text-[#059669]"}`} style={{ fontWeight: 700 }}>{plan.price}</span>
           <span className="text-xs text-gray-500 font-bold" style={{ fontWeight: 600 }}>/ one-time</span>
         </div>
+        {plan.turnaround && (
+          <div className="mt-2 text-xs text-gray-600 font-semibold">
+            納期: {plan.turnaround}
+          </div>
+        )}
       </div>
 
       <p className="relative text-sm text-gray-600 leading-relaxed mb-6">
@@ -150,7 +209,7 @@ export function InteractiveShowcase() {
           </div>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6 relative z-10 max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-6 relative z-10 max-w-6xl mx-auto items-start">
           {plans.map((plan, index) => (
             <PlanCard 
               key={plan.id} 
@@ -226,7 +285,17 @@ export function InteractiveShowcase() {
                   </div>
 
                   <div className="mb-6">
-                    <div className="text-3xl font-bold text-[#059669] mb-2">{plans[selectedPlan].price}</div>
+                    <div className="flex items-baseline gap-2 mb-2">
+                      {plans[selectedPlan].originalPrice && (
+                        <span className="text-lg text-gray-400 line-through font-bold">{plans[selectedPlan].originalPrice}</span>
+                      )}
+                      <span className="text-3xl font-bold text-[#059669]">{plans[selectedPlan].price}</span>
+                    </div>
+                    {plans[selectedPlan].turnaround && (
+                      <div className="text-sm text-gray-500 font-semibold mb-2">
+                        納期: {plans[selectedPlan].turnaround}
+                      </div>
+                    )}
                     <p className="text-sm text-gray-600 leading-relaxed">
                       {plans[selectedPlan].desc}
                     </p>

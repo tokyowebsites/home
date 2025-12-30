@@ -335,7 +335,7 @@ export function Hero() {
   );
 
   return (
-    <section className="relative min-h-screen bg-gray-50 overflow-hidden">
+    <section id="service" className="relative min-h-screen bg-gray-50 overflow-hidden">
       {/* Enhanced Animated Fluid Background - Green & Navy */}
       <div className="absolute inset-0 overflow-hidden">
         <div 

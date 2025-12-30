@@ -6,6 +6,8 @@ import { Contact } from "./components/Contact";
 import { About } from "./components/About";
 import { BackgroundGradient } from "./components/ui/BackgroundGradient";
 import { Customers } from "./components/Customers";
+import { ConsultingSuite } from "./components/ConsultingSuite";
+import { Testimonials } from "./components/Testimonials";
 import { Toaster } from "sonner";
 
 export default function App() {
@@ -21,6 +23,10 @@ export default function App() {
       <Customers />
 
       <InteractiveShowcase />
+
+      <ConsultingSuite />
+
+      <Testimonials />
       
       {/* Process Section with Hero Gradient */}
       <div className="relative bg-gray-50 overflow-hidden min-h-[600px]">
@@ -59,9 +65,12 @@ export default function App() {
               </div>
               <ul className="space-y-3 text-sm">
                 {[
+                  { ja: "私たちの強み", en: "Strengths", href: "#service" },
                   { ja: "プラン", en: "Plans", href: "#plans" },
+                  { ja: "会社概要・MVV", en: "About / MVV", href: "#about" },
                   { ja: "制作の流れ", en: "Process", href: "#process" },
-                  { ja: "お問い合わせ", en: "Contact", href: "#contact" },
+                  { ja: "コンサルティング", en: "Consulting", href: "#consulting" },
+                  { ja: "お客様の声", en: "Testimonials", href: "#testimonials" },
                 ].map((l) => (
                   <li key={l.href}>
                     <a
