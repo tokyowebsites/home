@@ -1,15 +1,18 @@
 import { Quote, Star, MapPin } from "lucide-react";
+import { useTranslation } from "../lib/TranslationContext";
 
 export function Customers() {
+  const { t } = useTranslation();
+  
   return (
     <section id="testimonials" className="py-24 bg-white relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-gray-900 mb-4">
-            お客様の声
+            {t.testimonialsTitle}
           </h2>
           <p className="text-gray-600 text-lg">
-            Customer Testimonials
+            {t.testimonialsSubtitle}
           </p>
         </div>
 
@@ -24,7 +27,7 @@ export function Customers() {
             <Quote className="w-12 h-12 text-emerald-200 mb-6" />
             
             <blockquote className="text-xl md:text-2xl text-gray-800 leading-relaxed mb-8 font-medium">
-              「素晴らしく迅速なサービスで、技術に詳しくない私の負担を軽減してくれました。」
+              「{t.testimonial1Quote}」
             </blockquote>
             
             <div className="pt-6 border-t border-emerald-200">
@@ -34,11 +37,11 @@ export function Customers() {
                 </div>
                 <div>
                   <div className="font-bold text-gray-900 text-lg mb-1">
-                    Ren Thai Massage
+                    {t.testimonial1Name}
                   </div>
                   <div className="flex items-center gap-2 text-sm text-gray-600">
                     <MapPin size={14} />
-                    <span>岐阜県多治見市</span>
+                    <span>{t.testimonial1Location}</span>
                   </div>
                 </div>
               </div>

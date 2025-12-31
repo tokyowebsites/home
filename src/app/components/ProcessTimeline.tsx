@@ -1,65 +1,63 @@
 import React, { useState } from "react";
 import { MessageSquare, FileText, Palette, Rocket, Clock, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
+import { useTranslation } from "../lib/TranslationContext";
 
 export function ProcessTimeline() {
+  const { t } = useTranslation();
   const [expandedStep, setExpandedStep] = useState<number | null>(null);
 
   const steps = [
     {
       number: "01",
-      titleJa: "ヒアリング",
-      titleEn: "Consult",
-      descJa: "現状とゴールを整理。必要なページと導線を決めます。",
-      descEn: "Align on goals and structure.",
+      title: t.step1Title,
+      titleEn: t.step1TitleEn,
+      desc: t.step1Desc,
       icon: MessageSquare,
       details: [
-        "ビジネス目標とターゲット顧客の明確化",
-        "競合分析とポジショニング戦略",
-        "必要な機能とコンテンツの洗い出し",
-        "予算とスケジュールの調整"
+        t.step1Detail1,
+        t.step1Detail2,
+        t.step1Detail3,
+        t.step1Detail4,
       ]
     },
     {
       number: "02",
-      titleJa: "ご提案",
-      titleEn: "Proposal",
-      descJa: "構成・デザイン方向性・納期を明確にして進行開始。",
-      descEn: "Clear plan and timeline.",
+      title: t.step2Title,
+      titleEn: t.step2TitleEn,
+      desc: t.step2Desc,
       icon: FileText,
       details: [
-        "サイト構成とワイヤーフレームの提示",
-        "デザインコンセプトと配色案",
-        "詳細な見積もりと工程表",
-        "契約内容の最終確認"
+        t.step2Detail1,
+        t.step2Detail2,
+        t.step2Detail3,
+        t.step2Detail4,
       ]
     },
     {
       number: "03",
-      titleJa: "制作",
-      titleEn: "Build",
-      descJa: "スピード制作。必要な修正だけ、最短で形にします。",
-      descEn: "Fast build, focused revisions.",
+      title: t.step3Title,
+      titleEn: t.step3TitleEn,
+      desc: t.step3Desc,
       icon: Palette,
       details: [
-        "デザインの作成とレビュー",
-        "コーディングとCMS構築",
-        "コンテンツの入力と最適化",
-        "テストとブラウザ動作確認"
+        t.step3Detail1,
+        t.step3Detail2,
+        t.step3Detail3,
+        t.step3Detail4,
       ]
     },
     {
       number: "04",
-      titleJa: "公開",
-      titleEn: "Launch",
-      descJa: "公開して終わりじゃない。運用しやすい状態に整えます。",
-      descEn: "Launch + ready to operate.",
+      title: t.step4Title,
+      titleEn: t.step4TitleEn,
+      desc: t.step4Desc,
       icon: Rocket,
       details: [
-        "本番環境へのデプロイ",
-        "SEO設定とアナリティクス導入",
-        "操作マニュアルの提供",
-        "アフターサポート（1ヶ月無料）"
+        t.step4Detail1,
+        t.step4Detail2,
+        t.step4Detail3,
+        t.step4Detail4,
       ]
     },
   ];
@@ -69,13 +67,13 @@ export function ProcessTimeline() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3" style={{ fontWeight: 700 }}>
-            制作の流れ
+            {t.processTitle}
           </h2>
           <p className="text-gray-800" style={{ fontWeight: 600 }}>
-            無駄を削ぎ落とした4ステップ。
-            <span className="ml-2 font-bold text-[#059669]" style={{ fontWeight: 700 }}>最短4日で公開</span>
+            {t.processSubtitle}
+            <span className="ml-2 font-bold text-[#059669]" style={{ fontWeight: 700 }}>{t.processHighlight}</span>
             <span className="block text-xs text-gray-700 mt-2">
-              Simple process. Launch in as little as 4 days.
+              {t.processSubtitleEn}
             </span>
           </p>
         </div>
@@ -99,15 +97,15 @@ export function ProcessTimeline() {
                     <div className="text-xs font-bold text-gray-600">{step.number}</div>
                   </div>
 
-                  <div className="font-bold text-gray-900 text-lg" style={{ fontWeight: 700 }}>{step.titleJa}</div>
+                  <div className="font-bold text-gray-900 text-lg" style={{ fontWeight: 700 }}>{step.title}</div>
                   <div className="text-xs text-gray-700 font-semibold mt-1 mb-3" style={{ fontWeight: 600 }}>{step.titleEn}</div>
 
                   <p className="text-sm text-gray-800 leading-relaxed" style={{ fontWeight: 600 }}>
-                    {step.descJa}
+                    {step.desc}
                   </p>
 
                   <button className="mt-4 w-full flex items-center justify-center gap-2 text-xs font-bold text-gray-900 hover:text-[#059669] transition-colors" style={{ fontWeight: 700 }}>
-                    {expandedStep === index ? '詳細を閉じる' : '詳細を見る'}
+                    {expandedStep === index ? t.closeDetails : t.viewDetails}
                     <ChevronDown className={`w-4 h-4 transition-transform ${expandedStep === index ? 'rotate-180' : ''}`} />
                   </button>
                 </div>
@@ -142,8 +140,8 @@ export function ProcessTimeline() {
         <div className="mt-10 text-center">
           <div className="inline-flex items-center gap-2 px-6 py-3 bg-gray-900 text-white rounded-full font-bold text-sm shadow-lg">
             <Clock className="w-4 h-4 text-[#059669]" />
-            96時間以内に公開できるケースが多数
-            <span className="text-xs opacity-70 font-semibold ml-2">Often within 96 hours</span>
+            {t.processFooter}
+            <span className="text-xs opacity-70 font-semibold ml-2">{t.processFooterEn}</span>
           </div>
         </div>
       </div>

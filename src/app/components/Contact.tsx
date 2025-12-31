@@ -101,79 +101,79 @@ export function Contact() {
           <div className="bg-slate-900/50 p-8 rounded-3xl border border-white/10 shadow-2xl backdrop-blur-sm">
             <form onSubmit={handleSubmit} className="space-y-5">
               <div className="grid grid-cols-2 gap-5">
-                <div className="space-y-2">
-                  <label className="text-xs font-bold text-gray-500 uppercase tracking-wider">Name</label>
-                  <input
-                    type="text"
-                    name="name"
-                    required
-                    value={formData.name}
-                    onChange={handleChange}
-                    className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:border-[#0f172a] focus:ring-1 focus:ring-[#0f172a] outline-none transition-all"
-                    placeholder="お名前"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <label className="text-xs font-bold text-gray-500 uppercase tracking-wider">Phone</label>
-                  <input
-                    type="tel"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:border-[#0f172a] focus:ring-1 focus:ring-[#0f172a] outline-none transition-all"
-                    placeholder="電話番号"
-                  />
-                </div>
-              </div>
-
               <div className="space-y-2">
-                <label className="text-xs font-bold text-gray-500 uppercase tracking-wider">Email</label>
+                <label className="text-xs font-bold text-gray-500 uppercase tracking-wider">{t.name}</label>
                 <input
-                  type="email"
-                  name="email"
+                  type="text"
+                  name="name"
                   required
-                  value={formData.email}
+                  value={formData.name}
                   onChange={handleChange}
                   className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:border-[#0f172a] focus:ring-1 focus:ring-[#0f172a] outline-none transition-all"
-                  placeholder="email@example.com"
+                  placeholder={t.name}
                 />
               </div>
-
               <div className="space-y-2">
-                <label className="text-xs font-bold text-gray-500 uppercase tracking-wider">Message</label>
-                <textarea
-                  name="message"
-                  required
-                  value={formData.message}
+                <label className="text-xs font-bold text-gray-500 uppercase tracking-wider">{t.phone}</label>
+                <input
+                  type="tel"
+                  name="phone"
+                  value={formData.phone}
                   onChange={handleChange}
-                  rows={4}
-                  className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:border-[#0f172a] focus:ring-1 focus:ring-[#0f172a] outline-none transition-all resize-none"
-                  placeholder="ご相談内容"
+                  className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:border-[#0f172a] focus:ring-1 focus:ring-[#0f172a] outline-none transition-all"
+                  placeholder={t.phone}
                 />
               </div>
+            </div>
 
-              <button
-                type="submit"
-                disabled={isSubmitting || isSuccess}
-                className="w-full bg-[#059669] text-white font-bold py-4 rounded-xl shadow-lg hover:bg-emerald-600 transition-all active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
-              >
-                {isSubmitting ? (
-                  <>
-                    <Loader2 className="w-5 h-5 animate-spin" />
-                    送信中...
-                  </>
-                ) : isSuccess ? (
-                  <>
-                    <CheckCircle className="w-5 h-5" />
-                    送信完了
-                  </>
-                ) : (
-                  <>
-                    無料相談を申し込む
-                    <ArrowRight className="w-5 h-5" />
-                  </>
-                )}
-              </button>
+            <div className="space-y-2">
+              <label className="text-xs font-bold text-gray-500 uppercase tracking-wider">{t.email}</label>
+              <input
+                type="email"
+                name="email"
+                required
+                value={formData.email}
+                onChange={handleChange}
+                className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:border-[#0f172a] focus:ring-1 focus:ring-[#0f172a] outline-none transition-all"
+                placeholder="email@example.com"
+              />
+            </div>
+
+            <div className="space-y-2">
+              <label className="text-xs font-bold text-gray-500 uppercase tracking-wider">{t.message}</label>
+              <textarea
+                name="message"
+                required
+                value={formData.message}
+                onChange={handleChange}
+                rows={4}
+                className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:border-[#0f172a] focus:ring-1 focus:ring-[#0f172a] outline-none transition-all resize-none"
+                placeholder={t.message}
+              />
+            </div>
+
+            <button
+              type="submit"
+              disabled={isSubmitting || isSuccess}
+              className="w-full bg-[#059669] text-white font-bold py-4 rounded-xl shadow-lg hover:bg-emerald-600 transition-all active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+            >
+              {isSubmitting ? (
+                <>
+                  <Loader2 className="w-5 h-5 animate-spin" />
+                  {t.submitting}
+                </>
+              ) : isSuccess ? (
+                <>
+                  <CheckCircle className="w-5 h-5" />
+                  {t.submitted}
+                </>
+              ) : (
+                <>
+                  {t.submit}
+                  <ArrowRight className="w-5 h-5" />
+                </>
+              )}
+            </button>
             </form>
           </div>
 

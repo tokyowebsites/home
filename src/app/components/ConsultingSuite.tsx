@@ -1,31 +1,34 @@
 import { MapPin, Globe, Camera, MessageSquare, Star } from "lucide-react";
+import { useTranslation } from "../lib/TranslationContext";
 
 export function ConsultingSuite() {
+  const { t } = useTranslation();
+  
   const services = [
     {
       icon: Star,
-      title: "食べログサポート",
-      desc: "食べログの登録と最適化をサポートし、認知度向上と顧客エンゲージメントの改善を実現します。",
+      title: t.consultingService1,
+      desc: t.consultingService1Desc,
     },
     {
       icon: MapPin,
-      title: "マップサービス（MEO）",
-      desc: "Googleマップの最適化により、地域検索結果でお店が目立つようにサポートします。",
+      title: t.consultingService2,
+      desc: t.consultingService2Desc,
     },
     {
       icon: Globe,
-      title: "多言語サポート",
-      desc: "メニュー翻訳や観光客向けアクセシビリティのウェブコンサルティングで、海外のお客様を集客します。",
+      title: t.consultingService3,
+      desc: t.consultingService3Desc,
     },
     {
       icon: MessageSquare,
-      title: "SNSサポート",
-      desc: "ソーシャルメディアアカウントの設定と管理をサポート。継続的な管理のためのサブスクリプションモデルもご用意しています。",
+      title: t.consultingService4,
+      desc: t.consultingService4Desc,
     },
     {
       icon: Camera,
-      title: "写真・PRサポート",
-      desc: "ブランドイメージ向上のためのプロフェッショナルな写真撮影と、パブリックリレーションズサポートを提供します。",
+      title: t.consultingService5,
+      desc: t.consultingService5Desc,
     },
   ];
 
@@ -35,16 +38,16 @@ export function ConsultingSuite() {
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 text-xs font-bold mb-6 border border-emerald-200">
             <Star size={14} className="fill-current" />
-            コンサルティングスイート
+            {t.consultingBadge}
           </div>
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-gray-900 mb-4">
-            コンサルティングサービス
+            {t.consultingTitle}
           </h2>
           <p className="text-gray-600 text-lg mb-2">
-            「コンサルティング」というタイトルを正当化し、継続的な収益・価値を高めるため、
+            {t.consultingDesc}
           </p>
           <p className="text-gray-600 text-lg">
-            ウェブデザインを超えた5つの具体的なサポートサービスを提供しています。
+            {t.consultingDesc2}
           </p>
         </div>
 

@@ -11,9 +11,12 @@ const TranslationContext = createContext<TranslationContextType | undefined>(und
 
 export function TranslationProvider({ children }: { children: ReactNode }) {
   const [language, setLanguageState] = useState<Language>(() => {
-    // Get from localStorage or default to Japanese
-    const saved = localStorage.getItem('language') as Language;
-    return saved && ['ja', 'en', 'ko'].includes(saved) ? saved : 'ja';
+    // Always default to Japanese on first load
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('language') as Language;
+      return saved && ['ja', 'en', 'ko'].includes(saved) ? saved : 'ja';
+    }
+    return 'ja';
   });
 
   const setLanguage = (lang: Language) => {

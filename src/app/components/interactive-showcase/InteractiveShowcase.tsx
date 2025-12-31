@@ -10,76 +10,7 @@ const StandardPreview = lazy(() => import("./PlanPreviews").then(module => ({ de
 const BusinessPreview = lazy(() => import("./PlanPreviews").then(module => ({ default: module.BusinessPreview })));
 const PremiumPreview = lazy(() => import("./PlanPreviews").then(module => ({ default: module.PremiumPreview })));
 
-// --- Plans Data ---
-
-const plans = [
-  {
-    id: "entry",
-    nameJa: "エントリー",
-    nameEn: "Basic (Entry)",
-    price: "¥20,000",
-    originalPrice: null,
-    turnaround: "5–7日",
-    desc: "名刺代わりの1ページ。スマホ対応で、まずはWeb上の拠点を作りたい方に。",
-    features: [
-      "1ページ構成",
-      "スマホ対応",
-      "リデザイン回数制限あり",
-      "SNSリンク",
-      "お問い合わせフォーム"
-    ],
-    url: "tokyowebsites.com/entry-sample",
-    component: EntryPreview,
-    icon: FileText,
-    color: "bg-emerald-50 text-emerald-900",
-    highlighted: false,
-  },
-  {
-    id: "standard",
-    nameJa: "スタンダード",
-    nameEn: "Standard (Target)",
-    price: "¥30,000",
-    originalPrice: "¥35,000",
-    turnaround: "3–5日",
-    desc: "自分たちでニュースやブログを更新できるプランです。お店のファンを増やしたい方に。",
-    features: [
-      "ウェブサイトでハイライト表示",
-      "複数ページ構成",
-      "リデザイン2回まで可能",
-      "Googleマップサポート含む",
-      "追加機能へのアクセス",
-      "検索対策（SEO）",
-      "優先サポート"
-    ],
-    url: "tokyowebsites.com/standard-sample",
-    component: StandardPreview,
-    icon: Building2,
-    color: "bg-emerald-50 text-emerald-900",
-    highlighted: true,
-  },
-  {
-    id: "premium",
-    nameJa: "プレミアム",
-    nameEn: "Premium (Business)",
-    price: "¥55,000",
-    originalPrice: null,
-    turnaround: "2日",
-    desc: "ネットショップや予約システムなど、高度な機能でビジネスを加速させます。",
-    features: [
-      "優先納品（ビジネススピード）",
-      "リデザイン最大10回まで",
-      "フルコンサルティングスイート",
-      "外部システム連携",
-      "ブランド戦略",
-      "24時間サポート"
-    ],
-    url: "tokyowebsites.com/premium-sample",
-    component: BusinessPreview,
-    icon: Sparkles,
-    color: "bg-emerald-50 text-emerald-900",
-    highlighted: false,
-  },
-];
+// Plans are now defined inside InteractiveShowcase component to use translations
 
 // --- Plan Card Component ---
 const PlanCard = ({ plan, index, onClick }: { plan: typeof plans[0]; index: number; onClick: () => void }) => {
@@ -127,11 +58,11 @@ const PlanCard = ({ plan, index, onClick }: { plan: typeof plans[0]; index: numb
             <span className="text-lg text-gray-400 line-through font-bold">{plan.originalPrice}</span>
           )}
           <span className={`text-3xl font-bold tracking-tight ${isHighlighted ? "text-red-500" : "text-[#059669]"}`} style={{ fontWeight: 700 }}>{plan.price}</span>
-          <span className="text-xs text-gray-500 font-bold" style={{ fontWeight: 600 }}>/ one-time</span>
+          <span className="text-xs text-gray-500 font-bold" style={{ fontWeight: 600 }}>{t.oneTime}</span>
         </div>
         {plan.turnaround && (
           <div className="mt-2 text-xs text-gray-600 font-semibold">
-            納期: {plan.turnaround}
+            {t.turnaround}: {plan.turnaround}
           </div>
         )}
       </div>
@@ -170,7 +101,77 @@ const PlanCard = ({ plan, index, onClick }: { plan: typeof plans[0]; index: numb
 };
 
 export function InteractiveShowcase() {
+  const { t } = useTranslation();
   const [selectedPlan, setSelectedPlan] = useState<number | null>(null);
+
+  const plans = [
+    {
+      id: "entry",
+      nameJa: t.basic,
+      nameEn: t.basicEn,
+      price: t.basicPrice,
+      originalPrice: null,
+      turnaround: t.basicTurnaround,
+      desc: t.basicDesc,
+      features: [
+        t.basicFeature1,
+        t.basicFeature2,
+        t.basicFeature3,
+        t.basicFeature4,
+        t.basicFeature5,
+      ],
+      url: "tokyowebsites.com/entry-sample",
+      component: EntryPreview,
+      icon: FileText,
+      color: "bg-emerald-50 text-emerald-900",
+      highlighted: false,
+    },
+    {
+      id: "standard",
+      nameJa: t.standard,
+      nameEn: t.standardEn,
+      price: t.standardPrice,
+      originalPrice: t.standardOriginalPrice,
+      turnaround: t.standardTurnaround,
+      desc: t.standardDesc,
+      features: [
+        t.standardFeature1,
+        t.standardFeature2,
+        t.standardFeature3,
+        t.standardFeature4,
+        t.standardFeature5,
+        t.standardFeature6,
+        t.standardFeature7,
+      ],
+      url: "tokyowebsites.com/standard-sample",
+      component: StandardPreview,
+      icon: Building2,
+      color: "bg-emerald-50 text-emerald-900",
+      highlighted: true,
+    },
+    {
+      id: "premium",
+      nameJa: t.premium,
+      nameEn: t.premiumEn,
+      price: t.premiumPrice,
+      originalPrice: null,
+      turnaround: t.premiumTurnaround,
+      desc: t.premiumDesc,
+      features: [
+        t.premiumFeature1,
+        t.premiumFeature2,
+        t.premiumFeature3,
+        t.premiumFeature4,
+        t.premiumFeature5,
+        t.premiumFeature6,
+      ],
+      url: "tokyowebsites.com/premium-sample",
+      component: BusinessPreview,
+      icon: Sparkles,
+      color: "bg-emerald-50 text-emerald-900",
+      highlighted: false,
+    },
+  ];
 
   useEffect(() => {
     if (selectedPlan !== null) {
@@ -194,19 +195,19 @@ export function InteractiveShowcase() {
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0f172a]/30 text-blue-400 text-xs font-bold mb-6 border border-blue-900/50">
              <Zap size={14} className="fill-current" />
-             最短4日で納品可能
+             {t.deliveryPossible}
           </div>
           <h2 className="text-4xl font-bold tracking-tight text-white mb-4">
-            明確な料金プラン。
+            {t.plansTitle}
           </h2>
           <p className="text-gray-400 text-lg mb-6">
-            追加料金なしの明朗会計。<br className="hidden sm:block"/>
-            ビジネスの規模に合わせて最適なプランをお選びください。
+            {t.plansSubtitle}<br className="hidden sm:block"/>
+            {t.plansSubtitle2}
           </p>
           
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-gray-300 text-xs font-medium">
             <span>🌐</span>
-            <span>日本語・英語・韓国語・中国語に対応しています</span>
+            <span>{t.plansMultiLang}</span>
           </div>
         </div>
 
@@ -266,7 +267,7 @@ export function InteractiveShowcase() {
                         onClick={() => setSelectedPlan(null)}
                         className="inline-block px-3 py-1.5 rounded-full bg-[#059669] text-white text-[10px] font-bold shadow-sm"
                       >
-                        相談する
+                        {t.freeConsultation}
                       </a>
                     </div>
                   </div>
@@ -294,7 +295,7 @@ export function InteractiveShowcase() {
                     </div>
                     {plans[selectedPlan].turnaround && (
                       <div className="text-sm text-gray-500 font-semibold mb-2">
-                        納期: {plans[selectedPlan].turnaround}
+                        {t.turnaround}: {plans[selectedPlan].turnaround}
                       </div>
                     )}
                     <p className="text-sm text-gray-600 leading-relaxed">
@@ -303,7 +304,7 @@ export function InteractiveShowcase() {
                   </div>
 
                   <div className="mb-6 flex-1">
-                    <h4 className="text-xs font-bold text-gray-900 uppercase tracking-wider mb-3">含まれる機能</h4>
+                    <h4 className="text-xs font-bold text-gray-900 uppercase tracking-wider mb-3">{t.includedFeatures}</h4>
                     <ul className="space-y-2">
                       {plans[selectedPlan].features.map((feature, i) => (
                         <li key={i} className="flex items-center gap-2 text-sm text-gray-600">
@@ -320,7 +321,7 @@ export function InteractiveShowcase() {
                     className="block w-full py-3 bg-[#059669] hover:bg-emerald-600 text-white font-bold rounded-xl text-center shadow-lg shadow-emerald-200 transition-all active:scale-[0.98] text-sm mt-auto"
                     style={{ fontWeight: 700 }}
                   >
-                    このプランで相談する
+                    {t.consultThisPlan}
                   </a>
                 </div>
 
@@ -328,7 +329,7 @@ export function InteractiveShowcase() {
                 <div className="flex-1 bg-slate-200 p-2 md:p-6 flex flex-col min-h-0 relative">
                   <div className="text-center mb-2 hidden md:block">
                     <span className="bg-white/70 backdrop-blur px-3 py-1 rounded-full text-[10px] font-bold text-gray-500 border border-gray-200/50">
-                      サンプルプレビュー
+                      {t.samplePreview}
                     </span>
                   </div>
                   

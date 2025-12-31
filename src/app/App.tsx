@@ -7,10 +7,12 @@ import { About } from "./components/About";
 import { BackgroundGradient } from "./components/ui/BackgroundGradient";
 import { Customers } from "./components/Customers";
 import { ConsultingSuite } from "./components/ConsultingSuite";
-import { Testimonials } from "./components/Testimonials";
+import { useTranslation } from "./lib/TranslationContext";
 import { Toaster } from "sonner";
 
 export default function App() {
+  const { t } = useTranslation();
+  
   return (
     <div className="min-h-screen bg-white overflow-x-hidden font-sans text-gray-900">
       <Toaster position="top-center" />
@@ -49,34 +51,33 @@ export default function App() {
                 tokyowebsites.com
               </div>
               <p className="text-sm text-gray-900 leading-relaxed" style={{ fontWeight: 600 }}>
-                東京の小規模実店舗向けに、最短4日で"ちゃんと効く"ウェブサイトを制作します。
+                {t.footerTagline}
               </p>
               <p className="text-xs text-gray-700 mt-3 leading-relaxed" style={{ fontWeight: 600 }}>
-                Digital brand consulting + web redesign for small businesses in Tokyo.
+                {t.footerTaglineEn}
               </p>
             </div>
 
             <div>
               <div className="text-sm font-bold mb-4" style={{ fontWeight: 700 }}>
-                クイックリンク
-                <span className="block text-xs text-gray-700 mt-1" style={{ fontWeight: 600 }}>Quick links</span>
+                {t.quickLinks}
+                <span className="block text-xs text-gray-700 mt-1" style={{ fontWeight: 600 }}>{t.quickLinksEn}</span>
               </div>
               <ul className="space-y-3 text-sm">
                 {[
-                  { ja: "私たちの強み", en: "Strengths", href: "#service" },
-                  { ja: "プラン", en: "Plans", href: "#plans" },
-                  { ja: "会社概要", en: "About", href: "#about" },
-                  { ja: "制作の流れ", en: "Process", href: "#process" },
-                  { ja: "コンサルティング", en: "Consulting", href: "#consulting" },
-                  { ja: "お客様の声", en: "Testimonials", href: "#testimonials" },
+                  { label: t.strengths, href: "#service" },
+                  { label: t.plans, href: "#plans" },
+                  { label: t.about, href: "#about" },
+                  { label: t.process, href: "#process" },
+                  { label: t.consulting, href: "#consulting" },
+                  { label: t.testimonials, href: "#testimonials" },
                 ].map((l) => (
                   <li key={l.href}>
                     <a
                       href={l.href}
                       className="text-gray-900 hover:text-[#059669] transition-colors" style={{ fontWeight: 600 }}
                     >
-                      {l.ja}
-                      <span className="ml-2 text-xs text-gray-700">{l.en}</span>
+                      {l.label}
                     </a>
                   </li>
                 ))}
@@ -85,8 +86,8 @@ export default function App() {
 
             <div>
               <div className="text-sm font-bold mb-4" style={{ fontWeight: 700 }}>
-                連絡先
-                <span className="block text-xs text-gray-700 mt-1" style={{ fontWeight: 600 }}>Contact</span>
+                {t.contactInfo}
+                <span className="block text-xs text-gray-700 mt-1" style={{ fontWeight: 600 }}>{t.contactInfoEn}</span>
               </div>
               <ul className="space-y-3 text-sm text-gray-900">
                 <li>
@@ -98,17 +99,14 @@ export default function App() {
                   </a>
                 </li>
                 <li className="text-gray-800" style={{ fontWeight: 600 }}>
-                  東京都立川市
-                  <span className="block text-xs mt-1 text-gray-700">
-                    Tachikawa, Tokyo
-                  </span>
+                  {t.tachikawaTokyo}
                 </li>
               </ul>
             </div>
           </div>
 
           <div className="mt-12 pt-8 border-t border-gray-400 text-center text-xs text-gray-800" style={{ fontWeight: 600 }}>
-            <p>© 2025 Tokyo Websites. All rights reserved.</p>
+            <p>{t.copyright}</p>
           </div>
         </div>
       </footer>

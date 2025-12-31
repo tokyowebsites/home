@@ -15,6 +15,7 @@ import {
 import { useMemo, useRef, useState } from "react";
 
 import { MiniBrowser } from "./interactive-showcase/MiniBrowser";
+import { useTranslation } from "../lib/TranslationContext";
 
 type HeroView = "home" | "service" | "works" | "about" | "contact";
 
@@ -22,14 +23,15 @@ export function Hero() {
   const reduceMotion = useReducedMotion();
   const viewportRef = useRef<HTMLDivElement | null>(null);
   const [currentView, setCurrentView] = useState<HeroView>("home");
+  const { t } = useTranslation();
 
   const tabs = useMemo(
     () =>
       [
-        { id: "home" as const, label: "ホーム", icon: Home },
-        { id: "service" as const, label: "選ばれる理由", icon: Sparkles },
+        { id: "home" as const, label: t.home, icon: Home },
+        { id: "service" as const, label: t.strengths, icon: Sparkles },
       ] as const,
-    [],
+    [t],
   );
 
   const navigate = (view: HeroView) => {
@@ -63,9 +65,9 @@ export function Hero() {
             <span style={{ fontFamily: 'Playfair Display, serif' }} className="text-[#34d399]">Websites</span>
           </h1>
           <p className="mt-4 md:mt-6 text-sm md:text-lg text-white/90 font-medium max-w-xl mx-auto leading-relaxed drop-shadow-md">
-            平均的な制作費用の<span className="text-[#34d399] font-bold">1/3以下の価格</span>で、<br className="hidden md:block"/>
-            あなたのビジネスのデジタルプレゼンスを劇的に向上させます。<br/>
-            <span className="text-xs md:text-sm opacity-80 mt-2 block font-bold">※ 最短4日で納品可能</span>
+            {t.heroSubtitle}<span className="text-[#34d399] font-bold">{t.heroSubtitleHighlight}</span>{t.heroSubtitle2}<br className="hidden md:block"/>
+            <br/>
+            <span className="text-xs md:text-sm opacity-80 mt-2 block font-bold">{t.heroDelivery}</span>
           </p>
         </motion.div>
 
@@ -80,7 +82,7 @@ export function Hero() {
             onClick={() => navigate("service")}
             className="flex-1 bg-white text-gray-900 h-12 md:h-14 rounded-full font-bold text-xs md:text-sm flex items-center justify-center gap-2 hover:bg-gray-100 transition-all active:scale-95 shadow-xl"
           >
-            なぜ安いのか？
+            {t.whyCheap}
           </button>
 
           <button
@@ -90,7 +92,7 @@ export function Hero() {
             }}
             className="flex-1 bg-[#059669] text-white h-12 md:h-14 rounded-full font-bold text-xs md:text-sm flex items-center justify-center gap-2 hover:bg-emerald-600 transition-all active:scale-95 shadow-xl"
           >
-            無料相談 <ArrowRight className="w-4 h-4" />
+            {t.freeConsultation} <ArrowRight className="w-4 h-4" />
           </button>
 
           {/* Fake Cursor Animation */}
@@ -123,51 +125,52 @@ export function Hero() {
     </div>
   );
 
-  const ServiceView = () => (
-    <div className="h-full flex flex-col px-4 py-6 md:px-12 md:py-12 overflow-y-auto">
-      <div className="text-center mb-6 md:mb-10">
-        <h2 className="text-xl md:text-4xl font-extrabold text-gray-900 mb-3 md:mb-4">
-          高品質なWebサイトを、<br/><span className="text-[#059669]">適正価格</span>で。
-        </h2>
-        <p className="text-xs md:text-base text-gray-600 font-medium max-w-2xl mx-auto leading-relaxed">
-          私たちは「立川ウェブサイト・コンサルティング」として、無駄なコストを徹底的に削減。<br className="hidden md:block"/>
-          大手の数分の一の価格で、成果の出るデジタルリニューアルを提供します。
-        </p>
-      </div>
+  const ServiceView = () => {
+    const { t } = useTranslation();
+    return (
+      <div className="h-full flex flex-col px-4 py-6 md:px-12 md:py-12 overflow-y-auto">
+        <div className="text-center mb-6 md:mb-10">
+          <h2 className="text-xl md:text-4xl font-extrabold text-gray-900 mb-3 md:mb-4">
+            {t.serviceTitle}<br/><span className="text-[#059669]">{t.serviceTitleHighlight}</span>{t.serviceTitle2}
+          </h2>
+          <p className="text-xs md:text-base text-gray-600 font-medium max-w-2xl mx-auto leading-relaxed">
+            {t.serviceDesc}<br className="hidden md:block"/>
+            {t.serviceDesc2}
+          </p>
+        </div>
 
-      <div className="grid md:grid-cols-2 gap-4 md:gap-6 max-w-4xl mx-auto w-full mb-6 md:mb-8">
-        <div className="bg-emerald-50 border border-emerald-100 p-5 md:p-6 rounded-2xl flex flex-col">
-          <Zap className="w-6 h-6 md:w-8 md:h-8 text-[#059669] mb-3 shrink-0" />
-          <h3 className="font-bold text-gray-900 mb-2 text-sm md:text-base shrink-0">中間マージンを完全カット</h3>
-          <p className="text-xs md:text-sm text-gray-600 leading-relaxed">
-            営業や広告のコストを排除し、クリエイター直結で制作。
-            さらに最新AI活用で工数を大幅に圧縮し、高品質と低価格を両立しました。
-          </p>
+        <div className="grid md:grid-cols-2 gap-4 md:gap-6 max-w-4xl mx-auto w-full mb-6 md:mb-8">
+          <div className="bg-emerald-50 border border-emerald-100 p-5 md:p-6 rounded-2xl flex flex-col">
+            <Zap className="w-6 h-6 md:w-8 md:h-8 text-[#059669] mb-3 shrink-0" />
+            <h3 className="font-bold text-gray-900 mb-2 text-sm md:text-base shrink-0">{t.serviceFeature1Title}</h3>
+            <p className="text-xs md:text-sm text-gray-600 leading-relaxed">
+              {t.serviceFeature1Desc}
+            </p>
+          </div>
+          <div className="bg-slate-50 border border-slate-100 p-5 md:p-6 rounded-2xl flex flex-col">
+            <CheckCircle className="w-6 h-6 md:w-8 md:h-8 text-[#0f172a] mb-3 shrink-0" />
+            <h3 className="font-bold text-gray-900 mb-2 text-sm md:text-base shrink-0">{t.serviceFeature2Title}</h3>
+            <p className="text-xs md:text-sm text-gray-600 leading-relaxed">
+              {t.serviceFeature2Desc}
+            </p>
+          </div>
         </div>
-        <div className="bg-slate-50 border border-slate-100 p-5 md:p-6 rounded-2xl flex flex-col">
-          <CheckCircle className="w-6 h-6 md:w-8 md:h-8 text-[#0f172a] mb-3 shrink-0" />
-          <h3 className="font-bold text-gray-900 mb-2 text-sm md:text-base shrink-0">実店舗に特化したノウハウ</h3>
-          <p className="text-xs md:text-sm text-gray-600 leading-relaxed">
-            「見られる」だけでなく「来店につながる」導線を設計。
-            地域密着ビジネスの成功パターンを熟知したチームが担当します。
-          </p>
+        
+        <div className="mt-auto pt-4 md:pt-6 text-center">
+          <button
+            onClick={() => {
+               const plansSection = document.getElementById('plans');
+               if(plansSection) plansSection.scrollIntoView({ behavior: 'smooth' });
+            }}
+            className="inline-flex items-center gap-2 px-6 py-3 bg-[#059669] text-white font-bold rounded-full hover:bg-emerald-600 transition-all shadow-lg shadow-emerald-200 hover:shadow-xl"
+            style={{ fontWeight: 700 }}
+          >
+            {t.viewPlans} <ArrowRight className="w-4 h-4" />
+          </button>
         </div>
       </div>
-      
-      <div className="mt-auto pt-4 md:pt-6 text-center">
-        <button
-          onClick={() => {
-             const plansSection = document.getElementById('plans');
-             if(plansSection) plansSection.scrollIntoView({ behavior: 'smooth' });
-          }}
-          className="inline-flex items-center gap-2 px-6 py-3 bg-[#059669] text-white font-bold rounded-full hover:bg-emerald-600 transition-all shadow-lg shadow-emerald-200 hover:shadow-xl"
-          style={{ fontWeight: 700 }}
-        >
-          料金プランを見る <ArrowRight className="w-4 h-4" />
-        </button>
-      </div>
-    </div>
-  );
+    );
+  };
 
   const WorksView = () => (
     <div className="h-full flex flex-col px-4 py-3 md:px-8 md:py-8">
@@ -415,7 +418,7 @@ export function Hero() {
                               : "bg-white border-gray-200 text-gray-700 hover:border-emerald-200 hover:text-[#059669]"
                           }`}
                         >
-                          Home
+                          {t.home}
                         </button>
                         <button
                           id="service-tab-btn" // ID for cursor target
@@ -427,7 +430,7 @@ export function Hero() {
                               : "bg-white border-gray-200 text-gray-700 hover:border-emerald-200 hover:text-[#059669]"
                           }`}
                         >
-                          選ばれる理由
+                          {t.strengths}
                         </button>
                       </nav>
 
