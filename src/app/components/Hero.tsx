@@ -360,8 +360,8 @@ export function Hero() {
         >
           <MiniBrowser
             url={`tokyowebsites.com/${currentView === "home" ? "home" : currentView}`}
-            className="rounded-2xl shadow-2xl border-gray-700 bg-gray-900"
-            dark
+            className="rounded-2xl border-gray-200 bg-gray-50"
+            dark={false}
           >
             <div className="h-[520px] sm:h-[560px] md:h-[760px] bg-white relative overflow-hidden">
               {/* Internal scrolling enabled for content that exceeds height */}
@@ -370,11 +370,11 @@ export function Hero() {
                 className="h-full overflow-y-auto no-scrollbar"
                 style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
               >
-                <div className={`h-full font-sans flex flex-col transition-colors duration-500 ${currentView === 'home' ? 'bg-[#0f172a]' : 'bg-white text-gray-900'}`}>
+                <div className={`h-full font-sans flex flex-col transition-colors duration-500 ${currentView === 'home' ? 'bg-gradient-to-br from-gray-50 to-white' : 'bg-white text-gray-900'}`}>
                   {/* Fake Site Header */}
                   <header className={`shrink-0 backdrop-blur-md border-b relative z-20 transition-colors duration-500 ${
                     currentView === 'home' 
-                      ? 'bg-[#0f172a]/90 border-white/10 text-white' 
+                      ? 'bg-gray-50/95 border-gray-200 text-gray-900' 
                       : 'bg-white/90 border-gray-100 text-gray-900'
                   }`}>
                     <div className="h-14 md:h-16 px-3 md:px-6 flex items-center justify-between relative">
@@ -385,7 +385,7 @@ export function Hero() {
                           onClick={() => currentView !== 'home' ? navigate('home') : null}
                           className={`p-1.5 rounded-full transition-colors ${
                             currentView === 'home'
-                              ? 'text-gray-600 cursor-default'
+                              ? 'text-gray-400 cursor-default'
                               : 'text-gray-700 hover:bg-gray-100'
                           }`}
                         >
@@ -398,9 +398,8 @@ export function Hero() {
                           className="flex items-center gap-2"
                           aria-label="ホームへ"
                         >
-                          <div className="h-8 w-8 rounded-xl bg-[#059669] text-white flex items-center justify-center text-xs font-extrabold shadow-lg shadow-emerald-200 gap-[1px]">
-                            <span style={{ fontFamily: 'Inter, sans-serif' }}>T</span>
-                            <span style={{ fontFamily: 'Playfair Display, serif' }}>W</span>
+                          <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-[#059669] to-emerald-600 text-white flex items-center justify-center text-sm font-bold">
+                            <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700 }}>TW</span>
                           </div>
                         </button>
                       </div>
@@ -412,7 +411,7 @@ export function Hero() {
                           onClick={() => navigate("home")}
                           className={`px-5 py-2 rounded-full text-xs font-extrabold border transition-colors ${
                             currentView === "home"
-                              ? "bg-emerald-500/10 border-emerald-500/50 text-emerald-400"
+                              ? "bg-emerald-50 border-emerald-200 text-emerald-800"
                               : "bg-white border-gray-200 text-gray-700 hover:border-emerald-200 hover:text-[#059669]"
                           }`}
                         >
@@ -425,9 +424,7 @@ export function Hero() {
                           className={`px-5 py-2 rounded-full text-xs font-extrabold border transition-colors ${
                             currentView === "service"
                               ? "bg-emerald-50 border-emerald-200 text-emerald-800"
-                              : currentView === 'home'
-                                ? "bg-transparent border-white/10 text-gray-300 hover:bg-white/5 hover:text-white"
-                                : "bg-white border-gray-200 text-gray-700 hover:border-emerald-200 hover:text-[#059669]"
+                              : "bg-white border-gray-200 text-gray-700 hover:border-emerald-200 hover:text-[#059669]"
                           }`}
                         >
                           選ばれる理由
@@ -531,11 +528,7 @@ export function Hero() {
                   </div>
 
                   {/* Mobile bottom tabs (so the fake site feels like an app) */}
-                  <div className={`md:hidden shrink-0 border-t transition-colors duration-500 ${
-                    currentView === 'home' 
-                      ? 'bg-[#0f172a] border-white/10' 
-                      : 'bg-white border-gray-100'
-                  }`}>
+                  <div className="md:hidden shrink-0 border-t bg-white border-gray-100 transition-colors duration-500">
                     <div className="grid grid-cols-2">
                       {tabs.map((t) => {
                         const Icon = t.icon;
@@ -547,12 +540,8 @@ export function Hero() {
                             onClick={() => navigate(t.id)}
                             className={`py-3 flex flex-col items-center justify-center gap-1 transition-colors ${
                               active 
-                                ? "text-[#34d399]" 
-                                : currentView === 'home' ? "text-gray-400" : "text-gray-500"
-                            } ${
-                              active && currentView !== 'home' ? "bg-emerald-50/50" : ""
-                            } ${
-                               active && currentView === 'home' ? "bg-emerald-500/10" : ""
+                                ? "text-[#059669] bg-emerald-50/50" 
+                                : "text-gray-500"
                             }`}
                             aria-label={t.label}
                           >
