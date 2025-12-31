@@ -16,7 +16,7 @@ export function Header() {
   const navItems = [
     { ja: "私たちの強み", en: "Strengths", href: "#service" }, // "Why Cheap" is effectively the "Strengths" / Service section
     { ja: "プラン", en: "Plans", href: "#plans" },
-    { ja: "会社概要・MVV", en: "About / MVV", href: "#about" },
+    { ja: "会社概要", en: "About", href: "#about" },
     { ja: "制作の流れ", en: "Process", href: "#process" },
   ];
 

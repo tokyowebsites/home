@@ -38,7 +38,7 @@ const plans = [
     nameJa: "スタンダード",
     nameEn: "Standard (Target)",
     price: "¥30,000",
-    originalPrice: "¥70,000",
+    originalPrice: "¥35,000",
     turnaround: "3–5日",
     desc: "自分たちでニュースやブログを更新できるプランです。お店のファンを増やしたい方に。",
     features: [

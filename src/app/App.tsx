@@ -65,7 +65,7 @@ export default function App() {
                 {[
                   { ja: "私たちの強み", en: "Strengths", href: "#service" },
                   { ja: "プラン", en: "Plans", href: "#plans" },
-                  { ja: "会社概要・MVV", en: "About / MVV", href: "#about" },
+                  { ja: "会社概要", en: "About", href: "#about" },
                   { ja: "制作の流れ", en: "Process", href: "#process" },
                   { ja: "コンサルティング", en: "Consulting", href: "#consulting" },
                   { ja: "お客様の声", en: "Testimonials", href: "#testimonials" },
