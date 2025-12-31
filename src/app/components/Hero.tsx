@@ -61,8 +61,8 @@ export function Hero() {
           className="mb-4 md:mb-8"
         >
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tighter text-white leading-tight drop-shadow-2xl flex items-center justify-center gap-2 md:gap-4">
-            <span style={{ fontFamily: 'Inter, sans-serif' }}>Tokyo</span>
-            <span style={{ fontFamily: 'Playfair Display, serif' }} className="text-[#34d399]">Websites</span>
+            <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 'inherit', fontWeight: 800 }}>Tokyo</span>
+            <span style={{ fontFamily: 'Playfair Display, serif', fontSize: 'inherit', fontWeight: 700 }} className="text-[#34d399]">Websites</span>
           </h1>
           <p className="mt-4 md:mt-6 text-sm md:text-lg text-white/90 font-medium max-w-xl mx-auto leading-relaxed drop-shadow-md">
             {t.heroSubtitle}<span className="text-[#34d399] font-bold">{t.heroSubtitleHighlight}</span>{t.heroSubtitle2}<br className="hidden md:block"/>
@@ -402,7 +402,7 @@ export function Hero() {
                           aria-label="ホームへ"
                         >
                           <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-[#059669] to-emerald-600 text-white flex items-center justify-center text-sm font-bold">
-                            <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700 }}>TW</span>
+                            <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: '0.875rem' }}>TW</span>
                           </div>
                         </button>
                       </div>
@@ -567,14 +567,14 @@ export function Hero() {
             className="text-xs md:text-sm text-gray-700 mb-4 md:mb-6 font-semibold"
             style={{ fontWeight: 600 }}
           >
-            東京の実店舗向けに、成果直結のWeb制作（2025–）
+            {t.heroTagline}
           </p>
           <a
             href="#plans"
             className="inline-flex items-center gap-2 text-sm font-bold text-gray-900 border-b border-gray-900 pb-0.5 hover:text-[#059669] hover:border-[#059669] transition-colors"
             style={{ fontWeight: 700 }}
           >
-            料金プランを見る <ArrowRight size={14} />
+            {t.viewPlans} <ArrowRight size={14} />
           </a>
         </div>
       </div>
