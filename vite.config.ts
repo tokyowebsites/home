@@ -2,6 +2,22 @@ import { defineConfig } from 'vite'
 import path from 'path'
 import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
+import { copyFileSync, existsSync } from 'fs'
+
+// Plugin to copy CNAME and ensure .nojekyll exists
+const copyFilesPlugin = () => ({
+  name: 'copy-files',
+  closeBundle() {
+    // Copy CNAME if it exists
+    if (existsSync('CNAME')) {
+      copyFileSync('CNAME', path.resolve(__dirname, 'dist/CNAME'))
+    }
+    // Ensure .nojekyll exists
+    if (!existsSync('dist/.nojekyll')) {
+      copyFileSync(path.resolve(__dirname, 'public/.nojekyll'), path.resolve(__dirname, 'dist/.nojekyll'))
+    }
+  },
+})
 
 export default defineConfig({
   base: '/', // Base URL for custom domain (tokyowebsites.com)
@@ -10,6 +26,7 @@ export default defineConfig({
     // Tailwind is not being actively used – do not remove them
     react(),
     tailwindcss(),
+    copyFilesPlugin(),
   ],
   resolve: {
     alias: {
