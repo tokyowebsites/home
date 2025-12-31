@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { X, Check, ArrowRight, Zap, FileText, Files, Building2, Sparkles, Loader2 } from "lucide-react";
 import { MiniBrowser } from "./MiniBrowser";
 import { CountdownTimer } from "../CountdownTimer";
+import { useTranslation } from "../../lib/TranslationContext";
 
 const EntryPreview = lazy(() => import("./PlanPreviews").then(module => ({ default: module.EntryPreview })));
 const StandardPreview = lazy(() => import("./PlanPreviews").then(module => ({ default: module.StandardPreview })));
@@ -85,6 +86,7 @@ const PlanCard = ({ plan, index, onClick }: { plan: typeof plans[0]; index: numb
   const Icon = plan.icon;
   const [expanded, setExpanded] = useState(false);
   const isHighlighted = plan.highlighted;
+  const { t } = useTranslation();
 
   return (
     <div
@@ -98,7 +100,7 @@ const PlanCard = ({ plan, index, onClick }: { plan: typeof plans[0]; index: numb
       {isHighlighted && (
         <div className="absolute -top-3 left-1/2 -translate-x-1/2">
           <div className="bg-red-500 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">
-            JANUARY SALE
+            {t.januarySale}
           </div>
         </div>
       )}
@@ -153,14 +155,14 @@ const PlanCard = ({ plan, index, onClick }: { plan: typeof plans[0]; index: numb
               setExpanded(!expanded);
             }}
           >
-            {expanded ? "- less" : "+ more"}
+            {expanded ? t.less : t.more}
           </li>
         )}
       </ul>
 
       <div className="relative mt-auto">
         <button className="w-full py-3 rounded-xl bg-[#059669] text-white text-sm font-bold group-hover:bg-emerald-600 transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-emerald-200" style={{ fontWeight: 700 }}>
-          詳細・サンプルを見る <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+          {t.seeMore} <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
         </button>
       </div>
     </div>

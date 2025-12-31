@@ -2,8 +2,10 @@ import { Mail, MapPin, Clock, ArrowRight, CheckCircle, Loader2 } from "lucide-re
 import { useState } from "react";
 import { db } from "../lib/db";
 import { toast } from "sonner";
+import { useTranslation } from "../lib/TranslationContext";
 
 export function Contact() {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -55,11 +57,11 @@ export function Contact() {
           {/* Left: Heading & Info */}
           <div>
             <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight leading-tight">
-              レベルアップの準備は<br/><span className="text-[#059669]">できていますか？</span>
+              {t.readyToLevelUp} <br/><span className="text-[#059669]">{t.readyToLevelUpQuestion}</span>
             </h2>
             <p className="text-gray-400 text-lg mb-10 max-w-md leading-relaxed">
-              ご相談・お見積もりは無料です。<br/>
-              まずはお気軽にお問い合わせください。
+              {t.consultationFree}<br/>
+              {t.contactUs}
             </p>
 
             <div className="space-y-8">
@@ -68,7 +70,7 @@ export function Contact() {
                   <Mail size={20} className="text-gray-300 group-hover:text-[#0f172a] transition-colors" />
                 </div>
                 <div>
-                  <div className="text-sm font-bold text-white mb-1">メール</div>
+                  <div className="text-sm font-bold text-white mb-1">{t.email}</div>
                   <div className="text-gray-400">contact@tokyowebsites.com</div>
                 </div>
               </div>
@@ -78,8 +80,8 @@ export function Contact() {
                   <Clock size={20} className="text-gray-300 group-hover:text-[#0f172a] transition-colors" />
                 </div>
                 <div>
-                  <div className="text-sm font-bold text-white mb-1">返信時間</div>
-                  <div className="text-gray-400">24時間以内</div>
+                  <div className="text-sm font-bold text-white mb-1">{t.responseTime}</div>
+                  <div className="text-gray-400">{t.within24Hours}</div>
                 </div>
               </div>
 
@@ -88,8 +90,8 @@ export function Contact() {
                   <MapPin size={20} className="text-gray-300 group-hover:text-[#0f172a] transition-colors" />
                 </div>
                 <div>
-                  <div className="text-sm font-bold text-white mb-1">所在地</div>
-                  <div className="text-gray-400">東京都立川市</div>
+                  <div className="text-sm font-bold text-white mb-1">{t.location}</div>
+                  <div className="text-gray-400">{t.tachikawaTokyo}</div>
                 </div>
               </div>
             </div>

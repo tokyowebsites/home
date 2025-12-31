@@ -1,9 +1,12 @@
 import { Menu, X, ArrowRight } from "lucide-react";
 import { useEffect, useState } from "react";
+import { LanguageSwitcher } from "./LanguageSwitcher";
+import { useTranslation } from "../lib/TranslationContext";
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,10 +17,10 @@ export function Header() {
   }, []);
 
   const navItems = [
-    { ja: "私たちの強み", en: "Strengths", href: "#service" }, // "Why Cheap" is effectively the "Strengths" / Service section
-    { ja: "プラン", en: "Plans", href: "#plans" },
-    { ja: "会社概要", en: "About", href: "#about" },
-    { ja: "制作の流れ", en: "Process", href: "#process" },
+    { label: t.strengths, href: "#service" },
+    { label: t.plans, href: "#plans" },
+    { label: t.about, href: "#about" },
+    { label: t.process, href: "#process" },
   ];
 
   return (
@@ -58,17 +61,16 @@ export function Header() {
                 className="px-4 py-2 rounded-full text-sm font-bold text-gray-700 hover:bg-slate-50 hover:text-[#0f172a] transition-colors"
                 style={{ fontWeight: 600 }}
               >
-                <span>{item.ja}</span>
-                <span className="text-[10px] text-gray-400 ml-1 group-hover:text-slate-400 transition-colors">{item.en}</span>
+                {item.label}
               </a>
             ))}
+            <LanguageSwitcher />
             <a
               href="#contact"
               className="ml-3 inline-flex items-center gap-2 px-6 py-2.5 bg-[#059669] text-white text-sm font-bold hover:bg-emerald-600 transition-colors rounded-full shadow-lg shadow-emerald-100"
               style={{ fontWeight: 700 }}
             >
-              無料相談
-              <span className="text-xs opacity-80 font-normal">Free consult</span>
+              {t.freeConsultation}
               <ArrowRight size={16} className="opacity-80" />
             </a>
           </nav>
@@ -94,21 +96,20 @@ export function Header() {
                   onClick={() => setIsMenuOpen(false)}
                   className="flex items-center justify-between py-3 px-3 rounded-xl hover:bg-gray-50"
                 >
-                  <div className="flex flex-col">
-                    <span className="text-gray-900 font-bold text-sm" style={{ fontWeight: 600 }}>{item.ja}</span>
-                    <span className="text-xs text-gray-400 font-semibold">{item.en}</span>
-                  </div>
+                  <span className="text-gray-900 font-bold text-sm" style={{ fontWeight: 600 }}>{item.label}</span>
                   <ArrowRight size={16} className="text-gray-300" />
                 </a>
               ))}
+              <div className="px-3 py-2">
+                <LanguageSwitcher />
+              </div>
               <a
                 href="#contact"
                 onClick={() => setIsMenuOpen(false)}
                 className="mt-2 inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#059669] text-white text-sm font-bold hover:bg-emerald-600 transition-colors rounded-xl text-center shadow-md"
                 style={{ fontWeight: 700 }}
               >
-                無料相談
-                <span className="text-xs opacity-80">Free consult</span>
+                {t.freeConsultation}
               </a>
             </div>
           </nav>

@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
+import { useTranslation } from "../lib/TranslationContext";
 
 export function CountdownTimer() {
+  const { t } = useTranslation();
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -35,8 +37,8 @@ export function CountdownTimer() {
 
   return (
     <div className="flex items-center gap-2 text-xs font-bold">
-      <div className="bg-red-500 text-white px-2 py-1 rounded">SALE</div>
-      <div className="text-gray-600">終了まで:</div>
+      <div className="bg-red-500 text-white px-2 py-1 rounded">{t.sale}</div>
+      <div className="text-gray-600">{t.timeRemaining}</div>
       <div className="flex items-center gap-1">
         <span className="bg-gray-100 px-2 py-1 rounded font-mono">{String(timeLeft.days).padStart(2, '0')}</span>
         <span className="text-gray-400">:</span>
