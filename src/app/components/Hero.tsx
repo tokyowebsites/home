@@ -64,6 +64,9 @@ export function Hero() {
             <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 'inherit', fontWeight: 800 }}>Tokyo</span>
             <span style={{ fontFamily: 'Playfair Display, serif', fontSize: 'inherit', fontWeight: 700 }} className="text-[#34d399]">Websites</span>
           </h1>
+          <p className="mt-2 md:mt-3 text-xs md:text-sm text-[#34d399] font-bold tracking-wide uppercase">
+            {t.slogan}
+          </p>
           <p className="mt-4 md:mt-6 text-sm md:text-lg text-white/90 font-medium max-w-xl mx-auto leading-relaxed drop-shadow-md">
             {t.heroSubtitle}<span className="text-[#34d399] font-bold">{t.heroSubtitleHighlight}</span>{t.heroSubtitle2}<br className="hidden md:block"/>
             <br/>

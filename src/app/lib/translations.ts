@@ -36,6 +36,7 @@ export const translations = {
     serviceFeature2Desc: '「見られる」だけでなく「来店につながる」導線を設計。地域密着ビジネスの成功パターンを熟知したチームが担当します。',
     viewPlans: '料金プランを見る',
     heroTagline: '東京の実店舗向けに、成果直結のWeb制作（2025–）',
+    slogan: 'インターネット上での影響力を高める',
     
     // About
     mission: '私たちのミッション',
@@ -226,6 +227,7 @@ export const translations = {
     serviceFeature2Desc: 'We design pathways that don\'t just "get views" but "lead to visits." Our team is well-versed in success patterns for community-based businesses.',
     viewPlans: 'View Pricing Plans',
     heroTagline: 'Results-driven web production for physical stores in Tokyo (2025–)',
+    slogan: 'Enhance your influence on the internet',
     
     // About
     mission: 'Our Mission',
@@ -416,6 +418,7 @@ export const translations = {
     serviceFeature2Desc: '"보이는 것"뿐만 아니라 "방문으로 이어지는" 경로를 설계합니다. 지역 밀착 비즈니스의 성공 패턴을 잘 아는 팀이 담당합니다.',
     viewPlans: '요금 플랜 보기',
     heroTagline: '도쿄 실매장을 위한 성과 직결 웹 제작 (2025–)',
+    slogan: '인터넷상의 영향력을 높이다',
     
     // About
     mission: '우리의 미션',

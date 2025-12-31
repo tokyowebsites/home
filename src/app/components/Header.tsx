@@ -47,7 +47,7 @@ export function Header() {
                 </span>
               </div>
               <div className="text-[10px] text-gray-500 font-semibold tracking-wide mt-1" style={{ fontWeight: 600 }}>
-                東京のビジネスを、世界水準へ
+                {t.slogan}
               </div>
             </div>
           </a>
