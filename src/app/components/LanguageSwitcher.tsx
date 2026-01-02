@@ -46,18 +46,21 @@ export function LanguageSwitcher() {
   const currentLang = languages.find(l => l.code === language);
 
   return (
-    <div className="relative" ref={dropdownRef}>
+    <div className="relative" ref={dropdownRef} style={{ zIndex: 10000 }}>
       <button
         ref={buttonRef}
         onClick={(e) => {
+          e.preventDefault();
           e.stopPropagation();
           setIsOpen(!isOpen);
         }}
-        onTouchStart={(e) => {
+        onTouchEnd={(e) => {
+          e.preventDefault();
           e.stopPropagation();
+          setIsOpen(!isOpen);
         }}
-        className="flex items-center gap-2 px-3 py-2 rounded-full bg-white border border-gray-200 hover:border-[#5C81D9] hover:bg-[#5C81D9]/5 active:bg-[#5C81D9]/10 transition-all duration-200 text-sm font-bold text-gray-700 touch-manipulation"
-        style={{ fontWeight: 600, WebkitTapHighlightColor: 'transparent' }}
+        className="flex items-center gap-2 px-3 py-2 rounded-full bg-white border border-gray-200 hover:border-[#5C81D9] hover:bg-[#5C81D9]/5 active:bg-[#5C81D9]/10 transition-all duration-200 text-sm font-bold text-gray-700"
+        style={{ fontWeight: 600, WebkitTapHighlightColor: 'transparent', touchAction: 'manipulation' }}
         aria-label="Change language"
         aria-expanded={isOpen}
         aria-haspopup="true"
@@ -71,44 +74,42 @@ export function LanguageSwitcher() {
         />
       </button>
       
-      <div 
-        className={`absolute top-full right-0 mt-1 w-44 bg-white border border-gray-200 rounded-xl shadow-xl z-[10000] transition-all duration-200 ${
-          isOpen 
-            ? 'opacity-100 visible translate-y-0' 
-            : 'opacity-0 invisible -translate-y-2 pointer-events-none'
-        }`}
-      >
-        {isOpen && (
-          <>
-            {languages.map((lang, index) => (
-              <button
-                key={lang.code}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleLanguageChange(lang.code);
-                }}
-                onTouchStart={(e) => {
-                  e.stopPropagation();
-                }}
-                className={`w-full text-left px-4 py-3 flex items-center gap-3 hover:bg-[#5C81D9]/10 active:bg-[#5C81D9]/20 transition-all duration-150 touch-manipulation ${
-                  index === 0 ? 'rounded-t-xl' : ''
-                } ${
-                  index === languages.length - 1 ? 'rounded-b-xl' : 'border-b border-gray-100'
-                } ${
-                  language === lang.code ? 'bg-[#5C81D9]/10 font-bold' : ''
-                }`}
-                style={{ WebkitTapHighlightColor: 'transparent' }}
-              >
-                <span className="text-lg">{lang.flag}</span>
-                <span className="text-sm flex-1">{lang.label}</span>
-                {language === lang.code && (
-                  <span className="text-[#5C81D9] text-xs">✓</span>
-                )}
-              </button>
-            ))}
-          </>
-        )}
-      </div>
+      {isOpen && (
+        <div 
+          className="absolute top-full right-0 mt-1 w-44 bg-white border border-gray-200 rounded-xl shadow-2xl"
+          style={{ zIndex: 10001 }}
+        >
+          {languages.map((lang, index) => (
+            <button
+              key={lang.code}
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                handleLanguageChange(lang.code);
+              }}
+              onTouchEnd={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                handleLanguageChange(lang.code);
+              }}
+              className={`w-full text-left px-4 py-3 flex items-center gap-3 hover:bg-[#5C81D9]/10 active:bg-[#5C81D9]/20 transition-colors duration-150 ${
+                index === 0 ? 'rounded-t-xl' : ''
+              } ${
+                index === languages.length - 1 ? 'rounded-b-xl' : 'border-b border-gray-100'
+              } ${
+                language === lang.code ? 'bg-[#5C81D9]/10 font-bold' : ''
+              }`}
+              style={{ WebkitTapHighlightColor: 'transparent', touchAction: 'manipulation' }}
+            >
+              <span className="text-lg">{lang.flag}</span>
+              <span className="text-sm flex-1">{lang.label}</span>
+              {language === lang.code && (
+                <span className="text-[#5C81D9] text-xs">✓</span>
+              )}
+            </button>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

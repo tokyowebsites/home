@@ -121,7 +121,7 @@ export function InteractiveShowcase() {
         t.basicFeature5,
       ],
       url: "tokyowebsites.com/entry-sample",
-      component: EntryPreview,
+      component: StandardPreview,
       icon: FileText,
       color: "bg-emerald-50 text-emerald-900",
       highlighted: false,
