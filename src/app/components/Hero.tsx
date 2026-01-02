@@ -60,10 +60,14 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
           className="mb-4 md:mb-8"
         >
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tighter text-white leading-tight drop-shadow-2xl flex items-center justify-center gap-2 md:gap-4">
-            <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 'inherit', fontWeight: 800 }}>Tokyo</span>
-            <span style={{ fontFamily: 'Playfair Display, serif', fontSize: 'inherit', fontWeight: 700 }} className="text-[#34d399]">Websites</span>
-          </h1>
+          <div className="flex items-center justify-center mb-4 md:mb-6">
+            <img 
+              src="/images/logo.jpg" 
+              alt="Tokyo Websites" 
+              className="max-w-[280px] sm:max-w-[360px] md:max-w-[480px] w-full h-auto drop-shadow-2xl"
+              style={{ maxHeight: '200px', objectFit: 'contain' }}
+            />
+          </div>
           <p className="mt-2 md:mt-3 text-xs md:text-sm text-[#34d399] font-bold tracking-wide uppercase">
             {t.slogan}
           </p>
