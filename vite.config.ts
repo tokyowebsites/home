@@ -2,7 +2,7 @@ import { defineConfig } from 'vite'
 import path from 'path'
 import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
-import { copyFileSync, existsSync } from 'fs'
+import { copyFileSync, existsSync, writeFileSync } from 'fs'
 
 // Plugin to copy CNAME and ensure .nojekyll exists
 const copyFilesPlugin = () => ({
@@ -12,9 +12,10 @@ const copyFilesPlugin = () => ({
     if (existsSync('CNAME')) {
       copyFileSync('CNAME', path.resolve(__dirname, 'dist/CNAME'))
     }
-    // Ensure .nojekyll exists
-    if (!existsSync('dist/.nojekyll')) {
-      copyFileSync(path.resolve(__dirname, 'public/.nojekyll'), path.resolve(__dirname, 'dist/.nojekyll'))
+    // Ensure .nojekyll exists (create empty file)
+    const nojekyllPath = path.resolve(__dirname, 'dist/.nojekyll')
+    if (!existsSync(nojekyllPath)) {
+      writeFileSync(nojekyllPath, '')
     }
   },
 })
