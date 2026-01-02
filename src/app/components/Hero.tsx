@@ -64,8 +64,8 @@ export function Hero() {
             <img 
               src="/images/tokyo-websites-logo.png" 
               alt="Tokyo Websites" 
-              className="w-[90vw] max-w-[400px] sm:max-w-[450px] md:max-w-[500px] h-auto drop-shadow-2xl"
-              style={{ objectFit: 'contain', maxHeight: '200px' }}
+              className="w-[90vw] max-w-[400px] sm:max-w-[450px] md:max-w-[600px] lg:max-w-[700px] h-auto drop-shadow-2xl"
+              style={{ objectFit: 'contain', maxHeight: '250px' }}
               loading="eager"
               decoding="async"
             />
