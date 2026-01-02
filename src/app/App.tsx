@@ -1,20 +1,12 @@
-import { Header } from "./components/Header";
-import { Hero } from "./components/Hero";
-import { InteractiveShowcase } from "./components/interactive-showcase/InteractiveShowcase";
-import { ProcessTimeline } from "./components/ProcessTimeline";
-import { Contact } from "./components/Contact";
-import { About } from "./components/About";
-import { BackgroundGradient } from "./components/ui/BackgroundGradient";
-import { Customers } from "./components/Customers";
-import { ConsultingSuite } from "./components/ConsultingSuite";
-import { useTranslation } from "./lib/TranslationContext";
-import { Toaster } from "sonner";
+import { Facebook, Instagram, Twitter } from "lucide-react";
 
 export default function App() {
   const { t } = useTranslation();
   
   return (
     <div className="min-h-screen bg-white overflow-x-hidden font-sans text-gray-900">
+      <SEO />
+      <StructuredData />
       <Toaster position="top-center" />
       <Header />
       <Hero />
@@ -45,8 +37,8 @@ export default function App() {
         <BackgroundGradient />
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid md:grid-cols-3 gap-10 text-gray-900">
-            <div>
+          <div className="grid md:grid-cols-4 gap-10 text-gray-900">
+            <div className="md:col-span-1">
               <div className="text-lg font-bold mb-3" style={{ fontWeight: 700 }}>
                 tokyowebsites.com
               </div>
@@ -56,6 +48,19 @@ export default function App() {
               <p className="text-xs text-gray-700 mt-3 leading-relaxed" style={{ fontWeight: 600 }}>
                 {t.footerTaglineEn}
               </p>
+              
+              {/* Social Links */}
+              <div className="flex gap-4 mt-6">
+                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-[#1877F2] transition-colors" aria-label="Facebook">
+                  <Facebook size={20} />
+                </a>
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-[#E4405F] transition-colors" aria-label="Instagram">
+                  <Instagram size={20} />
+                </a>
+                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-[#1DA1F2] transition-colors" aria-label="Twitter">
+                  <Twitter size={20} />
+                </a>
+              </div>
             </div>
 
             <div>
@@ -84,7 +89,7 @@ export default function App() {
               </ul>
             </div>
 
-            <div>
+            <div className="md:col-span-2">
               <div className="text-sm font-bold mb-4" style={{ fontWeight: 700 }}>
                 {t.contactInfo}
                 <span className="block text-xs text-gray-700 mt-1" style={{ fontWeight: 600 }}>{t.contactInfoEn}</span>

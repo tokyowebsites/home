@@ -61,14 +61,16 @@ export function Hero() {
           className="mb-4 md:mb-8 w-full"
         >
           <div className="flex items-center justify-center mb-3 md:mb-4 w-full">
-            <img 
-              src="/images/tokyo-websites-logo.png" 
-              alt="Tokyo Websites" 
-              className="w-[90vw] max-w-[400px] sm:max-w-[450px] md:max-w-[600px] lg:max-w-[700px] h-auto drop-shadow-2xl"
-              style={{ objectFit: 'contain', maxHeight: '250px' }}
-              loading="eager"
-              decoding="async"
-            />
+            <h1>
+              <img 
+                src="/images/tokyo-websites-logo.png" 
+                alt="Tokyo Websites - Web Design & Digital Branding in Tachikawa" 
+                className="w-[90vw] max-w-[400px] sm:max-w-[450px] md:max-w-[600px] lg:max-w-[700px] h-auto drop-shadow-2xl"
+                style={{ objectFit: 'contain', maxHeight: '250px' }}
+                loading="eager"
+                decoding="async"
+              />
+            </h1>
           </div>
           <p className="mt-1 md:mt-3 text-[10px] md:text-sm text-[#5C81D9] font-bold tracking-wide uppercase">
             {t.slogan}
