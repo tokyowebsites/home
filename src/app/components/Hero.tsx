@@ -60,12 +60,14 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
           className="mb-4 md:mb-8 w-full"
         >
-          <div className="flex items-center justify-center mb-4 md:mb-6 w-full">
+          <div className="flex items-center justify-center mb-3 md:mb-4 w-full">
             <img 
               src="/images/tokyo-websites-logo.png" 
               alt="Tokyo Websites" 
-              className="w-[90vw] max-w-[840px] sm:max-w-[1080px] md:max-w-[1440px] h-auto drop-shadow-2xl"
-              style={{ objectFit: 'contain' }}
+              className="w-[90vw] max-w-[400px] sm:max-w-[450px] md:max-w-[500px] h-auto drop-shadow-2xl"
+              style={{ objectFit: 'contain', maxHeight: '200px' }}
+              loading="eager"
+              decoding="async"
             />
           </div>
           <p className="mt-1 md:mt-3 text-[10px] md:text-sm text-[#5C81D9] font-bold tracking-wide uppercase">
