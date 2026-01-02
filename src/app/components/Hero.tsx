@@ -53,19 +53,19 @@ export function Hero() {
       </div>
 
       {/* Large Hero Branding Overlay */}
-      <div className="relative z-10 flex-1 flex flex-col justify-center items-center text-center px-4 md:px-6">
+      <div className="relative z-10 flex-1 flex flex-col justify-center items-center text-center">
         <motion.div
           initial={{ opacity: 0, y: 20, scale: 0.95 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          className="mb-4 md:mb-8"
+          className="mb-4 md:mb-8 w-full"
         >
-          <div className="flex items-center justify-center mb-4 md:mb-6">
+          <div className="flex items-center justify-center mb-4 md:mb-6 w-full">
             <img 
               src="/images/tokyo-websites-logo.png" 
               alt="Tokyo Websites" 
-              className="max-w-[280px] sm:max-w-[360px] md:max-w-[480px] w-full h-auto drop-shadow-2xl"
-              style={{ maxHeight: '200px', objectFit: 'contain' }}
+              className="w-[90vw] max-w-[840px] sm:max-w-[1080px] md:max-w-[1440px] h-auto drop-shadow-2xl"
+              style={{ objectFit: 'contain' }}
             />
           </div>
           <p className="mt-2 md:mt-3 text-xs md:text-sm text-[#34d399] font-bold tracking-wide uppercase">

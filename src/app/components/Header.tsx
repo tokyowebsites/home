@@ -42,7 +42,7 @@ export function Header() {
                 <span className="text-xl font-bold tracking-tight text-gray-900" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700 }}>
                   Tokyo
                 </span>
-                <span className="text-xl font-bold tracking-tight text-[#0f172a] ml-1" style={{ fontFamily: 'Playfair Display, serif', fontWeight: 700 }}>
+                <span className="text-xl font-bold tracking-tight text-[#0f172a] ml-1" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700 }}>
                   Websites
                 </span>
               </div>
