@@ -144,7 +144,7 @@ export function InteractiveShowcase() {
         t.standardFeature7,
       ],
       url: "tokyowebsites.com/standard-sample",
-      component: StandardPreview,
+      component: EntryPreview,
       icon: Building2,
       color: "bg-emerald-50 text-emerald-900",
       highlighted: true,
