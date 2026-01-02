@@ -39,7 +39,7 @@ export function Header() {
           >
             <div className="leading-none">
               <div className="flex items-baseline transition-transform group-hover:scale-[1.02]">
-                <span className="text-xl font-bold tracking-tight text-gray-900" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700 }}>
+                <span className="text-xl font-bold tracking-tight text-[#5C81D9]" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700 }}>
                   Tokyo
                 </span>
                 <span className="text-xl font-bold tracking-tight text-[#5C81D9] ml-1" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700 }}>
@@ -67,7 +67,7 @@ export function Header() {
             <LanguageSwitcher />
             <a
               href="#contact"
-              className="ml-3 inline-flex items-center gap-2 px-6 py-2.5 bg-[#059669] text-white text-sm font-bold hover:bg-emerald-600 transition-colors rounded-full shadow-lg shadow-emerald-100"
+              className="ml-3 inline-flex items-center gap-2 px-6 py-2.5 bg-[#5C81D9] text-white text-sm font-bold hover:bg-[#4a6fc7] transition-colors rounded-full shadow-lg shadow-[#5C81D9]/20"
               style={{ fontWeight: 700 }}
             >
               {t.freeConsultation}
@@ -106,7 +106,7 @@ export function Header() {
               <a
                 href="#contact"
                 onClick={() => setIsMenuOpen(false)}
-                className="mt-2 inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#059669] text-white text-sm font-bold hover:bg-emerald-600 transition-colors rounded-xl text-center shadow-md"
+                className="mt-2 inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#5C81D9] text-white text-sm font-bold hover:bg-[#4a6fc7] transition-colors rounded-xl text-center shadow-md"
                 style={{ fontWeight: 700 }}
               >
                 {t.freeConsultation}

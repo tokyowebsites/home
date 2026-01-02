@@ -68,11 +68,11 @@ export function Hero() {
               style={{ objectFit: 'contain' }}
             />
           </div>
-          <p className="mt-1 md:mt-3 text-[10px] md:text-sm text-[#34d399] font-bold tracking-wide uppercase">
+          <p className="mt-1 md:mt-3 text-[10px] md:text-sm text-[#5C81D9] font-bold tracking-wide uppercase">
             {t.slogan}
           </p>
           <p className="mt-2 md:mt-6 text-xs md:text-lg text-white/90 font-medium max-w-xl mx-auto leading-tight md:leading-relaxed drop-shadow-md px-2">
-            {t.heroSubtitle}<span className="text-[#34d399] font-bold">{t.heroSubtitleHighlight}</span>{t.heroSubtitle2}<br className="hidden md:block"/>
+            {t.heroSubtitle}<span className="text-[#5C81D9] font-bold">{t.heroSubtitleHighlight}</span>{t.heroSubtitle2}<br className="hidden md:block"/>
             <span className="text-[10px] md:text-sm opacity-80 mt-1 md:mt-2 block font-bold">{t.heroDelivery}</span>
           </p>
         </motion.div>
@@ -86,7 +86,7 @@ export function Hero() {
         >
           <button
             onClick={() => navigate("service")}
-            className="flex-1 bg-white text-gray-900 h-12 md:h-14 rounded-full font-bold text-xs md:text-sm flex items-center justify-center gap-2 hover:bg-gray-100 transition-all active:scale-95 shadow-xl"
+            className="flex-1 bg-white text-gray-900 h-12 md:h-14 rounded-full font-bold text-xs md:text-sm flex items-center justify-center gap-2 hover:bg-gray-100 transition-all active:scale-95 shadow-xl border-2 border-[#5C81D9]"
           >
             {t.whyCheap}
           </button>
@@ -96,7 +96,7 @@ export function Hero() {
               const contactSection = document.getElementById('contact');
               if(contactSection) contactSection.scrollIntoView({ behavior: 'smooth' });
             }}
-            className="flex-1 bg-[#059669] text-white h-12 md:h-14 rounded-full font-bold text-xs md:text-sm flex items-center justify-center gap-2 hover:bg-emerald-600 transition-all active:scale-95 shadow-xl"
+            className="flex-1 bg-[#5C81D9] text-white h-12 md:h-14 rounded-full font-bold text-xs md:text-sm flex items-center justify-center gap-2 hover:bg-[#4a6fc7] transition-all active:scale-95 shadow-xl"
           >
             {t.freeConsultation} <ArrowRight className="w-4 h-4" />
           </button>
@@ -121,7 +121,7 @@ export function Hero() {
           >
             <MousePointer2 className="w-6 h-6 text-black fill-white drop-shadow-xl" />
             <motion.div
-              className="absolute -top-2 -left-2 w-8 h-8 rounded-full bg-[#059669]/30"
+              className="absolute -top-2 -left-2 w-8 h-8 rounded-full bg-[#5C81D9]/30"
               animate={{ scale: [0, 1.5], opacity: [0, 0.8, 0] }}
               transition={{ duration: 0.5, delay: 2.2, repeat: Infinity, repeatDelay: 4.5 }}
             />
