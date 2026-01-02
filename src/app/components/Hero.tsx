@@ -68,13 +68,12 @@ export function Hero() {
               style={{ objectFit: 'contain' }}
             />
           </div>
-          <p className="mt-2 md:mt-3 text-xs md:text-sm text-[#34d399] font-bold tracking-wide uppercase">
+          <p className="mt-1 md:mt-3 text-[10px] md:text-sm text-[#34d399] font-bold tracking-wide uppercase">
             {t.slogan}
           </p>
-          <p className="mt-4 md:mt-6 text-sm md:text-lg text-white/90 font-medium max-w-xl mx-auto leading-relaxed drop-shadow-md">
+          <p className="mt-2 md:mt-6 text-xs md:text-lg text-white/90 font-medium max-w-xl mx-auto leading-tight md:leading-relaxed drop-shadow-md px-2">
             {t.heroSubtitle}<span className="text-[#34d399] font-bold">{t.heroSubtitleHighlight}</span>{t.heroSubtitle2}<br className="hidden md:block"/>
-            <br/>
-            <span className="text-xs md:text-sm opacity-80 mt-2 block font-bold">{t.heroDelivery}</span>
+            <span className="text-[10px] md:text-sm opacity-80 mt-1 md:mt-2 block font-bold">{t.heroDelivery}</span>
           </p>
         </motion.div>
 
@@ -135,44 +134,44 @@ export function Hero() {
   const ServiceView = () => {
     const { t } = useTranslation();
     return (
-      <div className="h-full flex flex-col px-4 py-6 md:px-12 md:py-12 overflow-y-auto">
-        <div className="text-center mb-6 md:mb-10">
-          <h2 className="text-xl md:text-4xl font-extrabold text-gray-900 mb-3 md:mb-4">
+      <div className="h-full flex flex-col px-3 py-4 md:px-12 md:py-12 overflow-y-auto">
+        <div className="text-center mb-4 md:mb-10">
+          <h2 className="text-lg md:text-4xl font-extrabold text-gray-900 mb-2 md:mb-4 leading-tight">
             {t.serviceTitle}<br/><span className="text-[#059669]">{t.serviceTitleHighlight}</span>{t.serviceTitle2}
           </h2>
-          <p className="text-xs md:text-base text-gray-600 font-medium max-w-2xl mx-auto leading-relaxed">
+          <p className="text-[11px] md:text-base text-gray-600 font-medium max-w-2xl mx-auto leading-tight md:leading-relaxed">
             {t.serviceDesc}<br className="hidden md:block"/>
             {t.serviceDesc2}
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-4 md:gap-6 max-w-4xl mx-auto w-full mb-6 md:mb-8">
-          <div className="bg-emerald-50 border border-emerald-100 p-5 md:p-6 rounded-2xl flex flex-col">
-            <Zap className="w-6 h-6 md:w-8 md:h-8 text-[#059669] mb-3 shrink-0" />
-            <h3 className="font-bold text-gray-900 mb-2 text-sm md:text-base shrink-0">{t.serviceFeature1Title}</h3>
-            <p className="text-xs md:text-sm text-gray-600 leading-relaxed">
+        <div className="grid md:grid-cols-2 gap-3 md:gap-6 max-w-4xl mx-auto w-full mb-4 md:mb-8">
+          <div className="bg-emerald-50 border border-emerald-100 p-3 md:p-6 rounded-xl md:rounded-2xl flex flex-col">
+            <Zap className="w-5 h-5 md:w-8 md:h-8 text-[#059669] mb-2 md:mb-3 shrink-0" />
+            <h3 className="font-bold text-gray-900 mb-1 md:mb-2 text-xs md:text-base shrink-0 leading-tight">{t.serviceFeature1Title}</h3>
+            <p className="text-[10px] md:text-sm text-gray-600 leading-tight md:leading-relaxed">
               {t.serviceFeature1Desc}
             </p>
           </div>
-          <div className="bg-slate-50 border border-slate-100 p-5 md:p-6 rounded-2xl flex flex-col">
-            <CheckCircle className="w-6 h-6 md:w-8 md:h-8 text-[#0f172a] mb-3 shrink-0" />
-            <h3 className="font-bold text-gray-900 mb-2 text-sm md:text-base shrink-0">{t.serviceFeature2Title}</h3>
-            <p className="text-xs md:text-sm text-gray-600 leading-relaxed">
+          <div className="bg-slate-50 border border-slate-100 p-3 md:p-6 rounded-xl md:rounded-2xl flex flex-col">
+            <CheckCircle className="w-5 h-5 md:w-8 md:h-8 text-[#0f172a] mb-2 md:mb-3 shrink-0" />
+            <h3 className="font-bold text-gray-900 mb-1 md:mb-2 text-xs md:text-base shrink-0 leading-tight">{t.serviceFeature2Title}</h3>
+            <p className="text-[10px] md:text-sm text-gray-600 leading-tight md:leading-relaxed">
               {t.serviceFeature2Desc}
             </p>
           </div>
         </div>
         
-        <div className="mt-auto pt-4 md:pt-6 text-center">
+        <div className="mt-auto pt-3 md:pt-6 text-center">
           <button
             onClick={() => {
                const plansSection = document.getElementById('plans');
                if(plansSection) plansSection.scrollIntoView({ behavior: 'smooth' });
             }}
-            className="inline-flex items-center gap-2 px-6 py-3 bg-[#059669] text-white font-bold rounded-full hover:bg-emerald-600 transition-all shadow-lg shadow-emerald-200 hover:shadow-xl"
+            className="inline-flex items-center gap-2 px-5 py-2 md:px-6 md:py-3 bg-[#059669] text-white text-xs md:text-sm font-bold rounded-full hover:bg-emerald-600 transition-all shadow-lg shadow-emerald-200 hover:shadow-xl"
             style={{ fontWeight: 700 }}
           >
-            {t.viewPlans} <ArrowRight className="w-4 h-4" />
+            {t.viewPlans} <ArrowRight className="w-3 h-3 md:w-4 md:h-4" />
           </button>
         </div>
       </div>
@@ -389,18 +388,16 @@ export function Hero() {
                   }`}>
                     <div className="h-14 md:h-16 px-3 md:px-6 flex items-center justify-between relative">
                       <div className="flex items-center gap-3 md:gap-4">
-                        {/* Back Arrow */}
-                        <button 
-                          type="button"
-                          onClick={() => currentView !== 'home' ? navigate('home') : null}
-                          className={`p-1.5 rounded-full transition-colors ${
-                            currentView === 'home'
-                              ? 'text-gray-400 cursor-default'
-                              : 'text-gray-700 hover:bg-gray-100'
-                          }`}
-                        >
-                          <ArrowLeft size={18} className="md:w-5 md:h-5" />
-                        </button>
+                        {/* Back Arrow - Only show when not on home */}
+                        {currentView !== 'home' && (
+                          <button 
+                            type="button"
+                            onClick={() => navigate('home')}
+                            className="p-1.5 rounded-full transition-colors text-gray-700 hover:bg-gray-100"
+                          >
+                            <ArrowLeft size={18} className="md:w-5 md:h-5" />
+                          </button>
+                        )}
 
                         <button
                           type="button"
@@ -408,7 +405,7 @@ export function Hero() {
                           className="flex items-center gap-2"
                           aria-label="ホームへ"
                         >
-                          <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-[#059669] to-emerald-600 text-white flex items-center justify-center text-sm font-bold">
+                          <div className="h-8 w-8 rounded-lg bg-[#5C81D9] text-white flex items-center justify-center text-sm font-bold">
                             <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: '0.875rem' }}>TW</span>
                           </div>
                         </button>
