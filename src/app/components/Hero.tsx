@@ -62,7 +62,7 @@ export function Hero() {
         >
           <div className="flex items-center justify-center mb-4 md:mb-6">
             <img 
-              src="/images/logo.jpg" 
+              src="/images/tokyo-websites-logo.png" 
               alt="Tokyo Websites" 
               className="max-w-[280px] sm:max-w-[360px] md:max-w-[480px] w-full h-auto drop-shadow-2xl"
               style={{ maxHeight: '200px', objectFit: 'contain' }}
