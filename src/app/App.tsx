@@ -1,4 +1,18 @@
 import { Facebook, Instagram, Twitter } from "lucide-react";
+import { Header } from "./components/Header";
+import { Hero } from "./components/Hero";
+import { InteractiveShowcase } from "./components/interactive-showcase/InteractiveShowcase";
+import { ProcessTimeline } from "./components/ProcessTimeline";
+import { Contact } from "./components/Contact";
+import { About } from "./components/About";
+import { BackgroundGradient } from "./components/ui/BackgroundGradient";
+import { Customers } from "./components/Customers";
+import { ConsultingSuite } from "./components/ConsultingSuite";
+import { MEOConsulting } from "./components/MEOConsulting";
+import { useTranslation } from "./lib/TranslationContext";
+import { Toaster } from "sonner";
+import { SEO } from "./components/SEO";
+import { StructuredData } from "./components/StructuredData";
 
 export default function App() {
   const { t } = useTranslation();
@@ -20,6 +34,8 @@ export default function App() {
 
       <ConsultingSuite />
       
+      <MEOConsulting />
+
       {/* Process Section with Hero Gradient */}
       <div className="relative bg-gray-50 overflow-hidden min-h-[600px]">
         <BackgroundGradient />

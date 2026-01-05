@@ -39,14 +39,14 @@ export function Header() {
           >
             <div className="leading-none">
               <div className="flex items-baseline transition-transform group-hover:scale-[1.02]">
-                <span className="text-xl font-bold tracking-tight text-[#5C81D9]" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700 }}>
+                <span className="text-xl font-bold tracking-tight text-[#5C81D9] font-sans">
                   Tokyo
                 </span>
-                <span className="text-xl font-bold tracking-tight text-[#5C81D9] ml-1" style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700 }}>
+                <span className="text-xl font-bold tracking-tight text-[#5C81D9] ml-1 font-sans">
                   Websites
                 </span>
               </div>
-              <div className="text-[10px] text-gray-500 font-semibold tracking-wide mt-1" style={{ fontWeight: 600 }}>
+              <div className="text-[10px] text-gray-500 font-semibold tracking-wide mt-1">
                 {t.slogan}
               </div>
             </div>

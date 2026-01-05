@@ -142,6 +142,7 @@ export function InteractiveShowcase() {
         t.standardFeature5,
         t.standardFeature6,
         t.standardFeature7,
+        t.meoStandardBonus, // Added bonus
       ],
       url: "tokyowebsites.com/standard-sample",
       component: EntryPreview,
@@ -164,6 +165,7 @@ export function InteractiveShowcase() {
         t.premiumFeature4,
         t.premiumFeature5,
         t.premiumFeature6,
+        t.meoPremiumBonus, // Added bonus
       ],
       url: "tokyowebsites.com/premium-sample",
       component: BusinessPreview,
@@ -220,6 +222,12 @@ export function InteractiveShowcase() {
               onClick={() => setSelectedPlan(index)} 
             />
           ))}
+        </div>
+
+        <div className="mt-8 text-center">
+          <p className="text-gray-500 text-xs md:text-sm">
+            {t.domainFeeNote}
+          </p>
         </div>
 
         <AnimatePresence>

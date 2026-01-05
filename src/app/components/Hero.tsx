@@ -10,6 +10,9 @@ import {
   MousePointer2,
   Phone,
   Sparkles,
+  Smartphone,
+  Cpu,
+  Scissors,
   Zap,
 } from "lucide-react";
 import { useMemo, useRef, useState } from "react";
@@ -65,7 +68,7 @@ export function Hero() {
               <img 
                 src="/images/tokyo-websites-logo.png" 
                 alt="Tokyo Websites - Web Design & Digital Branding in Tachikawa" 
-                className="w-[90vw] max-w-[400px] sm:max-w-[450px] md:max-w-[600px] lg:max-w-[700px] h-auto drop-shadow-2xl"
+                className="w-[90vw] max-w-[280px] sm:max-w-[450px] md:max-w-[600px] lg:max-w-[700px] h-auto drop-shadow-2xl"
                 style={{ objectFit: 'contain', maxHeight: '250px' }}
                 loading="eager"
                 decoding="async"
@@ -138,35 +141,42 @@ export function Hero() {
   const ServiceView = () => {
     const { t } = useTranslation();
     return (
-      <div className="h-full flex flex-col px-3 py-4 md:px-12 md:py-12 overflow-y-auto">
-        <div className="text-center mb-4 md:mb-10">
-          <h2 className="text-lg md:text-4xl font-extrabold text-gray-900 mb-2 md:mb-4 leading-tight">
+      <div className="h-full flex flex-col px-3 py-2 md:px-12 md:py-12 overflow-y-auto">
+        <div className="text-center mb-2 md:mb-10">
+          <h2 className="text-base md:text-4xl font-extrabold text-gray-900 mb-1 md:mb-4 leading-tight">
             {t.serviceTitle}<br/><span className="text-[#059669]">{t.serviceTitleHighlight}</span>{t.serviceTitle2}
           </h2>
-          <p className="text-[11px] md:text-base text-gray-600 font-medium max-w-2xl mx-auto leading-tight md:leading-relaxed">
+          <p className="text-[10px] md:text-base text-gray-600 font-medium max-w-2xl mx-auto leading-tight md:leading-relaxed">
             {t.serviceDesc}<br className="hidden md:block"/>
             {t.serviceDesc2}
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-3 md:gap-6 max-w-4xl mx-auto w-full mb-4 md:mb-8">
-          <div className="bg-emerald-50 border border-emerald-100 p-3 md:p-6 rounded-xl md:rounded-2xl flex flex-col">
-            <Zap className="w-5 h-5 md:w-8 md:h-8 text-[#059669] mb-2 md:mb-3 shrink-0" />
-            <h3 className="font-bold text-gray-900 mb-1 md:mb-2 text-xs md:text-base shrink-0 leading-tight">{t.serviceFeature1Title}</h3>
-            <p className="text-[10px] md:text-sm text-gray-600 leading-tight md:leading-relaxed">
+        <div className="grid md:grid-cols-3 gap-2 md:gap-6 max-w-5xl mx-auto w-full mb-2 md:mb-8">
+          <div className="bg-indigo-50 border border-indigo-100 p-2 md:p-6 rounded-xl md:rounded-2xl flex flex-col">
+            <Smartphone className="w-4 h-4 md:w-8 md:h-8 text-indigo-600 mb-1 md:mb-3 shrink-0" />
+            <h3 className="font-bold text-gray-900 mb-0.5 md:mb-2 text-xs md:text-base shrink-0 leading-tight">{t.serviceFeature1Title}</h3>
+            <p className="text-[9px] md:text-sm text-gray-600 leading-tight md:leading-relaxed">
               {t.serviceFeature1Desc}
             </p>
           </div>
-          <div className="bg-slate-50 border border-slate-100 p-3 md:p-6 rounded-xl md:rounded-2xl flex flex-col">
-            <CheckCircle className="w-5 h-5 md:w-8 md:h-8 text-[#0f172a] mb-2 md:mb-3 shrink-0" />
-            <h3 className="font-bold text-gray-900 mb-1 md:mb-2 text-xs md:text-base shrink-0 leading-tight">{t.serviceFeature2Title}</h3>
-            <p className="text-[10px] md:text-sm text-gray-600 leading-tight md:leading-relaxed">
+          <div className="bg-emerald-50 border border-emerald-100 p-2 md:p-6 rounded-xl md:rounded-2xl flex flex-col">
+            <Cpu className="w-4 h-4 md:w-8 md:h-8 text-[#059669] mb-1 md:mb-3 shrink-0" />
+            <h3 className="font-bold text-gray-900 mb-0.5 md:mb-2 text-xs md:text-base shrink-0 leading-tight">{t.serviceFeature2Title}</h3>
+            <p className="text-[9px] md:text-sm text-gray-600 leading-tight md:leading-relaxed">
               {t.serviceFeature2Desc}
+            </p>
+          </div>
+          <div className="bg-slate-50 border border-slate-100 p-2 md:p-6 rounded-xl md:rounded-2xl flex flex-col">
+            <Scissors className="w-4 h-4 md:w-8 md:h-8 text-slate-700 mb-1 md:mb-3 shrink-0" />
+            <h3 className="font-bold text-gray-900 mb-0.5 md:mb-2 text-xs md:text-base shrink-0 leading-tight">{t.serviceFeature3Title}</h3>
+            <p className="text-[9px] md:text-sm text-gray-600 leading-tight md:leading-relaxed">
+              {t.serviceFeature3Desc}
             </p>
           </div>
         </div>
         
-        <div className="mt-auto pt-3 md:pt-6 text-center">
+        <div className="mt-auto pt-2 md:pt-6 text-center">
           <button
             onClick={() => {
                const plansSection = document.getElementById('plans');
@@ -364,7 +374,7 @@ export function Hero() {
         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.org/noise.svg')] opacity-30 brightness-100 contrast-150 mix-blend-overlay"></div>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-16">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-10 md:pt-28 md:pb-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -376,7 +386,7 @@ export function Hero() {
             className="rounded-2xl border-gray-200 bg-gray-50"
             dark={false}
           >
-            <div className="h-[520px] sm:h-[560px] md:h-[760px] bg-white relative overflow-hidden">
+            <div className="h-[480px] sm:h-[560px] md:h-[760px] bg-white relative overflow-hidden">
               {/* Internal scrolling enabled for content that exceeds height */}
               <div 
                 ref={viewportRef} 

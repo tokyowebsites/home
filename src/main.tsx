@@ -6,8 +6,8 @@ import "./styles/index.css";
 
 createRoot(document.getElementById("root")!).render(
   <HelmetProvider>
-    <TranslationProvider>
-      <App />
-    </TranslationProvider>
+  <TranslationProvider>
+    <App />
+  </TranslationProvider>
   </HelmetProvider>
 );

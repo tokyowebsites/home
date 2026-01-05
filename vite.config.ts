@@ -4,7 +4,7 @@ import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
 import { copyFileSync, existsSync, writeFileSync } from 'fs'
 
-// Plugin to copy CNAME and ensure .nojekyll exists
+// Plugin to copy CNAME, videos, and ensure .nojekyll exists
 const copyFilesPlugin = () => ({
   name: 'copy-files',
   closeBundle() {
@@ -12,6 +12,20 @@ const copyFilesPlugin = () => ({
     if (existsSync('CNAME')) {
       copyFileSync('CNAME', path.resolve(__dirname, 'dist/CNAME'))
     }
+    // Copy video files from root or public to dist
+    const videoFiles = ['NanoOldSite.mov', 'NanoNewSite.mov']
+    videoFiles.forEach(video => {
+      // Try root directory first, then public
+      const rootPath = path.resolve(__dirname, video)
+      const publicPath = path.resolve(__dirname, 'public', video)
+      const distPath = path.resolve(__dirname, 'dist', video)
+      
+      if (existsSync(rootPath)) {
+        copyFileSync(rootPath, distPath)
+      } else if (existsSync(publicPath)) {
+        copyFileSync(publicPath, distPath)
+      }
+    })
     // Ensure .nojekyll exists (create empty file)
     const nojekyllPath = path.resolve(__dirname, 'dist/.nojekyll')
     if (!existsSync(nojekyllPath)) {
