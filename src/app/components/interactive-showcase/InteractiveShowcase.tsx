@@ -41,12 +41,16 @@ const PlanCard = ({ plan, index, onClick }: { plan: typeof plans[0]; index: numb
       
       <div className={`absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-300 pointer-events-none ${plan.color.split(" ")[0]}`}></div>
 
-      <div className="relative mb-8 pt-2">
-        <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-5 ${isHighlighted ? plan.color : 'bg-gray-700/50 text-gray-300'}`}>
-          <Icon size={28} />
+      <div className={`relative mb-8 pt-2`}>
+        <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-5 transition-transform duration-300 group-hover:scale-110 ${
+          isHighlighted 
+            ? 'bg-gradient-to-br from-emerald-400 to-emerald-600 text-white shadow-lg shadow-emerald-500/30' 
+            : plan.color
+        }`}>
+          <Icon size={32} />
         </div>
         <h3 className={`text-2xl font-bold ${isHighlighted ? 'text-gray-900' : 'text-white'}`}>{plan.nameJa}</h3>
-        <div className={`text-xs font-bold uppercase tracking-wider mt-1.5 ${isHighlighted ? 'text-gray-500' : 'text-gray-400'}`}>{plan.nameEn}</div>
+        <div className={`text-xs font-bold uppercase tracking-wider mt-1.5 ${isHighlighted ? 'text-emerald-600' : 'text-gray-400'}`}>{plan.nameEn}</div>
       </div>
 
       {isHighlighted && (
@@ -66,7 +70,11 @@ const PlanCard = ({ plan, index, onClick }: { plan: typeof plans[0]; index: numb
         
         {plan.turnaround && (
           <div className={`mt-3 text-xs font-semibold flex items-center gap-1.5 ${isHighlighted ? 'text-gray-600' : 'text-gray-300'}`}>
-            <span className="w-1.5 h-1.5 rounded-full bg-blue-500 inline-block"></span>
+            <span className={`w-1.5 h-1.5 rounded-full inline-block ${
+              plan.id === 'entry' ? 'bg-slate-400' : 
+              plan.id === 'standard' ? 'bg-emerald-500' : 
+              'bg-violet-500'
+            }`}></span>
             {t.turnaround}: {plan.turnaround}
           </div>
         )}
@@ -79,7 +87,11 @@ const PlanCard = ({ plan, index, onClick }: { plan: typeof plans[0]; index: numb
       <ul className="relative space-y-4 mb-8 flex-grow">
         {(expanded ? plan.features : plan.features.slice(0, 5)).map((feature, i) => (
           <li key={i} className={`flex items-start gap-3 text-xs font-bold ${isHighlighted ? 'text-gray-600' : 'text-gray-300'}`}>
-            <div className={`mt-0.5 w-4 h-4 rounded-full flex items-center justify-center shrink-0 ${isHighlighted ? 'bg-emerald-100 text-emerald-600' : 'bg-gray-700 text-gray-400'}`}>
+            <div className={`mt-0.5 w-4 h-4 rounded-full flex items-center justify-center shrink-0 ${
+              isHighlighted 
+                ? 'bg-emerald-100 text-emerald-600' 
+                : plan.id === 'entry' ? 'bg-slate-800 text-slate-400' : 'bg-violet-900/30 text-violet-400'
+            }`}>
                <Check size={10} strokeWidth={3} />
             </div>
             {feature}
@@ -87,7 +99,11 @@ const PlanCard = ({ plan, index, onClick }: { plan: typeof plans[0]; index: numb
         ))}
         {plan.features.length > 5 && (
           <li
-            className={`text-xs pl-7 cursor-pointer transition-colors flex items-center gap-1 font-bold ${isHighlighted ? 'text-emerald-600 hover:text-emerald-700' : 'text-blue-400 hover:text-blue-300'}`}
+            className={`text-xs pl-7 cursor-pointer transition-colors flex items-center gap-1 font-bold ${
+              isHighlighted 
+                ? 'text-emerald-600 hover:text-emerald-700' 
+                : plan.id === 'entry' ? 'text-slate-400 hover:text-slate-300' : 'text-violet-400 hover:text-violet-300'
+            }`}
             onClick={(e) => {
               e.stopPropagation();
               setExpanded(!expanded);
@@ -102,7 +118,9 @@ const PlanCard = ({ plan, index, onClick }: { plan: typeof plans[0]; index: numb
         <button className={`w-full py-4 rounded-xl text-sm font-bold transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl ${
             isHighlighted 
               ? 'bg-[#059669] text-white hover:bg-emerald-600 shadow-emerald-200/50' 
-              : 'bg-gray-700 text-white hover:bg-gray-600 border border-gray-600'
+              : plan.id === 'entry'
+                ? 'bg-slate-700 text-white hover:bg-slate-600 border border-slate-600'
+                : 'bg-violet-600 text-white hover:bg-violet-500 border border-violet-500 shadow-violet-900/20'
           }`} 
           style={{ fontWeight: 700 }}
         >
@@ -136,7 +154,8 @@ export function InteractiveShowcase() {
       url: "tokyowebsites.com/entry-sample",
       component: StandardPreview,
       icon: FileText,
-      color: "bg-blue-50 text-blue-900",
+      // Semantic: Neutral/Approachable (Blue-Gray/Slate)
+      color: "bg-slate-100 text-slate-900 border-slate-200", 
       highlighted: false,
     },
     {
@@ -155,12 +174,13 @@ export function InteractiveShowcase() {
         t.standardFeature5,
         t.standardFeature6,
         t.standardFeature7,
-        t.meoStandardBonus, // Added bonus
+        t.meoStandardBonus, 
       ],
       url: "tokyowebsites.com/standard-sample",
       component: EntryPreview,
       icon: Building2,
-      color: "bg-emerald-50 text-emerald-900",
+      // Semantic: Growth/Action (Emerald Green)
+      color: "bg-emerald-50 text-emerald-900 border-emerald-200",
       highlighted: true,
     },
     {
@@ -178,12 +198,13 @@ export function InteractiveShowcase() {
         t.premiumFeature4,
         t.premiumFeature5,
         t.premiumFeature6,
-        t.meoPremiumBonus, // Added bonus
+        t.meoPremiumBonus,
       ],
       url: "tokyowebsites.com/premium-sample",
       component: BusinessPreview,
       icon: Sparkles,
-      color: "bg-purple-50 text-purple-900",
+      // Semantic: Luxury/Exclusive (Violet/Gold)
+      color: "bg-violet-50 text-violet-900 border-violet-200",
       highlighted: false,
     },
   ];
