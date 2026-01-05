@@ -42,6 +42,10 @@ export function Customers() {
                   playsInline
                   className="w-full h-auto rounded-xl border-2 border-gray-200 shadow-md object-cover"
                   style={{ aspectRatio: '16/9' }}
+                  onTimeUpdate={(e) => {
+                    const video = e.currentTarget;
+                    if (video.playbackRate !== 0.8) video.playbackRate = 0.8;
+                  }}
                 />
               </div>
               
@@ -58,6 +62,10 @@ export function Customers() {
                   playsInline
                   className="w-full h-auto rounded-xl border-2 border-emerald-200 shadow-md object-cover"
                   style={{ aspectRatio: '16/9' }}
+                  onTimeUpdate={(e) => {
+                    const video = e.currentTarget;
+                    if (video.playbackRate !== 0.8) video.playbackRate = 0.8;
+                  }}
                 />
               </div>
             </div>
