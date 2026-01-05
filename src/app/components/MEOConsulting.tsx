@@ -61,10 +61,10 @@ export function MEOConsulting() {
 
           <div className="bg-white rounded-3xl p-8 shadow-2xl border border-emerald-100 relative">
             <div className="absolute top-0 right-0 -mt-4 -mr-4 bg-red-500 text-white text-xs font-bold px-4 py-2 rounded-full shadow-lg rotate-3">
-              Hot
+              {t.hot}
             </div>
             
-            <h3 className="text-2xl font-bold text-gray-900 mb-2">Monthly MEO Plan</h3>
+            <h3 className="text-2xl font-bold text-gray-900 mb-2">{t.meoPlanName}</h3>
             <div className="flex items-baseline gap-2 mb-6">
               <span className="text-4xl font-extrabold text-[#059669]">{t.meoPrice}</span>
             </div>
@@ -86,7 +86,7 @@ export function MEOConsulting() {
             </button>
             
             <p className="mt-4 text-xs text-center text-gray-400">
-              Powered by Stripe. Secure payment.
+              {t.securePayment}
             </p>
           </div>
         </div>

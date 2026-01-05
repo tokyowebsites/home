@@ -111,6 +111,9 @@ export const translations = {
     meoStandardBonus: '※スタンダードプランなら1ヶ月無料',
     meoPremiumBonus: '※プレミアムプランなら3ヶ月無料',
     domainFeeNote: '※ 新規ドメイン取得・維持管理が必要な場合、別途月額3,000円（税込）の管理費用が発生します（技術的な設定は全て代行します）。',
+    meoPlanName: '月額 MEOプラン',
+    hot: '人気',
+    securePayment: 'Stripeで安全に決済',
 
     basic: 'エントリー',
     basicEn: 'Basic (Entry)',
@@ -323,6 +326,9 @@ export const translations = {
     meoStandardBonus: '* 1 Month Free with Standard Plan',
     meoPremiumBonus: '* 3 Months Free with Premium Plan',
     domainFeeNote: '* If a new domain is required, a recurring management fee of ¥3,000/month applies (we handle all technical setup).',
+    meoPlanName: 'Monthly MEO Plan',
+    hot: 'Hot',
+    securePayment: 'Powered by Stripe. Secure payment.',
 
     basic: 'Basic',
     basicEn: 'Basic (Entry)',
@@ -532,9 +538,12 @@ export const translations = {
     meoFeature1: 'Google 지도 순위 상승 시책',
     meoFeature2: '리뷰 답글 대행 및 관리',
     meoFeature3: '매장 사진 촬영 및 업데이트',
-    meoStandardBonus: '※ 스탠다드 플랜 1개월 무료',
+    meoStandardBonus: '※ ス탠다드 플랜 1개월 무료',
     meoPremiumBonus: '※ 프리미엄 플랜 3개월 무료',
     domainFeeNote: '※ 신규 도메인이 필요한 경우, 관리비로 월 3,000엔이 발생합니다(당사가 관리합니다).',
+    meoPlanName: '월간 MEO 플랜',
+    hot: '인기',
+    securePayment: 'Stripe 결제로 안전합니다.',
 
     basic: '베이직',
     basicEn: 'Basic (Entry)',
