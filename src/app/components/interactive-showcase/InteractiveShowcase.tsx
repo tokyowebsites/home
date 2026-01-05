@@ -22,10 +22,10 @@ const PlanCard = ({ plan, index, onClick }: { plan: typeof plans[0]; index: numb
   return (
     <div
       onClick={onClick}
-      className={`group relative bg-white border rounded-2xl p-6 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 cursor-pointer flex flex-col h-auto min-h-0 overflow-visible ${
+      className={`group relative border rounded-2xl p-6 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 cursor-pointer flex flex-col h-auto min-h-0 overflow-visible ${
         isHighlighted 
-          ? "border-2 border-emerald-500 shadow-xl shadow-emerald-900/20 scale-100 md:scale-110 z-10" 
-          : "border-gray-800 bg-gray-800/50 backdrop-blur-sm text-gray-100 hover:bg-gray-800 hover:border-gray-600"
+          ? "bg-white border-2 border-emerald-500 shadow-xl shadow-emerald-900/20 scale-100 md:scale-110 z-10" 
+          : "bg-gray-800/90 border-gray-700/50 backdrop-blur-md hover:bg-gray-800 hover:border-gray-500"
       }`}
     >
       {isHighlighted && (
@@ -49,7 +49,7 @@ const PlanCard = ({ plan, index, onClick }: { plan: typeof plans[0]; index: numb
         }`}>
           <Icon size={32} />
         </div>
-        <h3 className={`text-2xl font-bold ${isHighlighted ? 'text-gray-900' : 'text-white'}`}>{plan.nameJa}</h3>
+        <h3 className={`text-2xl font-bold ${isHighlighted ? 'text-gray-900' : 'text-gray-100'}`}>{plan.nameJa}</h3>
         <div className={`text-xs font-bold uppercase tracking-wider mt-1.5 ${isHighlighted ? 'text-emerald-600' : 'text-gray-400'}`}>{plan.nameEn}</div>
       </div>
 
