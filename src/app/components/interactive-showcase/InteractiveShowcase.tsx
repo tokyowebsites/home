@@ -22,65 +22,72 @@ const PlanCard = ({ plan, index, onClick }: { plan: typeof plans[0]; index: numb
   return (
     <div
       onClick={onClick}
-      className={`group relative bg-white border rounded-2xl p-6 hover:shadow-xl transition-all duration-300 cursor-pointer flex flex-col h-auto min-h-0 overflow-visible ${
+      className={`group relative bg-white border rounded-2xl p-6 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 cursor-pointer flex flex-col h-auto min-h-0 overflow-visible ${
         isHighlighted 
-          ? "border-2 border-emerald-500 shadow-lg shadow-emerald-200/50 scale-105 md:scale-110" 
-          : "border-gray-200 hover:shadow-blue-200/50 hover:border-blue-500/50"
+          ? "border-2 border-emerald-500 shadow-xl shadow-emerald-900/20 scale-100 md:scale-110 z-10" 
+          : "border-gray-800 bg-gray-800/50 backdrop-blur-sm text-gray-100 hover:bg-gray-800 hover:border-gray-600"
       }`}
     >
       {isHighlighted && (
-        <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-          <div className="bg-red-500 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">
+        <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-full text-center">
+          <div className="inline-block bg-gradient-to-r from-emerald-500 to-emerald-400 text-white px-4 py-1.5 rounded-full text-xs font-bold shadow-lg shadow-emerald-900/40 tracking-wide uppercase">
             {t.januarySale}
           </div>
         </div>
       )}
       
+      {/* Glow effect for highligted card */}
+      {isHighlighted && <div className="absolute inset-0 bg-emerald-500/5 rounded-2xl pointer-events-none" />}
+      
       <div className={`absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-300 pointer-events-none ${plan.color.split(" ")[0]}`}></div>
 
-      <div className="relative mb-6">
-        <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 ${plan.color}`}>
-          <Icon size={24} />
+      <div className="relative mb-8 pt-2">
+        <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-5 ${isHighlighted ? plan.color : 'bg-gray-700/50 text-gray-300'}`}>
+          <Icon size={28} />
         </div>
-        <h3 className="text-xl font-bold text-gray-900">{plan.nameJa}</h3>
-        <div className="text-xs text-gray-500 font-bold uppercase tracking-wider mt-1">{plan.nameEn}</div>
+        <h3 className={`text-2xl font-bold ${isHighlighted ? 'text-gray-900' : 'text-white'}`}>{plan.nameJa}</h3>
+        <div className={`text-xs font-bold uppercase tracking-wider mt-1.5 ${isHighlighted ? 'text-gray-500' : 'text-gray-400'}`}>{plan.nameEn}</div>
       </div>
 
       {isHighlighted && (
-        <div className="relative mb-4">
+        <div className="relative mb-6">
           <CountdownTimer />
         </div>
       )}
 
-      <div className="relative mb-6 pb-6 border-b border-gray-100">
-        <div className="flex items-baseline gap-1 flex-wrap">
+      <div className={`relative mb-8 pb-8 border-b ${isHighlighted ? 'border-gray-100' : 'border-gray-700'}`}>
+        <div className="flex items-baseline gap-2 flex-wrap mb-1">
           {plan.originalPrice && (
             <span className="text-lg text-gray-400 line-through font-bold">{plan.originalPrice}</span>
           )}
-          <span className={`text-3xl font-bold tracking-tight ${isHighlighted ? "text-red-500" : "text-[#059669]"}`} style={{ fontWeight: 700 }}>{plan.price}</span>
-          <span className="text-xs text-gray-500 font-bold" style={{ fontWeight: 600 }}>{t.oneTime}</span>
+          <span className={`text-4xl font-extrabold tracking-tight ${isHighlighted ? "text-[#059669]" : "text-white"}`} style={{ fontWeight: 800 }}>{plan.price}</span>
         </div>
+        <div className={`text-xs font-bold ${isHighlighted ? 'text-gray-500' : 'text-gray-400'}`}>{t.oneTime}</div>
+        
         {plan.turnaround && (
-          <div className="mt-2 text-xs text-gray-600 font-semibold">
+          <div className={`mt-3 text-xs font-semibold flex items-center gap-1.5 ${isHighlighted ? 'text-gray-600' : 'text-gray-300'}`}>
+            <span className="w-1.5 h-1.5 rounded-full bg-blue-500 inline-block"></span>
             {t.turnaround}: {plan.turnaround}
           </div>
         )}
       </div>
 
-      <p className="relative text-sm text-gray-600 leading-relaxed mb-6">
+      <p className={`relative text-sm leading-relaxed mb-8 font-medium ${isHighlighted ? 'text-gray-600' : 'text-gray-300'}`}>
         {plan.desc}
       </p>
 
-      <ul className="relative space-y-3 mb-8 flex-grow">
-        {(expanded ? plan.features : plan.features.slice(0, 3)).map((feature, i) => (
-          <li key={i} className="flex items-center gap-3 text-xs font-bold text-gray-500">
-            <Check size={14} className="text-[#0f172a] shrink-0" />
+      <ul className="relative space-y-4 mb-8 flex-grow">
+        {(expanded ? plan.features : plan.features.slice(0, 5)).map((feature, i) => (
+          <li key={i} className={`flex items-start gap-3 text-xs font-bold ${isHighlighted ? 'text-gray-600' : 'text-gray-300'}`}>
+            <div className={`mt-0.5 w-4 h-4 rounded-full flex items-center justify-center shrink-0 ${isHighlighted ? 'bg-emerald-100 text-emerald-600' : 'bg-gray-700 text-gray-400'}`}>
+               <Check size={10} strokeWidth={3} />
+            </div>
             {feature}
           </li>
         ))}
-        {plan.features.length > 3 && (
+        {plan.features.length > 5 && (
           <li
-            className="text-xs text-gray-400 pl-7 cursor-pointer hover:text-emerald-600 transition-colors flex items-center gap-1"
+            className={`text-xs pl-7 cursor-pointer transition-colors flex items-center gap-1 font-bold ${isHighlighted ? 'text-emerald-600 hover:text-emerald-700' : 'text-blue-400 hover:text-blue-300'}`}
             onClick={(e) => {
               e.stopPropagation();
               setExpanded(!expanded);
@@ -92,7 +99,13 @@ const PlanCard = ({ plan, index, onClick }: { plan: typeof plans[0]; index: numb
       </ul>
 
       <div className="relative mt-auto">
-        <button className="w-full py-3 rounded-xl bg-[#059669] text-white text-sm font-bold group-hover:bg-emerald-600 transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-emerald-200" style={{ fontWeight: 700 }}>
+        <button className={`w-full py-4 rounded-xl text-sm font-bold transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl ${
+            isHighlighted 
+              ? 'bg-[#059669] text-white hover:bg-emerald-600 shadow-emerald-200/50' 
+              : 'bg-gray-700 text-white hover:bg-gray-600 border border-gray-600'
+          }`} 
+          style={{ fontWeight: 700 }}
+        >
           {t.seeMore} <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
         </button>
       </div>
@@ -123,7 +136,7 @@ export function InteractiveShowcase() {
       url: "tokyowebsites.com/entry-sample",
       component: StandardPreview,
       icon: FileText,
-      color: "bg-emerald-50 text-emerald-900",
+      color: "bg-blue-50 text-blue-900",
       highlighted: false,
     },
     {
@@ -170,7 +183,7 @@ export function InteractiveShowcase() {
       url: "tokyowebsites.com/premium-sample",
       component: BusinessPreview,
       icon: Sparkles,
-      color: "bg-emerald-50 text-emerald-900",
+      color: "bg-purple-50 text-purple-900",
       highlighted: false,
     },
   ];
@@ -190,30 +203,32 @@ export function InteractiveShowcase() {
     <section id="plans" className="py-24 bg-gray-900 relative">
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gray-700 to-transparent"></div>
+        {/* Subtle grid pattern for texture */}
+        <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "radial-gradient(#ffffff 1px, transparent 1px)", backgroundSize: "32px 32px" }}></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0f172a]/30 text-blue-400 text-xs font-bold mb-6 border border-blue-900/50">
+        <div className="text-center max-w-3xl mx-auto mb-20">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#059669]/10 text-[#059669] text-xs font-bold mb-8 border border-[#059669]/20 shadow-[0_0_15px_rgba(5,150,105,0.2)]">
              <Zap size={14} className="fill-current" />
              {t.deliveryPossible}
           </div>
-          <h2 className="text-4xl font-bold tracking-tight text-white mb-4">
+          <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight text-white mb-6 drop-shadow-sm leading-tight">
             {t.plansTitle}
           </h2>
-          <p className="text-gray-400 text-lg mb-6">
+          <p className="text-gray-400 text-lg md:text-xl mb-8 leading-relaxed font-light">
             {t.plansSubtitle}<br className="hidden sm:block"/>
             {t.plansSubtitle2}
           </p>
           
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-gray-300 text-xs font-medium">
+          <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/5 border border-white/10 text-gray-300 text-xs font-medium backdrop-blur-sm hover:bg-white/10 transition-colors cursor-default">
             <span>🌐</span>
             <span>{t.plansMultiLang}</span>
           </div>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6 relative z-10 max-w-6xl mx-auto items-start">
+        <div className="grid md:grid-cols-3 gap-8 relative z-10 max-w-6xl mx-auto items-start">
           {plans.map((plan, index) => (
             <PlanCard 
               key={plan.id} 
@@ -224,8 +239,8 @@ export function InteractiveShowcase() {
           ))}
         </div>
 
-        <div className="mt-8 text-center">
-          <p className="text-gray-500 text-xs md:text-sm">
+        <div className="mt-16 text-center max-w-2xl mx-auto">
+          <p className="text-gray-500 text-xs md:text-sm bg-gray-800/50 p-4 rounded-xl border border-gray-700">
             {t.domainFeeNote}
           </p>
         </div>
