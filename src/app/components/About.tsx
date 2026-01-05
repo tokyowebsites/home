@@ -1,4 +1,4 @@
-import { Globe, Users, Rocket } from "lucide-react";
+import { Globe, Users, Rocket, MapPin } from "lucide-react";
 import { useTranslation } from "../lib/TranslationContext";
 
 export function About() {
@@ -22,7 +22,7 @@ export function About() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 gap-8">
           <div className="bg-slate-50 p-8 rounded-2xl border border-slate-100">
             <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-sm mb-6 text-blue-600">
               <Users size={24} />
@@ -35,7 +35,7 @@ export function About() {
 
           <div className="bg-slate-50 p-8 rounded-2xl border border-slate-100">
             <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-sm mb-6 text-blue-600">
-              <Globe size={24} />
+              <MapPin size={24} />
             </div>
             <h3 className="text-xl font-bold text-gray-900 mb-3">{t.aboutCard2Title}</h3>
             <p className="text-gray-600 leading-relaxed">
@@ -50,6 +50,16 @@ export function About() {
             <h3 className="text-xl font-bold text-gray-900 mb-3">{t.aboutCard3Title}</h3>
             <p className="text-gray-600 leading-relaxed">
               {t.aboutCard3Desc}
+            </p>
+          </div>
+
+          <div className="bg-slate-50 p-8 rounded-2xl border border-slate-100">
+            <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-sm mb-6 text-blue-600">
+              <Globe size={24} />
+            </div>
+            <h3 className="text-xl font-bold text-gray-900 mb-3">{t.aboutCard4Title}</h3>
+            <p className="text-gray-600 leading-relaxed">
+              {t.aboutCard4Desc}
             </p>
           </div>
         </div>
