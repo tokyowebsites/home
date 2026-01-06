@@ -142,14 +142,46 @@ export function Hero() {
     const { t } = useTranslation();
     return (
       <div className="h-full flex flex-col px-3 py-2 md:px-12 md:py-12 overflow-y-auto">
-        <div className="text-center mb-2 md:mb-10">
-          <h2 className="text-base md:text-4xl font-extrabold text-gray-900 mb-1 md:mb-4 leading-tight">
-            {t.serviceTitle}<br/><span className="text-[#059669]">{t.serviceTitleHighlight}</span>{t.serviceTitle2}
-          </h2>
-          <p className="text-[10px] md:text-base text-gray-600 font-medium max-w-2xl mx-auto leading-tight md:leading-relaxed">
-            {t.serviceDesc}<br className="hidden md:block"/>
-            {t.serviceDesc2}
-          </p>
+        <div className="flex items-center justify-between mb-3 md:mb-6">
+          <div className="text-left">
+            <h2 className="text-base md:text-4xl font-extrabold text-gray-900 mb-1 md:mb-2 leading-tight">
+              {t.serviceTitle}<br/><span className="text-[#059669]">{t.serviceTitleHighlight}</span>{t.serviceTitle2}
+            </h2>
+            <p className="text-[10px] md:text-base text-gray-600 font-medium max-w-2xl leading-tight md:leading-relaxed">
+              {t.serviceDesc}<br className="hidden md:block"/>
+              {t.serviceDesc2}
+            </p>
+          </div>
+
+          <button
+            onClick={() => navigate("home")}
+            className="hidden md:inline-flex items-center gap-1 px-3 py-1.5 text-xs font-bold text-gray-700 rounded-full border border-gray-200 hover:bg-gray-100 transition-colors"
+          >
+            {t.back}
+          </button>
+        </div>
+
+        {/* Why cheap / affordability explanation */}
+        <div className="bg-white border border-emerald-100 rounded-2xl p-3 md:p-5 shadow-sm mb-3 md:mb-6">
+          <div className="flex items-start gap-3 mb-3">
+            <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center font-bold text-sm shrink-0">
+              ¥
+            </div>
+            <div>
+              <div className="text-sm md:text-lg font-extrabold text-gray-900 mb-1">{t.whyCheap}</div>
+              <p className="text-[11px] md:text-sm text-gray-700 font-semibold leading-snug">
+                {t.whyCheapIntro}
+              </p>
+            </div>
+          </div>
+          <div className="grid md:grid-cols-3 gap-2 md:gap-4">
+            {[t.whyCheapPoint1, t.whyCheapPoint2, t.whyCheapPoint3].map((point, idx) => (
+              <div key={idx} className="flex items-start gap-2 p-2.5 md:p-3 rounded-xl bg-emerald-50 border border-emerald-100">
+                <div className="mt-0.5 w-2 h-2 rounded-full bg-emerald-500 shrink-0" />
+                <div className="text-[11px] md:text-sm text-gray-800 font-bold leading-snug">{point}</div>
+              </div>
+            ))}
+          </div>
         </div>
 
         <div className="grid md:grid-cols-3 gap-2 md:gap-6 max-w-5xl mx-auto w-full mb-2 md:mb-8">

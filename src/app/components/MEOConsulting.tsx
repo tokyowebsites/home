@@ -1,6 +1,5 @@
 import { MapPin, TrendingUp, MessageSquare, Camera, Check } from "lucide-react";
 import { useTranslation } from "../lib/TranslationContext";
-import { stripePromise } from "../lib/stripe";
 
 export function MEOConsulting() {
   const { t } = useTranslation();
@@ -12,17 +11,14 @@ export function MEOConsulting() {
   ];
 
   const handleSubscribe = async () => {
-    // In a real application, you would call your backend to create a Checkout Session.
-    // const response = await fetch('/create-checkout-session', { method: 'POST' });
-    // const session = await response.json();
-    
-    // Then redirect to Checkout:
-    // const stripe = await stripePromise;
-    // const { error } = await stripe?.redirectToCheckout({ sessionId: session.id });
+    // Prototype checkout using a Stripe Payment Link.
+    // Replace this link with your own from Stripe Dashboard, or set VITE_STRIPE_PAYMENT_LINK.
+    const paymentLink =
+      import.meta.env.VITE_STRIPE_PAYMENT_LINK ||
+      'https://buy.stripe.com/test_4gw4kJfAT6Zz9DOeUW';
 
-    // Since we don't have a backend in this prototype, we'll use a placeholder Payment Link.
-    // Replace this with your actual Stripe Payment Link or backend integration.
-    window.open('https://buy.stripe.com/test_...', '_blank');
+    // Open the Payment Link directly (simplest reliable prototype flow).
+    window.open(paymentLink, '_blank', 'noopener');
   };
 
   return (
@@ -43,6 +39,9 @@ export function MEOConsulting() {
             <p className="text-xl text-[#059669] font-bold mb-6">
               {t.meoSubtitle}
             </p>
+          <p className="text-sm md:text-base text-gray-700 font-bold mb-4 leading-relaxed">
+            {t.meoUrgency}
+          </p>
             <p className="text-gray-600 text-lg mb-8 leading-relaxed">
               {t.meoDesc}
             </p>

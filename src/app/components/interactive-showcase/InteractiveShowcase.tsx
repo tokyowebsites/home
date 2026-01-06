@@ -2,7 +2,6 @@ import { useState, useEffect, lazy, Suspense } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { X, Check, ArrowRight, Zap, FileText, Files, Building2, Sparkles, Loader2 } from "lucide-react";
 import { MiniBrowser } from "./MiniBrowser";
-import { CountdownTimer } from "../CountdownTimer";
 import { useTranslation } from "../../lib/TranslationContext";
 
 const EntryPreview = lazy(() => import("./PlanPreviews").then(module => ({ default: module.EntryPreview })));
@@ -28,15 +27,7 @@ const PlanCard = ({ plan, index, onClick }: { plan: typeof plans[0]; index: numb
           : "bg-gray-800/90 border-gray-700/50 backdrop-blur-md hover:bg-gray-800 hover:border-gray-500"
       }`}
     >
-      {isHighlighted && (
-        <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-full text-center">
-          <div className="inline-block bg-gradient-to-r from-emerald-500 to-emerald-400 text-white px-4 py-1.5 rounded-full text-xs font-bold shadow-lg shadow-emerald-900/40 tracking-wide uppercase">
-            {t.januarySale}
-          </div>
-        </div>
-      )}
-      
-      {/* Glow effect for highligted card */}
+      {/* Glow effect for highlighted card */}
       {isHighlighted && <div className="absolute inset-0 bg-emerald-500/5 rounded-2xl pointer-events-none" />}
       
       <div className={`absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-300 pointer-events-none ${plan.color.split(" ")[0]}`}></div>
@@ -52,12 +43,6 @@ const PlanCard = ({ plan, index, onClick }: { plan: typeof plans[0]; index: numb
         <h3 className={`text-2xl font-bold ${isHighlighted ? 'text-gray-900' : 'text-gray-100'}`}>{plan.nameJa}</h3>
         <div className={`text-xs font-bold uppercase tracking-wider mt-1.5 ${isHighlighted ? 'text-emerald-600' : 'text-gray-400'}`}>{plan.nameEn}</div>
       </div>
-
-      {isHighlighted && (
-        <div className="relative mb-6">
-          <CountdownTimer />
-        </div>
-      )}
 
       <div className={`relative mb-8 pb-8 border-b ${isHighlighted ? 'border-gray-100' : 'border-gray-700'}`}>
         <div className="flex items-baseline gap-2 flex-wrap mb-1">

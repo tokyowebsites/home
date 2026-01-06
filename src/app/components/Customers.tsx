@@ -1,8 +1,37 @@
 import { Quote, Star, MapPin, ExternalLink, Play } from "lucide-react";
 import { useTranslation } from "../lib/TranslationContext";
+import { useEffect, useRef } from "react";
 
 export function Customers() {
   const { t } = useTranslation();
+  const beforeVideoRef = useRef<HTMLVideoElement>(null);
+  const afterVideoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    // Ensure videos play smoothly when component mounts
+    const playVideos = async () => {
+      if (beforeVideoRef.current) {
+        try {
+          beforeVideoRef.current.playbackRate = 1.0;
+          await beforeVideoRef.current.play();
+        } catch (error) {
+          console.log('Before video autoplay prevented:', error);
+        }
+      }
+      if (afterVideoRef.current) {
+        try {
+          afterVideoRef.current.playbackRate = 1.0;
+          await afterVideoRef.current.play();
+        } catch (error) {
+          console.log('After video autoplay prevented:', error);
+        }
+      }
+    };
+
+    // Small delay to ensure videos are loaded
+    const timer = setTimeout(playVideos, 100);
+    return () => clearTimeout(timer);
+  }, []);
   
   return (
     <section id="testimonials" className="py-24 bg-white relative overflow-hidden">
@@ -35,16 +64,27 @@ export function Customers() {
                   {t.beforeLabel}
                 </div>
                 <video
+                  ref={beforeVideoRef}
                   src="/NanoOldSite.mov"
                   autoPlay
                   loop
                   muted
                   playsInline
+                  preload="auto"
                   className="w-full h-auto rounded-xl border-2 border-gray-200 shadow-md object-cover"
                   style={{ aspectRatio: '16/9' }}
-                  onTimeUpdate={(e) => {
+                  onLoadedData={(e) => {
                     const video = e.currentTarget;
-                    if (video.playbackRate !== 0.8) video.playbackRate = 0.8;
+                    video.playbackRate = 1.0;
+                    video.play().catch(() => {});
+                  }}
+                  onCanPlay={(e) => {
+                    const video = e.currentTarget;
+                    video.playbackRate = 1.0;
+                    video.play().catch(() => {});
+                  }}
+                  onError={(e) => {
+                    console.error('Before video error:', e);
                   }}
                 />
               </div>
@@ -55,16 +95,34 @@ export function Customers() {
                   {t.afterLabel}
                 </div>
                 <video
+                  ref={afterVideoRef}
                   src="/NanoNewSite.mov"
                   autoPlay
                   loop
                   muted
                   playsInline
+                  preload="auto"
                   className="w-full h-auto rounded-xl border-2 border-emerald-200 shadow-md object-cover"
                   style={{ aspectRatio: '16/9' }}
-                  onTimeUpdate={(e) => {
+                  onLoadedData={(e) => {
                     const video = e.currentTarget;
-                    if (video.playbackRate !== 0.8) video.playbackRate = 0.8;
+                    video.playbackRate = 1.0;
+                    video.play().catch(() => {});
+                  }}
+                  onCanPlay={(e) => {
+                    const video = e.currentTarget;
+                    video.playbackRate = 1.0;
+                    video.play().catch(() => {});
+                  }}
+                  onWaiting={(e) => {
+                    // If video is buffering, ensure it continues playing
+                    const video = e.currentTarget;
+                    if (video.paused) {
+                      video.play().catch(() => {});
+                    }
+                  }}
+                  onError={(e) => {
+                    console.error('After video error:', e);
                   }}
                 />
               </div>

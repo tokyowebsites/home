@@ -66,15 +66,28 @@ export default function App() {
               </p>
               
               {/* Social Links */}
-              <div className="flex gap-4 mt-6">
-                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-[#1877F2] transition-colors" aria-label="Facebook">
-                  <Facebook size={20} />
+              <div className="flex gap-3 mt-6">
+                <a 
+                  href="https://instagram.com/TokyoWebsites" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#E4405F] to-[#F56040] text-white font-bold rounded-full hover:from-[#D32E4D] hover:to-[#E54F2F] transition-all shadow-md hover:shadow-lg hover:scale-105 active:scale-95" 
+                  aria-label="Instagram"
+                  style={{ fontWeight: 600 }}
+                >
+                  <Instagram size={18} />
+                  <span className="text-sm">Instagram</span>
                 </a>
-                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-[#E4405F] transition-colors" aria-label="Instagram">
-                  <Instagram size={20} />
-                </a>
-                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-[#1DA1F2] transition-colors" aria-label="Twitter">
-                  <Twitter size={20} />
+                <a 
+                  href="https://x.com/Tokyowebsites" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-black text-white font-bold rounded-full hover:bg-gray-800 transition-all shadow-md hover:shadow-lg hover:scale-105 active:scale-95" 
+                  aria-label="X (Twitter)"
+                  style={{ fontWeight: 600 }}
+                >
+                  <Twitter size={18} />
+                  <span className="text-sm">X</span>
                 </a>
               </div>
             </div>

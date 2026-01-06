@@ -63,6 +63,31 @@ export function About() {
             </p>
           </div>
         </div>
+
+        {/* Differentiators */}
+        <div className="mt-12 bg-gray-50 border border-gray-100 rounded-2xl p-6 md:p-8 shadow-sm">
+          <h3 className="text-xl md:text-2xl font-extrabold text-gray-900 mb-4">
+            {t.diffTitle}
+          </h3>
+          <div className="grid md:grid-cols-2 gap-4">
+            <div className="p-4 bg-white rounded-xl border border-gray-100 shadow-sm">
+              <div className="text-sm font-bold text-[#059669] mb-1">{t.diffFastTitle}</div>
+              <p className="text-sm text-gray-700 leading-relaxed">{t.diffFastDesc}</p>
+            </div>
+            <div className="p-4 bg-white rounded-xl border border-gray-100 shadow-sm">
+              <div className="text-sm font-bold text-[#059669] mb-1">{t.diffCasualTitle}</div>
+              <p className="text-sm text-gray-700 leading-relaxed">{t.diffCasualDesc}</p>
+            </div>
+            <div className="p-4 bg-white rounded-xl border border-gray-100 shadow-sm">
+              <div className="text-sm font-bold text-[#059669] mb-1">{t.diffMapsTitle}</div>
+              <p className="text-sm text-gray-700 leading-relaxed">{t.diffMapsDesc}</p>
+            </div>
+            <div className="p-4 bg-white rounded-xl border border-gray-100 shadow-sm">
+              <div className="text-sm font-bold text-[#059669] mb-1">{t.diffMultiTitle}</div>
+              <p className="text-sm text-gray-700 leading-relaxed">{t.diffMultiDesc}</p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
