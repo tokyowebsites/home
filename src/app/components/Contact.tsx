@@ -125,7 +125,7 @@ export function Contact() {
           </div>
 
           {/* Right: Minimal Form */}
-          <div className="bg-white/60 p-8 rounded-[2.5rem] border border-white shadow-2xl backdrop-blur-md">
+          <div className="bg-white/80 p-8 rounded-[2.5rem] border border-white shadow-2xl backdrop-blur-md">
             <form
               onSubmit={handleSubmit}
               action="https://formspree.io/f/mkoglvvk"
@@ -138,52 +138,52 @@ export function Contact() {
               <input type="hidden" name="_formname" value="Tokyo Websites Contact" />
               <div className="grid grid-cols-2 gap-5">
               <div className="space-y-2">
-                <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest pl-1">{t.name}</label>
+                <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest pl-1">{t.name}</label>
                 <input
                   type="text"
                   name="name"
                   required
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full bg-white border border-gray-100 rounded-xl px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-[#059669] focus:ring-1 focus:ring-[#059669] outline-none transition-all shadow-sm"
+                  className="w-full bg-slate-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-[#059669] focus:ring-1 focus:ring-[#059669] outline-none transition-all shadow-sm"
                   placeholder={t.name}
                 />
               </div>
               <div className="space-y-2">
-                <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest pl-1">{t.phone}</label>
+                <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest pl-1">{t.phone}</label>
                 <input
                   type="tel"
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
-                  className="w-full bg-white border border-gray-100 rounded-xl px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-[#059669] focus:ring-1 focus:ring-[#059669] outline-none transition-all shadow-sm"
+                  className="w-full bg-slate-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-[#059669] focus:ring-1 focus:ring-[#059669] outline-none transition-all shadow-sm"
                   placeholder={t.phone}
                 />
               </div>
             </div>
 
             <div className="space-y-2">
-              <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest pl-1">{t.email}</label>
+              <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest pl-1">{t.email}</label>
               <input
                 type="email"
                 name="email"
                 required
                 value={formData.email}
                 onChange={handleChange}
-                className="w-full bg-white border border-gray-100 rounded-xl px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-[#059669] focus:ring-1 focus:ring-[#059669] outline-none transition-all shadow-sm"
+                className="w-full bg-slate-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-[#059669] focus:ring-1 focus:ring-[#059669] outline-none transition-all shadow-sm"
                 placeholder="email@example.com"
               />
             </div>
 
             <div className="space-y-2">
-              <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest pl-1">{t.message}</label>
+              <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest pl-1">{t.message}</label>
               <textarea
                 name="message"
                 required
                 value={formData.message}
                 onChange={handleChange}
                 rows={4}
-                className="w-full bg-white border border-gray-100 rounded-xl px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-[#059669] focus:ring-1 focus:ring-[#059669] outline-none transition-all shadow-sm resize-none"
+                className="w-full bg-slate-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-[#059669] focus:ring-1 focus:ring-[#059669] outline-none transition-all shadow-sm resize-none"
                 placeholder={t.message}
               />
             </div>
@@ -191,7 +191,7 @@ export function Contact() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-gray-900 text-white font-black uppercase tracking-widest text-xs py-4 rounded-xl shadow-lg hover:bg-black transition-all active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+              className="w-full bg-[#059669] text-white font-black uppercase tracking-widest text-xs py-4 rounded-xl shadow-lg hover:bg-emerald-600 transition-all active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
             >
               {isSubmitting ? (
                 <>
@@ -217,12 +217,12 @@ export function Contact() {
             )}
             
             {/* Brief MEO survey CTA */}
-            <div className="mt-8 p-5 rounded-2xl border border-[#059669]/20 bg-[#059669]/5 shadow-sm">
+            <div className="mt-8 p-5 rounded-2xl border border-[#059669]/20 bg-emerald-50 shadow-sm">
               <div className="flex items-center gap-2 mb-3">
                 <div className="w-2 h-2 rounded-full bg-[#059669] animate-pulse" />
                 <div className="text-[10px] font-black text-[#059669] uppercase tracking-widest">Google Maps / MEO quick check</div>
               </div>
-              <p className="text-xs text-gray-600 font-bold leading-relaxed mb-4">
+              <p className="text-xs text-emerald-900 font-bold leading-relaxed mb-4">
                 {t.meoUrgency}
               </p>
               <a

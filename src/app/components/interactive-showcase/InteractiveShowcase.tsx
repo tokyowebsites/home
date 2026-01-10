@@ -40,7 +40,7 @@ const PlanCard = ({ plan, index, onClick }: { plan: Plan; index: number; onClick
       className={`group relative border rounded-2xl p-5 md:p-6 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 cursor-pointer flex flex-col h-full min-h-0 overflow-visible ${
         isHighlighted 
           ? "bg-white border-2 border-emerald-500 shadow-xl shadow-emerald-900/20 scale-100 z-10" 
-          : "bg-gray-800/90 border-gray-700/50 backdrop-blur-md hover:bg-gray-800 hover:border-gray-500"
+          : "bg-white/80 border-gray-200 backdrop-blur-md hover:bg-white hover:border-[#059669]/30 shadow-sm"
       }`}
     >
       {/* Glow effect for highlighted card */}
@@ -58,32 +58,32 @@ const PlanCard = ({ plan, index, onClick }: { plan: Plan; index: number; onClick
           <Icon size={32} className="hidden md:block" />
         </div>
         <div>
-          <h3 className={`text-lg md:text-2xl font-bold ${isHighlighted ? 'text-gray-900' : 'text-gray-100'}`}>{plan.nameJa}</h3>
-          <div className={`text-[9px] md:text-xs font-bold uppercase tracking-wider mt-0.5 md:mt-1.5 ${isHighlighted ? 'text-emerald-600' : 'text-gray-400'}`}>{plan.nameEn}</div>
+          <h3 className={`text-lg md:text-2xl font-bold ${isHighlighted ? 'text-gray-900' : 'text-gray-800'}`}>{plan.nameJa}</h3>
+          <div className={`text-[9px] md:text-xs font-bold uppercase tracking-wider mt-0.5 md:mt-1.5 ${isHighlighted ? 'text-emerald-600' : 'text-gray-500'}`}>{plan.nameEn}</div>
         </div>
       </div>
 
-      <div className={`relative mb-4 pb-4 md:mb-8 md:pb-8 border-b ${isHighlighted ? 'border-gray-100' : 'border-gray-700'}`}>
+      <div className={`relative mb-4 pb-4 md:mb-8 md:pb-8 border-b ${isHighlighted ? 'border-gray-100' : 'border-gray-100'}`}>
         <div className="flex items-baseline gap-2 flex-wrap mb-1">
           {plan.originalPrice && (
             <span className="text-sm md:text-lg text-gray-400 line-through font-bold">{plan.originalPrice}</span>
           )}
-          <span className={`text-2xl md:text-4xl font-extrabold tracking-tight ${isHighlighted ? "text-[#059669]" : "text-white"}`} style={{ fontWeight: 800 }}>{plan.price}</span>
+          <span className={`text-2xl md:text-4xl font-extrabold tracking-tight ${isHighlighted ? "text-[#059669]" : "text-gray-900"}`} style={{ fontWeight: 800 }}>{plan.price}</span>
         </div>
         <div className={`text-[9px] md:text-xs font-bold ${isHighlighted ? 'text-gray-500' : 'text-gray-400'}`}>{t.oneTime}</div>
       </div>
 
-      <p className={`relative text-[11px] md:text-sm leading-relaxed mb-4 md:mb-8 font-medium ${isHighlighted ? 'text-gray-600' : 'text-gray-300'} line-clamp-2 md:line-clamp-none`}>
+      <p className={`relative text-[11px] md:text-sm leading-relaxed mb-4 md:mb-8 font-medium ${isHighlighted ? 'text-gray-600' : 'text-gray-600'} line-clamp-2 md:line-clamp-none`}>
         {plan.desc}
       </p>
 
       <ul className="relative space-y-2 md:space-y-4 mb-5 md:mb-8 flex-grow">
         {(expanded ? plan.features : plan.features.slice(0, 3)).map((feature: string, i: number) => (
-          <li key={i} className={`flex items-start gap-2 md:gap-3 text-[10px] md:text-xs font-bold ${isHighlighted ? 'text-gray-600' : 'text-gray-300'}`}>
+          <li key={i} className={`flex items-start gap-2 md:gap-3 text-[10px] md:text-xs font-bold ${isHighlighted ? 'text-gray-600' : 'text-gray-700'}`}>
             <div className={`mt-0.5 w-3.5 h-3.5 rounded-full flex items-center justify-center shrink-0 ${
               isHighlighted 
                 ? 'bg-emerald-100 text-emerald-600' 
-                : plan.id === 'entry' ? 'bg-slate-800 text-slate-400' : 'bg-violet-900/30 text-violet-400'
+                : plan.id === 'entry' ? 'bg-slate-100 text-slate-500' : 'bg-violet-100 text-violet-500'
             }`}>
                <Check size={8} strokeWidth={4} />
             </div>
