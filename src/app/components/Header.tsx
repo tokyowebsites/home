@@ -29,6 +29,21 @@ export function Header() {
         scrolled ? "shadow-lg" : "shadow-sm"
       } bg-white/95 backdrop-blur-xl border-b border-gray-200 transition-all duration-300`}
     >
+      {/* Promo bar */}
+      <div className="bg-[#059669] text-white text-xs md:text-sm font-bold">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex items-center gap-2 justify-center">
+          <span className="px-2 py-0.5 rounded-full bg-white/20 border border-white/30">Free</span>
+          <span>{t.freeConsultation} — {t.consultationFree}</span>
+          <a
+            href="#contact"
+            className="inline-flex items-center gap-1 px-3 py-1 bg-white text-[#059669] rounded-full font-bold shadow-sm hover:scale-105 transition-transform"
+          >
+            {t.contact}
+            <ArrowRight size={14} />
+          </a>
+        </div>
+      </div>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-[76px]">
           {/* Wordmark */}

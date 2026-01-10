@@ -8,7 +8,6 @@ import { About } from "./components/About";
 import { BackgroundGradient } from "./components/ui/BackgroundGradient";
 import { Customers } from "./components/Customers";
 import { ConsultingSuite } from "./components/ConsultingSuite";
-import { MEOConsulting } from "./components/MEOConsulting";
 import { useTranslation } from "./lib/TranslationContext";
 import { Toaster } from "sonner";
 import { SEO } from "./components/SEO";
@@ -33,8 +32,6 @@ export default function App() {
       <InteractiveShowcase />
 
       <ConsultingSuite />
-      
-      <MEOConsulting />
 
       {/* Process Section with Hero Gradient */}
       <div className="relative bg-gray-50 overflow-hidden min-h-[600px]">

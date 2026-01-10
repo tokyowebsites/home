@@ -5,6 +5,7 @@ import { useTranslation } from "../lib/TranslationContext";
 
 export function Contact() {
   const { t } = useTranslation();
+  const meoSurveyLink = "https://docs.google.com/forms/d/1ocjF6YyypFDE_DKzlByTMPrYODsWYQkSmuIMl9zx9mU/edit";
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -90,6 +91,23 @@ export function Contact() {
               {t.consultationFree}<br/>
               {t.contactUs}
             </p>
+
+            {/* Brief MEO survey CTA */}
+            <div className="mt-4 mb-8 p-4 rounded-2xl border border-emerald-200 bg-emerald-50 text-emerald-900 shadow-sm max-w-xl">
+              <div className="text-sm font-extrabold mb-1">Google Maps / MEO quick check</div>
+              <p className="text-sm text-emerald-800 font-semibold leading-relaxed mb-3">
+                {t.meoUrgency}
+              </p>
+              <a
+                href={meoSurveyLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2 bg-[#059669] text-white text-sm font-bold rounded-lg shadow hover:bg-emerald-600 transition-colors"
+              >
+                {t.meoSurveyCta}
+                <ArrowRight size={16} />
+              </a>
+            </div>
 
             <div className="space-y-8">
               <div className="flex items-start gap-4 group">
