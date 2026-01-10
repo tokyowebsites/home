@@ -1,6 +1,5 @@
-import { Mail, MapPin, Clock, ArrowRight, CheckCircle, Loader2 } from "lucide-react";
+import { Mail, MapPin, Clock, ArrowRight, Loader2, CheckCircle } from "lucide-react";
 import { useState } from "react";
-import { db } from "../lib/db";
 import { toast } from "sonner";
 import { useTranslation } from "../lib/TranslationContext";
 
@@ -16,18 +15,46 @@ export function Contact() {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [lastError, setLastError] = useState<string | null>(null);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+    setLastError(null);
+
     try {
-      await db.createInquiry(formData);
+      const formEl = e.currentTarget;
+      const action = formEl.action || "https://formspree.io/f/mkoglvvk";
+      const fd = new FormData(formEl);
+
+      // Ensure Formspree helper fields are set
+      fd.set("_replyto", formData.email);
+      fd.set("_subject", "New Consultation Inquiry");
+      fd.set("_formname", "Tokyo Websites Contact");
+
+      const response = await fetch(action, {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: fd,
+      });
+
+      if (!response.ok) {
+        let reason = "Form submission failed";
+        try {
+          const errorData = await response.json();
+          if (errorData?.error) reason = errorData.error;
+          if (errorData?.errors?.length) reason = errorData.errors.map((e: any) => e.message).join("; ");
+        } catch (_) {
+          // ignore parse errors
+        }
+        setLastError(reason);
+        throw new Error(reason);
+      }
+
       setIsSuccess(true);
       toast.success("お問い合わせを受け付けました。");
       setFormData({ name: "", email: "", phone: "", plan: "", message: "" });
-      
-      // Reset success message after a delay
+      formEl.reset();
       setTimeout(() => setIsSuccess(false), 5000);
     } catch (error) {
       console.error(error);
@@ -71,7 +98,12 @@ export function Contact() {
                 </div>
                 <div>
                   <div className="text-sm font-bold text-white mb-1">{t.email}</div>
-                  <div className="text-gray-400">contact@tokyowebsites.com</div>
+                  <a
+                    href="mailto:contact@tokyowebsites.com"
+                    className="text-gray-400 hover:text-white transition-colors underline underline-offset-4"
+                  >
+                    contact@tokyowebsites.com
+                  </a>
                 </div>
               </div>
 
@@ -99,7 +131,16 @@ export function Contact() {
 
           {/* Right: Minimal Form */}
           <div className="bg-slate-900/50 p-8 rounded-3xl border border-white/10 shadow-2xl backdrop-blur-sm">
-            <form onSubmit={handleSubmit} className="space-y-5">
+            <form
+              onSubmit={handleSubmit}
+              action="https://formspree.io/f/mkoglvvk"
+              method="POST"
+              encType="multipart/form-data"
+              className="space-y-5"
+            >
+              <input type="hidden" name="_replyto" value={formData.email} />
+              <input type="hidden" name="_subject" value="New Consultation Inquiry" />
+              <input type="hidden" name="_formname" value="Tokyo Websites Contact" />
               <div className="grid grid-cols-2 gap-5">
               <div className="space-y-2">
                 <label className="text-xs font-bold text-gray-500 uppercase tracking-wider">{t.name}</label>
@@ -154,7 +195,7 @@ export function Contact() {
 
             <button
               type="submit"
-              disabled={isSubmitting || isSuccess}
+              disabled={isSubmitting}
               className="w-full bg-[#059669] text-white font-bold py-4 rounded-xl shadow-lg hover:bg-emerald-600 transition-all active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
             >
               {isSubmitting ? (
@@ -174,6 +215,11 @@ export function Contact() {
                 </>
               )}
             </button>
+            {lastError && (
+              <div className="text-xs text-red-300 bg-red-900/40 border border-red-700/40 rounded-lg p-3">
+                送信エラー: {lastError}
+              </div>
+            )}
             </form>
           </div>
 

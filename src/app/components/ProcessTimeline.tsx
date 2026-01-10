@@ -69,9 +69,9 @@ export function ProcessTimeline() {
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3" style={{ fontWeight: 700 }}>
             {t.processTitle}
           </h2>
-          <p className="text-gray-800" style={{ fontWeight: 600 }}>
+          <p className="text-gray-900" style={{ fontWeight: 600 }}>
             {t.processSubtitle}
-            <span className="ml-2 font-bold text-[#059669]" style={{ fontWeight: 700 }}>{t.processHighlight}</span>
+            <span className="ml-2 font-bold text-gray-900" style={{ fontWeight: 700 }}>{t.processHighlight}</span>
             <span className="block text-xs text-gray-700 mt-2">
               {t.processSubtitleEn}
             </span>

@@ -137,6 +137,7 @@ export function InteractiveShowcase() {
         t.basicFeature5,
       ],
       url: "tokyowebsites.com/entry-sample",
+      formUrl: "https://docs.google.com/forms/d/1PV7kulBVaAdvgVFq-DkJWSHKE7y_bE0hbzUbfa5LC7I/edit",
       component: StandardPreview,
       icon: FileText,
       // Semantic: Neutral/Approachable (Blue-Gray/Slate)
@@ -162,6 +163,7 @@ export function InteractiveShowcase() {
         t.meoStandardBonus, 
       ],
       url: "tokyowebsites.com/standard-sample",
+      formUrl: "https://docs.google.com/forms/d/10UIzS687wFUEduWF4396bE8voThLRrkp1RBP2ETxf7c/edit",
       component: EntryPreview,
       icon: Building2,
       // Semantic: Growth/Action (Emerald Green)
@@ -186,6 +188,7 @@ export function InteractiveShowcase() {
         t.meoPremiumBonus,
       ],
       url: "tokyowebsites.com/premium-sample",
+      formUrl: "https://docs.google.com/forms/d/1S6n2tqT_sUfRX1Lm6Ayf0QmCSy7LR36EaUoLxGvSeOM/edit?usp=forms_home&ouid=109641339829497082567&ths=true",
       component: BusinessPreview,
       icon: Sparkles,
       // Semantic: Luxury/Exclusive (Violet/Gold)
@@ -345,7 +348,9 @@ export function InteractiveShowcase() {
                   </div>
 
                   <a 
-                    href="#contact" 
+                    href={plans[selectedPlan].formUrl} 
+                    target="_blank"
+                    rel="noopener noreferrer"
                     onClick={() => setSelectedPlan(null)}
                     className="block w-full py-3 bg-[#059669] hover:bg-emerald-600 text-white font-bold rounded-xl text-center shadow-lg shadow-emerald-200 transition-all active:scale-[0.98] text-sm mt-auto"
                     style={{ fontWeight: 700 }}
