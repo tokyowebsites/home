@@ -218,19 +218,6 @@ export function Hero() {
             </p>
           </div>
         </div>
-        
-        <div className="mt-auto pt-2 md:pt-6 text-center">
-          <button
-            onClick={() => {
-               const plansSection = document.getElementById('plans');
-               if(plansSection) plansSection.scrollIntoView({ behavior: 'smooth' });
-            }}
-            className="inline-flex items-center gap-2 px-5 py-2 md:px-6 md:py-3 bg-[#059669] text-white text-xs md:text-sm font-bold rounded-full hover:bg-emerald-600 transition-all shadow-lg shadow-emerald-200 hover:shadow-xl"
-            style={{ fontWeight: 700 }}
-          >
-            {t.viewPlans} <ArrowRight className="w-3 h-3 md:w-4 md:h-4" />
-          </button>
-        </div>
       </div>
     );
   };
