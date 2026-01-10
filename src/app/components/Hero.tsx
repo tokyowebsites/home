@@ -152,70 +152,99 @@ export function Hero() {
   const ServiceView = () => {
     const { t } = useTranslation();
     return (
-      <div className="h-full flex flex-col px-4 py-4 md:px-12 md:py-12 overflow-y-auto">
-        <div className="flex items-center justify-between mb-3 md:mb-6">
-          <div className="text-left">
-            <h2 className="text-base md:text-4xl font-extrabold text-gray-900 mb-1 md:mb-2 leading-tight">
-              {t.serviceTitle}<br/><span className="text-[#059669]">{t.serviceTitleHighlight}</span>{t.serviceTitle2}
-            </h2>
-            <p className="text-[10px] md:text-base text-gray-600 font-medium max-w-2xl leading-tight md:leading-relaxed">
-              {t.serviceDesc}<br className="hidden md:block"/>
-              {t.serviceDesc2}
-            </p>
-          </div>
-
-          <button
-            onClick={() => navigate("home")}
-            className="hidden md:inline-flex items-center gap-1 px-3 py-1.5 text-xs font-bold text-gray-700 rounded-full border border-gray-200 hover:bg-gray-100 transition-colors"
+      <div className="h-full flex flex-col px-4 py-6 md:px-12 md:py-12 overflow-y-auto bg-[#F8F9FA]">
+        {/* Why Cheap? Header with Grid Tape Style */}
+        <div className="relative mb-12 flex justify-center">
+          <motion.div 
+            initial={{ rotate: -2, scale: 0.9, opacity: 0 }}
+            animate={{ rotate: -1, scale: 1, opacity: 1 }}
+            className="relative bg-white border border-gray-200 shadow-sm px-8 py-4 z-10"
+            style={{
+              backgroundImage: 'radial-gradient(#cbd5e1 1px, transparent 1px)',
+              backgroundSize: '12px 12px',
+            }}
           >
-            {t.back}
-          </button>
-        </div>
-
-        {/* Why cheap / affordability explanation */}
-        <div className="bg-white border border-emerald-100 rounded-2xl p-3 md:p-5 shadow-sm mb-3 md:mb-6">
-          <div className="flex items-start gap-3 mb-3">
-            <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center font-bold text-sm shrink-0">
-              ¥
-            </div>
-            <div>
-              <div className="text-sm md:text-lg font-extrabold text-gray-900 mb-1">{t.whyCheap}</div>
-              <p className="text-[11px] md:text-sm text-gray-700 font-semibold leading-snug">
-                {t.whyCheapIntro}
-              </p>
-            </div>
-          </div>
-          <div className="grid md:grid-cols-3 gap-2 md:gap-4">
-            {[t.whyCheapPoint1, t.whyCheapPoint2, t.whyCheapPoint3].map((point, idx) => (
-              <div key={idx} className="flex items-start gap-2 p-2.5 md:p-3 rounded-xl bg-emerald-50 border border-emerald-100">
-                <div className="mt-0.5 w-2 h-2 rounded-full bg-emerald-500 shrink-0" />
-                <div className="text-[11px] md:text-sm text-gray-800 font-bold leading-snug">{point}</div>
-              </div>
-            ))}
+            <h2 className="text-3xl md:text-5xl font-black text-[#1e293b] tracking-tight text-center italic">
+              {t.whyCheapTitle}
+            </h2>
+            {/* Tape edges effect */}
+            <div className="absolute -left-2 top-0 bottom-0 w-4 bg-[#F8F9FA] border-r border-gray-200" style={{ clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%, 25% 75%, 0% 50%, 25% 25%)' }} />
+            <div className="absolute -right-2 top-0 bottom-0 w-4 bg-[#F8F9FA] border-l border-gray-200" style={{ clipPath: 'polygon(0 0, 100% 0, 75% 25%, 100% 50%, 75% 75%, 100% 100%, 0 100%)' }} />
+          </motion.div>
+          {/* Decorative squiggles */}
+          <div className="absolute -top-6 -right-4 opacity-40">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M5 5C15 5 25 35 35 35" stroke="black" strokeWidth="2" strokeLinecap="round"/>
+            </svg>
           </div>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-2 md:gap-6 max-w-5xl mx-auto w-full mb-2 md:mb-8">
-          <div className="bg-indigo-50 border border-indigo-100 p-2 md:p-6 rounded-xl md:rounded-2xl flex flex-col">
-            <Smartphone className="w-4 h-4 md:w-8 md:h-8 text-indigo-600 mb-1 md:mb-3 shrink-0" />
-            <h3 className="font-bold text-gray-900 mb-0.5 md:mb-2 text-xs md:text-base shrink-0 leading-tight">{t.serviceFeature1Title}</h3>
-            <p className="text-[9px] md:text-sm text-gray-600 leading-tight md:leading-relaxed">
-              {t.serviceFeature1Desc}
+        {/* The 3 Main Points */}
+        <div className="flex flex-col gap-10 md:gap-14 max-w-2xl mx-auto mb-16">
+          {/* Point 1 */}
+          <motion.div 
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.2 }}
+            className="flex flex-col gap-3"
+          >
+            <div className="flex items-center gap-3">
+              <span className="text-2xl md:text-3xl font-bold border-2 border-black rounded-full w-10 h-10 md:w-12 md:h-12 flex items-center justify-center shrink-0">1</span>
+              <h3 className="text-xl md:text-3xl font-black text-gray-900 tracking-tight">
+                {t.whyCheapPoint1Title}
+              </h3>
+            </div>
+            <p className="text-sm md:text-xl text-gray-800 font-medium leading-relaxed pl-1">
+              {t.whyCheapPoint1Desc}
             </p>
+          </motion.div>
+
+          {/* Point 2 */}
+          <motion.div 
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.4 }}
+            className="flex flex-col gap-3"
+          >
+            <div className="flex items-center gap-3">
+              <span className="text-2xl md:text-3xl font-bold border-2 border-black rounded-full w-10 h-10 md:w-12 md:h-12 flex items-center justify-center shrink-0">2</span>
+              <h3 className="text-xl md:text-3xl font-black text-gray-900 tracking-tight">
+                {t.whyCheapPoint2Title}
+              </h3>
+            </div>
+            <p className="text-sm md:text-xl text-gray-800 font-medium leading-relaxed pl-1">
+              {t.whyCheapPoint2Desc}
+            </p>
+          </motion.div>
+
+          {/* Point 3 */}
+          <motion.div 
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.6 }}
+            className="flex flex-col gap-3"
+          >
+            <div className="flex items-center gap-3">
+              <span className="text-2xl md:text-3xl font-bold border-2 border-black rounded-full w-10 h-10 md:w-12 md:h-12 flex items-center justify-center shrink-0">3</span>
+              <h3 className="text-xl md:text-3xl font-black text-gray-900 tracking-tight">
+                {t.whyCheapPoint3Title}
+              </h3>
+            </div>
+            <p className="text-sm md:text-xl text-gray-800 font-medium leading-relaxed pl-1">
+              {t.whyCheapPoint3Desc}
+            </p>
+          </motion.div>
+        </div>
+
+        {/* Bottom Logo */}
+        <div className="mt-auto flex justify-center py-8">
+          <div className="text-2xl md:text-4xl font-serif text-gray-400 opacity-60 italic">
+            TokyoWebsites
           </div>
-          <div className="bg-emerald-50 border border-emerald-100 p-2 md:p-6 rounded-xl md:rounded-2xl flex flex-col">
-            <Cpu className="w-4 h-4 md:w-8 md:h-8 text-[#059669] mb-1 md:mb-3 shrink-0" />
-            <h3 className="font-bold text-gray-900 mb-0.5 md:mb-2 text-xs md:text-base shrink-0 leading-tight">{t.serviceFeature2Title}</h3>
-            <p className="text-[9px] md:text-sm text-gray-600 leading-tight md:leading-relaxed">
-              {t.serviceFeature2Desc}
-            </p>
-          </div>
-          <div className="bg-slate-50 border border-slate-100 p-2 md:p-6 rounded-xl md:rounded-2xl flex flex-col">
-            <Scissors className="w-4 h-4 md:w-8 md:h-8 text-slate-700 mb-1 md:mb-3 shrink-0" />
-            <h3 className="font-bold text-gray-900 mb-0.5 md:mb-2 text-xs md:text-base shrink-0 leading-tight">{t.serviceFeature3Title}</h3>
-            <p className="text-[9px] md:text-sm text-gray-600 leading-tight md:leading-relaxed">
-              {t.serviceFeature3Desc}
-            </p>
+          <div className="absolute bottom-4 right-4 opacity-40">
+             <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M5 35C15 35 25 5 35 5" stroke="black" strokeWidth="2" strokeLinecap="round"/>
+            </svg>
           </div>
         </div>
       </div>
