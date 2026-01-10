@@ -1,5 +1,5 @@
 import React from "react";
-import { Rocket, Globe, MapPin, Star, MessageSquare, Check, ArrowRight, Zap, FileText, Sparkles, Building2, ChevronDown } from "lucide-react";
+import { Rocket, Globe, MapPin, Star, MessageSquare, Check, ArrowRight, Zap, FileText, Sparkles, Building2 } from "lucide-react";
 import { useTranslation } from "../lib/TranslationContext";
 import { motion } from "motion/react";
 
@@ -41,14 +41,7 @@ export function Solutions() {
       desc: t.solution5Desc,
       color: "indigo",
       span: "md:col-span-3 lg:col-span-2"
-    },
-    {
-      icon: Check,
-      title: t.solution6Title,
-      desc: t.solution6Desc,
-      color: "rose",
-      span: "md:col-span-6 lg:col-span-6"
-    },
+    }
   ];
 
   const steps = [
@@ -105,12 +98,12 @@ export function Solutions() {
               >
                 <div className="relative z-10 flex flex-col items-start">
                   <div className={`w-12 h-12 md:w-16 md:h-16 rounded-2xl flex items-center justify-center mb-6 shadow-sm transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 ${
-                    item.color === 'blue' ? 'bg-blue-600 text-white' :
-                    item.color === 'emerald' ? 'bg-emerald-500 text-white' :
-                    item.color === 'violet' ? 'bg-violet-500 text-white' :
-                    item.color === 'amber' ? 'bg-amber-500 text-white' :
-                    item.color === 'indigo' ? 'bg-indigo-500 text-white' :
-                    'bg-rose-500 text-white'
+                    item.color === 'blue' ? 'bg-blue-600 text-white shadow-blue-200' :
+                    item.color === 'emerald' ? 'bg-emerald-500 text-white shadow-emerald-200' :
+                    item.color === 'violet' ? 'bg-violet-500 text-white shadow-violet-200' :
+                    item.color === 'amber' ? 'bg-amber-500 text-white shadow-amber-200' :
+                    item.color === 'indigo' ? 'bg-indigo-500 text-white shadow-indigo-200' :
+                    'bg-rose-500 text-white shadow-rose-200'
                   }`}>
                     <Icon size={24} className="md:size-8" />
                   </div>
@@ -122,30 +115,38 @@ export function Solutions() {
               </motion.div>
             );
           })}
-        </div>
 
-        {/* Simplified Process at the Bottom of Solutions */}
-        <div className="max-w-5xl mx-auto py-12 border-t border-gray-800">
-           <div className="text-center mb-10">
-              <h3 className="text-xl md:text-2xl font-black text-white tracking-tighter uppercase mb-2">{t.processTitle}</h3>
-              <div className="flex items-center justify-center gap-2 text-[#059669] text-[10px] font-black uppercase tracking-widest">
-                <Check size={12} strokeWidth={4} />
-                {t.processHighlight}
-              </div>
-           </div>
-           
-           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
-              {steps.map((step, idx) => (
-                <div key={idx} className="flex flex-col items-center text-center">
-                   <div className="w-12 h-12 rounded-xl bg-gray-800 border border-gray-700 flex items-center justify-center text-white mb-4 group-hover:bg-blue-600 transition-colors">
-                      <step.icon size={20} />
+          {/* New Integrated Process Box (Replacing Speed Launch) */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            className="md:col-span-6 lg:col-span-6 p-8 md:p-12 rounded-[2.5rem] bg-gradient-to-br from-gray-800/60 to-gray-900/60 border border-emerald-500/30 hover:border-emerald-500/50 transition-all duration-500 backdrop-blur-md"
+          >
+             <div className="flex flex-col md:flex-row items-center gap-12">
+                <div className="text-center md:text-left shrink-0">
+                   <h3 className="text-2xl md:text-4xl font-black text-white tracking-tighter uppercase mb-3">{t.processTitle}</h3>
+                   <div className="inline-flex items-center gap-2 text-[#059669] text-xs font-black uppercase tracking-widest bg-emerald-500/10 px-4 py-2 rounded-full border border-emerald-500/20">
+                      <Zap size={14} className="fill-current" />
+                      {t.processHighlight}
                    </div>
-                   <div className="text-[10px] font-black text-[#059669] uppercase tracking-widest mb-1">{step.number}</div>
-                   <div className="text-xs font-black text-white uppercase tracking-tight">{step.title}</div>
-                   <div className="text-[9px] font-bold text-gray-500 uppercase tracking-widest mt-0.5">{step.titleEn}</div>
                 </div>
-              ))}
-           </div>
+                
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-12 flex-grow">
+                   {steps.map((step, idx) => (
+                      <div key={idx} className="flex flex-col items-center md:items-start text-center md:text-left group/step">
+                         <div className="w-10 h-10 rounded-xl bg-gray-900 border border-gray-700 flex items-center justify-center text-white mb-4 group-hover/step:bg-emerald-600 group-hover/step:border-emerald-500 transition-all duration-300">
+                            <step.icon size={18} />
+                         </div>
+                         <div className="text-[10px] font-black text-emerald-500 uppercase tracking-widest mb-1">{step.number}</div>
+                         <div className="text-xs md:text-sm font-black text-white uppercase tracking-tight">{step.title}</div>
+                         <div className="text-[9px] font-bold text-gray-500 uppercase tracking-widest mt-0.5">{step.titleEn}</div>
+                      </div>
+                   ))}
+                </div>
+             </div>
+          </motion.div>
         </div>
 
         {/* Why Us? Badges */}

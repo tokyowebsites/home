@@ -4,7 +4,6 @@ import { Header } from "./components/Header";
 import { Hero } from "./components/Hero";
 import { Solutions } from "./components/Solutions";
 import { Plans } from "./components/Plans";
-import { ProcessTimeline } from "./components/ProcessTimeline";
 import { Contact } from "./components/Contact";
 import { BackgroundGradient } from "./components/ui/BackgroundGradient";
 import { Customers } from "./components/Customers";
