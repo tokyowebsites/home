@@ -333,7 +333,7 @@ export function InteractiveShowcase() {
                         </p>
                       </div>
 
-                      <div className="mb-8">
+                      <div className="mb-4">
                         <h4 className="text-[10px] font-bold text-gray-400 uppercase tracking-[0.2em] mb-4">{t.includedFeatures}</h4>
                         <ul className="space-y-3">
                           {plans[selectedPlan].features.map((feature, i) => (
@@ -346,16 +346,6 @@ export function InteractiveShowcase() {
                           ))}
                         </ul>
                       </div>
-
-                      <a 
-                        href={plans[selectedPlan].formUrl} 
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="block w-full py-4 bg-[#059669] hover:bg-emerald-700 text-white font-bold rounded-2xl text-center shadow-lg shadow-emerald-200 transition-all active:scale-[0.98] text-sm mt-auto"
-                        style={{ fontWeight: 800 }}
-                      >
-                        {t.consultThisPlan}
-                      </a>
                     </div>
                   </div>
 
