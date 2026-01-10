@@ -28,7 +28,7 @@ interface Plan {
   highlighted: boolean;
 }
 
-// --- Plan Card Component ---
+// v2.1 - Enhanced Mobile UI
 const PlanCard = ({ plan, index, onClick }: { plan: Plan; index: number; onClick: () => void }) => {
   const Icon = plan.icon;
   const [expanded, setExpanded] = useState(false);
@@ -49,59 +49,54 @@ const PlanCard = ({ plan, index, onClick }: { plan: Plan; index: number; onClick
       
       <div className={`absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-300 pointer-events-none ${plan.color.split(" ")[0]}`}></div>
 
-      <div className="relative mb-6 pt-1 flex items-center gap-4 md:block md:mb-8 md:pt-2">
-        <div className={`w-12 h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl flex items-center justify-center md:mb-5 transition-transform duration-300 group-hover:scale-110 shrink-0 ${
+      <div className="relative mb-4 pt-1 flex items-center gap-3 md:block md:mb-8 md:pt-2">
+        <div className={`w-10 h-10 md:w-16 md:h-16 rounded-lg md:rounded-2xl flex items-center justify-center md:mb-5 transition-transform duration-300 group-hover:scale-110 shrink-0 ${
           isHighlighted 
             ? 'bg-gradient-to-br from-emerald-400 to-emerald-600 text-white shadow-lg shadow-emerald-500/30' 
             : plan.color
         }`}>
-          <Icon size={isHighlighted ? 24 : 20} className="md:hidden" />
+          <Icon size={18} className="md:hidden" />
           <Icon size={32} className="hidden md:block" />
         </div>
         <div>
-          <h3 className={`text-xl md:text-2xl font-bold ${isHighlighted ? 'text-gray-900' : 'text-gray-100'}`}>{plan.nameJa}</h3>
-          <div className={`text-[10px] md:text-xs font-bold uppercase tracking-wider mt-0.5 md:mt-1.5 ${isHighlighted ? 'text-emerald-600' : 'text-gray-400'}`}>{plan.nameEn}</div>
+          <h3 className={`text-lg md:text-2xl font-bold ${isHighlighted ? 'text-gray-900' : 'text-gray-100'}`}>{plan.nameJa}</h3>
+          <div className={`text-[9px] md:text-xs font-bold uppercase tracking-wider mt-0.5 md:mt-1.5 ${isHighlighted ? 'text-emerald-600' : 'text-gray-400'}`}>{plan.nameEn}</div>
         </div>
       </div>
 
-      <div className={`relative mb-6 pb-6 md:mb-8 md:pb-8 border-b ${isHighlighted ? 'border-gray-100' : 'border-gray-700'}`}>
+      <div className={`relative mb-4 pb-4 md:mb-8 md:pb-8 border-b ${isHighlighted ? 'border-gray-100' : 'border-gray-700'}`}>
         <div className="flex items-baseline gap-2 flex-wrap mb-1">
           {plan.originalPrice && (
-            <span className="text-base md:text-lg text-gray-400 line-through font-bold">{plan.originalPrice}</span>
+            <span className="text-sm md:text-lg text-gray-400 line-through font-bold">{plan.originalPrice}</span>
           )}
-          <span className={`text-3xl md:text-4xl font-extrabold tracking-tight ${isHighlighted ? "text-[#059669]" : "text-white"}`} style={{ fontWeight: 800 }}>{plan.price}</span>
+          <span className={`text-2xl md:text-4xl font-extrabold tracking-tight ${isHighlighted ? "text-[#059669]" : "text-white"}`} style={{ fontWeight: 800 }}>{plan.price}</span>
         </div>
-        <div className={`text-[10px] md:text-xs font-bold ${isHighlighted ? 'text-gray-500' : 'text-gray-400'}`}>{t.oneTime}</div>
-        
-        {plan.turnaround && (
-          <div className={`mt-3 text-[10px] md:text-xs font-semibold flex items-center gap-1.5 ${isHighlighted ? 'text-gray-600' : 'text-gray-300'}`}>
-            <span className={`w-1.5 h-1.5 rounded-full inline-block ${
-              plan.id === 'entry' ? 'bg-slate-400' : 
-              plan.id === 'standard' ? 'bg-emerald-500' : 
-              'bg-violet-500'
-            }`}></span>
-            {t.turnaround}: {plan.turnaround}
-          </div>
-        )}
+        <div className={`text-[9px] md:text-xs font-bold ${isHighlighted ? 'text-gray-500' : 'text-gray-400'}`}>{t.oneTime}</div>
       </div>
 
-      <p className={`relative text-xs md:text-sm leading-relaxed mb-6 md:mb-8 font-medium ${isHighlighted ? 'text-gray-600' : 'text-gray-300'}`}>
+      <p className={`relative text-[11px] md:text-sm leading-relaxed mb-4 md:mb-8 font-medium ${isHighlighted ? 'text-gray-600' : 'text-gray-300'} line-clamp-2 md:line-clamp-none`}>
         {plan.desc}
       </p>
 
-      <ul className="relative space-y-3 md:space-y-4 mb-6 md:mb-8 flex-grow">
-        {(expanded ? plan.features : plan.features.slice(0, 5)).map((feature: string, i: number) => (
-          <li key={i} className={`flex items-start gap-3 text-[11px] md:text-xs font-bold ${isHighlighted ? 'text-gray-600' : 'text-gray-300'}`}>
-            <div className={`mt-0.5 w-4 h-4 rounded-full flex items-center justify-center shrink-0 ${
+      <ul className="relative space-y-2 md:space-y-4 mb-5 md:mb-8 flex-grow">
+        {(expanded ? plan.features : plan.features.slice(0, 3)).map((feature: string, i: number) => (
+          <li key={i} className={`flex items-start gap-2 md:gap-3 text-[10px] md:text-xs font-bold ${isHighlighted ? 'text-gray-600' : 'text-gray-300'}`}>
+            <div className={`mt-0.5 w-3.5 h-3.5 rounded-full flex items-center justify-center shrink-0 ${
               isHighlighted 
                 ? 'bg-emerald-100 text-emerald-600' 
                 : plan.id === 'entry' ? 'bg-slate-800 text-slate-400' : 'bg-violet-900/30 text-violet-400'
             }`}>
-               <Check size={10} strokeWidth={3} />
+               <Check size={8} strokeWidth={4} />
             </div>
-            {feature}
+            <span className="truncate">{feature}</span>
           </li>
         ))}
+        {plan.features.length > 3 && !expanded && (
+          <li className={`text-[10px] pl-5 font-bold ${isHighlighted ? 'text-gray-400' : 'text-gray-500'}`}>
+            + {plan.features.length - 3} more features...
+          </li>
+        )}
+      </ul>
         {plan.features.length > 5 && (
           <li
             className={`text-[11px] md:text-xs pl-7 cursor-pointer transition-colors flex items-center gap-1 font-bold ${
@@ -257,9 +252,9 @@ export function InteractiveShowcase() {
           </div>
         </div>
 
-        <div className="flex overflow-x-auto pb-10 px-4 -mx-4 md:mx-0 md:px-0 md:pb-0 md:grid md:grid-cols-3 gap-6 md:gap-8 relative z-10 max-w-6xl mx-auto items-stretch snap-x no-scrollbar md:overflow-visible">
+        <div className="flex overflow-x-auto pb-12 px-6 -mx-6 md:mx-0 md:px-0 md:pb-0 md:grid md:grid-cols-3 gap-5 md:gap-8 relative z-10 max-w-6xl mx-auto items-stretch snap-x scrollbar-hide md:overflow-visible">
           {plans.map((plan, index) => (
-            <div key={plan.id} className="min-w-[280px] sm:min-w-[320px] md:min-w-0 snap-center first:ml-0 last:mr-0">
+            <div key={plan.id} className="min-w-[260px] sm:min-w-[300px] md:min-w-0 snap-center first:pl-6 last:pr-6 md:first:pl-0 md:last:pr-0">
               <PlanCard 
                 plan={plan} 
                 index={index} 
