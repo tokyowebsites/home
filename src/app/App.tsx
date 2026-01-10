@@ -35,19 +35,20 @@ export default function App() {
         <Contact />
       </div>
 
-      {/* Footer (Dark) */}
-      <footer className="relative overflow-hidden py-10 bg-gray-900 text-white">
-        {/* Subtle grid pattern for texture */}
-        <div className="absolute inset-0 pointer-events-none opacity-[0.03]" style={{ backgroundImage: "radial-gradient(#ffffff 1px, transparent 1px)", backgroundSize: "32px 32px" }}></div>
-        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gray-700 to-transparent"></div>
-        
+      {/* Footer (Light - matching Header) */}
+      <footer className="relative overflow-hidden py-10 bg-white/95 backdrop-blur-xl border-t border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-8 border-b border-white/10 pb-8">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-8 border-b border-gray-100 pb-8">
             <div className="flex flex-col items-center md:items-start text-center md:text-left">
-              <a href="#" className="text-xl font-black text-white hover:text-[#059669] transition-colors tracking-tighter">
-                tokyowebsites.com
+              <a href="#" className="flex items-baseline transition-transform hover:scale-[1.02]">
+                <span className="text-xl font-bold tracking-tight text-[#5C81D9]">
+                  Tokyo
+                </span>
+                <span className="text-xl font-bold tracking-tight text-[#5C81D9] ml-1">
+                  Websites
+                </span>
               </a>
-              <p className="text-[10px] md:text-xs text-gray-400 font-bold mt-1 uppercase tracking-widest">
+              <p className="text-[10px] md:text-xs text-gray-500 font-bold mt-1 uppercase tracking-widest">
                 {t.footerTaglineEn}
               </p>
             </div>
@@ -63,7 +64,7 @@ export default function App() {
                 <a
                   key={l.href}
                   href={l.href}
-                  className="text-xs font-black text-white hover:text-[#059669] transition-colors uppercase tracking-wider"
+                  className="text-xs font-black text-gray-700 hover:text-[#5C81D9] transition-colors uppercase tracking-wider"
                 >
                   {l.label}
                 </a>
@@ -75,7 +76,7 @@ export default function App() {
                 href="https://instagram.com/TokyoWebsites" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="w-10 h-10 flex items-center justify-center bg-white/5 border border-white/10 rounded-full text-white hover:bg-gradient-to-r hover:from-[#E4405F] hover:to-[#F56040] hover:text-white hover:border-transparent transition-all shadow-sm hover:scale-110"
+                className="w-10 h-10 flex items-center justify-center bg-white border border-gray-200 rounded-full text-gray-700 hover:bg-gradient-to-r hover:from-[#E4405F] hover:to-[#F56040] hover:text-white hover:border-transparent transition-all shadow-sm hover:scale-110"
                 aria-label="Instagram"
               >
                 <Instagram size={18} />
@@ -84,7 +85,7 @@ export default function App() {
                 href="https://x.com/Tokyowebsites" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="w-10 h-10 flex items-center justify-center bg-white/5 border border-white/10 rounded-full text-white hover:bg-white hover:text-black hover:border-transparent transition-all shadow-sm hover:scale-110"
+                className="w-10 h-10 flex items-center justify-center bg-white border border-gray-200 rounded-full text-gray-700 hover:bg-black hover:text-white hover:border-transparent transition-all shadow-sm hover:scale-110"
                 aria-label="X (Twitter)"
               >
                 <Twitter size={18} />
@@ -92,13 +93,13 @@ export default function App() {
             </div>
           </div>
 
-          <div className="mt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-[10px] md:text-xs text-gray-400 font-bold uppercase tracking-widest">
+          <div className="mt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-[10px] md:text-xs text-gray-500 font-bold uppercase tracking-widest">
             <p>{t.copyright}</p>
             <div className="flex gap-6">
-              <a href="mailto:contact@tokyowebsites.com" className="hover:text-white transition-colors">
+              <a href="mailto:contact@tokyowebsites.com" className="hover:text-gray-900 transition-colors">
                 contact@tokyowebsites.com
               </a>
-              <span className="hidden md:inline text-gray-700">|</span>
+              <span className="hidden md:inline text-gray-200">|</span>
               <span>{t.tachikawaTokyo}</span>
             </div>
           </div>
