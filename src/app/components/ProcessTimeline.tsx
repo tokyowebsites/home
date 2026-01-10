@@ -148,14 +148,6 @@ export function ProcessTimeline() {
             </div>
           ))}
         </div>
-
-        <div className="mt-10 text-center">
-          <div className="inline-flex items-center gap-2 px-6 py-3 bg-gray-900 text-white rounded-full font-bold text-sm shadow-lg">
-            <Clock className="w-4 h-4 text-[#059669]" />
-            {t.processFooter}
-            <span className="text-xs opacity-70 font-semibold ml-2">{t.processFooterEn}</span>
-          </div>
-        </div>
       </div>
     </section>
   );

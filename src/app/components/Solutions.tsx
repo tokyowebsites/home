@@ -69,7 +69,7 @@ export function Solutions() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-8 max-w-6xl mx-auto">
           {solutions.map((item, index) => {
             const Icon = item.icon;
             return (
@@ -79,9 +79,9 @@ export function Solutions() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="group p-8 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-2xl hover:border-blue-100 transition-all duration-300"
+                className="group p-4 md:p-8 rounded-2xl md:rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-2xl hover:border-blue-100 transition-all duration-300 flex flex-col items-center text-center md:items-start md:text-left"
               >
-                <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 transition-transform group-hover:scale-110 shadow-sm ${
+                <div className={`w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl flex items-center justify-center mb-3 md:mb-6 transition-transform group-hover:scale-110 shadow-sm shrink-0 ${
                   item.color === 'blue' ? 'bg-blue-50 text-blue-600' :
                   item.color === 'emerald' ? 'bg-emerald-50 text-emerald-600' :
                   item.color === 'violet' ? 'bg-violet-50 text-violet-600' :
@@ -89,10 +89,11 @@ export function Solutions() {
                   item.color === 'indigo' ? 'bg-indigo-50 text-indigo-600' :
                   'bg-rose-50 text-rose-600'
                 }`}>
-                  <Icon size={28} />
+                  <Icon size={20} className="md:hidden" />
+                  <Icon size={28} className="hidden md:block" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">{item.title}</h3>
-                <p className="text-gray-600 leading-relaxed text-sm font-medium">
+                <h3 className="text-sm md:text-xl font-bold text-gray-900 mb-2 md:mb-4 line-clamp-2 md:line-clamp-none leading-tight">{item.title}</h3>
+                <p className="text-gray-600 leading-relaxed text-[10px] md:text-sm font-medium line-clamp-3 md:line-clamp-none">
                   {item.desc}
                 </p>
               </motion.div>
@@ -113,15 +114,15 @@ export function Solutions() {
               <div className="w-12 h-1 bg-blue-500 rounded-full" />
             </div>
             
-            <div className="lg:w-2/3 grid sm:grid-cols-2 gap-6">
+            <div className="lg:w-2/3 grid grid-cols-2 gap-4 md:gap-6">
               {differentiators.map((diff, i) => (
-                <div key={i} className="flex gap-4">
+                <div key={i} className="flex flex-col md:flex-row gap-3 md:gap-4">
                   <div className="mt-1 shrink-0 w-5 h-5 rounded-full bg-blue-500/20 flex items-center justify-center">
                     <div className="w-2 h-2 rounded-full bg-blue-400" />
                   </div>
                   <div>
-                    <div className="text-white font-bold mb-1">{diff.title}</div>
-                    <div className="text-gray-400 text-sm leading-relaxed">{diff.desc}</div>
+                    <div className="text-white font-bold mb-1 text-xs md:text-base">{diff.title}</div>
+                    <div className="text-gray-400 text-[10px] md:text-sm leading-relaxed line-clamp-2 md:line-clamp-none">{diff.desc}</div>
                   </div>
                 </div>
               ))}

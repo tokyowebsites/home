@@ -111,8 +111,8 @@ export const translations = {
     step4Detail4: 'アフターサポート（1ヶ月無料）',
     viewDetails: '詳細を見る',
     closeDetails: '詳細を閉じる',
-    processFooter: '96時間以内に公開できるケースが多数',
-    processFooterEn: 'Often within 96 hours',
+    processFooter: '',
+    processFooterEn: '',
     
     // Plans
     plansTitle: '明確な料金プラン。',
@@ -335,8 +335,8 @@ export const translations = {
     step4Detail4: 'After-sales support (1 month free)',
     viewDetails: 'View Details',
     closeDetails: 'Close Details',
-    processFooter: 'Many cases can launch within 96 hours',
-    processFooterEn: 'Often within 96 hours',
+    processFooter: '',
+    processFooterEn: '',
     
     // Plans
     plansTitle: 'Clear Pricing Plans.',
@@ -559,8 +559,8 @@ export const translations = {
     step4Detail4: '사후 지원(1개월 무료)',
     viewDetails: '상세 보기',
     closeDetails: '상세 닫기',
-    processFooter: '96시간 이내 공개 가능한 경우가 많음',
-    processFooterEn: 'Often within 96 hours',
+    processFooter: '',
+    processFooterEn: '',
     
     // Plans
     plansTitle: '명확한 요금 플랜.',
