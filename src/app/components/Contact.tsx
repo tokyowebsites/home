@@ -79,7 +79,7 @@ export function Contact() {
           {/* Left: Heading & Info */}
           <div>
           <h2 className="text-4xl md:text-5xl font-black mb-6 tracking-tighter text-gray-900 leading-tight">
-              <span className="text-[#5C81D9]">{t.readyToLevelUp}</span> <br/><span className="text-[#059669]">{t.readyToLevelUpQuestion}</span>
+              <span className="text-gray-900">{t.readyToLevelUp}</span> <br/><span className="text-[#5C81D9]">{t.readyToLevelUpQuestion}</span>
             </h2>
             <p className="text-gray-900 text-lg md:text-xl font-black mb-10 max-w-md leading-relaxed">
               {t.consultationFree}<br/>
@@ -216,20 +216,20 @@ export function Contact() {
               </div>
             )}
             
-            {/* Brief MEO survey CTA */}
-            <div className="mt-8 p-5 rounded-2xl border border-[#059669]/20 bg-emerald-50 shadow-sm">
-              <div className="flex items-center gap-2 mb-3">
-                <div className="w-2 h-2 rounded-full bg-[#059669] animate-pulse" />
-                <div className="text-[10px] font-black text-[#059669] uppercase tracking-widest">Google Maps / MEO quick check</div>
+            {/* Brief MEO survey CTA - Improved Mobile Formatting */}
+            <div className="mt-10 p-6 md:p-8 rounded-[2rem] border-2 border-emerald-500/20 bg-emerald-50 shadow-sm">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-2.5 h-2.5 rounded-full bg-[#059669] animate-pulse" />
+                <div className="text-[11px] font-black text-[#059669] uppercase tracking-[0.2em]">Google Maps / MEO quick check</div>
               </div>
-              <p className="text-xs text-emerald-900 font-bold leading-relaxed mb-4">
+              <p className="text-sm text-emerald-900 font-bold leading-relaxed mb-6">
                 {t.meoUrgency}
               </p>
               <a
                 href={meoSurveyLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center justify-center gap-2 w-full py-3 bg-[#059669] hover:bg-emerald-600 text-white text-[10px] font-black uppercase tracking-widest rounded-xl transition-all shadow-md active:scale-95"
+                className="group flex items-center justify-center gap-2 w-full py-4 bg-[#059669] hover:bg-emerald-600 text-white text-[11px] font-black uppercase tracking-widest rounded-xl transition-all shadow-md active:scale-95"
               >
                 {t.meoSurveyCta}
                 <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />

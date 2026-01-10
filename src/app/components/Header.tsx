@@ -17,9 +17,10 @@ export function Header() {
   }, []);
 
   const navItems = [
+    { label: t.home, href: "#" },
     { label: t.plans, href: "#plans" },
     { label: t.about, href: "#solutions" },
-    { label: t.process, href: "#process" },
+    { label: t.testimonials, href: "#testimonials" },
   ];
 
   return (
