@@ -1,7 +1,7 @@
+import React from "react";
 import { Instagram, Twitter } from "lucide-react";
 import { Header } from "./components/Header";
 import { Hero } from "./components/Hero";
-import { InteractiveShowcase } from "./components/interactive-showcase/InteractiveShowcase";
 import { Solutions } from "./components/Solutions";
 import { ProcessTimeline } from "./components/ProcessTimeline";
 import { Contact } from "./components/Contact";
@@ -23,15 +23,12 @@ export default function App() {
       <Header />
       <Hero />
       
-      <Customers />
-
-      <InteractiveShowcase />
-
       <Solutions />
 
-      {/* Process Section with Hero Gradient */}
-      <div className="relative bg-gray-50 overflow-hidden min-h-[600px]">
-        <BackgroundGradient />
+      <Customers />
+
+      {/* Process Section */}
+      <div className="relative bg-white overflow-hidden min-h-[600px]">
         <ProcessTimeline />
       </div>
 
