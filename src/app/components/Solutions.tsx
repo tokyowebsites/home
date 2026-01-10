@@ -159,15 +159,15 @@ export function Solutions() {
                    </div>
                 </div>
                 
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-12">
+                <div className="grid grid-cols-4 gap-2 md:gap-12">
                    {steps.map((step, idx) => (
                       <div key={idx} className="flex flex-col items-center md:items-start text-center md:text-left group/step">
                          <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg md:rounded-xl bg-gray-900 border border-gray-700 flex items-center justify-center text-white mb-2 md:mb-4 group-hover/step:bg-emerald-600 group-hover/step:border-emerald-500 transition-all duration-300">
-                            <step.icon size={16} />
+                            <step.icon size={14} className="md:size-[18px]" />
                          </div>
-                         <div className="text-[8px] md:text-[10px] font-black text-emerald-500 uppercase tracking-widest mb-0.5 md:mb-1">{step.number}</div>
-                         <div className="text-[10px] md:text-xs font-black text-white uppercase tracking-tight">{step.title}</div>
-                         <div className="text-[8px] md:text-[9px] font-bold text-gray-500 uppercase tracking-widest mt-0.5">{step.titleEn}</div>
+                         <div className="text-[7px] md:text-[10px] font-black text-emerald-500 uppercase tracking-widest mb-0.5 md:mb-1">{step.number}</div>
+                         <div className="text-[9px] md:text-xs font-black text-white uppercase tracking-tight leading-tight">{step.title}</div>
+                         <div className="text-[7px] md:text-[9px] font-black text-gray-500 uppercase tracking-widest mt-0.5 leading-none">{step.titleEn}</div>
                       </div>
                    ))}
                 </div>
