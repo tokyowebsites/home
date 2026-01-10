@@ -58,8 +58,8 @@ export function Plans() {
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#059669]/10 text-[#059669] text-xs font-black uppercase tracking-widest mb-6 border border-[#059669]/20 shadow-sm">
-             <Zap size={14} className="fill-current" />
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#059669]/10 text-gray-900 text-xs font-black uppercase tracking-widest mb-6 border border-[#059669]/20 shadow-sm">
+             <Zap size={14} className="fill-[#059669] text-[#059669]" />
              {t.deliveryPossible}
           </div>
           <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-gray-900 mb-6 leading-tight">
