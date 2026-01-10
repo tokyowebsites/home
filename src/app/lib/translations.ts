@@ -233,6 +233,7 @@ export const translations = {
     more: '+ more',
     back: '戻る',
     send: '送信する',
+    closePreview: '閉じる',
   },
   en: {
     // Navigation
@@ -466,6 +467,7 @@ export const translations = {
     more: '+ more',
     back: 'Back',
     send: 'Send',
+    closePreview: 'Close',
   },
   ko: {
     // Navigation
@@ -699,5 +701,6 @@ export const translations = {
     more: '+ 더보기',
     back: '돌아가기',
     send: '전송',
+    closePreview: '닫기',
   },
 };

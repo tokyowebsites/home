@@ -416,10 +416,10 @@ export function InteractiveShowcase() {
 
                       <button
                         onClick={() => setSelectedPlan(null)}
-                        className="group flex items-center gap-2 px-8 py-3 bg-white hover:bg-gray-50 text-gray-900 font-bold rounded-full transition-all shadow-md hover:shadow-lg border border-gray-200 active:scale-95"
+                        className="group flex items-center gap-1.5 px-5 py-2 bg-white hover:bg-gray-50 text-gray-700 font-bold rounded-full transition-all shadow-sm hover:shadow-md border border-gray-200 active:scale-95"
                       >
-                        <X size={18} className="group-hover:rotate-90 transition-transform duration-300" />
-                        <span className="text-sm">CLOSE PREVIEW</span>
+                        <X size={14} className="group-hover:rotate-90 transition-transform duration-300" />
+                        <span className="text-[11px] md:text-xs uppercase tracking-wide">{t.closePreview}</span>
                       </button>
                     </div>
                   </div>
