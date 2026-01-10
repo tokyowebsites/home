@@ -1,3 +1,4 @@
+import React, { useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import {
   ArrowLeft,
@@ -15,7 +16,6 @@ import {
   Scissors,
   Zap,
 } from "lucide-react";
-import { useMemo, useRef, useState } from "react";
 
 import { MiniBrowser } from "./interactive-showcase/MiniBrowser";
 import { useTranslation } from "../lib/TranslationContext";
@@ -26,6 +26,7 @@ export function Hero() {
   const reduceMotion = useReducedMotion();
   const viewportRef = useRef<HTMLDivElement | null>(null);
   const [currentView, setCurrentView] = useState<HeroView>("home");
+  const [submitting, setSubmitting] = useState(false);
   const { t } = useTranslation();
 
   const tabs = useMemo(
@@ -422,8 +423,8 @@ export function Hero() {
         - We also reserve a small bottom padding (48px).
         - The browser is centered inside the remaining stage.
       */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-[116px] pb-12">
-        <div className="min-h-[calc(100vh-116px-48px)] flex items-center justify-center">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-[100px] pb-8">
+        <div className="min-h-[calc(100vh-100px-32px)] flex items-center justify-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -434,85 +435,26 @@ export function Hero() {
               url={`tokyowebsites.com/${currentView === "home" ? "home" : currentView}`}
               className="w-full rounded-3xl border-gray-200 bg-gray-50"
               dark={false}
+              onBack={currentView !== "home" ? () => navigate("home") : undefined}
             >
               <div
                 className="relative bg-white overflow-hidden"
                 style={{
                   height:
-                    "min(clamp(320px, 52vh, 560px), calc(100vh - 116px - 48px))",
-                  maxHeight: "calc(100vh - 116px - 48px)",
+                    "min(clamp(400px, 65vh, 750px), calc(100vh - 100px - 32px))",
+                  maxHeight: "calc(100vh - 100px - 32px)",
                 }}
               >
-              {/* Internal scrolling enabled for content that exceeds height */}
-              <div 
-                ref={viewportRef} 
-                className="h-full overflow-y-auto no-scrollbar"
-                style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-              >
-                <div className={`h-full font-sans flex flex-col transition-colors duration-500 ${currentView === 'home' ? 'bg-gradient-to-br from-gray-50 to-white' : 'bg-white text-gray-900'}`}>
-                  {/* Fake Site Header */}
-                  <header className={`shrink-0 backdrop-blur-md border-b relative z-20 transition-colors duration-500 ${
-                    currentView === 'home' 
-                      ? 'bg-gray-50/95 border-gray-200 text-gray-900' 
-                      : 'bg-white/90 border-gray-100 text-gray-900'
-                  }`}>
-                    <div className="h-14 md:h-16 px-3 md:px-6 flex items-center justify-between relative">
-                      <div className="flex items-center gap-3 md:gap-4">
-                        {/* Back Arrow - Only show when not on home */}
-                        {currentView !== 'home' && (
-                          <button 
-                            type="button"
-                            onClick={() => navigate('home')}
-                            className="p-1.5 rounded-full transition-colors text-gray-700 hover:bg-gray-100"
-                          >
-                            <ArrowLeft size={18} className="md:w-5 md:h-5" />
-                          </button>
-                        )}
-
-                        <button
-                          type="button"
-                          onClick={() => navigate("home")}
-                          className="flex items-center gap-2"
-                          aria-label="ホームへ"
-                        >
-                          <div className="h-8 w-8 rounded-lg bg-[#5C81D9] text-white flex items-center justify-center text-sm font-bold">
-                            <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: '0.875rem' }}>TW</span>
-                          </div>
-                        </button>
-                      </div>
-
-                      {/* Desktop nav - Centered */}
-                      <nav className="hidden md:flex items-center gap-2 absolute left-1/2 -translate-x-1/2">
-                        <button
-                          type="button"
-                          onClick={() => navigate("home")}
-                          className={`px-5 py-2 rounded-full text-xs font-extrabold border transition-colors ${
-                            currentView === "home"
-                              ? "bg-emerald-50 border-emerald-200 text-emerald-800"
-                              : "bg-white border-gray-200 text-gray-700 hover:border-emerald-200 hover:text-[#059669]"
-                          }`}
-                        >
-                          {t.home}
-                        </button>
-                        <button
-                          id="service-tab-btn" // ID for cursor target
-                          type="button"
-                          onClick={() => navigate("service")}
-                          className={`px-5 py-2 rounded-full text-xs font-extrabold border transition-colors ${
-                            currentView === "service"
-                              ? "bg-emerald-50 border-emerald-200 text-emerald-800"
-                              : "bg-white border-gray-200 text-gray-700 hover:border-emerald-200 hover:text-[#059669]"
-                          }`}
-                        >
-                          {t.strengths}
-                        </button>
-                      </nav>
-
-                    </div>
-                  </header>
-
-                  {/* Demo Cursor Animation - Only on sub-pages to suggest "Back" */}
-                  {currentView !== "home" && (
+                {/* Internal scrolling enabled for content that exceeds height */}
+                <div 
+                  ref={viewportRef} 
+                  className="h-full overflow-y-auto no-scrollbar"
+                  style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+                >
+                  <div className={`h-full font-sans flex flex-col transition-colors duration-500 ${currentView === 'home' ? 'bg-gradient-to-br from-gray-50 to-white' : 'bg-white text-gray-900'}`}>
+                    
+                    {/* Demo Cursor Animation - Only on sub-pages to suggest "Back" */}
+                    {currentView !== "home" && (
                     <motion.div
                       className="hidden md:block absolute z-50 pointer-events-none"
                       initial={{ x: "50%", y: "50%", opacity: 0 }}
