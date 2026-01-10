@@ -73,35 +73,29 @@ export function Contact() {
 
   return (
     <section id="contact" className="py-24 relative overflow-hidden">
-      {/* Subtle Grid Background */}
-      <div className="absolute inset-0 opacity-10" style={{ 
-        backgroundImage: "linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px)", 
-        backgroundSize: "40px 40px" 
-      }}></div>
-
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-start">
           
           {/* Left: Heading & Info */}
           <div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight leading-tight">
+            <h2 className="text-4xl md:text-5xl font-black mb-6 tracking-tighter text-gray-900 leading-tight">
               {t.readyToLevelUp} <br/><span className="text-[#059669]">{t.readyToLevelUpQuestion}</span>
             </h2>
-            <p className="text-gray-400 text-lg mb-10 max-w-md leading-relaxed">
+            <p className="text-gray-600 text-lg md:text-xl font-bold mb-10 max-w-md leading-relaxed">
               {t.consultationFree}<br/>
               {t.contactUs}
             </p>
 
             <div className="space-y-8">
               <div className="flex items-start gap-4 group">
-                <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 group-hover:border-[#0f172a]/50 transition-colors">
-                  <Mail size={20} className="text-gray-300 group-hover:text-[#0f172a] transition-colors" />
+                <div className="w-12 h-12 rounded-xl bg-white border border-gray-200 flex items-center justify-center shadow-sm transition-all group-hover:border-[#059669]">
+                  <Mail size={20} className="text-gray-600 group-hover:text-[#059669] transition-colors" />
                 </div>
                 <div>
-                  <div className="text-sm font-bold text-white mb-1">{t.email}</div>
+                  <div className="text-sm font-black text-gray-900 uppercase tracking-widest mb-1">{t.email}</div>
                   <a
                     href="mailto:contact@tokyowebsites.com"
-                    className="text-gray-400 hover:text-white transition-colors underline underline-offset-4"
+                    className="text-gray-600 hover:text-[#059669] font-bold transition-colors underline underline-offset-4"
                   >
                     contact@tokyowebsites.com
                   </a>
@@ -109,29 +103,29 @@ export function Contact() {
               </div>
 
               <div className="flex items-start gap-4 group">
-                <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 group-hover:border-[#0f172a]/50 transition-colors">
-                  <Clock size={20} className="text-gray-300 group-hover:text-[#0f172a] transition-colors" />
+                <div className="w-12 h-12 rounded-xl bg-white border border-gray-200 flex items-center justify-center shadow-sm transition-all group-hover:border-[#059669]">
+                  <Clock size={20} className="text-gray-600 group-hover:text-[#059669] transition-colors" />
                 </div>
                 <div>
-                  <div className="text-sm font-bold text-white mb-1">{t.responseTime}</div>
-                  <div className="text-gray-400">{t.within24Hours}</div>
+                  <div className="text-sm font-black text-gray-900 uppercase tracking-widest mb-1">{t.responseTime}</div>
+                  <div className="text-gray-600 font-bold">{t.within24Hours}</div>
                 </div>
               </div>
 
               <div className="flex items-start gap-4 group">
-                <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 group-hover:border-[#0f172a]/50 transition-colors">
-                  <MapPin size={20} className="text-gray-300 group-hover:text-[#0f172a] transition-colors" />
+                <div className="w-12 h-12 rounded-xl bg-white border border-gray-200 flex items-center justify-center shadow-sm transition-all group-hover:border-[#059669]">
+                  <MapPin size={20} className="text-gray-600 group-hover:text-[#059669] transition-colors" />
                 </div>
                 <div>
-                  <div className="text-sm font-bold text-white mb-1">{t.location}</div>
-                  <div className="text-gray-400">{t.tachikawaTokyo}</div>
+                  <div className="text-sm font-black text-gray-900 uppercase tracking-widest mb-1">{t.location}</div>
+                  <div className="text-gray-600 font-bold">{t.tachikawaTokyo}</div>
                 </div>
               </div>
             </div>
           </div>
 
           {/* Right: Minimal Form */}
-          <div className="bg-slate-900/50 p-8 rounded-3xl border border-white/10 shadow-2xl backdrop-blur-sm">
+          <div className="bg-white/60 p-8 rounded-[2.5rem] border border-white shadow-2xl backdrop-blur-md">
             <form
               onSubmit={handleSubmit}
               action="https://formspree.io/f/mkoglvvk"
@@ -144,52 +138,52 @@ export function Contact() {
               <input type="hidden" name="_formname" value="Tokyo Websites Contact" />
               <div className="grid grid-cols-2 gap-5">
               <div className="space-y-2">
-                <label className="text-xs font-bold text-gray-500 uppercase tracking-wider">{t.name}</label>
+                <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest pl-1">{t.name}</label>
                 <input
                   type="text"
                   name="name"
                   required
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:border-[#0f172a] focus:ring-1 focus:ring-[#0f172a] outline-none transition-all"
+                  className="w-full bg-white border border-gray-100 rounded-xl px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-[#059669] focus:ring-1 focus:ring-[#059669] outline-none transition-all shadow-sm"
                   placeholder={t.name}
                 />
               </div>
               <div className="space-y-2">
-                <label className="text-xs font-bold text-gray-500 uppercase tracking-wider">{t.phone}</label>
+                <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest pl-1">{t.phone}</label>
                 <input
                   type="tel"
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
-                  className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:border-[#0f172a] focus:ring-1 focus:ring-[#0f172a] outline-none transition-all"
+                  className="w-full bg-white border border-gray-100 rounded-xl px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-[#059669] focus:ring-1 focus:ring-[#059669] outline-none transition-all shadow-sm"
                   placeholder={t.phone}
                 />
               </div>
             </div>
 
             <div className="space-y-2">
-              <label className="text-xs font-bold text-gray-500 uppercase tracking-wider">{t.email}</label>
+              <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest pl-1">{t.email}</label>
               <input
                 type="email"
                 name="email"
                 required
                 value={formData.email}
                 onChange={handleChange}
-                className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:border-[#0f172a] focus:ring-1 focus:ring-[#0f172a] outline-none transition-all"
+                className="w-full bg-white border border-gray-100 rounded-xl px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-[#059669] focus:ring-1 focus:ring-[#059669] outline-none transition-all shadow-sm"
                 placeholder="email@example.com"
               />
             </div>
 
             <div className="space-y-2">
-              <label className="text-xs font-bold text-gray-500 uppercase tracking-wider">{t.message}</label>
+              <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest pl-1">{t.message}</label>
               <textarea
                 name="message"
                 required
                 value={formData.message}
                 onChange={handleChange}
                 rows={4}
-                className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:border-[#0f172a] focus:ring-1 focus:ring-[#0f172a] outline-none transition-all resize-none"
+                className="w-full bg-white border border-gray-100 rounded-xl px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-[#059669] focus:ring-1 focus:ring-[#059669] outline-none transition-all shadow-sm resize-none"
                 placeholder={t.message}
               />
             </div>
@@ -197,7 +191,7 @@ export function Contact() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-[#059669] text-white font-bold py-4 rounded-xl shadow-lg hover:bg-emerald-600 transition-all active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+              className="w-full bg-gray-900 text-white font-black uppercase tracking-widest text-xs py-4 rounded-xl shadow-lg hover:bg-black transition-all active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
             >
               {isSubmitting ? (
                 <>
@@ -217,25 +211,25 @@ export function Contact() {
               )}
             </button>
             {lastError && (
-              <div className="text-xs text-red-300 bg-red-900/40 border border-red-700/40 rounded-lg p-3">
+              <div className="text-xs text-red-600 bg-red-50 border border-red-100 rounded-lg p-3 font-bold">
                 送信エラー: {lastError}
               </div>
             )}
             
-            {/* Brief MEO survey CTA - Moved here */}
-            <div className="mt-8 p-5 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm shadow-xl">
+            {/* Brief MEO survey CTA */}
+            <div className="mt-8 p-5 rounded-2xl border border-[#059669]/20 bg-[#059669]/5 shadow-sm">
               <div className="flex items-center gap-2 mb-3">
-                <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                <div className="text-xs font-black text-gray-400 uppercase tracking-widest">Google Maps / MEO quick check</div>
+                <div className="w-2 h-2 rounded-full bg-[#059669] animate-pulse" />
+                <div className="text-[10px] font-black text-[#059669] uppercase tracking-widest">Google Maps / MEO quick check</div>
               </div>
-              <p className="text-sm text-gray-300 font-bold leading-relaxed mb-4">
+              <p className="text-xs text-gray-600 font-bold leading-relaxed mb-4">
                 {t.meoUrgency}
               </p>
               <a
                 href={meoSurveyLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center justify-center gap-2 w-full py-3 bg-white hover:bg-gray-100 text-gray-900 text-xs font-black uppercase tracking-widest rounded-xl transition-all shadow-lg active:scale-95"
+                className="group flex items-center justify-center gap-2 w-full py-3 bg-[#059669] hover:bg-emerald-600 text-white text-[10px] font-black uppercase tracking-widest rounded-xl transition-all shadow-md active:scale-95"
               >
                 {t.meoSurveyCta}
                 <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
