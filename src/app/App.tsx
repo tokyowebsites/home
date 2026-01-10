@@ -1,3 +1,4 @@
+import { Instagram, Twitter } from "lucide-react";
 import { Header } from "./components/Header";
 import { Hero } from "./components/Hero";
 import { InteractiveShowcase } from "./components/interactive-showcase/InteractiveShowcase";
