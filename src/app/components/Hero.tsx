@@ -89,8 +89,16 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="flex flex-row gap-3 md:gap-4 w-full max-w-md px-4 md:px-0 relative"
+          className="flex flex-row gap-3 md:gap-4 w-full max-w-xl px-4 md:px-0 relative"
         >
+          <a
+            href="#plans"
+            className="flex-1 bg-white text-gray-900 h-12 md:h-14 rounded-full font-bold text-xs md:text-sm flex items-center justify-center gap-2 hover:bg-gray-100 transition-all active:scale-95 shadow-xl border-2 border-[#059669]/50"
+            style={{ fontWeight: 700 }}
+          >
+            {t.viewPlans} <ArrowRight className="w-4 h-4" />
+          </a>
+
           <button
             onClick={() => navigate("service")}
             className="flex-1 bg-white text-gray-900 h-12 md:h-14 rounded-full font-bold text-xs md:text-sm flex items-center justify-center gap-2 hover:bg-gray-100 transition-all active:scale-95 shadow-xl border-2 border-[#5C81D9]"
@@ -413,15 +421,6 @@ export function Hero() {
           transition={{ duration: reduceMotion ? 0 : 0.6, ease: "easeOut" }}
           className="max-w-6xl mx-auto"
         >
-          <div className="flex justify-end mb-3 md:mb-4">
-            <a
-              href="#plans"
-              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/80 border border-gray-200 text-xs md:text-sm font-bold text-gray-900 shadow-sm hover:bg-white transition-colors"
-              style={{ fontWeight: 700 }}
-            >
-              {t.viewPlans} <ArrowRight size={14} />
-            </a>
-          </div>
           <MiniBrowser
             url={`tokyowebsites.com/${currentView === "home" ? "home" : currentView}`}
             className="rounded-2xl border-gray-200 bg-gray-50"
