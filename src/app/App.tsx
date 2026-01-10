@@ -42,97 +42,69 @@ export default function App() {
       </div>
 
       {/* Footer with Hero Gradient */}
-      <footer className="relative overflow-hidden py-16 bg-gray-50 min-h-[400px]">
+      <footer className="relative overflow-hidden py-10 bg-gray-50">
         <BackgroundGradient />
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid md:grid-cols-4 gap-10 text-gray-900">
-            <div className="md:col-span-1">
-              <div className="text-lg font-bold mb-3" style={{ fontWeight: 700 }}>
+          <div className="flex flex-col md:flex-row items-center justify-between gap-8 border-b border-gray-200 pb-8">
+            <div className="flex flex-col items-center md:items-start text-center md:text-left">
+              <a href="#" className="text-xl font-black text-gray-900 hover:text-[#059669] transition-colors tracking-tighter">
                 tokyowebsites.com
-              </div>
-              <p className="text-sm text-gray-900 leading-relaxed" style={{ fontWeight: 600 }}>
-                {t.footerTagline}
-              </p>
-              <p className="text-xs text-gray-700 mt-3 leading-relaxed" style={{ fontWeight: 600 }}>
+              </a>
+              <p className="text-[10px] md:text-xs text-gray-500 font-bold mt-1 uppercase tracking-widest">
                 {t.footerTaglineEn}
               </p>
-              
-              {/* Social Links */}
-              <div className="flex gap-3 mt-6">
-                <a 
-                  href="https://instagram.com/TokyoWebsites" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#E4405F] to-[#F56040] text-white font-bold rounded-full hover:from-[#D32E4D] hover:to-[#E54F2F] transition-all shadow-md hover:shadow-lg hover:scale-105 active:scale-95" 
-                  aria-label="Instagram"
-                  style={{ fontWeight: 600 }}
-                >
-                  <Instagram size={18} />
-                  <span className="text-sm">Instagram</span>
-                </a>
-                <a 
-                  href="https://x.com/Tokyowebsites" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="inline-flex items-center gap-2 px-4 py-2 bg-black text-white font-bold rounded-full hover:bg-gray-800 transition-all shadow-md hover:shadow-lg hover:scale-105 active:scale-95" 
-                  aria-label="X (Twitter)"
-                  style={{ fontWeight: 600 }}
-                >
-                  <Twitter size={18} />
-                  <span className="text-sm">X</span>
-                </a>
-              </div>
             </div>
 
-            <div>
-              <div className="text-sm font-bold mb-4" style={{ fontWeight: 700 }}>
-                {t.quickLinks}
-                <span className="block text-xs text-gray-700 mt-1" style={{ fontWeight: 600 }}>{t.quickLinksEn}</span>
-              </div>
-              <ul className="space-y-3 text-sm">
-                {[
-                  { label: t.home, href: "#" },
-                  { label: t.plans, href: "#plans" },
-                  { label: t.about, href: "#solutions" },
-                  { label: t.process, href: "#process" },
-                  { label: t.testimonials, href: "#testimonials" },
-                ].map((l) => (
-                  <li key={l.href}>
-                    <a
-                      href={l.href}
-                      className="text-gray-900 hover:text-[#059669] transition-colors" style={{ fontWeight: 600 }}
-                    >
-                      {l.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
+            <div className="flex flex-wrap justify-center gap-x-8 gap-y-4">
+              {[
+                { label: t.home, href: "#" },
+                { label: t.plans, href: "#plans" },
+                { label: t.about, href: "#solutions" },
+                { label: t.process, href: "#process" },
+                { label: t.testimonials, href: "#testimonials" },
+              ].map((l) => (
+                <a
+                  key={l.href}
+                  href={l.href}
+                  className="text-xs font-black text-gray-900 hover:text-[#059669] transition-colors uppercase tracking-wider"
+                >
+                  {l.label}
+                </a>
+              ))}
             </div>
 
-            <div className="md:col-span-2">
-              <div className="text-sm font-bold mb-4" style={{ fontWeight: 700 }}>
-                {t.contactInfo}
-                <span className="block text-xs text-gray-700 mt-1" style={{ fontWeight: 600 }}>{t.contactInfoEn}</span>
-              </div>
-              <ul className="space-y-3 text-sm text-gray-900">
-                <li>
-                  <a
-                    href="mailto:contact@tokyowebsites.com"
-                    className="hover:text-[#059669] transition-colors" style={{ fontWeight: 600 }}
-                  >
-                    contact@tokyowebsites.com
-                  </a>
-                </li>
-                <li className="text-gray-800" style={{ fontWeight: 600 }}>
-                  {t.tachikawaTokyo}
-                </li>
-              </ul>
+            <div className="flex gap-4">
+              <a 
+                href="https://instagram.com/TokyoWebsites" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="w-10 h-10 flex items-center justify-center bg-white border border-gray-200 rounded-full text-gray-900 hover:bg-gradient-to-r hover:from-[#E4405F] hover:to-[#F56040] hover:text-white hover:border-transparent transition-all shadow-sm hover:scale-110"
+                aria-label="Instagram"
+              >
+                <Instagram size={18} />
+              </a>
+              <a 
+                href="https://x.com/Tokyowebsites" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="w-10 h-10 flex items-center justify-center bg-white border border-gray-200 rounded-full text-gray-900 hover:bg-black hover:text-white hover:border-transparent transition-all shadow-sm hover:scale-110"
+                aria-label="X (Twitter)"
+              >
+                <Twitter size={18} />
+              </a>
             </div>
           </div>
 
-          <div className="mt-12 pt-8 border-t border-gray-400 text-center text-xs text-gray-800" style={{ fontWeight: 600 }}>
+          <div className="mt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-[10px] md:text-xs text-gray-500 font-bold uppercase tracking-widest">
             <p>{t.copyright}</p>
+            <div className="flex gap-6">
+              <a href="mailto:contact@tokyowebsites.com" className="hover:text-gray-900 transition-colors">
+                contact@tokyowebsites.com
+              </a>
+              <span className="hidden md:inline text-gray-300">|</span>
+              <span>{t.tachikawaTokyo}</span>
+            </div>
           </div>
         </div>
       </footer>
