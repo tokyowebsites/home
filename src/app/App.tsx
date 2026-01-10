@@ -3,6 +3,7 @@ import { Instagram, Twitter } from "lucide-react";
 import { Header } from "./components/Header";
 import { Hero } from "./components/Hero";
 import { Solutions } from "./components/Solutions";
+import { Plans } from "./components/Plans";
 import { ProcessTimeline } from "./components/ProcessTimeline";
 import { Contact } from "./components/Contact";
 import { BackgroundGradient } from "./components/ui/BackgroundGradient";
@@ -25,12 +26,9 @@ export default function App() {
       
       <Solutions />
 
-      <Customers />
+      <Plans />
 
-      {/* Process Section */}
-      <div className="relative bg-white overflow-hidden min-h-[600px]">
-        <ProcessTimeline />
-      </div>
+      <Customers />
 
       {/* Contact Section (Dark) */}
       <div className="bg-gray-900 text-white relative overflow-hidden">
