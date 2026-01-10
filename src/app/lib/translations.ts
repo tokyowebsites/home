@@ -176,7 +176,7 @@ export const translations = {
     oneTime: '/ 一回限り',
     turnaround: '納期',
     includedFeatures: '含まれる機能',
-    consultThisPlan: 'このプランで相談する',
+    consultThisPlan: 'このプランにする',
     samplePreview: 'サンプルプレビュー',
     
     // Testimonials
@@ -400,7 +400,7 @@ export const translations = {
     oneTime: '/ one-time',
     turnaround: 'Turnaround',
     includedFeatures: 'Included Features',
-    consultThisPlan: 'Consult for This Plan',
+    consultThisPlan: 'Choose this plan',
     samplePreview: 'Sample Preview',
     
     // Testimonials
@@ -624,7 +624,7 @@ export const translations = {
     oneTime: '/ 일회성',
     turnaround: '납기',
     includedFeatures: '포함된 기능',
-    consultThisPlan: '이 플랜으로 상담하기',
+    consultThisPlan: '이 플랜으로 선택하기',
     samplePreview: '샘플 미리보기',
     
     // Testimonials
