@@ -10,7 +10,8 @@ export const translations = {
     consulting: 'コンサルティング',
     testimonials: 'お客様の声',
     contact: 'お問い合わせ',
-    freeConsultation: 'お問い合わせ',
+    freeConsultation: 'Contact Us',
+    promoCta: 'click here for a free 1 minute consultation',
     
     // Hero
     home: 'ホーム',
@@ -238,6 +239,7 @@ export const translations = {
     testimonials: 'Testimonials',
     contact: 'Contact',
     freeConsultation: 'Contact Us',
+    promoCta: 'click here for a free 1 minute consultation',
     
     // Hero
     home: 'Home',
@@ -464,7 +466,8 @@ export const translations = {
     consulting: '컨설팅',
     testimonials: '고객 후기',
     contact: '문의하기',
-    freeConsultation: '문의하기',
+    freeConsultation: 'Contact Us',
+    promoCta: 'click here for a free 1 minute consultation',
     
     // Hero
     home: '홈',
