@@ -23,11 +23,11 @@ export default function App() {
       <Header />
       <Hero />
       
-      <Solutions />
-
       <Plans />
 
       <Customers />
+
+      <Solutions />
 
       {/* Contact Section (Dark) */}
       <div className="bg-gray-900 text-white relative overflow-hidden">
