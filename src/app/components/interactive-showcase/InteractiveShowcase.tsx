@@ -137,7 +137,7 @@ export function InteractiveShowcase() {
         t.basicFeature5,
       ],
       url: "tokyowebsites.com/entry-sample",
-      formUrl: "https://docs.google.com/forms/d/1PV7kulBVaAdvgVFq-DkJWSHKE7y_bE0hbzUbfa5LC7I/edit",
+      formUrl: "https://docs.google.com/forms/d/e/1FAIpQLScDauTW9PD2UFXS1QlSxltGuZe4fan4xIcapLwnBWBa7BAQ9w/viewform?usp=dialog",
       component: StandardPreview,
       icon: FileText,
       // Semantic: Neutral/Approachable (Blue-Gray/Slate)
@@ -163,7 +163,7 @@ export function InteractiveShowcase() {
         t.meoStandardBonus, 
       ],
       url: "tokyowebsites.com/standard-sample",
-      formUrl: "https://docs.google.com/forms/d/10UIzS687wFUEduWF4396bE8voThLRrkp1RBP2ETxf7c/edit",
+      formUrl: "https://docs.google.com/forms/d/e/1FAIpQLSeoV5sm7yOHKjnw9ceodaL-uUtpLf06H1dDM8L6UuQNk4mjfQ/viewform?usp=dialog",
       component: EntryPreview,
       icon: Building2,
       // Semantic: Growth/Action (Emerald Green)
@@ -188,7 +188,7 @@ export function InteractiveShowcase() {
         t.meoPremiumBonus,
       ],
       url: "tokyowebsites.com/premium-sample",
-      formUrl: "https://docs.google.com/forms/d/1S6n2tqT_sUfRX1Lm6Ayf0QmCSy7LR36EaUoLxGvSeOM/edit?usp=forms_home&ouid=109641339829497082567&ths=true",
+      formUrl: "https://docs.google.com/forms/d/e/1FAIpQLSc4v9fQpzivhHACffG_r4MEhS4TJIpR-u-XqdG31jyRiGxbug/viewform?usp=dialog",
       component: BusinessPreview,
       icon: Sparkles,
       // Semantic: Luxury/Exclusive (Violet/Gold)
