@@ -152,100 +152,62 @@ export function Hero() {
   const ServiceView = () => {
     const { t } = useTranslation();
     return (
-      <div className="h-full flex flex-col px-4 py-6 md:px-12 md:py-12 overflow-y-auto bg-[#F8F9FA]">
-        {/* Why Cheap? Header with Grid Tape Style */}
-        <div className="relative mb-12 flex justify-center">
-          <motion.div 
-            initial={{ rotate: -2, scale: 0.9, opacity: 0 }}
-            animate={{ rotate: -1, scale: 1, opacity: 1 }}
-            className="relative bg-white border border-gray-200 shadow-sm px-8 py-4 z-10"
-            style={{
-              backgroundImage: 'radial-gradient(#cbd5e1 1px, transparent 1px)',
-              backgroundSize: '12px 12px',
-            }}
-          >
-            <h2 className="text-3xl md:text-5xl font-black text-[#1e293b] tracking-tight text-center italic">
-              {t.whyCheapTitle}
-            </h2>
-            {/* Tape edges effect */}
-            <div className="absolute -left-2 top-0 bottom-0 w-4 bg-[#F8F9FA] border-r border-gray-200" style={{ clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%, 25% 75%, 0% 50%, 25% 25%)' }} />
-            <div className="absolute -right-2 top-0 bottom-0 w-4 bg-[#F8F9FA] border-l border-gray-200" style={{ clipPath: 'polygon(0 0, 100% 0, 75% 25%, 100% 50%, 75% 75%, 100% 100%, 0 100%)' }} />
-          </motion.div>
-          {/* Decorative squiggles */}
-          <div className="absolute -top-6 -right-4 opacity-40">
-            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M5 5C15 5 25 35 35 35" stroke="black" strokeWidth="2" strokeLinecap="round"/>
-            </svg>
-          </div>
-        </div>
-
-        {/* The 3 Main Points */}
-        <div className="flex flex-col gap-10 md:gap-14 max-w-2xl mx-auto mb-16">
+      <div className="h-full flex flex-col px-4 py-8 md:px-12 md:py-16 overflow-y-auto bg-white">
+        {/* The 3 Main Points - Simplified Design matching image */}
+        <div className="flex flex-col gap-10 md:gap-14 max-w-2xl mx-auto w-full">
           {/* Point 1 */}
           <motion.div 
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.2 }}
-            className="flex flex-col gap-3"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="flex flex-col gap-2 md:gap-4"
           >
-            <div className="flex items-center gap-3">
-              <span className="text-2xl md:text-3xl font-bold border-2 border-black rounded-full w-10 h-10 md:w-12 md:h-12 flex items-center justify-center shrink-0">1</span>
-              <h3 className="text-xl md:text-3xl font-black text-gray-900 tracking-tight">
+            <div className="flex items-center gap-4">
+              <span className="text-xl md:text-2xl font-bold border-2 md:border-[2.5px] border-black rounded-full w-10 h-10 md:w-12 md:h-12 flex items-center justify-center shrink-0">1</span>
+              <h3 className="text-xl md:text-4xl font-extrabold text-[#1e293b] tracking-tight">
                 {t.whyCheapPoint1Title}
               </h3>
             </div>
-            <p className="text-sm md:text-xl text-gray-800 font-medium leading-relaxed pl-1">
+            <p className="text-sm md:text-xl text-gray-700 font-medium leading-relaxed pl-1 md:pl-0">
               {t.whyCheapPoint1Desc}
             </p>
           </motion.div>
 
           {/* Point 2 */}
           <motion.div 
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.4 }}
-            className="flex flex-col gap-3"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="flex flex-col gap-2 md:gap-4"
           >
-            <div className="flex items-center gap-3">
-              <span className="text-2xl md:text-3xl font-bold border-2 border-black rounded-full w-10 h-10 md:w-12 md:h-12 flex items-center justify-center shrink-0">2</span>
-              <h3 className="text-xl md:text-3xl font-black text-gray-900 tracking-tight">
+            <div className="flex items-center gap-4">
+              <span className="text-xl md:text-2xl font-bold border-2 md:border-[2.5px] border-black rounded-full w-10 h-10 md:w-12 md:h-12 flex items-center justify-center shrink-0">2</span>
+              <h3 className="text-xl md:text-4xl font-extrabold text-[#1e293b] tracking-tight">
                 {t.whyCheapPoint2Title}
               </h3>
             </div>
-            <p className="text-sm md:text-xl text-gray-800 font-medium leading-relaxed pl-1">
+            <p className="text-sm md:text-xl text-gray-700 font-medium leading-relaxed pl-1 md:pl-0">
               {t.whyCheapPoint2Desc}
             </p>
           </motion.div>
 
           {/* Point 3 */}
           <motion.div 
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.6 }}
-            className="flex flex-col gap-3"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="flex flex-col gap-2 md:gap-4"
           >
-            <div className="flex items-center gap-3">
-              <span className="text-2xl md:text-3xl font-bold border-2 border-black rounded-full w-10 h-10 md:w-12 md:h-12 flex items-center justify-center shrink-0">3</span>
-              <h3 className="text-xl md:text-3xl font-black text-gray-900 tracking-tight">
+            <div className="flex items-center gap-4">
+              <span className="text-xl md:text-2xl font-bold border-2 md:border-[2.5px] border-black rounded-full w-10 h-10 md:w-12 md:h-12 flex items-center justify-center shrink-0">3</span>
+              <h3 className="text-xl md:text-4xl font-extrabold text-[#1e293b] tracking-tight">
                 {t.whyCheapPoint3Title}
               </h3>
             </div>
-            <p className="text-sm md:text-xl text-gray-800 font-medium leading-relaxed pl-1">
+            <p className="text-sm md:text-xl text-gray-700 font-medium leading-relaxed pl-1 md:pl-0">
               {t.whyCheapPoint3Desc}
             </p>
           </motion.div>
-        </div>
-
-        {/* Bottom Logo */}
-        <div className="mt-auto flex justify-center py-8">
-          <div className="text-2xl md:text-4xl font-serif text-gray-400 opacity-60 italic">
-            TokyoWebsites
-          </div>
-          <div className="absolute bottom-4 right-4 opacity-40">
-             <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M5 35C15 35 25 5 35 5" stroke="black" strokeWidth="2" strokeLinecap="round"/>
-            </svg>
-          </div>
         </div>
       </div>
     );
