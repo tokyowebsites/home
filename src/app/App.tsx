@@ -3,7 +3,7 @@ import { Instagram, Twitter } from "lucide-react";
 import { Header } from "./components/Header";
 import { Hero } from "./components/Hero";
 import { Solutions } from "./components/Solutions";
-import { Plans } from "./components/Plans";
+import { InteractiveShowcase } from "./components/interactive-showcase/InteractiveShowcase";
 import { Contact } from "./components/Contact";
 import { BackgroundGradient } from "./components/ui/BackgroundGradient";
 import { Customers } from "./components/Customers";
@@ -23,11 +23,11 @@ export default function App() {
       <Header />
       <Hero />
       
-      <Plans />
+      <Solutions />
+
+      <InteractiveShowcase />
 
       <Customers />
-
-      <Solutions />
 
       {/* Contact Section (Dark) */}
       <div className="bg-gray-900 text-white relative overflow-hidden">

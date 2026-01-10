@@ -116,12 +116,12 @@ export function Solutions() {
             );
           })}
 
-          {/* New Integrated Process Box (Replacing Speed Launch) */}
+          {/* Integrated Condensed Process Tile */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.6, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.6, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
             className="md:col-span-6 lg:col-span-6 p-8 md:p-12 rounded-[2.5rem] bg-gradient-to-br from-gray-800/60 to-gray-900/60 border border-emerald-500/30 hover:border-emerald-500/50 transition-all duration-500 backdrop-blur-md"
           >
              <div className="flex flex-col md:flex-row items-center gap-12">

@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { X, Check, ArrowRight, Zap, FileText, Building2, Sparkles, Loader2 } from "lucide-react";
 import { MiniBrowser } from "./MiniBrowser";
 import { useTranslation } from "../../lib/TranslationContext";
+import { BackgroundGradient } from "../ui/BackgroundGradient";
 
 const EntryPreview = lazy(() => import("./PlanPreviews").then(module => ({ default: module.EntryPreview })));
 const StandardPreview = lazy(() => import("./PlanPreviews").then(module => ({ default: module.StandardPreview })));
@@ -216,11 +217,10 @@ export function InteractiveShowcase() {
   }, [selectedPlan]);
 
   return (
-    <section id="plans" className="py-24 bg-gray-900 relative">
+    <section id="plans" className="py-24 bg-gray-50 relative overflow-hidden">
+      <BackgroundGradient />
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gray-700 to-transparent"></div>
-        {/* Subtle grid pattern for texture */}
-        <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "radial-gradient(#ffffff 1px, transparent 1px)", backgroundSize: "32px 32px" }}></div>
+        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
