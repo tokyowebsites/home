@@ -34,7 +34,7 @@ export function Header() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex items-center gap-2 justify-center">
           <span className="px-2 py-0.5 rounded-full bg-white/20 border border-white/30">Free</span>
           <a
-            href="https://docs.google.com/forms/d/1ocjF6YyypFDE_DKzlByTMPrYODsWYQkSmuIMl9zx9mU/edit"
+            href="https://docs.google.com/forms/d/e/1FAIpQLSf1sejWp_jKe4SxmAtVtNxCoBnU78Ul6TynXUWtD_9GFRcnUQ/viewform?usp=sharing&ouid=109641339829497082567"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:underline transition-all"
@@ -82,7 +82,7 @@ export function Header() {
             ))}
             <LanguageSwitcher />
             <a
-              href="https://docs.google.com/forms/d/1ocjF6YyypFDE_DKzlByTMPrYODsWYQkSmuIMl9zx9mU/edit"
+              href="https://docs.google.com/forms/d/e/1FAIpQLSf1sejWp_jKe4SxmAtVtNxCoBnU78Ul6TynXUWtD_9GFRcnUQ/viewform?usp=sharing&ouid=109641339829497082567"
               target="_blank"
               rel="noopener noreferrer"
               className="ml-3 inline-flex items-center gap-2 px-6 py-2.5 bg-[#5C81D9] text-white text-sm font-bold hover:bg-[#4a6fc7] transition-colors rounded-full shadow-lg shadow-[#5C81D9]/20"
@@ -122,7 +122,7 @@ export function Header() {
                 <LanguageSwitcher />
               </div>
               <a
-                href="https://docs.google.com/forms/d/1ocjF6YyypFDE_DKzlByTMPrYODsWYQkSmuIMl9zx9mU/edit"
+                href="https://docs.google.com/forms/d/e/1FAIpQLSf1sejWp_jKe4SxmAtVtNxCoBnU78Ul6TynXUWtD_9GFRcnUQ/viewform?usp=sharing&ouid=109641339829497082567"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setIsMenuOpen(false)}

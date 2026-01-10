@@ -3,7 +3,7 @@ import { useTranslation } from "../lib/TranslationContext";
 
 export function MEOConsulting() {
   const { t } = useTranslation();
-  const surveyLink = "https://docs.google.com/forms/d/1ocjF6YyypFDE_DKzlByTMPrYODsWYQkSmuIMl9zx9mU/edit";
+  const surveyLink = "https://docs.google.com/forms/d/e/1FAIpQLSf1sejWp_jKe4SxmAtVtNxCoBnU78Ul6TynXUWtD_9GFRcnUQ/viewform?usp=sharing&ouid=109641339829497082567";
 
   const features = [
     { icon: TrendingUp, text: t.meoFeature1 },

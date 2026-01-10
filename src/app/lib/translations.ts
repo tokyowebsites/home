@@ -10,8 +10,8 @@ export const translations = {
     consulting: 'コンサルティング',
     testimonials: 'お客様の声',
     contact: 'お問い合わせ',
-    freeConsultation: 'Contact Us',
-    promoCta: 'click here for a free 1 minute consultation',
+    freeConsultation: 'お問い合わせ',
+    promoCta: '1分で完了！無料診断はこちら',
     
     // Hero
     home: 'ホーム',
@@ -466,8 +466,8 @@ export const translations = {
     consulting: '컨설팅',
     testimonials: '고객 후기',
     contact: '문의하기',
-    freeConsultation: 'Contact Us',
-    promoCta: 'click here for a free 1 minute consultation',
+    freeConsultation: '문의하기',
+    promoCta: '1분 무료 진단 받기',
     
     // Hero
     home: '홈',

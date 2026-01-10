@@ -5,7 +5,7 @@ import { useTranslation } from "../lib/TranslationContext";
 
 export function Contact() {
   const { t } = useTranslation();
-  const meoSurveyLink = "https://docs.google.com/forms/d/1ocjF6YyypFDE_DKzlByTMPrYODsWYQkSmuIMl9zx9mU/edit";
+  const meoSurveyLink = "https://docs.google.com/forms/d/e/1FAIpQLSf1sejWp_jKe4SxmAtVtNxCoBnU78Ul6TynXUWtD_9GFRcnUQ/viewform?usp=sharing&ouid=109641339829497082567";
   const [formData, setFormData] = useState({
     name: "",
     email: "",
