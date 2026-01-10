@@ -83,7 +83,9 @@ export function Header() {
             ))}
             <LanguageSwitcher />
             <a
-              href="#contact"
+              href="https://docs.google.com/forms/d/1ocjF6YyypFDE_DKzlByTMPrYODsWYQkSmuIMl9zx9mU/edit"
+              target="_blank"
+              rel="noopener noreferrer"
               className="ml-3 inline-flex items-center gap-2 px-6 py-2.5 bg-[#5C81D9] text-white text-sm font-bold hover:bg-[#4a6fc7] transition-colors rounded-full shadow-lg shadow-[#5C81D9]/20"
               style={{ fontWeight: 700 }}
             >
@@ -121,7 +123,9 @@ export function Header() {
                 <LanguageSwitcher />
               </div>
               <a
-                href="#contact"
+                href="https://docs.google.com/forms/d/1ocjF6YyypFDE_DKzlByTMPrYODsWYQkSmuIMl9zx9mU/edit"
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={() => setIsMenuOpen(false)}
                 className="mt-2 inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#5C81D9] text-white text-sm font-bold hover:bg-[#4a6fc7] transition-colors rounded-xl text-center shadow-md"
                 style={{ fontWeight: 700 }}
