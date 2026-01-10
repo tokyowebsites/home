@@ -92,20 +92,21 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.5 }}
           className="flex flex-col sm:flex-row gap-2 sm:gap-4 w-full max-w-2xl px-4 md:px-0 relative"
         >
-          <a
-            href="#plans"
+          <button
+            onClick={() => navigate("service")}
             className="w-full sm:flex-1 bg-[#059669] text-white h-11 sm:h-14 rounded-full font-bold text-xs sm:text-sm flex items-center justify-center gap-2 hover:bg-emerald-600 transition-all active:scale-95 shadow-xl border-2 border-[#059669]/60"
             style={{ fontWeight: 700 }}
           >
-            {t.viewPlans} <ArrowRight className="w-4 h-4" />
-          </a>
+            {t.whyCheap} <ArrowRight className="w-4 h-4" />
+          </button>
+          
           <div className="flex flex-row gap-2 sm:contents w-full">
-            <button
-              onClick={() => navigate("service")}
+            <a
+              href="#plans"
               className="flex-1 bg-white text-gray-900 h-11 sm:h-14 rounded-full font-bold text-[10px] sm:text-sm flex items-center justify-center gap-1 sm:gap-2 hover:bg-gray-100 transition-all active:scale-95 shadow-xl border-2 border-[#5C81D9]"
             >
-              {t.whyCheap}
-            </button>
+              {t.viewPlans}
+            </a>
 
             <button
               onClick={() => {
@@ -545,41 +546,15 @@ export function Hero() {
                           <ContactView />
                         </motion.div>
                       )}
-                    </AnimatePresence>
-                  </div>
-
-                  {/* Mobile bottom tabs (so the fake site feels like an app) */}
-                  <div className="md:hidden shrink-0 border-t bg-white border-gray-100 transition-colors duration-500">
-                    <div className="grid grid-cols-2">
-                      {tabs.map((t) => {
-                        const Icon = t.icon;
-                        const active = currentView === t.id;
-                        return (
-                          <button
-                            key={t.id}
-                            type="button"
-                            onClick={() => navigate(t.id)}
-                            className={`py-3 flex flex-col items-center justify-center gap-1 transition-colors ${
-                              active 
-                                ? "text-[#059669] bg-emerald-50/50" 
-                                : "text-gray-500"
-                            }`}
-                            aria-label={t.label}
-                          >
-                            <Icon className="w-5 h-5" />
-                            <span className="text-[10px] font-bold">{t.label}</span>
-                          </button>
-                        );
-                      })}
-                    </div>
-                  </div>
+                  </AnimatePresence>
                 </div>
               </div>
-              </div>
-            </MiniBrowser>
-          </motion.div>
-        </div>
-      </div>
-    </section>
+            </div>
+          </div>
+        </MiniBrowser>
+      </motion.div>
+    </div>
+  </div>
+</section>
   );
 }
