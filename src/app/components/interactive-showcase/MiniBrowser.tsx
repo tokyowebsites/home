@@ -7,6 +7,7 @@ interface MiniBrowserProps {
   className?: string;
   dark?: boolean;
   onBack?: () => void;
+  onClose?: () => void;
 }
 
 export function MiniBrowser({ 
@@ -14,7 +15,8 @@ export function MiniBrowser({
   children, 
   className = "", 
   dark = false,
-  onBack 
+  onBack,
+  onClose
 }: MiniBrowserProps) {
   return (
     <div className={`flex flex-col rounded-xl overflow-hidden border shadow-2xl ${className} ${dark ? "border-gray-700 bg-gray-900" : "border-gray-200 bg-white"}`}>
@@ -22,7 +24,11 @@ export function MiniBrowser({
       <div className={`flex items-center gap-1 sm:gap-2 px-2 sm:px-4 py-2 sm:py-3 border-b ${dark ? "bg-gray-800 border-gray-700" : "bg-gray-50 border-gray-200"}`}>
         <div className="flex gap-1 sm:gap-1.5 shrink-0">
           {/* macOS-style window controls */}
-          <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full [background-color:#ff5f57]" aria-label="close" />
+          <button 
+            onClick={onClose}
+            className={`w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full [background-color:#ff5f57] ${onClose ? 'hover:brightness-90 active:scale-90 transition-all cursor-pointer' : 'cursor-default'}`} 
+            aria-label="close" 
+          />
           <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full [background-color:#febc2e]" aria-label="minimize" />
           <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full [background-color:#28c840]" aria-label="zoom" />
         </div>

@@ -273,14 +273,15 @@ export function InteractiveShowcase() {
               >
                 <button
                   onClick={() => setSelectedPlan(null)}
-                  className="absolute top-3 right-3 md:top-4 md:right-4 z-50 p-2 bg-white/90 backdrop-blur rounded-full hover:bg-white transition-colors shadow-md hover:rotate-90 duration-300"
+                  className="absolute top-3 right-3 md:top-4 md:right-4 z-[60] p-2 bg-white/90 backdrop-blur rounded-full hover:bg-white transition-colors shadow-lg hover:rotate-90 duration-300 border border-gray-200"
+                  aria-label="Close"
                 >
-                  <X size={18} className="text-gray-900" />
+                  <X size={20} className="text-gray-900" />
                 </button>
 
                 {/* Mobile: Ultra-compact info bar */}
-                <div className="md:hidden shrink-0 bg-white border-b border-gray-100 px-3 py-2">
-                  <div className="flex items-center justify-between gap-2">
+                <div className="md:hidden shrink-0 bg-white border-b border-gray-100 px-3 py-2.5">
+                  <div className="flex items-center justify-between gap-2 pr-8">
                     <div className="flex items-center gap-2 min-w-0">
                       <div className={`shrink-0 p-1.5 rounded-lg ${plans[selectedPlan].color}`}>
                         {(() => {
@@ -293,13 +294,15 @@ export function InteractiveShowcase() {
                         <div className="text-[9px] font-bold text-[#059669] leading-tight">{plans[selectedPlan].price}</div>
                       </div>
                     </div>
-                    <div className="shrink-0 text-right">
+                    <div className="shrink-0">
                       <a 
-                        href="#contact" 
+                        href={plans[selectedPlan].formUrl} 
+                        target="_blank"
+                        rel="noopener noreferrer"
                         onClick={() => setSelectedPlan(null)}
-                        className="inline-block px-3 py-1.5 rounded-full bg-[#059669] text-white text-[10px] font-bold shadow-sm"
+                        className="inline-block px-3 py-2 rounded-full bg-[#059669] text-white text-[10px] font-bold shadow-md active:scale-95 transition-transform"
                       >
-                        {t.freeConsultation}
+                        {t.consultThisPlan}
                       </a>
                     </div>
                   </div>
@@ -368,7 +371,12 @@ export function InteractiveShowcase() {
                   </div>
                   
                   <div className="flex-1 min-h-0 relative">
-                    <MiniBrowser url={plans[selectedPlan].url} className="h-full w-full rounded-lg md:rounded-xl shadow-lg border border-gray-700" dark>
+                    <MiniBrowser 
+                      url={plans[selectedPlan].url} 
+                      className="h-full w-full rounded-lg md:rounded-xl shadow-lg border border-gray-700" 
+                      dark
+                      onClose={() => setSelectedPlan(null)}
+                    >
                       <div className="h-full w-full bg-white relative">
                         <div className="absolute inset-0 overflow-y-auto custom-scrollbar" style={{ WebkitOverflowScrolling: 'touch' }}>
                           {(() => {
