@@ -69,8 +69,8 @@ export function Hero() {
               <img 
                 src="/images/tokyo-websites-logo.png" 
                 alt="Tokyo Websites - Web Design & Digital Branding in Tachikawa" 
-                className="w-[90vw] max-w-[280px] sm:max-w-[450px] md:max-w-[600px] lg:max-w-[700px] h-auto drop-shadow-2xl"
-                style={{ objectFit: 'contain', maxHeight: '250px' }}
+                className="w-[85vw] max-w-[240px] sm:max-w-[450px] md:max-w-[600px] lg:max-w-[700px] h-auto drop-shadow-2xl"
+                style={{ objectFit: 'contain', maxHeight: 'min(180px, 25vh)' }}
                 loading="eager"
                 decoding="async"
               />
@@ -90,31 +90,33 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="flex flex-row gap-3 md:gap-4 w-full max-w-2xl px-4 md:px-0 relative"
+          className="flex flex-col sm:flex-row gap-2 sm:gap-4 w-full max-w-2xl px-4 md:px-0 relative"
         >
           <a
             href="#plans"
-            className="flex-1 bg-[#059669] text-white h-12 md:h-14 rounded-full font-bold text-xs md:text-sm flex items-center justify-center gap-2 hover:bg-emerald-600 transition-all active:scale-95 shadow-xl border-2 border-[#059669]/60"
+            className="w-full sm:flex-1 bg-[#059669] text-white h-11 sm:h-14 rounded-full font-bold text-xs sm:text-sm flex items-center justify-center gap-2 hover:bg-emerald-600 transition-all active:scale-95 shadow-xl border-2 border-[#059669]/60"
             style={{ fontWeight: 700 }}
           >
             {t.viewPlans} <ArrowRight className="w-4 h-4" />
           </a>
-          <button
-            onClick={() => navigate("service")}
-            className="flex-1 bg-white text-gray-900 h-12 md:h-14 rounded-full font-bold text-xs md:text-sm flex items-center justify-center gap-2 hover:bg-gray-100 transition-all active:scale-95 shadow-xl border-2 border-[#5C81D9]"
-          >
-            {t.whyCheap}
-          </button>
+          <div className="flex flex-row gap-2 sm:contents w-full">
+            <button
+              onClick={() => navigate("service")}
+              className="flex-1 bg-white text-gray-900 h-11 sm:h-14 rounded-full font-bold text-[10px] sm:text-sm flex items-center justify-center gap-1 sm:gap-2 hover:bg-gray-100 transition-all active:scale-95 shadow-xl border-2 border-[#5C81D9]"
+            >
+              {t.whyCheap}
+            </button>
 
-          <button
-            onClick={() => {
-              const contactSection = document.getElementById('contact');
-              if(contactSection) contactSection.scrollIntoView({ behavior: 'smooth' });
-            }}
-            className="flex-1 bg-[#5C81D9] text-white h-12 md:h-14 rounded-full font-bold text-xs md:text-sm flex items-center justify-center gap-2 hover:bg-[#4a6fc7] transition-all active:scale-95 shadow-xl"
-          >
-            {t.freeConsultation} <ArrowRight className="w-4 h-4" />
-          </button>
+            <button
+              onClick={() => {
+                const contactSection = document.getElementById('contact');
+                if(contactSection) contactSection.scrollIntoView({ behavior: 'smooth' });
+              }}
+              className="flex-1 bg-[#5C81D9] text-white h-11 sm:h-14 rounded-full font-bold text-[10px] sm:text-sm flex items-center justify-center gap-1 sm:gap-2 hover:bg-[#4a6fc7] transition-all active:scale-95 shadow-xl"
+            >
+              {t.freeConsultation} <ArrowRight className="w-4 h-4" />
+            </button>
+          </div>
 
           {/* Fake Cursor Animation */}
           <motion.div
@@ -149,7 +151,7 @@ export function Hero() {
   const ServiceView = () => {
     const { t } = useTranslation();
     return (
-      <div className="h-full flex flex-col px-3 py-2 md:px-12 md:py-12 overflow-y-auto">
+      <div className="h-full flex flex-col px-4 py-4 md:px-12 md:py-12 overflow-y-auto">
         <div className="flex items-center justify-between mb-3 md:mb-6">
           <div className="text-left">
             <h2 className="text-base md:text-4xl font-extrabold text-gray-900 mb-1 md:mb-2 leading-tight">
@@ -423,8 +425,8 @@ export function Hero() {
         - We also reserve a small bottom padding (48px).
         - The browser is centered inside the remaining stage.
       */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-[100px] pb-8">
-        <div className="min-h-[calc(100vh-100px-32px)] flex items-center justify-center">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-[140px] pb-12">
+        <div className="min-h-[calc(100vh-140px-48px)] flex items-center justify-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -441,8 +443,8 @@ export function Hero() {
                 className="relative bg-white overflow-hidden"
                 style={{
                   height:
-                    "min(clamp(400px, 65vh, 750px), calc(100vh - 100px - 32px))",
-                  maxHeight: "calc(100vh - 100px - 32px)",
+                    "min(clamp(380px, 60vh, 750px), calc(100vh - 140px - 48px))",
+                  maxHeight: "calc(100vh - 140px - 48px)",
                 }}
               >
                 {/* Internal scrolling enabled for content that exceeds height */}
