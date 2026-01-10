@@ -35,7 +35,9 @@ export function Header() {
           <span className="px-2 py-0.5 rounded-full bg-white/20 border border-white/30">Free</span>
           <span>{t.freeConsultation} — {t.consultationFree}</span>
           <a
-            href="#contact"
+            href="https://docs.google.com/forms/d/1ocjF6YyypFDE_DKzlByTMPrYODsWYQkSmuIMl9zx9mU/viewform"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-1 px-3 py-1 bg-white text-[#059669] rounded-full font-bold shadow-sm hover:scale-105 transition-transform"
           >
             {t.contact}
