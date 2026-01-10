@@ -17,9 +17,8 @@ export function Header() {
   }, []);
 
   const navItems = [
-    { label: t.strengths, href: "#service" },
     { label: t.plans, href: "#plans" },
-    { label: t.about, href: "#about" },
+    { label: t.about, href: "#solutions" },
     { label: t.process, href: "#process" },
   ];
 

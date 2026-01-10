@@ -1,13 +1,11 @@
-import { Facebook, Instagram, Twitter } from "lucide-react";
 import { Header } from "./components/Header";
 import { Hero } from "./components/Hero";
 import { InteractiveShowcase } from "./components/interactive-showcase/InteractiveShowcase";
+import { Solutions } from "./components/Solutions";
 import { ProcessTimeline } from "./components/ProcessTimeline";
 import { Contact } from "./components/Contact";
-import { About } from "./components/About";
 import { BackgroundGradient } from "./components/ui/BackgroundGradient";
 import { Customers } from "./components/Customers";
-import { ConsultingSuite } from "./components/ConsultingSuite";
 import { useTranslation } from "./lib/TranslationContext";
 import { Toaster } from "sonner";
 import { SEO } from "./components/SEO";
@@ -24,14 +22,11 @@ export default function App() {
       <Header />
       <Hero />
       
-      {/* About / Mission Section */}
-      <About />
-
       <Customers />
 
       <InteractiveShowcase />
 
-      <ConsultingSuite />
+      <Solutions />
 
       {/* Process Section with Hero Gradient */}
       <div className="relative bg-gray-50 overflow-hidden min-h-[600px]">
@@ -96,11 +91,10 @@ export default function App() {
               </div>
               <ul className="space-y-3 text-sm">
                 {[
-                  { label: t.strengths, href: "#service" },
+                  { label: t.home, href: "#" },
                   { label: t.plans, href: "#plans" },
-                  { label: t.about, href: "#about" },
+                  { label: t.about, href: "#solutions" },
                   { label: t.process, href: "#process" },
-                  { label: t.consulting, href: "#consulting" },
                   { label: t.testimonials, href: "#testimonials" },
                 ].map((l) => (
                   <li key={l.href}>
