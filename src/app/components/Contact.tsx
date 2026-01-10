@@ -81,7 +81,7 @@ export function Contact() {
             <h2 className="text-4xl md:text-5xl font-black mb-6 tracking-tighter text-gray-900 leading-tight">
               {t.readyToLevelUp} <br/><span className="text-[#059669]">{t.readyToLevelUpQuestion}</span>
             </h2>
-            <p className="text-gray-600 text-lg md:text-xl font-bold mb-10 max-w-md leading-relaxed">
+            <p className="text-gray-900 text-lg md:text-xl font-black mb-10 max-w-md leading-relaxed">
               {t.consultationFree}<br/>
               {t.contactUs}
             </p>
@@ -89,13 +89,13 @@ export function Contact() {
             <div className="space-y-8">
               <div className="flex items-start gap-4 group">
                 <div className="w-12 h-12 rounded-xl bg-white border border-gray-200 flex items-center justify-center shadow-sm transition-all group-hover:border-[#059669]">
-                  <Mail size={20} className="text-gray-600 group-hover:text-[#059669] transition-colors" />
+                  <Mail size={20} className="text-gray-900 group-hover:text-[#059669] transition-colors" />
                 </div>
                 <div>
                   <div className="text-sm font-black text-gray-900 uppercase tracking-widest mb-1">{t.email}</div>
                   <a
                     href="mailto:contact@tokyowebsites.com"
-                    className="text-gray-600 hover:text-[#059669] font-bold transition-colors underline underline-offset-4"
+                    className="text-gray-900 hover:text-[#059669] font-black transition-colors underline underline-offset-4"
                   >
                     contact@tokyowebsites.com
                   </a>
@@ -104,21 +104,21 @@ export function Contact() {
 
               <div className="flex items-start gap-4 group">
                 <div className="w-12 h-12 rounded-xl bg-white border border-gray-200 flex items-center justify-center shadow-sm transition-all group-hover:border-[#059669]">
-                  <Clock size={20} className="text-gray-600 group-hover:text-[#059669] transition-colors" />
+                  <Clock size={20} className="text-gray-900 group-hover:text-[#059669] transition-colors" />
                 </div>
                 <div>
                   <div className="text-sm font-black text-gray-900 uppercase tracking-widest mb-1">{t.responseTime}</div>
-                  <div className="text-gray-600 font-bold">{t.within24Hours}</div>
+                  <div className="text-gray-900 font-black">{t.within24Hours}</div>
                 </div>
               </div>
 
               <div className="flex items-start gap-4 group">
                 <div className="w-12 h-12 rounded-xl bg-white border border-gray-200 flex items-center justify-center shadow-sm transition-all group-hover:border-[#059669]">
-                  <MapPin size={20} className="text-gray-600 group-hover:text-[#059669] transition-colors" />
+                  <MapPin size={20} className="text-gray-900 group-hover:text-[#059669] transition-colors" />
                 </div>
                 <div>
                   <div className="text-sm font-black text-gray-900 uppercase tracking-widest mb-1">{t.location}</div>
-                  <div className="text-gray-600 font-bold">{t.tachikawaTokyo}</div>
+                  <div className="text-gray-900 font-black">{t.tachikawaTokyo}</div>
                 </div>
               </div>
             </div>

@@ -66,24 +66,24 @@ const PlanCard = ({ plan, index, onClick }: { plan: Plan; index: number; onClick
       <div className={`relative mb-4 pb-4 md:mb-8 md:pb-8 border-b ${isHighlighted ? 'border-gray-100' : 'border-gray-100'}`}>
         <div className="flex items-baseline gap-2 flex-wrap mb-1">
           {plan.originalPrice && (
-            <span className="text-sm md:text-lg text-gray-400 line-through font-bold">{plan.originalPrice}</span>
+            <span className="text-sm md:text-lg text-gray-500 line-through font-bold">{plan.originalPrice}</span>
           )}
           <span className={`text-2xl md:text-4xl font-extrabold tracking-tight ${isHighlighted ? "text-[#059669]" : "text-gray-900"}`} style={{ fontWeight: 800 }}>{plan.price}</span>
         </div>
-        <div className={`text-[9px] md:text-xs font-bold ${isHighlighted ? 'text-gray-500' : 'text-gray-400'}`}>{t.oneTime}</div>
+        <div className={`text-[9px] md:text-xs font-black uppercase tracking-widest ${isHighlighted ? 'text-gray-500' : 'text-gray-500'}`}>{t.oneTime}</div>
       </div>
 
-      <p className={`relative text-[11px] md:text-sm leading-relaxed mb-4 md:mb-8 font-medium ${isHighlighted ? 'text-gray-600' : 'text-gray-600'} line-clamp-2 md:line-clamp-none`}>
+      <p className={`relative text-[11px] md:text-sm leading-relaxed mb-4 md:mb-8 font-bold ${isHighlighted ? 'text-gray-700' : 'text-gray-800'} line-clamp-2 md:line-clamp-none`}>
         {plan.desc}
       </p>
 
       <ul className="relative space-y-2 md:space-y-4 mb-5 md:mb-8 flex-grow">
         {(expanded ? plan.features : plan.features.slice(0, 3)).map((feature: string, i: number) => (
-          <li key={i} className={`flex items-start gap-2 md:gap-3 text-[10px] md:text-xs font-bold ${isHighlighted ? 'text-gray-600' : 'text-gray-700'}`}>
+          <li key={i} className={`flex items-start gap-2 md:gap-3 text-[10px] md:text-xs font-black ${isHighlighted ? 'text-gray-700' : 'text-gray-800'}`}>
             <div className={`mt-0.5 w-3.5 h-3.5 rounded-full flex items-center justify-center shrink-0 ${
               isHighlighted 
                 ? 'bg-emerald-100 text-emerald-600' 
-                : plan.id === 'entry' ? 'bg-slate-100 text-slate-500' : 'bg-violet-100 text-violet-500'
+                : plan.id === 'entry' ? 'bg-slate-100 text-slate-600' : 'bg-violet-100 text-violet-600'
             }`}>
                <Check size={8} strokeWidth={4} />
             </div>
@@ -92,10 +92,10 @@ const PlanCard = ({ plan, index, onClick }: { plan: Plan; index: number; onClick
         ))}
         {plan.features.length > 3 && (
           <li
-            className={`text-[10px] pl-5 cursor-pointer transition-colors flex items-center gap-1 font-bold ${
+            className={`text-[10px] pl-5 cursor-pointer transition-colors flex items-center gap-1 font-black uppercase tracking-widest ${
               isHighlighted 
                 ? 'text-emerald-600 hover:text-emerald-700' 
-                : plan.id === 'entry' ? 'text-slate-400 hover:text-slate-300' : 'text-violet-400 hover:text-violet-300'
+                : plan.id === 'entry' ? 'text-slate-600 hover:text-slate-800' : 'text-violet-600 hover:text-violet-800'
             }`}
             onClick={(e) => {
               e.stopPropagation();
@@ -230,15 +230,15 @@ export function InteractiveShowcase() {
              <Zap size={14} className="fill-current" />
              {t.deliveryPossible}
           </div>
-          <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight text-white mb-6 drop-shadow-sm leading-tight">
+          <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight text-gray-900 mb-6 drop-shadow-sm leading-tight">
             {t.plansTitle}
           </h2>
-          <p className="text-gray-400 text-lg md:text-xl mb-8 leading-relaxed font-light">
+          <p className="text-gray-800 text-lg md:text-xl mb-8 leading-relaxed font-bold">
             {t.plansSubtitle}<br className="hidden sm:block"/>
             {t.plansSubtitle2}
           </p>
           
-          <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/5 border border-white/10 text-gray-300 text-xs font-medium backdrop-blur-sm hover:bg-white/10 transition-colors cursor-default">
+          <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-black/5 border border-black/10 text-gray-900 text-xs font-black uppercase tracking-widest backdrop-blur-sm hover:bg-black/10 transition-colors cursor-default">
             <span>🌐</span>
             <span>{t.plansMultiLang}</span>
           </div>
