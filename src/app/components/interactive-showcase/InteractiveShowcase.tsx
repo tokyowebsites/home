@@ -1,6 +1,6 @@
 import React, { useState, useEffect, lazy, Suspense } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { X, Check, ArrowRight, Zap, FileText, Files, Building2, Sparkles, Loader2 } from "lucide-react";
+import { X, Check, ArrowRight, Zap, FileText, Building2, Sparkles, Loader2 } from "lucide-react";
 import { MiniBrowser } from "./MiniBrowser";
 import { useTranslation } from "../../lib/TranslationContext";
 
@@ -8,8 +8,6 @@ const EntryPreview = lazy(() => import("./PlanPreviews").then(module => ({ defau
 const StandardPreview = lazy(() => import("./PlanPreviews").then(module => ({ default: module.StandardPreview })));
 const BusinessPreview = lazy(() => import("./PlanPreviews").then(module => ({ default: module.BusinessPreview })));
 const PremiumPreview = lazy(() => import("./PlanPreviews").then(module => ({ default: module.PremiumPreview })));
-
-// Plans are now defined inside InteractiveShowcase component to use translations
 
 interface Plan {
   id: string;
@@ -91,15 +89,9 @@ const PlanCard = ({ plan, index, onClick }: { plan: Plan; index: number; onClick
             <span className="truncate">{feature}</span>
           </li>
         ))}
-        {plan.features.length > 3 && !expanded && (
-          <li className={`text-[10px] pl-5 font-bold ${isHighlighted ? 'text-gray-400' : 'text-gray-500'}`}>
-            + {plan.features.length - 3} more features...
-          </li>
-        )}
-      </ul>
-        {plan.features.length > 5 && (
+        {plan.features.length > 3 && (
           <li
-            className={`text-[11px] md:text-xs pl-7 cursor-pointer transition-colors flex items-center gap-1 font-bold ${
+            className={`text-[10px] pl-5 cursor-pointer transition-colors flex items-center gap-1 font-bold ${
               isHighlighted 
                 ? 'text-emerald-600 hover:text-emerald-700' 
                 : plan.id === 'entry' ? 'text-slate-400 hover:text-slate-300' : 'text-violet-400 hover:text-violet-300'
@@ -109,7 +101,7 @@ const PlanCard = ({ plan, index, onClick }: { plan: Plan; index: number; onClick
               setExpanded(!expanded);
             }}
           >
-            {expanded ? t.less : t.more}
+            {expanded ? t.less : `+ ${plan.features.length - 3} more...`}
           </li>
         )}
       </ul>
