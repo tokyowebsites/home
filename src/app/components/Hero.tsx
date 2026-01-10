@@ -92,21 +92,21 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.5 }}
           className="flex flex-col sm:flex-row gap-2 sm:gap-4 w-full max-w-2xl px-4 md:px-0 relative"
         >
-          <button
-            onClick={() => navigate("service")}
+          <a
+            href="#plans"
             className="w-full sm:flex-1 bg-[#059669] text-white h-11 sm:h-14 rounded-full font-bold text-xs sm:text-sm flex items-center justify-center gap-2 hover:bg-emerald-600 transition-all active:scale-95 shadow-xl border-2 border-[#059669]/60"
             style={{ fontWeight: 700 }}
           >
-            {t.whyCheap} <ArrowRight className="w-4 h-4" />
-          </button>
+            {t.viewPlans} <ArrowRight className="w-4 h-4" />
+          </a>
           
           <div className="flex flex-row gap-2 sm:contents w-full">
-            <a
-              href="#plans"
+            <button
+              onClick={() => navigate("service")}
               className="flex-1 bg-white text-gray-900 h-11 sm:h-14 rounded-full font-bold text-[10px] sm:text-sm flex items-center justify-center gap-1 sm:gap-2 hover:bg-gray-100 transition-all active:scale-95 shadow-xl border-2 border-[#5C81D9]"
             >
-              {t.viewPlans}
-            </a>
+              {t.whyCheap}
+            </button>
 
             <button
               onClick={() => {
