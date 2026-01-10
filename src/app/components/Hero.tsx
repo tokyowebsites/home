@@ -406,19 +406,28 @@ export function Hero() {
         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.org/noise.svg')] opacity-30 brightness-100 contrast-150 mix-blend-overlay"></div>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-10 md:pt-28 md:pb-16">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-10 md:pt-20 md:pb-14">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: reduceMotion ? 0 : 0.6, ease: "easeOut" }}
           className="max-w-6xl mx-auto"
         >
+          <div className="flex justify-end mb-3 md:mb-4">
+            <a
+              href="#plans"
+              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/80 border border-gray-200 text-xs md:text-sm font-bold text-gray-900 shadow-sm hover:bg-white transition-colors"
+              style={{ fontWeight: 700 }}
+            >
+              {t.viewPlans} <ArrowRight size={14} />
+            </a>
+          </div>
           <MiniBrowser
             url={`tokyowebsites.com/${currentView === "home" ? "home" : currentView}`}
             className="rounded-2xl border-gray-200 bg-gray-50"
             dark={false}
           >
-            <div className="h-[480px] sm:h-[560px] md:h-[760px] bg-white relative overflow-hidden">
+            <div className="h-[420px] sm:h-[520px] md:h-[680px] bg-white relative overflow-hidden">
               {/* Internal scrolling enabled for content that exceeds height */}
               <div 
                 ref={viewportRef} 
@@ -611,16 +620,6 @@ export function Hero() {
           </MiniBrowser>
         </motion.div>
 
-        {/* Real CTA Below Browser */}
-        <div className="mt-6 md:mt-10 text-center">
-          <a
-            href="#plans"
-            className="inline-flex items-center gap-2 text-sm font-bold text-gray-900 border-b border-gray-900 pb-0.5 hover:text-[#059669] hover:border-[#059669] transition-colors"
-            style={{ fontWeight: 700 }}
-          >
-            {t.viewPlans} <ArrowRight size={14} />
-          </a>
-        </div>
       </div>
     </section>
   );
