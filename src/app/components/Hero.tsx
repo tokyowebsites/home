@@ -398,7 +398,7 @@ export function Hero() {
   );
 
   return (
-    <section id="service" className="relative min-h-screen bg-gray-50 overflow-hidden">
+    <section id="service" className="relative min-h-screen bg-gray-50 overflow-x-hidden flex items-start">
       {/* Enhanced Animated Fluid Background - Green & Navy */}
       <div className="absolute inset-0 overflow-hidden">
         <div 
@@ -413,19 +413,19 @@ export function Hero() {
         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.org/noise.svg')] opacity-30 brightness-100 contrast-150 mix-blend-overlay"></div>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12 md:pt-32 md:pb-16">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-48 md:pt-64 lg:pt-72 pb-4 md:pb-8 lg:pb-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: reduceMotion ? 0 : 0.6, ease: "easeOut" }}
-          className="max-w-6xl mx-auto"
+          className="max-w-6xl mx-auto w-full flex justify-center"
         >
           <MiniBrowser
             url={`tokyowebsites.com/${currentView === "home" ? "home" : currentView}`}
-            className="rounded-2xl border-gray-200 bg-gray-50"
+            className="w-full rounded-3xl border-gray-200 bg-gray-50"
             dark={false}
           >
-            <div className="h-[420px] sm:h-[520px] md:h-[680px] bg-white relative overflow-hidden">
+            <div className="relative bg-white overflow-hidden h-[80vh] sm:h-[85vh] min-h-[500px] sm:min-h-[600px] md:min-h-[700px] max-h-[calc(100vh-100px)]">
               {/* Internal scrolling enabled for content that exceeds height */}
               <div 
                 ref={viewportRef} 
