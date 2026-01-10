@@ -1,5 +1,5 @@
 import React from "react";
-import { Rocket, Globe, MapPin, Star, MessageSquare, Check, ArrowRight, Zap, FileText, Sparkles } from "lucide-react";
+import { Rocket, Globe, MapPin, Star, MessageSquare, Check, ArrowRight, Zap, FileText, Sparkles, Building2 } from "lucide-react";
 import { useTranslation } from "../lib/TranslationContext";
 import { motion } from "motion/react";
 import { BackgroundGradient } from "./ui/BackgroundGradient";
