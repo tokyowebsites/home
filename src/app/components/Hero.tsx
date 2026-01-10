@@ -612,13 +612,7 @@ export function Hero() {
         </motion.div>
 
         {/* Real CTA Below Browser */}
-        <div className="mt-8 md:mt-12 text-center">
-          <p
-            className="text-xs md:text-sm text-gray-700 mb-4 md:mb-6 font-semibold"
-            style={{ fontWeight: 600 }}
-          >
-            {t.heroTagline}
-          </p>
+        <div className="mt-6 md:mt-10 text-center">
           <a
             href="#plans"
             className="inline-flex items-center gap-2 text-sm font-bold text-gray-900 border-b border-gray-900 pb-0.5 hover:text-[#059669] hover:border-[#059669] transition-colors"
