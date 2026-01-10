@@ -32,7 +32,7 @@ export function Header() {
       {/* Promo bar */}
       <div className="bg-[#059669] text-white text-xs md:text-sm font-bold">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex items-center gap-2 justify-center">
-          <span className="px-2 py-0.5 rounded-full bg-white/20 border border-white/30">Free</span>
+          <span className="px-2 py-0.5 rounded-full bg-white/20 border border-white/30">{t.free}</span>
           <a
             href="https://docs.google.com/forms/d/e/1FAIpQLSf1sejWp_jKe4SxmAtVtNxCoBnU78Ul6TynXUWtD_9GFRcnUQ/viewform?usp=sharing&ouid=109641339829497082567"
             target="_blank"

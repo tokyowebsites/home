@@ -12,6 +12,7 @@ export const translations = {
     contact: 'お問い合わせ',
     freeConsultation: 'お問い合わせ',
     promoCta: '1分で完了！無料診断はこちら',
+    free: '無料',
     
     // Hero
     home: 'ホーム',
@@ -240,6 +241,7 @@ export const translations = {
     contact: 'Contact',
     freeConsultation: 'Contact Us',
     promoCta: 'click here for a free 1 minute consultation',
+    free: 'Free',
     
     // Hero
     home: 'Home',
@@ -468,6 +470,7 @@ export const translations = {
     contact: '문의하기',
     freeConsultation: '문의하기',
     promoCta: '1분 무료 진단 받기',
+    free: '무료',
     
     // Hero
     home: '홈',
