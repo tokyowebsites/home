@@ -142,7 +142,8 @@ export function Plans() {
         </div>
 
         <div className="mt-16 text-center max-w-2xl mx-auto">
-          <p className="text-gray-400 text-[10px] md:text-xs font-bold leading-relaxed px-6">
+          <p className="text-gray-900 text-[10px] md:text-xs font-black leading-relaxed px-6 tracking-tight">
+            <span className="text-emerald-600 mr-2 opacity-50 font-black">※</span>
             {t.domainFeeNote}
           </p>
         </div>

@@ -257,7 +257,8 @@ export function InteractiveShowcase() {
         </div>
 
         <div className="mt-16 text-center max-w-2xl mx-auto">
-          <p className="text-gray-500 text-xs md:text-sm bg-gray-800/50 p-4 rounded-xl border border-gray-700">
+          <p className="text-gray-900 text-xs md:text-sm bg-white p-5 md:p-8 rounded-[2rem] border-2 border-emerald-500/20 shadow-[0_10px_30px_rgba(5,150,105,0.1)] leading-relaxed font-black tracking-tight mx-4">
+            <span className="inline-block mb-1 text-emerald-600 uppercase text-[10px] tracking-widest bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200/50 mr-2">Notice</span>
             {t.domainFeeNote}
           </p>
         </div>
