@@ -1,5 +1,5 @@
 import { Mail, MapPin, Clock, ArrowRight, Loader2, CheckCircle } from "lucide-react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { toast } from "sonner";
 import { useTranslation } from "../lib/TranslationContext";
 
@@ -91,23 +91,6 @@ export function Contact() {
               {t.consultationFree}<br/>
               {t.contactUs}
             </p>
-
-            {/* Brief MEO survey CTA */}
-            <div className="mt-4 mb-8 p-4 rounded-2xl border border-emerald-200 bg-emerald-50 text-emerald-900 shadow-sm max-w-xl">
-              <div className="text-sm font-extrabold mb-1">Google Maps / MEO quick check</div>
-              <p className="text-sm text-emerald-800 font-semibold leading-relaxed mb-3">
-                {t.meoUrgency}
-              </p>
-              <a
-                href={meoSurveyLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2 bg-[#059669] text-white text-sm font-bold rounded-lg shadow hover:bg-emerald-600 transition-colors"
-              >
-                {t.meoSurveyCta}
-                <ArrowRight size={16} />
-              </a>
-            </div>
 
             <div className="space-y-8">
               <div className="flex items-start gap-4 group">
@@ -238,6 +221,26 @@ export function Contact() {
                 送信エラー: {lastError}
               </div>
             )}
+            
+            {/* Brief MEO survey CTA - Moved here */}
+            <div className="mt-8 p-5 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm shadow-xl">
+              <div className="flex items-center gap-2 mb-3">
+                <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                <div className="text-xs font-black text-gray-400 uppercase tracking-widest">Google Maps / MEO quick check</div>
+              </div>
+              <p className="text-sm text-gray-300 font-bold leading-relaxed mb-4">
+                {t.meoUrgency}
+              </p>
+              <a
+                href={meoSurveyLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center justify-center gap-2 w-full py-3 bg-white hover:bg-gray-100 text-gray-900 text-xs font-black uppercase tracking-widest rounded-xl transition-all shadow-lg active:scale-95"
+              >
+                {t.meoSurveyCta}
+                <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+              </a>
+            </div>
             </form>
           </div>
 
