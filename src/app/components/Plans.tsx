@@ -1,10 +1,69 @@
-import React from "react";
+import React, { useMemo, useState } from "react";
 import { Check, ArrowRight, Zap, UtensilsCrossed, ShoppingBag, Scissors, Coffee, Gift } from "lucide-react";
 import { useTranslation } from "../lib/TranslationContext";
 import { BackgroundGradient } from "./ui/BackgroundGradient";
 
 export function Plans() {
   const { t } = useTranslation();
+  const [selectedServices, setSelectedServices] = useState<Record<string, boolean>>({});
+
+  const services = useMemo(
+    () => [
+      { id: "website", label: t.serviceWebsite, price: 20000, category: "web" as const },
+      { id: "booking", label: t.serviceBooking, price: 15000, category: "web" as const },
+      { id: "multiButtons", label: t.serviceMultiButtons, price: 9000, category: "web" as const },
+      { id: "multiMenu", label: t.serviceMultiMenu, price: 0, category: "web" as const },
+      { id: "stripeMarketplace", label: t.serviceStripeMarketplace, price: 25000, category: "web" as const },
+      { id: "photoshoot", label: t.servicePhotoshoot, price: 9000, category: "web" as const },
+      { id: "wifiCampaign", label: t.serviceWifiCampaign, price: 7000, category: "web" as const },
+      { id: "instagramEmbed", label: t.serviceInstagramEmbed, price: 1000, category: "web" as const },
+      { id: "mapsMaintenance", label: t.serviceMapsMaintenance, price: 0, category: "map" as const },
+      { id: "mapsPhotoMenu", label: t.serviceMapsPhotoMenu, price: 10000, category: "map" as const },
+      { id: "mapsPhotoUpdates", label: t.serviceMapsPhotoUpdates, price: 10000, category: "map" as const },
+      { id: "nfcReviewCard", label: t.serviceNfcReviewCard, price: 8000, category: "map" as const },
+      { id: "reviewsConsulting", label: t.serviceReviewsConsulting, price: 6000, category: "map" as const },
+    ],
+    [t],
+  );
+
+  const totals = useMemo(() => {
+    let webTotal = 0;
+    let mapTotal = 0;
+
+    services.forEach((service) => {
+      if (!selectedServices[service.id]) return;
+      if (service.category === "web") webTotal += service.price;
+      if (service.category === "map") mapTotal += service.price;
+    });
+
+    const webDealEligible = webTotal >= 35000 && mapTotal > 0;
+    const mapDealEligible = mapTotal >= 15000 && webTotal > 0;
+
+    const webDealDiscount = webDealEligible ? 5000 : 0; // Applies to map services
+    const mapDealDiscount = mapDealEligible ? 10000 : 0; // Applies to website services
+
+    const totalDiscount =
+      Math.min(mapTotal, webDealDiscount) + Math.min(webTotal, mapDealDiscount);
+
+    const total = webTotal + mapTotal - totalDiscount;
+
+    return {
+      webTotal,
+      mapTotal,
+      totalDiscount,
+      total,
+      webDealDiscount,
+      mapDealDiscount,
+      webDealEligible,
+      mapDealEligible,
+    };
+  }, [selectedServices, services]);
+
+  const toggleService = (id: string) => {
+    setSelectedServices((prev) => ({ ...prev, [id]: !prev[id] }));
+  };
+
+  const formatYen = (value: number) => `¥${value.toLocaleString("en-US")}`;
   
   const packages = [
     {
@@ -225,6 +284,117 @@ export function Plans() {
               <p className="text-gray-700 text-sm font-bold leading-relaxed">
                 {t.mapDealDesc}
               </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Mix & Match Service Menu */}
+        <div className="max-w-6xl mx-auto mt-20">
+          <div className="text-center mb-10">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900 text-white text-xs font-black uppercase tracking-widest mb-4">
+              {t.mixMatchTitle}
+            </div>
+            <h3 className="text-3xl md:text-4xl font-black text-gray-900 mb-3">
+              {t.mixMatchTitle}
+            </h3>
+            <p className="text-gray-600 text-base md:text-lg font-bold">
+              {t.mixMatchSubtitle}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div className="lg:col-span-2 space-y-6">
+              {[
+                { key: "web", label: t.webServicesLabel },
+                { key: "map", label: t.mapServicesLabel },
+              ].map((group) => (
+                <div key={group.key} className="bg-white rounded-3xl border border-gray-100 p-6 shadow-sm">
+                  <div className="text-sm font-black text-gray-900 mb-4">
+                    {group.label}
+                  </div>
+                  <div className="space-y-3">
+                    {services
+                      .filter((service) => service.category === group.key)
+                      .map((service) => (
+                        <label
+                          key={service.id}
+                          className="flex items-center gap-3 rounded-2xl border border-gray-100 px-4 py-3 hover:border-emerald-200 hover:bg-emerald-50/30 transition-colors cursor-pointer"
+                        >
+                          <input
+                            type="checkbox"
+                            checked={!!selectedServices[service.id]}
+                            onChange={() => toggleService(service.id)}
+                            className="h-4 w-4 accent-emerald-600"
+                          />
+                          <span className="text-sm font-bold text-gray-900">
+                            {service.label}
+                          </span>
+                          <span className="ml-auto text-xs font-black text-gray-700">
+                            {service.price === 0 ? t.free : formatYen(service.price)}
+                          </span>
+                        </label>
+                      ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="bg-white rounded-3xl border border-gray-100 p-6 shadow-lg h-fit">
+              <div className="text-xs font-black uppercase tracking-widest text-gray-500 mb-2">
+                {t.selectedTotalLabel}
+              </div>
+              <div className="space-y-2 text-sm font-bold text-gray-700">
+                <div className="flex items-center justify-between">
+                  <span>{t.webServicesLabel}</span>
+                  <span>{formatYen(totals.webTotal)}</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span>{t.mapServicesLabel}</span>
+                  <span>{formatYen(totals.mapTotal)}</span>
+                </div>
+              </div>
+
+              <div className="mt-5 pt-5 border-t border-gray-100">
+                <div className="text-xs font-black uppercase tracking-widest text-gray-500 mb-2">
+                  {t.discountsLabel}
+                </div>
+                <div className="space-y-2 text-sm font-bold">
+                  <div className="flex items-center justify-between">
+                    <span className="text-gray-700">{t.webDealTitle}</span>
+                    <span className={totals.webDealEligible ? "text-emerald-600" : "text-gray-400"}>
+                      -{formatYen(Math.min(totals.mapTotal, totals.webDealDiscount))}
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-gray-700">{t.mapDealTitle}</span>
+                    <span className={totals.mapDealEligible ? "text-emerald-600" : "text-gray-400"}>
+                      -{formatYen(Math.min(totals.webTotal, totals.mapDealDiscount))}
+                    </span>
+                  </div>
+                  <div className="text-[10px] text-gray-400 font-semibold">
+                    {t.autoDiscountNote}
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-5 pt-5 border-t border-gray-100">
+                <div className="text-xs font-black uppercase tracking-widest text-gray-500 mb-2">
+                  {t.estimatedTotalLabel}
+                </div>
+                <div className="text-3xl font-black text-gray-900">
+                  {formatYen(totals.total)}
+                </div>
+                {totals.totalDiscount > 0 && (
+                  <div className="mt-2 inline-block bg-emerald-50 text-emerald-700 px-3 py-1 rounded-full text-[10px] font-black">
+                    {t.discountsLabel}: {formatYen(totals.totalDiscount)}
+                  </div>
+                )}
+                {totals.webTotal + totals.mapTotal === 0 && (
+                  <div className="mt-3 text-[10px] text-gray-500 font-semibold">
+                    {t.noSelectionLabel}
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>
