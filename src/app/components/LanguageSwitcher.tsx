@@ -6,7 +6,7 @@ import { useIsMobile } from './ui/use-mobile';
 import { Drawer, DrawerContent, DrawerTrigger, DrawerTitle, DrawerHeader } from './ui/drawer';
 
 export function LanguageSwitcher() {
-  const { language, setLanguage } = useTranslation();
+  const { language, setLanguage, t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
