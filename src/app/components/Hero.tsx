@@ -238,11 +238,10 @@ export function Hero() {
 
       <div className="mt-2 md:mt-6 grid grid-cols-2 gap-3 md:gap-4 flex-1 min-h-0">
         {[
-          { tag: "リラクゼーション", title: "Ren Thai Massage", sub: "岐阜県多治見市" },
-          { tag: "飲食店", title: "Sakura Bistro", sub: "東京都立川市" },
-          { tag: "士業", title: "Law Office K", sub: "東京都新宿区" },
-          { tag: "IT", title: "TechStart Inc.", sub: "東京都渋谷区" },
-          { tag: "カフェ", title: "Green Leaf Cafe", sub: "埼玉県所沢市" },
+          { tag: t.sampleRestaurantTag, title: t.sampleRestaurantName, sub: t.sampleRestaurantSub },
+          { tag: t.sampleRetailTag, title: t.sampleRetailName, sub: t.sampleRetailSub },
+          { tag: t.sampleSalonTag, title: t.sampleSalonName, sub: t.sampleSalonSub },
+          { tag: t.sampleCafeTag, title: t.sampleCafeName, sub: t.sampleCafeSub },
         ].map((w, i) => (
           <button
             key={w.title}
