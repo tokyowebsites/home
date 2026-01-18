@@ -457,12 +457,41 @@ export function Plans() {
           </div>
         </div>
 
-        {/* Domain Note */}
-        <div className="mt-16 text-center max-w-2xl mx-auto">
-          <p className="text-gray-900 text-[10px] md:text-xs font-black leading-relaxed px-6 tracking-tight">
-            <span className="text-emerald-600 mr-2 opacity-50 font-black">※</span>
-            {t.domainFeeNote}
-          </p>
+        {/* Domain Note + Graphic */}
+        <div className="mt-16 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+            <div className="order-2 md:order-1 text-center md:text-left">
+              <p className="text-gray-900 text-[10px] md:text-xs font-black leading-relaxed px-6 md:px-0 tracking-tight">
+                <span className="text-emerald-600 mr-2 opacity-50 font-black">※</span>
+                {t.domainFeeNote}
+              </p>
+            </div>
+            <div className="order-1 md:order-2">
+              <div className="rounded-[28px] border border-emerald-200 bg-emerald-50/70 p-5 md:p-6 shadow-sm">
+                <div className="text-center text-sm md:text-base font-black text-gray-900 mb-4">
+                  {t.pricingStructureTitle}
+                </div>
+                <div className="grid grid-cols-[1fr_auto_1fr_auto_1fr] items-center gap-2 text-[11px] md:text-xs font-black text-gray-800">
+                  <div className="rounded-xl border border-gray-300 bg-white px-3 py-3 text-center leading-tight">
+                    <div>{t.pricingStructureBasicSite}</div>
+                    <div className="mt-1 text-emerald-700">{t.pricingStructureBasicPrice}</div>
+                  </div>
+                  <div className="text-gray-500">+</div>
+                  <div className="rounded-xl border border-gray-300 bg-white px-3 py-3 text-center leading-tight">
+                    <div>{t.pricingStructureOptions}</div>
+                  </div>
+                  <div className="text-gray-500">+</div>
+                  <div className="rounded-xl border border-gray-300 bg-white px-3 py-3 text-center leading-tight">
+                    <div>{t.pricingStructureManagement}</div>
+                    <div className="mt-1 text-emerald-700">{t.pricingStructureManagementPrice}</div>
+                  </div>
+                </div>
+                <div className="mt-4 text-center text-[10px] font-bold text-gray-500">
+                  {t.pricingStructureNote}
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 

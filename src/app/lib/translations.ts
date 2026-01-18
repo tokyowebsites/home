@@ -426,6 +426,13 @@ export const translations = {
     webRequirementsFoodPhotosNote: 'ご用意が難しい場合は、別途撮影費用が発生します。',
     webRequirementsLanguagesTitle: '対応言語（現時点）',
     webRequirementsLanguagesList: '韓国語 / 英語 / タイ語 / 中国語',
+    pricingStructureTitle: '基本的な料金構成',
+    pricingStructureBasicSite: '基本のwebサイト',
+    pricingStructureBasicPrice: '¥20,000',
+    pricingStructureOptions: '欲しい機能オプション（カスタム）',
+    pricingStructureManagement: 'webサイト管理費',
+    pricingStructureManagementPrice: '月額 ¥800',
+    pricingStructureNote: '※webサイトには、必要機能が含まれます',
   },
   en: {
     // Navigation
@@ -852,6 +859,13 @@ export const translations = {
     webRequirementsFoodPhotosNote: 'If not provided, an additional photography fee applies.',
     webRequirementsLanguagesTitle: 'Supported Languages (for now)',
     webRequirementsLanguagesList: 'Korean / English / Thai / Chinese',
+    pricingStructureTitle: 'Basic Price Structure',
+    pricingStructureBasicSite: 'Basic website',
+    pricingStructureBasicPrice: '¥20,000',
+    pricingStructureOptions: 'Optional features (custom)',
+    pricingStructureManagement: 'Website management',
+    pricingStructureManagementPrice: '¥800 / month',
+    pricingStructureNote: '* Website includes essential features',
   },
   ko: {
     // Navigation
@@ -1278,5 +1292,12 @@ export const translations = {
     webRequirementsFoodPhotosNote: '제공이 어려운 경우, 추가 촬영 비용이 발생합니다.',
     webRequirementsLanguagesTitle: '지원 언어 (현재)',
     webRequirementsLanguagesList: '한국어 / 영어 / 태국어 / 중국어',
+    pricingStructureTitle: '기본 요금 구성',
+    pricingStructureBasicSite: '기본 웹사이트',
+    pricingStructureBasicPrice: '¥20,000',
+    pricingStructureOptions: '원하는 기능 옵션 (맞춤)',
+    pricingStructureManagement: '웹사이트 관리비',
+    pricingStructureManagementPrice: '월 ¥800',
+    pricingStructureNote: '※웹사이트에는 필요한 기능이 포함됩니다',
   },
 };
