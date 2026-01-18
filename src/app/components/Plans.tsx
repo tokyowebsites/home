@@ -9,6 +9,7 @@ export function Plans() {
   const { t } = useTranslation();
   const [selectedServices, setSelectedServices] = useState<Record<string, boolean>>({});
   const [previewPackageId, setPreviewPackageId] = useState<string | null>(null);
+  const [expandedPackages, setExpandedPackages] = useState<Record<string, boolean>>({});
 
   const services = useMemo(
     () => [
@@ -64,6 +65,10 @@ export function Plans() {
 
   const toggleService = (id: string) => {
     setSelectedServices((prev) => ({ ...prev, [id]: !prev[id] }));
+  };
+
+  const togglePackageDetails = (id: string) => {
+    setExpandedPackages((prev) => ({ ...prev, [id]: !prev[id] }));
   };
 
   const formatYen = (value: number) => `¥${value.toLocaleString("en-US")}`;
@@ -175,15 +180,16 @@ export function Plans() {
         </div>
 
         {/* Packages Grid */}
-        <div className="flex overflow-x-auto pb-8 px-4 -mx-4 md:mx-0 md:px-0 md:grid md:grid-cols-2 gap-5 md:gap-6 max-w-6xl mx-auto mb-16 snap-x no-scrollbar md:overflow-visible">
+        <div className="flex overflow-x-auto pb-10 px-4 -mx-4 md:mx-0 md:px-0 md:grid md:grid-cols-2 gap-5 md:gap-6 max-w-6xl mx-auto mb-16 snap-x no-scrollbar md:overflow-visible">
           {packages.map((pkg) => {
             const Icon = pkg.icon;
+            const isExpanded = !!expandedPackages[pkg.id];
             return (
               <div 
                 key={pkg.id} 
-                className={`group relative border rounded-3xl p-5 md:p-6 transition-all duration-500 flex flex-col min-w-[260px] md:min-w-0 snap-center h-full min-h-[520px] ${
+                className={`group relative border rounded-3xl p-5 md:p-6 transition-all duration-500 flex flex-col min-w-[260px] md:min-w-0 snap-center h-full min-h-[560px] ${
                   pkg.highlighted 
-                    ? "bg-white border-[#059669] shadow-2xl shadow-emerald-900/10 scale-[1.02]" 
+                    ? "bg-white border-[#059669] shadow-2xl shadow-emerald-900/10 ring-1 ring-emerald-200" 
                     : "bg-white/80 border-white/60 backdrop-blur-md hover:bg-white hover:shadow-xl"
                 }`}
               >
@@ -203,8 +209,8 @@ export function Plans() {
                 </div>
 
                 {/* Items List */}
-                <ul className="space-y-2 mb-5 flex-grow">
-                  {pkg.items.map((item, i) => {
+                <ul className="space-y-2 mb-3 flex-grow">
+                  {(isExpanded ? pkg.items : pkg.items.slice(0, 4)).map((item, i) => {
                     const isFree = typeof item === 'object' && item.free;
                     const text = typeof item === 'string' ? item : item.text;
                     return (
@@ -219,6 +225,15 @@ export function Plans() {
                     );
                   })}
                 </ul>
+                {pkg.items.length > 4 && (
+                  <button
+                    type="button"
+                    onClick={() => togglePackageDetails(pkg.id)}
+                    className="mb-4 text-[10px] font-black uppercase tracking-widest text-gray-500 hover:text-gray-800"
+                  >
+                    {isExpanded ? t.closeDetails : t.more}
+                  </button>
+                )}
 
                 {/* Math */}
                 <div className="text-[9px] text-gray-500 font-mono mb-4 border-t pt-3 border-gray-100">
