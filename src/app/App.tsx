@@ -3,7 +3,7 @@ import { Instagram, Twitter } from "lucide-react";
 import { Header } from "./components/Header";
 import { Hero } from "./components/Hero";
 import { Solutions } from "./components/Solutions";
-import { InteractiveShowcase } from "./components/interactive-showcase/InteractiveShowcase";
+import { Plans } from "./components/Plans";
 import { Contact } from "./components/Contact";
 import { BackgroundGradient } from "./components/ui/BackgroundGradient";
 import { Customers } from "./components/Customers";
@@ -25,7 +25,7 @@ export default function App() {
       
       <Solutions />
 
-      <InteractiveShowcase />
+      <Plans />
 
       <Customers />
 
