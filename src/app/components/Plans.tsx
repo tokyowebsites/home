@@ -181,7 +181,7 @@ export function Plans() {
             return (
               <div 
                 key={pkg.id} 
-                className={`group relative border rounded-[2.25rem] p-5 md:p-6 transition-all duration-500 flex flex-col min-w-[260px] md:min-w-0 snap-center ${
+                className={`group relative border rounded-3xl p-5 md:p-6 transition-all duration-500 flex flex-col min-w-[260px] md:min-w-0 snap-center h-full min-h-[520px] ${
                   pkg.highlighted 
                     ? "bg-white border-[#059669] shadow-2xl shadow-emerald-900/10 scale-[1.02]" 
                     : "bg-white/80 border-white/60 backdrop-blur-md hover:bg-white hover:shadow-xl"
@@ -242,19 +242,19 @@ export function Plans() {
                 </div>
 
                 {/* CTA Button */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-auto">
                   <button
                     type="button"
                     onClick={() => setPreviewPackageId(pkg.id)}
-                    className="w-full py-3 rounded-2xl text-[10px] font-black uppercase tracking-widest border border-gray-200 text-gray-700 hover:bg-gray-100"
+                    className="w-full py-3 rounded-2xl text-[10px] md:text-xs font-black uppercase tracking-widest border border-gray-200 text-gray-700 hover:bg-gray-100"
                   >
-                    {t.worksSample}
+                    {t.previewWebsiteButton}
                   </button>
                   <a 
                     href={pkg.formUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`w-full py-3 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl active:scale-95 ${
+                    className={`w-full py-3 rounded-2xl text-[10px] md:text-xs font-black uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl active:scale-95 ${
                       pkg.highlighted 
                         ? 'bg-[#059669] text-white hover:bg-emerald-600' 
                         : 'bg-gray-900 text-white hover:bg-gray-800'
@@ -465,7 +465,7 @@ export function Plans() {
               <button
                 type="button"
                 onClick={() => setPreviewPackageId(null)}
-                className="w-full py-3 rounded-2xl text-xs font-black uppercase tracking-widest border border-gray-200 text-gray-700 hover:bg-gray-100 inline-flex items-center justify-center gap-2"
+                className="w-full py-3 rounded-2xl text-[11px] md:text-xs font-black uppercase tracking-widest border border-gray-200 text-gray-700 hover:bg-gray-100 inline-flex items-center justify-center gap-2"
               >
                 <X size={14} />
                 {t.closePreview}
@@ -474,7 +474,7 @@ export function Plans() {
                 href={activePreview.formUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full py-3 rounded-2xl text-xs font-black uppercase tracking-widest bg-[#059669] text-white text-center hover:bg-emerald-600"
+                className="w-full py-3 rounded-2xl text-[11px] md:text-xs font-black uppercase tracking-widest bg-[#059669] text-white text-center hover:bg-emerald-600"
               >
                 {t.consultThisPackage}
               </a>

@@ -171,7 +171,7 @@ export function EntryPreview() {
             <MapPin className="w-3 h-3 text-gray-600" />
             アクセス
           </div>
-          <div className="text-[10px] text-gray-600 mb-2">東京都立川市 ○○1-2-3</div>
+          <div className="text-[10px] text-gray-600 mb-2">{t.sampleRestaurantSub}</div>
           <div className="grid grid-cols-2 gap-2">
             <button className="w-full bg-gray-900 text-white py-2 rounded-lg font-bold text-[10px] flex items-center justify-center gap-1">
               <MapPin size={10} /> Map
@@ -188,9 +188,10 @@ export function EntryPreview() {
 }
 
 export function RestaurantPreview() {
+  const { t } = useTranslation();
   return (
     <div className="min-h-full bg-slate-50 relative">
-      <MiniHeader title="Sakura Bistro" subtitle="TACHIKAWA" links={["Menu", "Booking"]} />
+      <MiniHeader title={t.sampleRestaurantName} subtitle={t.sampleRestaurantSub} links={[t.previewMenu, t.previewBooking]} />
 
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-1/4 left-1/4"><FloatingCursor delay={0.5} seed={111} /></div>
@@ -207,19 +208,19 @@ export function RestaurantPreview() {
         />
         <div className="absolute bottom-0 left-0 right-0 p-4 z-20 text-white">
           <div className="inline-flex items-center gap-1 text-[9px] font-bold tracking-wider uppercase bg-emerald-600 px-2 py-0.5 rounded mb-1">
-            Seats Available
+            {t.previewSeatsAvailable}
           </div>
-          <h1 className="text-xl sm:text-2xl font-bold mb-1">季節の和食コース</h1>
-          <p className="text-xs text-gray-300">立川の隠れ家で、旬の味わいを。</p>
+          <h1 className="text-xl sm:text-2xl font-bold mb-1">{t.previewRestaurantTitle}</h1>
+          <p className="text-xs text-gray-300">{t.previewRestaurantSubtitle}</p>
         </div>
       </div>
 
       <div className="p-3 sm:p-4 grid gap-3">
         <div className="grid grid-cols-3 gap-2">
           {[
-            { label: "評価", value: "4.7", icon: Star },
-            { label: "予約", value: "OK", icon: Phone },
-            { label: "多言語", value: "対応", icon: Sparkles },
+            { label: t.previewRating, value: "4.7", icon: Star },
+            { label: t.previewReservation, value: "OK", icon: Phone },
+            { label: t.previewMultilang, value: t.previewAvailable, icon: Sparkles },
           ].map((k, i) => (
             <div key={i} className="bg-white p-2.5 rounded-lg border border-gray-100 shadow-sm">
               <div className="flex items-center gap-1 text-[9px] text-gray-500 font-bold">
@@ -234,15 +235,15 @@ export function RestaurantPreview() {
         <div className="bg-white p-3 rounded-lg border border-gray-100 shadow-sm">
           <div className="flex items-center gap-2 mb-2">
             <Clock className="w-3 h-3 text-gray-600" />
-            <span className="font-bold text-xs">営業時間</span>
+            <span className="font-bold text-xs">{t.previewHours}</span>
           </div>
           <div className="space-y-1 text-xs">
             <div className="flex justify-between">
-              <span className="text-gray-500">Mon - Fri</span>
+              <span className="text-gray-500">{t.previewWeekdays}</span>
               <span className="font-bold">17:00 - 23:00</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-gray-500">Sat - Sun</span>
+              <span className="text-gray-500">{t.previewWeekend}</span>
               <span className="font-bold">12:00 - 23:00</span>
             </div>
           </div>
@@ -250,8 +251,8 @@ export function RestaurantPreview() {
 
         <div className="grid grid-cols-2 gap-2">
           {[
-            { name: "Seasonal Course", price: "¥4,800", img: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&q=80&w=400" },
-            { name: "Signature Sake", price: "¥900", img: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&q=80&w=400" },
+            { name: t.previewSeasonalCourse, price: "¥4,800", img: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&q=80&w=400" },
+            { name: t.previewSignatureSake, price: "¥900", img: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&q=80&w=400" },
           ].map((item, i) => (
             <div key={i} className="bg-white p-2 rounded-lg border border-gray-100 shadow-sm">
               <div className="aspect-square bg-gray-100 rounded mb-1.5 overflow-hidden">
@@ -266,15 +267,15 @@ export function RestaurantPreview() {
         <div className="bg-white rounded-lg border border-gray-100 shadow-sm p-3">
           <div className="text-[10px] font-bold text-gray-900 mb-1 flex items-center gap-1">
             <MapPin className="w-3 h-3 text-gray-600" />
-            アクセス
+            {t.previewAccess}
           </div>
           <div className="text-[10px] text-gray-600 mb-2">東京都立川市 ○○1-2-3</div>
           <div className="grid grid-cols-2 gap-2">
             <button className="w-full bg-gray-900 text-white py-2 rounded-lg font-bold text-[10px] flex items-center justify-center gap-1">
-              <MapPin size={10} /> Map
+              <MapPin size={10} /> {t.previewMap}
             </button>
             <button className="w-full bg-emerald-600 text-white py-2 rounded-lg font-bold text-[10px] flex items-center justify-center gap-1">
-              <Phone size={10} /> 予約
+              <Phone size={10} /> {t.previewReserve}
             </button>
           </div>
         </div>
@@ -376,13 +377,99 @@ export function StandardPreview() {
 }
 
 export function SalonPreview() {
-  return <StandardPreview />;
+  const { t } = useTranslation();
+  return (
+    <div className="min-h-full bg-rose-50 relative">
+      <MiniHeader title={t.sampleSalonName} subtitle={t.sampleSalonSub} links={[t.previewMenu, t.previewBooking]} />
+
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute top-[12%] left-[70%]"><FloatingCursor delay={0.6} seed={311} /></div>
+        <div className="absolute bottom-[30%] left-[20%]"><FloatingCursor delay={2.1} seed={312} /></div>
+      </div>
+
+      <div className="relative h-44 sm:h-56 overflow-hidden">
+        <img 
+          src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&q=80&w=800" 
+          alt="Salon" 
+          className="w-full h-full object-cover"
+          loading="eager"
+          referrerPolicy="no-referrer"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-4 text-white">
+          <div>
+            <div className="inline-block bg-rose-500 text-white text-[9px] font-bold px-2 py-1 rounded mb-2">
+              {t.previewSalonBadge}
+            </div>
+            <h1 className="text-xl sm:text-2xl font-bold mb-1">{t.previewSalonTitle}</h1>
+            <p className="text-xs text-white/80">{t.previewSalonSubtitle}</p>
+          </div>
+        </div>
+      </div>
+
+      <div className="p-3 sm:p-4 grid gap-3">
+        <button className="w-full bg-rose-600 text-white py-2.5 rounded-full text-xs font-bold shadow-md">
+          {t.previewSalonBook}
+        </button>
+
+        <div className="bg-white p-3 rounded-lg border border-gray-100 shadow-sm">
+          <div className="text-[10px] font-bold text-gray-900 mb-2">
+            {t.previewSalonServicesTitle}
+          </div>
+          <div className="grid gap-2 text-[10px] font-bold text-gray-700">
+            <div className="flex items-center justify-between">
+              <span>{t.previewSalonService1}</span>
+              <span className="text-rose-600">¥6,800</span>
+            </div>
+            <div className="flex items-center justify-between">
+              <span>{t.previewSalonService2}</span>
+              <span className="text-rose-600">¥9,500</span>
+            </div>
+            <div className="flex items-center justify-between">
+              <span>{t.previewSalonService3}</span>
+              <span className="text-rose-600">¥5,000</span>
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-white p-3 rounded-lg border border-gray-100 shadow-sm">
+          <div className="text-[10px] font-bold text-gray-900 mb-2">
+            {t.previewSalonGalleryTitle}
+          </div>
+          <div className="grid grid-cols-3 gap-2">
+            {[
+              "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&q=80&w=400",
+              "https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&q=80&w=400",
+              "https://images.unsplash.com/photo-1517832207067-4db24a2ae47c?auto=format&fit=crop&q=80&w=400",
+            ].map((img) => (
+              <div key={img} className="aspect-square bg-gray-100 rounded overflow-hidden">
+                <img src={img} alt="Salon Gallery" className="w-full h-full object-cover" loading="lazy" referrerPolicy="no-referrer" />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="bg-white rounded-lg border border-gray-100 shadow-sm p-3">
+          <div className="text-[10px] font-bold text-gray-900 mb-1 flex items-center gap-1">
+            <Star className="w-3 h-3 text-amber-400 fill-amber-400" />
+            {t.previewSalonReviewTitle}
+          </div>
+          <div className="space-y-2 text-[10px] text-gray-600 font-semibold">
+            <div>“{t.previewSalonReview1}”</div>
+            <div>“{t.previewSalonReview2}”</div>
+          </div>
+        </div>
+      </div>
+
+      <MiniFooter />
+    </div>
+  );
 }
 
 export function BusinessPreview() {
+  const { t } = useTranslation();
   return (
     <div className="min-h-full bg-slate-50 relative">
-      <MiniHeader title="TOKYO MARKET" subtitle="オンラインショップ" links={["商品", "お知らせ"]} />
+      <MiniHeader title={t.sampleRetailName} subtitle={t.sampleRetailSub} links={[t.previewProducts, t.previewNewsLink]} />
       
       {/* Random Cursors */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -400,11 +487,11 @@ export function BusinessPreview() {
           />
         </div>
         <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-center p-4 z-10">
-          <div className="text-[10px] font-bold tracking-widest uppercase mb-2 text-emerald-400">新商品入荷</div>
-          <h2 className="text-xl sm:text-2xl font-bold mb-2">冬のセール開催中</h2>
-          <p className="text-xs opacity-90 mb-3">全商品最大30%OFF</p>
+          <div className="text-[10px] font-bold tracking-widest uppercase mb-2 text-emerald-400">{t.previewRetailBadge}</div>
+          <h2 className="text-xl sm:text-2xl font-bold mb-2">{t.previewRetailTitle}</h2>
+          <p className="text-xs opacity-90 mb-3">{t.previewRetailSubtitle}</p>
           <button className="bg-emerald-600 text-white px-5 py-2 text-xs font-bold rounded-full hover:bg-emerald-500 transition-colors shadow-lg">
-            今すぐチェック
+            {t.previewShopNow}
           </button>
         </div>
       </div>
@@ -412,9 +499,9 @@ export function BusinessPreview() {
       <div className="p-3">
         <div className="grid grid-cols-3 gap-2 mb-4">
           {[
-            { title: "送料無料", sub: "¥5,000~", icon: Truck },
-            { title: "即日発送", sub: "15時迄", icon: Sparkles },
-            { title: "安心決済", sub: "各種対応", icon: ShieldCheck },
+            { title: t.previewFreeShipping, sub: t.previewFreeShippingSub, icon: Truck },
+            { title: t.previewSameDay, sub: t.previewSameDaySub, icon: Sparkles },
+            { title: t.previewSecurePay, sub: t.previewSecurePaySub, icon: ShieldCheck },
           ].map((k, i) => (
             <div key={i} className="bg-white rounded-lg border border-gray-100 p-2 text-center shadow-sm">
               <k.icon className="w-4 h-4 text-gray-600 mx-auto mb-1" />
@@ -425,15 +512,15 @@ export function BusinessPreview() {
         </div>
 
         <div className="flex items-center justify-between mb-3">
-          <h3 className="font-bold text-sm text-gray-900">人気商品</h3>
-          <span className="text-[10px] text-gray-400">→ もっと見る</span>
+          <h3 className="font-bold text-sm text-gray-900">{t.previewPopularProducts}</h3>
+          <span className="text-[10px] text-gray-400">{t.previewSeeMore}</span>
         </div>
         <div className="grid grid-cols-2 gap-2">
           {[
-            { name: "ワイヤレスイヤホン", price: "¥8,980", tag: "NEW", img: "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&q=80&w=400" },
-            { name: "スマートウォッチ", price: "¥15,800", tag: "人気", img: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&q=80&w=400" },
-            { name: "モバイルバッテリー", price: "¥3,980", tag: "SALE", img: "https://images.unsplash.com/photo-1609091839311-d5365f9ff1c5?auto=format&fit=crop&q=80&w=400" },
-            { name: "高性能マウス", price: "¥4,580", tag: "", img: "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?auto=format&fit=crop&q=80&w=400" },
+            { name: t.previewProduct1, price: "¥8,980", tag: t.previewTagNew, img: "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&q=80&w=400" },
+            { name: t.previewProduct2, price: "¥15,800", tag: t.previewTagPopular, img: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&q=80&w=400" },
+            { name: t.previewProduct3, price: "¥3,980", tag: t.previewTagSale, img: "https://images.unsplash.com/photo-1609091839311-d5365f9ff1c5?auto=format&fit=crop&q=80&w=400" },
+            { name: t.previewProduct4, price: "¥4,580", tag: "", img: "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?auto=format&fit=crop&q=80&w=400" },
           ].map((product, i) => (
             <div key={i} className="group cursor-pointer">
               <div className="aspect-square bg-white rounded-lg mb-1.5 overflow-hidden relative border border-gray-200 shadow-sm">
@@ -458,12 +545,12 @@ export function BusinessPreview() {
         <div className="bg-white rounded-lg border border-gray-100 shadow-sm p-3">
           <div className="text-xs font-bold text-gray-900 mb-2 flex items-center gap-1">
             <Star className="w-3 h-3 text-amber-400 fill-amber-400" />
-            お客様の声
+            {t.previewReviewTitle}
           </div>
           <div className="space-y-2">
             {[
-              { n: "田中様", t: "配送が早くて助かりました。", rating: 5 },
-              { n: "佐藤様", t: "商品の品質が素晴らしい。", rating: 5 },
+              { n: t.previewReviewName1, t: t.previewReviewText1, rating: 5 },
+              { n: t.previewReviewName2, t: t.previewReviewText2, rating: 5 },
             ].map((r, i) => (
               <div key={i} className="bg-gray-50 rounded-md p-2 flex items-start gap-2">
                 <div className="flex-1 min-w-0">
@@ -490,9 +577,10 @@ export function RetailPreview() {
 }
 
 export function CafePreview() {
+  const { t } = useTranslation();
   return (
     <div className="min-h-full bg-amber-50 relative">
-      <MiniHeader title="Green Leaf Cafe" subtitle="TOKOROZAWA" links={["Menu", "Instagram"]} />
+      <MiniHeader title={t.sampleCafeName} subtitle={t.sampleCafeSub} links={[t.previewMenu, t.previewInstagram]} />
 
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-[12%] left-[70%]"><FloatingCursor delay={0.6} seed={211} /></div>
@@ -504,13 +592,14 @@ export function CafePreview() {
           src="https://images.unsplash.com/photo-1504753793650-d4a2b783c15e?auto=format&fit=crop&q=80&w=800" 
           alt="Cafe" 
           className="w-full h-full object-cover"
-          loading="lazy"
+          loading="eager"
+          referrerPolicy="no-referrer"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-4 text-white">
           <div>
-            <div className="text-[9px] font-bold uppercase tracking-wider text-emerald-200">Instagrammable</div>
-            <h1 className="text-xl sm:text-2xl font-bold">季節限定ラテ</h1>
-            <p className="text-xs text-white/80">写真映えするラテとスイーツ。</p>
+            <div className="text-[9px] font-bold uppercase tracking-wider text-emerald-200">{t.previewInstagrammable}</div>
+            <h1 className="text-xl sm:text-2xl font-bold">{t.previewCafeTitle}</h1>
+            <p className="text-xs text-white/80">{t.previewCafeSubtitle}</p>
           </div>
         </div>
       </div>
@@ -518,9 +607,9 @@ export function CafePreview() {
       <div className="p-3 sm:p-4 grid gap-3">
         <div className="grid grid-cols-3 gap-2">
           {[
-            { label: "Wi-Fi", value: "Free", icon: Sparkles },
-            { label: "投稿数", value: "2.1k", icon: Star },
-            { label: "混雑", value: "中", icon: Clock },
+            { label: t.previewWifi, value: t.free, icon: Sparkles },
+            { label: t.previewPosts, value: "2.1k", icon: Star },
+            { label: t.previewCrowd, value: t.previewCrowdValue, icon: Clock },
           ].map((k, i) => (
             <div key={i} className="bg-white p-2.5 rounded-lg border border-gray-100 shadow-sm">
               <div className="flex items-center gap-1 text-[9px] text-gray-500 font-bold">
@@ -534,12 +623,12 @@ export function CafePreview() {
 
         <div className="grid grid-cols-2 gap-2">
           {[
-            { name: "Matcha Latte", price: "¥680", img: "https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&q=80&w=400" },
-            { name: "Berry Parfait", price: "¥880", img: "https://images.unsplash.com/photo-1464306076886-da185f8f0b19?auto=format&fit=crop&q=80&w=400" },
+            { name: t.previewMatchaLatte, price: "¥680", img: "https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&q=80&w=400" },
+            { name: t.previewBerryParfait, price: "¥880", img: "https://images.unsplash.com/photo-1464306076886-da185f8f0b19?auto=format&fit=crop&q=80&w=400" },
           ].map((item, i) => (
             <div key={i} className="bg-white p-2 rounded-lg border border-gray-100 shadow-sm">
               <div className="aspect-square bg-gray-100 rounded mb-1.5 overflow-hidden">
-                <img src={item.img} alt={item.name} className="w-full h-full object-cover" loading="lazy" />
+                <img src={item.img} alt={item.name} className="w-full h-full object-cover" loading="lazy" referrerPolicy="no-referrer" />
               </div>
               <div className="text-[10px] font-bold">{item.name}</div>
               <div className="text-[10px] text-emerald-600 font-bold">{item.price}</div>
@@ -550,15 +639,15 @@ export function CafePreview() {
         <div className="bg-white rounded-lg border border-gray-100 shadow-sm p-3">
           <div className="text-[10px] font-bold text-gray-900 mb-1 flex items-center gap-1">
             <MapPin className="w-3 h-3 text-gray-600" />
-            アクセス
+            {t.previewAccess}
           </div>
-          <div className="text-[10px] text-gray-600 mb-2">埼玉県所沢市 ○○5-6-7</div>
+          <div className="text-[10px] text-gray-600 mb-2">{t.sampleCafeSub}</div>
           <div className="grid grid-cols-2 gap-2">
             <button className="w-full bg-gray-900 text-white py-2 rounded-lg font-bold text-[10px] flex items-center justify-center gap-1">
-              <MapPin size={10} /> Map
+              <MapPin size={10} /> {t.previewMap}
             </button>
             <button className="w-full bg-emerald-600 text-white py-2 rounded-lg font-bold text-[10px] flex items-center justify-center gap-1">
-              <Phone size={10} /> 連絡
+              <Phone size={10} /> {t.previewContact}
             </button>
           </div>
         </div>
