@@ -421,6 +421,11 @@ export const translations = {
     previewSalonReviewTitle: '口コミ',
     previewSalonReview1: '仕上がりがとても綺麗！',
     previewSalonReview2: 'スタッフが丁寧で安心。',
+    webRequirementsTitle: 'Web制作のご準備',
+    webRequirementsFoodPhotos: '料理写真のご提供が必須です',
+    webRequirementsFoodPhotosNote: 'ご用意が難しい場合は、別途撮影費用が発生します。',
+    webRequirementsLanguagesTitle: '対応言語（現時点）',
+    webRequirementsLanguagesList: '韓国語 / 英語 / タイ語 / 中国語',
   },
   en: {
     // Navigation
@@ -842,6 +847,11 @@ export const translations = {
     previewSalonReviewTitle: 'Reviews',
     previewSalonReview1: 'The finish was perfect!',
     previewSalonReview2: 'Staff were kind and professional.',
+    webRequirementsTitle: 'Web Design Requirements',
+    webRequirementsFoodPhotos: 'Food photos are required',
+    webRequirementsFoodPhotosNote: 'If not provided, an additional photography fee applies.',
+    webRequirementsLanguagesTitle: 'Supported Languages (for now)',
+    webRequirementsLanguagesList: 'Korean / English / Thai / Chinese',
   },
   ko: {
     // Navigation
@@ -1263,5 +1273,10 @@ export const translations = {
     previewSalonReviewTitle: '후기',
     previewSalonReview1: '마무리가 정말 예뻐요!',
     previewSalonReview2: '직원이 친절해서 안심됐어요.',
+    webRequirementsTitle: '웹 제작 준비사항',
+    webRequirementsFoodPhotos: '음식 사진 제공이 필수입니다',
+    webRequirementsFoodPhotosNote: '제공이 어려운 경우, 추가 촬영 비용이 발생합니다.',
+    webRequirementsLanguagesTitle: '지원 언어 (현재)',
+    webRequirementsLanguagesList: '한국어 / 영어 / 태국어 / 중국어',
   },
 };

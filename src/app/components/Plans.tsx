@@ -283,6 +283,31 @@ export function Plans() {
           })}
         </div>
 
+        {/* Web Design Requirements */}
+        <div className="max-w-4xl mx-auto mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="rounded-3xl border border-amber-200 bg-amber-50/80 p-6">
+              <div className="text-xs font-black uppercase tracking-widest text-amber-700 mb-2">
+                {t.webRequirementsTitle}
+              </div>
+              <div className="text-sm font-black text-gray-900">
+                {t.webRequirementsFoodPhotos}
+              </div>
+              <div className="mt-2 text-xs font-bold text-amber-700">
+                {t.webRequirementsFoodPhotosNote}
+              </div>
+            </div>
+            <div className="rounded-3xl border border-emerald-200 bg-emerald-50/80 p-6">
+              <div className="text-xs font-black uppercase tracking-widest text-emerald-700 mb-2">
+                {t.webRequirementsLanguagesTitle}
+              </div>
+              <div className="text-sm font-black text-gray-900">
+                {t.webRequirementsLanguagesList}
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Build Your Own Deal Section */}
         <div className="max-w-4xl mx-auto mt-20">
           <div className="text-center mb-10">
