@@ -16,7 +16,7 @@ export function SEO({
   url = "https://tokyowebsites.com", 
   type = "website" 
 }: SEOProps) {
-  const { t } = useTranslation();
+  const { t, language } = useTranslation();
   
   // Title Length: ~30-60 chars is optimal. 
   // "Tokyo Websites - ウェブ사이트 제작・디지털 브랜딩"
