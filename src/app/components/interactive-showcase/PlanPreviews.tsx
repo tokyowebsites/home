@@ -624,7 +624,7 @@ export function CafePreview() {
         <div className="grid grid-cols-2 gap-2">
           {[
             { name: t.previewMatchaLatte, price: "¥680", img: "https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&q=80&w=400" },
-            { name: t.previewBerryParfait, price: "¥880", img: "https://images.unsplash.com/photo-1464306076886-da185f8f0b19?auto=format&fit=crop&q=80&w=400" },
+            { name: t.previewBerryParfait, price: "¥880", img: "https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&q=80&w=400" },
           ].map((item, i) => (
             <div key={i} className="bg-white p-2 rounded-lg border border-gray-100 shadow-sm">
               <div className="aspect-square bg-gray-100 rounded mb-1.5 overflow-hidden">
