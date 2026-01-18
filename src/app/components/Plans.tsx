@@ -1,11 +1,14 @@
 import React, { useMemo, useState } from "react";
-import { Check, ArrowRight, Zap, UtensilsCrossed, ShoppingBag, Scissors, Coffee, Gift } from "lucide-react";
+import { Check, ArrowRight, Zap, UtensilsCrossed, ShoppingBag, Scissors, Coffee, Gift, X } from "lucide-react";
 import { useTranslation } from "../lib/TranslationContext";
 import { BackgroundGradient } from "./ui/BackgroundGradient";
+import { MiniBrowser } from "./interactive-showcase/MiniBrowser";
+import { CafePreview, RestaurantPreview, RetailPreview, SalonPreview } from "./interactive-showcase/PlanPreviews";
 
 export function Plans() {
   const { t } = useTranslation();
   const [selectedServices, setSelectedServices] = useState<Record<string, boolean>>({});
+  const [previewPackageId, setPreviewPackageId] = useState<string | null>(null);
 
   const services = useMemo(
     () => [
@@ -85,6 +88,7 @@ export function Plans() {
       saveText: t.pkg1Save,
       sampleSite: t.sampleRestaurantName,
       formUrl: "https://docs.google.com/forms/d/e/1FAIpQLSeoV5sm7yOHKjnw9ceodaL-uUtpLf06H1dDM8L6UuQNk4mjfQ/viewform",
+      preview: RestaurantPreview,
     },
     {
       id: "retail",
@@ -102,6 +106,7 @@ export function Plans() {
       saveText: t.pkg2Save,
       sampleSite: t.sampleRetailName,
       formUrl: "https://docs.google.com/forms/d/e/1FAIpQLSeoV5sm7yOHKjnw9ceodaL-uUtpLf06H1dDM8L6UuQNk4mjfQ/viewform",
+      preview: RetailPreview,
     },
     {
       id: "salon",
@@ -121,6 +126,7 @@ export function Plans() {
       sampleSite: t.sampleSalonName,
       formUrl: "https://docs.google.com/forms/d/e/1FAIpQLSeoV5sm7yOHKjnw9ceodaL-uUtpLf06H1dDM8L6UuQNk4mjfQ/viewform",
       highlighted: true,
+      preview: SalonPreview,
     },
     {
       id: "cafe",
@@ -143,8 +149,11 @@ export function Plans() {
       sampleSite: t.sampleCafeName,
       formUrl: "https://docs.google.com/forms/d/e/1FAIpQLSeoV5sm7yOHKjnw9ceodaL-uUtpLf06H1dDM8L6UuQNk4mjfQ/viewform",
       highlighted: true,
+      preview: CafePreview,
     },
   ];
+
+  const activePreview = packages.find((pkg) => pkg.id === previewPackageId);
 
   return (
     <section id="plans" className="py-24 bg-gray-50 relative overflow-hidden">
@@ -166,17 +175,18 @@ export function Plans() {
         </div>
 
         {/* Packages Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-6xl mx-auto mb-16">
+        <div className="flex overflow-x-auto pb-8 px-4 -mx-4 md:mx-0 md:px-0 md:grid md:grid-cols-2 gap-6 md:gap-8 max-w-6xl mx-auto mb-16 snap-x no-scrollbar md:overflow-visible">
           {packages.map((pkg) => {
             const Icon = pkg.icon;
             return (
               <div 
                 key={pkg.id} 
-                className={`group relative border rounded-[2.5rem] p-8 md:p-10 transition-all duration-500 flex flex-col ${
+                className={`group relative border rounded-[2.5rem] p-8 md:p-10 transition-all duration-500 flex flex-col min-w-[280px] md:min-w-0 snap-center ${
                   pkg.highlighted 
                     ? "bg-white border-[#059669] shadow-2xl shadow-emerald-900/10 scale-[1.02]" 
                     : "bg-white/80 border-white/60 backdrop-blur-md hover:bg-white hover:shadow-xl"
                 }`}
+                onClick={() => setPreviewPackageId(pkg.id)}
               >
                 {/* Icon & Title */}
                 <div className="flex items-start gap-4 mb-6">
@@ -233,10 +243,11 @@ export function Plans() {
                 </div>
 
                 {/* CTA Button */}
-                <a 
+                  <a 
                   href={pkg.formUrl}
                   target="_blank"
                   rel="noopener noreferrer"
+                    onClick={(event) => event.stopPropagation()}
                   className={`w-full py-4 rounded-2xl text-xs font-black uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl active:scale-95 ${
                     pkg.highlighted 
                       ? 'bg-[#059669] text-white hover:bg-emerald-600' 
@@ -407,6 +418,68 @@ export function Plans() {
           </p>
         </div>
       </div>
+
+      {activePreview && (
+        <div
+          className="fixed inset-0 z-[60] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4"
+          onClick={() => setPreviewPackageId(null)}
+        >
+          <div
+            className="w-full max-w-5xl bg-white rounded-3xl p-4 md:p-6 shadow-2xl"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <div className="flex items-center justify-between mb-3">
+              <div>
+                <div className="text-xs font-black uppercase tracking-widest text-gray-400">
+                  {t.worksSample}
+                </div>
+                <div className="text-lg md:text-2xl font-black text-gray-900">
+                  {activePreview.title}
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={() => setPreviewPackageId(null)}
+                className="inline-flex items-center gap-2 px-3 py-2 rounded-full border border-gray-200 text-xs font-black text-gray-600 hover:bg-gray-100"
+              >
+                <X size={14} />
+                {t.closePreview}
+              </button>
+            </div>
+
+            <MiniBrowser
+              url={`tokyowebsites.com/${activePreview.id}`}
+              className="w-full rounded-3xl border-gray-200 bg-gray-50"
+              dark={false}
+            >
+              <div
+                className="relative bg-white overflow-hidden"
+                style={{ height: "min(clamp(380px, 60vh, 720px), calc(100vh - 180px))" }}
+              >
+                <activePreview.preview />
+              </div>
+            </MiniBrowser>
+
+            <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <button
+                type="button"
+                onClick={() => setPreviewPackageId(null)}
+                className="w-full py-3 rounded-2xl text-xs font-black uppercase tracking-widest border border-gray-200 text-gray-700 hover:bg-gray-100"
+              >
+                {t.closePreview}
+              </button>
+              <a
+                href={activePreview.formUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full py-3 rounded-2xl text-xs font-black uppercase tracking-widest bg-[#059669] text-white text-center hover:bg-emerald-600"
+              >
+                {t.consultThisPackage}
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }

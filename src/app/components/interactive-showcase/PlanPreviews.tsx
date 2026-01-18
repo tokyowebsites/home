@@ -187,6 +187,103 @@ export function EntryPreview() {
   );
 }
 
+export function RestaurantPreview() {
+  return (
+    <div className="min-h-full bg-slate-50 relative">
+      <MiniHeader title="Sakura Bistro" subtitle="TACHIKAWA" links={["Menu", "Booking"]} />
+
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute top-1/4 left-1/4"><FloatingCursor delay={0.5} seed={111} /></div>
+        <div className="absolute bottom-1/3 right-1/4"><FloatingCursor delay={2.2} seed={112} /></div>
+      </div>
+
+      <div className="relative h-40 sm:h-52 bg-gray-900 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10" />
+        <img 
+          src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&q=80&w=800" 
+          alt="Restaurant" 
+          className="w-full h-full object-cover opacity-90"
+          loading="lazy"
+        />
+        <div className="absolute bottom-0 left-0 right-0 p-4 z-20 text-white">
+          <div className="inline-flex items-center gap-1 text-[9px] font-bold tracking-wider uppercase bg-emerald-600 px-2 py-0.5 rounded mb-1">
+            Seats Available
+          </div>
+          <h1 className="text-xl sm:text-2xl font-bold mb-1">季節の和食コース</h1>
+          <p className="text-xs text-gray-300">立川の隠れ家で、旬の味わいを。</p>
+        </div>
+      </div>
+
+      <div className="p-3 sm:p-4 grid gap-3">
+        <div className="grid grid-cols-3 gap-2">
+          {[
+            { label: "評価", value: "4.7", icon: Star },
+            { label: "予約", value: "OK", icon: Phone },
+            { label: "多言語", value: "対応", icon: Sparkles },
+          ].map((k, i) => (
+            <div key={i} className="bg-white p-2.5 rounded-lg border border-gray-100 shadow-sm">
+              <div className="flex items-center gap-1 text-[9px] text-gray-500 font-bold">
+                <k.icon className="w-3 h-3 text-emerald-600" />
+                {k.label}
+              </div>
+              <div className="mt-1 text-sm font-bold text-gray-900">{k.value}</div>
+            </div>
+          ))}
+        </div>
+
+        <div className="bg-white p-3 rounded-lg border border-gray-100 shadow-sm">
+          <div className="flex items-center gap-2 mb-2">
+            <Clock className="w-3 h-3 text-gray-600" />
+            <span className="font-bold text-xs">営業時間</span>
+          </div>
+          <div className="space-y-1 text-xs">
+            <div className="flex justify-between">
+              <span className="text-gray-500">Mon - Fri</span>
+              <span className="font-bold">17:00 - 23:00</span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-gray-500">Sat - Sun</span>
+              <span className="font-bold">12:00 - 23:00</span>
+            </div>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-2 gap-2">
+          {[
+            { name: "Seasonal Course", price: "¥4,800", img: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&q=80&w=400" },
+            { name: "Signature Sake", price: "¥900", img: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&q=80&w=400" },
+          ].map((item, i) => (
+            <div key={i} className="bg-white p-2 rounded-lg border border-gray-100 shadow-sm">
+              <div className="aspect-square bg-gray-100 rounded mb-1.5 overflow-hidden">
+                <img src={item.img} alt={item.name} className="w-full h-full object-cover" loading="lazy" />
+              </div>
+              <div className="text-[10px] font-bold">{item.name}</div>
+              <div className="text-[10px] text-emerald-600 font-bold">{item.price}</div>
+            </div>
+          ))}
+        </div>
+
+        <div className="bg-white rounded-lg border border-gray-100 shadow-sm p-3">
+          <div className="text-[10px] font-bold text-gray-900 mb-1 flex items-center gap-1">
+            <MapPin className="w-3 h-3 text-gray-600" />
+            アクセス
+          </div>
+          <div className="text-[10px] text-gray-600 mb-2">東京都立川市 ○○1-2-3</div>
+          <div className="grid grid-cols-2 gap-2">
+            <button className="w-full bg-gray-900 text-white py-2 rounded-lg font-bold text-[10px] flex items-center justify-center gap-1">
+              <MapPin size={10} /> Map
+            </button>
+            <button className="w-full bg-emerald-600 text-white py-2 rounded-lg font-bold text-[10px] flex items-center justify-center gap-1">
+              <Phone size={10} /> 予約
+            </button>
+          </div>
+        </div>
+      </div>
+      <MiniFooter />
+    </div>
+  );
+}
+
 export function StandardPreview() {
   const { t } = useTranslation();
   return (
@@ -276,6 +373,10 @@ export function StandardPreview() {
       <MiniFooter />
     </div>
   );
+}
+
+export function SalonPreview() {
+  return <StandardPreview />;
 }
 
 export function BusinessPreview() {
@@ -379,6 +480,90 @@ export function BusinessPreview() {
           </div>
         </div>
       </div>
+      <MiniFooter />
+    </div>
+  );
+}
+
+export function RetailPreview() {
+  return <BusinessPreview />;
+}
+
+export function CafePreview() {
+  return (
+    <div className="min-h-full bg-amber-50 relative">
+      <MiniHeader title="Green Leaf Cafe" subtitle="TOKOROZAWA" links={["Menu", "Instagram"]} />
+
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute top-[12%] left-[70%]"><FloatingCursor delay={0.6} seed={211} /></div>
+        <div className="absolute bottom-[30%] left-[20%]"><FloatingCursor delay={2.1} seed={212} /></div>
+      </div>
+
+      <div className="relative h-40 sm:h-52 overflow-hidden">
+        <img 
+          src="https://images.unsplash.com/photo-1504753793650-d4a2b783c15e?auto=format&fit=crop&q=80&w=800" 
+          alt="Cafe" 
+          className="w-full h-full object-cover"
+          loading="lazy"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-4 text-white">
+          <div>
+            <div className="text-[9px] font-bold uppercase tracking-wider text-emerald-200">Instagrammable</div>
+            <h1 className="text-xl sm:text-2xl font-bold">季節限定ラテ</h1>
+            <p className="text-xs text-white/80">写真映えするラテとスイーツ。</p>
+          </div>
+        </div>
+      </div>
+
+      <div className="p-3 sm:p-4 grid gap-3">
+        <div className="grid grid-cols-3 gap-2">
+          {[
+            { label: "Wi-Fi", value: "Free", icon: Sparkles },
+            { label: "投稿数", value: "2.1k", icon: Star },
+            { label: "混雑", value: "中", icon: Clock },
+          ].map((k, i) => (
+            <div key={i} className="bg-white p-2.5 rounded-lg border border-gray-100 shadow-sm">
+              <div className="flex items-center gap-1 text-[9px] text-gray-500 font-bold">
+                <k.icon className="w-3 h-3 text-emerald-600" />
+                {k.label}
+              </div>
+              <div className="mt-1 text-sm font-bold text-gray-900">{k.value}</div>
+            </div>
+          ))}
+        </div>
+
+        <div className="grid grid-cols-2 gap-2">
+          {[
+            { name: "Matcha Latte", price: "¥680", img: "https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&q=80&w=400" },
+            { name: "Berry Parfait", price: "¥880", img: "https://images.unsplash.com/photo-1464306076886-da185f8f0b19?auto=format&fit=crop&q=80&w=400" },
+          ].map((item, i) => (
+            <div key={i} className="bg-white p-2 rounded-lg border border-gray-100 shadow-sm">
+              <div className="aspect-square bg-gray-100 rounded mb-1.5 overflow-hidden">
+                <img src={item.img} alt={item.name} className="w-full h-full object-cover" loading="lazy" />
+              </div>
+              <div className="text-[10px] font-bold">{item.name}</div>
+              <div className="text-[10px] text-emerald-600 font-bold">{item.price}</div>
+            </div>
+          ))}
+        </div>
+
+        <div className="bg-white rounded-lg border border-gray-100 shadow-sm p-3">
+          <div className="text-[10px] font-bold text-gray-900 mb-1 flex items-center gap-1">
+            <MapPin className="w-3 h-3 text-gray-600" />
+            アクセス
+          </div>
+          <div className="text-[10px] text-gray-600 mb-2">埼玉県所沢市 ○○5-6-7</div>
+          <div className="grid grid-cols-2 gap-2">
+            <button className="w-full bg-gray-900 text-white py-2 rounded-lg font-bold text-[10px] flex items-center justify-center gap-1">
+              <MapPin size={10} /> Map
+            </button>
+            <button className="w-full bg-emerald-600 text-white py-2 rounded-lg font-bold text-[10px] flex items-center justify-center gap-1">
+              <Phone size={10} /> 連絡
+            </button>
+          </div>
+        </div>
+      </div>
+
       <MiniFooter />
     </div>
   );
