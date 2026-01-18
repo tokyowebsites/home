@@ -19,11 +19,11 @@ export function SEO({
   const { t } = useTranslation();
   
   // Title Length: ~30-60 chars is optimal. 
-  // "Tokyo Websites - ウェブサイト制作・デジタルブランディング" is ~26 chars (Japanese counts as 2). Perfect.
-  const siteTitle = title ? `${title} | Tokyo Websites` : "Tokyo Websites - ウェブサイト制作・デジタルブランディング (立川・多摩)";
+  // "Tokyo Websites - ウェブ사이트 제작・디지털 브랜딩"
+  const siteTitle = title ? `${title} | Tokyo Websites` : t.heroTitle + " - " + t.heroSubtitle + t.heroSubtitleHighlight + t.heroSubtitle2;
   
   // Description Length: ~120-160 chars is optimal for SEO.
-  const metaDescription = description || "東京・立川の小規模実店舗に特化したWeb制作。最短4日で集客に強いホームページを作成します。SEO対策、多言語対応、スマホ最適化まで、成果が出るデジタルブランディングを低価格で提供。Tokyo Websites.";
+  const metaDescription = description || t.serviceDesc + " " + t.serviceDesc2;
   
   const siteUrl = "https://tokyowebsites.com";
   const fullUrl = url.startsWith("http") ? url : `${siteUrl}${url}`;
@@ -43,7 +43,7 @@ export function SEO({
       <meta property="og:description" content={metaDescription} />
       <meta property="og:image" content={fullImage} />
       <meta property="og:site_name" content="Tokyo Websites" />
-      <meta property="og:locale" content="ja_JP" />
+      <meta property="og:locale" content={language === 'ko' ? 'ko_KR' : language === 'ja' ? 'ja_JP' : 'en_US'} />
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />

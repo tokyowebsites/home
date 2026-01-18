@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
 import { ArrowRight, Clock, MapPin, Menu, ShoppingBag, MousePointer2, Phone, Star, ShieldCheck, Sparkles, Quote, Search, User, Truck } from "lucide-react";
 import { useMemo, useState } from "react";
+import { useTranslation } from "../../lib/TranslationContext";
 
 // --- Shared Components ---
 
@@ -187,9 +188,10 @@ export function EntryPreview() {
 }
 
 export function StandardPreview() {
+  const { t } = useTranslation();
   return (
     <div className="min-h-full bg-white relative">
-      <MiniHeader title="TOKYO DENTAL" subtitle="地域密着の歯科医院" links={["診療案内", "お知らせ"]} />
+      <MiniHeader title={t.sampleClinic} subtitle={t.sampleClinicSub} links={["診療案内", "お知らせ"]} />
       
       {/* Random Cursors */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -225,7 +227,7 @@ export function StandardPreview() {
       {/* News/Blog Section (CMS Feature) */}
       <div className="py-4 px-3 bg-white">
         <div className="flex justify-between items-center mb-3">
-          <h2 className="text-sm font-bold text-gray-900 border-l-4 border-teal-500 pl-2">お知らせ・ブログ</h2>
+          <h2 className="text-sm font-bold text-gray-900 border-l-4 border-teal-500 pl-2">{t.sampleNews}</h2>
           <span className="text-[10px] text-gray-400">記事一覧 →</span>
         </div>
         <div className="space-y-3">
@@ -250,13 +252,13 @@ export function StandardPreview() {
 
       {/* Features Grid */}
       <div className="py-4 px-3 bg-teal-50">
-        <h2 className="text-sm font-bold text-gray-900 mb-3 text-center">当院の特徴</h2>
+        <h2 className="text-sm font-bold text-gray-900 mb-3 text-center">{t.sampleFeatures}</h2>
         <div className="grid grid-cols-2 gap-2">
           {[
-            { title: "土日診療", desc: "お忙しい方も安心", icon: Clock },
-            { title: "個室完備", desc: "プライバシー重視", icon: ShieldCheck },
-            { title: "バリアフリー", desc: "ベビーカーOK", icon: User },
-            { title: "駐車場あり", desc: "お車での来院も", icon: MapPin },
+            { title: t.sampleSatSun, desc: t.sampleSatSunDesc, icon: Clock },
+            { title: t.samplePrivateRoom, desc: t.samplePrivateRoomDesc, icon: ShieldCheck },
+            { title: t.sampleBarrierFree, desc: t.sampleBarrierFreeDesc, icon: User },
+            { title: t.sampleParking, desc: t.sampleParkingDesc, icon: MapPin },
           ].map((item, i) => (
             <div key={i} className="bg-white rounded-lg p-3 shadow-sm flex items-start gap-2">
               <div className="bg-teal-100 p-1.5 rounded-full text-teal-600 shrink-0">

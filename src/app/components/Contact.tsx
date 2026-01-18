@@ -25,41 +25,31 @@ export function Contact() {
 
     try {
       const formEl = e.currentTarget;
-      const action = formEl.action || "https://formspree.io/f/mkoglvvk";
       const fd = new FormData(formEl);
 
-      // Ensure Formspree helper fields are set
-      fd.set("_replyto", formData.email);
-      fd.set("_subject", "New Consultation Inquiry");
-      fd.set("_formname", "Tokyo Websites Contact");
-
-      const response = await fetch(action, {
+      // Web3Forms API endpoint
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: { Accept: "application/json" },
         body: fd,
       });
 
-      if (!response.ok) {
-        let reason = "Form submission failed";
-        try {
-          const errorData = await response.json();
-          if (errorData?.error) reason = errorData.error;
-          if (errorData?.errors?.length) reason = errorData.errors.map((e: any) => e.message).join("; ");
-        } catch (_) {
-          // ignore parse errors
-        }
+      const data = await response.json();
+
+      if (!response.ok || !data.success) {
+        const reason = data.message || "Form submission failed";
         setLastError(reason);
         throw new Error(reason);
       }
 
       setIsSuccess(true);
-      toast.success("お問い合わせを受け付けました。");
+      toast.success(t.contactSuccess);
       setFormData({ name: "", email: "", phone: "", plan: "", message: "" });
       formEl.reset();
       setTimeout(() => setIsSuccess(false), 5000);
     } catch (error) {
       console.error(error);
-      toast.error("送信に失敗しました。もう一度お試しください。");
+      toast.error(t.contactError);
     } finally {
       setIsSubmitting(false);
     }
@@ -128,14 +118,12 @@ export function Contact() {
           <div className="bg-white/80 p-8 rounded-[2.5rem] border border-white shadow-2xl backdrop-blur-md">
             <form
               onSubmit={handleSubmit}
-              action="https://formspree.io/f/mkoglvvk"
-              method="POST"
-              encType="multipart/form-data"
               className="space-y-5"
             >
-              <input type="hidden" name="_replyto" value={formData.email} />
-              <input type="hidden" name="_subject" value="New Consultation Inquiry" />
-              <input type="hidden" name="_formname" value="Tokyo Websites Contact" />
+              {/* Web3Forms Access Key - Get yours free at https://web3forms.com */}
+              <input type="hidden" name="access_key" value="6ccfac36-fbb6-4934-afd0-4a27870c602e" />
+              <input type="hidden" name="subject" value="New Consultation Inquiry from Tokyo Websites" />
+              <input type="hidden" name="from_name" value="Tokyo Websites Contact Form" />
               <div className="grid grid-cols-2 gap-5">
               <div className="space-y-2">
                 <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest pl-1">{t.name}</label>
@@ -212,7 +200,7 @@ export function Contact() {
             </button>
             {lastError && (
               <div className="text-xs text-red-600 bg-red-50 border border-red-100 rounded-lg p-3 font-bold">
-                送信エラー: {lastError}
+                {t.sendError}: {lastError}
               </div>
             )}
             
@@ -220,7 +208,7 @@ export function Contact() {
             <div className="mt-10 p-6 md:p-8 rounded-[2rem] border-2 border-emerald-500/20 bg-emerald-50 shadow-sm">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-2.5 h-2.5 rounded-full bg-[#059669] animate-pulse" />
-                <div className="text-[11px] font-black text-[#059669] uppercase tracking-[0.2em]">Google Maps / MEO quick check</div>
+                <div className="text-[11px] font-black text-[#059669] uppercase tracking-[0.2em]">{t.meoQuickCheck}</div>
               </div>
               <p className="text-sm text-emerald-900 font-bold leading-relaxed mb-6">
                 {t.meoUrgency}

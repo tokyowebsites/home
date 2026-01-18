@@ -63,7 +63,7 @@ export function LanguageSwitcher() {
         </DrawerTrigger>
         <DrawerContent className="bg-white">
           <DrawerHeader className="text-left pb-4">
-            <DrawerTitle className="text-gray-900">Select Language</DrawerTitle>
+            <DrawerTitle className="text-gray-900">{t.selectLanguage}</DrawerTitle>
           </DrawerHeader>
           <div className="p-4 pt-0 pb-10 space-y-3">
             {languages.map((lang) => (

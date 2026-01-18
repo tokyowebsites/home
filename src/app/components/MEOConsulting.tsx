@@ -20,7 +20,7 @@ export function MEOConsulting() {
         <div className="bg-white rounded-2xl p-5 md:p-7 shadow-xl border border-emerald-100 flex flex-col gap-4">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 text-xs font-bold border border-emerald-100 shadow-sm w-fit">
             <MapPin size={14} className="fill-current" />
-            MEO Boost
+            {t.meoRankings}
           </div>
 
           <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900 leading-snug">

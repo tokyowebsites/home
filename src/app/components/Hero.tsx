@@ -67,7 +67,7 @@ export function Hero() {
           <div className="flex items-center justify-center mb-3 md:mb-4 w-full">
             <h1>
               <img 
-                src="/images/tokyo-websites-logo.png" 
+                src="/images/logo-new.png" 
                 alt="Tokyo Websites - Web Design & Digital Branding in Tachikawa" 
                 className="w-[85vw] max-w-[240px] sm:max-w-[450px] md:max-w-[600px] lg:max-w-[700px] h-auto drop-shadow-2xl"
                 style={{ objectFit: 'contain', maxHeight: 'min(180px, 25vh)' }}
@@ -219,20 +219,20 @@ export function Hero() {
         <div>
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-50 text-slate-800 border border-slate-200 text-[10px] md:text-xs font-bold">
             <FileText className="w-4 h-4" />
-            実績（サンプル）
+            {t.worksSample}
           </div>
           <div className="mt-2 text-xl md:text-3xl font-extrabold text-gray-900">
-            業種別に「効く」形。
+            {t.industryEffective}
           </div>
           <div className="mt-1 text-xs md:text-sm text-gray-600 font-semibold">
-            見た目より、成果が出る情報設計が主役です。
+            {t.infoDesignMain}
           </div>
         </div>
         <button
           onClick={() => navigate("contact")}
           className="hidden md:inline-flex items-center gap-2 rounded-full bg-[#059669] text-white px-5 py-2 text-xs font-bold shadow-lg shadow-emerald-200 hover:bg-emerald-600 transition-colors"
         >
-          相談する <ArrowRight className="w-4 h-4" />
+          {t.freeConsultation} <ArrowRight className="w-4 h-4" />
         </button>
       </div>
 
@@ -281,21 +281,21 @@ export function Hero() {
       <div className="shrink-0">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white text-gray-900 border border-gray-200 text-[10px] md:text-xs font-bold">
           <Building2 className="w-4 h-4 text-[#059669]" />
-          会社概要
+          {t.companyProfile}
         </div>
         <div className="mt-2 text-xl md:text-3xl font-extrabold text-gray-900">
-          小さな会社ほど、Webで差がつく。
+          {t.smallBizDifference}
         </div>
         <div className="mt-1 text-xs md:text-sm text-gray-600 font-semibold">
-          立川から。東京の実店舗に特化して、最短で「ちゃんと効く」形にします。
+          {t.fromTachikawa}
         </div>
       </div>
 
       <div className="mt-3 md:mt-6 grid gap-2 md:gap-4">
         {[
-          { k: "拠点", v: "東京都立川市" },
-          { k: "納期", v: "最短4日（要件により）" },
-          { k: "提供", v: "制作 / SEO / 運用導線 / ブランド整理" },
+          { k: t.baseLocation, v: t.tachikawaTokyo },
+          { k: t.deliveryTime, v: t.heroDelivery.replace('※ ', '') },
+          { k: t.serviceOffer, v: t.solutionsBadge },
         ].map((r) => (
           <div
             key={r.k}
@@ -316,7 +316,7 @@ export function Hero() {
           onClick={() => navigate("contact")}
           className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-[#0f172a] text-white py-3 text-xs md:text-sm font-bold hover:bg-slate-800 transition-colors"
         >
-          相談して要件を整理する <ArrowRight className="w-4 h-4" />
+          {t.consultRequirements} <ArrowRight className="w-4 h-4" />
         </button>
       </div>
     </div>
@@ -327,27 +327,27 @@ export function Hero() {
       <div className="shrink-0">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-100 text-[10px] md:text-xs font-bold">
           <Mail className="w-4 h-4" />
-          無料相談
+          {t.freeConsultation}
         </div>
         <div className="mt-2 text-xl md:text-3xl font-extrabold text-gray-900">
-          まずは1分で送信。
+          {t.submitOneMin}
         </div>
         <div className="mt-1 text-xs md:text-sm text-gray-600 font-semibold">
-          24時間以内に返信します（営業しません）。
+          {t.within24Hours} {t.noSales}
         </div>
       </div>
 
       <div className="mt-2 md:mt-6 grid gap-2 md:gap-3">
         <div className="rounded-2xl border border-gray-200 bg-white p-3 md:p-4">
-          <div className="text-[10px] font-bold text-gray-500">お名前</div>
+          <div className="text-[10px] font-bold text-gray-500">{t.name}</div>
           <div className="mt-1 md:mt-2 h-9 md:h-10 rounded-xl bg-gray-50 border border-gray-200" />
         </div>
         <div className="rounded-2xl border border-gray-200 bg-white p-3 md:p-4">
-          <div className="text-[10px] font-bold text-gray-500">メール</div>
+          <div className="text-[10px] font-bold text-gray-500">{t.email}</div>
           <div className="mt-1 md:mt-2 h-9 md:h-10 rounded-xl bg-gray-50 border border-gray-200" />
         </div>
         <div className="rounded-2xl border border-gray-200 bg-white p-3 md:p-4">
-          <div className="text-[10px] font-bold text-gray-500">相談内容</div>
+          <div className="text-[10px] font-bold text-gray-500">{t.message}</div>
           <div className="mt-1 md:mt-2 h-14 md:h-16 rounded-xl bg-gray-50 border border-gray-200" />
         </div>
       </div>
@@ -357,7 +357,7 @@ export function Hero() {
           onClick={() => navigate("home")}
           className="inline-flex items-center justify-center gap-2 rounded-full bg-white text-gray-900 py-3 text-xs font-bold border border-gray-200 hover:border-emerald-300 hover:text-[#059669] transition-colors"
         >
-          戻る
+          {t.back}
         </button>
         <button
           disabled={submitting}
@@ -367,14 +367,14 @@ export function Hero() {
           }}
           className="inline-flex items-center justify-center gap-2 rounded-full bg-[#059669] text-white py-3 text-xs font-bold shadow-lg shadow-emerald-200 hover:bg-emerald-600 transition-colors disabled:opacity-70"
         >
-          {submitting ? "送信中..." : "送信する"}
+          {submitting ? t.submitting : t.send}
           {submitting ? null : <CheckCircle className="w-4 h-4" />}
         </button>
       </div>
 
       <div className="mt-2 md:mt-3 flex items-center justify-center gap-2 text-[10px] text-gray-600 font-semibold">
         <Phone className="w-3.5 h-3.5 text-[#059669]" />
-        電話でもOK（準備中）
+        {t.phoneOk} ({t.preparing})
       </div>
     </div>
   );
