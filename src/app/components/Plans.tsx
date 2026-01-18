@@ -175,41 +175,40 @@ export function Plans() {
         </div>
 
         {/* Packages Grid */}
-        <div className="flex overflow-x-auto pb-8 px-4 -mx-4 md:mx-0 md:px-0 md:grid md:grid-cols-2 gap-6 md:gap-8 max-w-6xl mx-auto mb-16 snap-x no-scrollbar md:overflow-visible">
+        <div className="flex overflow-x-auto pb-8 px-4 -mx-4 md:mx-0 md:px-0 md:grid md:grid-cols-2 gap-5 md:gap-6 max-w-6xl mx-auto mb-16 snap-x no-scrollbar md:overflow-visible">
           {packages.map((pkg) => {
             const Icon = pkg.icon;
             return (
               <div 
                 key={pkg.id} 
-                className={`group relative border rounded-[2.5rem] p-8 md:p-10 transition-all duration-500 flex flex-col min-w-[280px] md:min-w-0 snap-center ${
+                className={`group relative border rounded-[2.25rem] p-5 md:p-6 transition-all duration-500 flex flex-col min-w-[260px] md:min-w-0 snap-center ${
                   pkg.highlighted 
                     ? "bg-white border-[#059669] shadow-2xl shadow-emerald-900/10 scale-[1.02]" 
                     : "bg-white/80 border-white/60 backdrop-blur-md hover:bg-white hover:shadow-xl"
                 }`}
-                onClick={() => setPreviewPackageId(pkg.id)}
               >
                 {/* Icon & Title */}
-                <div className="flex items-start gap-4 mb-6">
-                  <div className={`w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg bg-gradient-to-br ${pkg.color} text-white shrink-0`}>
-                    <Icon size={32} strokeWidth={2} />
+                <div className="flex items-start gap-3 mb-4">
+                  <div className={`w-12 h-12 rounded-2xl flex items-center justify-center shadow-lg bg-gradient-to-br ${pkg.color} text-white shrink-0`}>
+                    <Icon size={22} strokeWidth={2} />
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-xl md:text-2xl font-black text-gray-900 leading-tight">
+                    <h3 className="text-lg md:text-xl font-black text-gray-900 leading-tight">
                       {pkg.title}
                     </h3>
-                    <div className="mt-1 text-xs text-gray-500 font-bold">
+                    <div className="mt-0.5 text-[10px] text-gray-500 font-bold">
                       {pkg.sampleSite}
                     </div>
                   </div>
                 </div>
 
                 {/* Items List */}
-                <ul className="space-y-3 mb-6 flex-grow">
+                <ul className="space-y-2 mb-5 flex-grow">
                   {pkg.items.map((item, i) => {
                     const isFree = typeof item === 'object' && item.free;
                     const text = typeof item === 'string' ? item : item.text;
                     return (
-                      <li key={i} className="flex items-start gap-3 text-xs text-gray-700 font-bold leading-tight">
+                      <li key={i} className="flex items-start gap-2 text-[11px] text-gray-700 font-bold leading-tight">
                         <div className={`mt-0.5 w-4 h-4 rounded-full flex items-center justify-center shrink-0 ${
                           isFree ? 'bg-emerald-100 text-emerald-600' : 'bg-slate-100 text-slate-600'
                         }`}>
@@ -222,18 +221,18 @@ export function Plans() {
                 </ul>
 
                 {/* Math */}
-                <div className="text-[10px] text-gray-500 font-mono mb-4 border-t pt-4 border-gray-100">
+                <div className="text-[9px] text-gray-500 font-mono mb-4 border-t pt-3 border-gray-100">
                   {pkg.math}
                 </div>
 
                 {/* Pricing */}
-                <div className="mb-6 pb-6 border-b border-gray-100">
-                  <div className="text-xs text-gray-500 font-bold mb-1">
+                <div className="mb-5 pb-5 border-b border-gray-100">
+                  <div className="text-[11px] text-gray-500 font-bold mb-1">
                     {t.packageStandardPrice}: <span className="line-through">{pkg.standardPrice}</span>
                   </div>
                   <div className="flex items-baseline gap-2">
-                    <span className="text-xs text-gray-600 font-bold">{t.bundlePrice}:</span>
-                    <span className={`text-3xl md:text-4xl font-black ${pkg.highlighted ? "text-[#059669]" : "text-gray-900"}`}>
+                    <span className="text-[11px] text-gray-600 font-bold">{t.bundlePrice}:</span>
+                    <span className={`text-2xl md:text-3xl font-black ${pkg.highlighted ? "text-[#059669]" : "text-gray-900"}`}>
                       {pkg.bundlePrice}
                     </span>
                   </div>
@@ -243,19 +242,27 @@ export function Plans() {
                 </div>
 
                 {/* CTA Button */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setPreviewPackageId(pkg.id)}
+                    className="w-full py-3 rounded-2xl text-[10px] font-black uppercase tracking-widest border border-gray-200 text-gray-700 hover:bg-gray-100"
+                  >
+                    {t.worksSample}
+                  </button>
                   <a 
-                  href={pkg.formUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                    onClick={(event) => event.stopPropagation()}
-                  className={`w-full py-4 rounded-2xl text-xs font-black uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl active:scale-95 ${
-                    pkg.highlighted 
-                      ? 'bg-[#059669] text-white hover:bg-emerald-600' 
-                      : 'bg-gray-900 text-white hover:bg-gray-800'
-                  }`}
-                >
-                  {t.consultThisPackage} <ArrowRight size={14} />
-                </a>
+                    href={pkg.formUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`w-full py-3 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl active:scale-95 ${
+                      pkg.highlighted 
+                        ? 'bg-[#059669] text-white hover:bg-emerald-600' 
+                        : 'bg-gray-900 text-white hover:bg-gray-800'
+                    }`}
+                  >
+                    {t.consultThisPackage} <ArrowRight size={14} />
+                  </a>
+                </div>
               </div>
             );
           })}
@@ -428,7 +435,7 @@ export function Plans() {
             className="w-full max-w-5xl bg-white rounded-3xl p-4 md:p-6 shadow-2xl"
             onClick={(event) => event.stopPropagation()}
           >
-            <div className="flex items-center justify-between mb-3">
+            <div className="mb-3">
               <div>
                 <div className="text-xs font-black uppercase tracking-widest text-gray-400">
                   {t.worksSample}
@@ -437,14 +444,6 @@ export function Plans() {
                   {activePreview.title}
                 </div>
               </div>
-              <button
-                type="button"
-                onClick={() => setPreviewPackageId(null)}
-                className="inline-flex items-center gap-2 px-3 py-2 rounded-full border border-gray-200 text-xs font-black text-gray-600 hover:bg-gray-100"
-              >
-                <X size={14} />
-                {t.closePreview}
-              </button>
             </div>
 
             <MiniBrowser
@@ -456,7 +455,9 @@ export function Plans() {
                 className="relative bg-white overflow-hidden"
                 style={{ height: "min(clamp(380px, 60vh, 720px), calc(100vh - 180px))" }}
               >
-                <activePreview.preview />
+                <div className="h-full overflow-y-auto no-scrollbar">
+                  <activePreview.preview />
+                </div>
               </div>
             </MiniBrowser>
 
@@ -464,8 +465,9 @@ export function Plans() {
               <button
                 type="button"
                 onClick={() => setPreviewPackageId(null)}
-                className="w-full py-3 rounded-2xl text-xs font-black uppercase tracking-widest border border-gray-200 text-gray-700 hover:bg-gray-100"
+                className="w-full py-3 rounded-2xl text-xs font-black uppercase tracking-widest border border-gray-200 text-gray-700 hover:bg-gray-100 inline-flex items-center justify-center gap-2"
               >
+                <X size={14} />
                 {t.closePreview}
               </button>
               <a
