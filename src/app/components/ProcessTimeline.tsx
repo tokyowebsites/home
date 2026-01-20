@@ -92,7 +92,7 @@ export function ProcessTimeline() {
                 onClick={() => setExpandedStep(expandedStep === index ? null : index)}
                 className={`h-full rounded-3xl border transition-all duration-500 cursor-pointer overflow-hidden relative z-10 group ${
                   expandedStep === index 
-                    ? 'border-[#0f172a] bg-white shadow-2xl scale-[1.02]' 
+                    ? 'border-[#1e293b] bg-white shadow-2xl scale-[1.02]' 
                     : 'border-gray-100 bg-white shadow-sm hover:shadow-xl hover:-translate-y-1'
                 }`}
               >

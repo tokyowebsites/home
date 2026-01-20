@@ -72,7 +72,7 @@ export function Header() {
               <a
                 key={index}
                 href={item.href}
-                className="px-4 py-2 rounded-full text-sm font-bold text-gray-700 hover:bg-slate-50 hover:text-[#0f172a] transition-colors"
+                className="px-4 py-2 rounded-full text-sm font-bold text-gray-700 hover:bg-slate-50 hover:text-[#1e293b] transition-colors"
                 style={{ fontWeight: 600 }}
               >
                 {item.label}

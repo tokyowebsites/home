@@ -9,7 +9,7 @@
   --font-weight-bold: 700;
   --font-weight-semibold: 600;
   --brand-green: #059669;
-  --brand-navy: #0f172a;
+  --brand-navy: #1e293b;
   --background: #ffffff;
   --foreground: #1a1a1a;
   --card: #ffffff;
@@ -19,7 +19,7 @@
   --primary: var(--brand-green);
   --primary-foreground: #ffffff;
   --secondary: #f1f5f9;
-  --secondary-foreground: #0f172a;
+  --secondary-foreground: #1e293b;
   --muted: #f1f5f9;
   --muted-foreground: #64748b;
   --accent: var(--brand-green);
