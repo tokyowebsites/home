@@ -54,13 +54,11 @@ export function Header() {
             aria-label="Tokyo Websites"
           >
             <div className="leading-none">
-              <div className="flex items-baseline transition-transform group-hover:scale-[1.02]">
-                <span className="text-xl font-bold tracking-tight text-[#5C81D9] font-sans">
-                  Tokyo
-                </span>
-                <span className="text-xl font-bold tracking-tight text-[#5C81D9] ml-1 font-sans">
-                  Websites
-                </span>
+              <div
+                className="text-xl font-bold tracking-[0.12em] text-[#5C81D9] uppercase transition-transform group-hover:scale-[1.02]"
+                style={{ fontFamily: "'Damascus', 'Playfair Display', 'Times New Roman', serif" }}
+              >
+                TOKYO WEBSITES
               </div>
               <div className="text-[10px] text-gray-500 font-semibold tracking-wide mt-1">
                 {t.slogan}
