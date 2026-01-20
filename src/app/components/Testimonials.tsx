@@ -18,7 +18,7 @@ export function Testimonials() {
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
             お客様の声
           </h2>
-          <p className="text-emerald-100 text-lg">
+          <p className="text-white/80 text-lg">
             Customer Testimonials
           </p>
         </div>
