@@ -69,15 +69,17 @@ export function Customers() {
                 </div>
                 <video
                   ref={beforeVideoRef}
-                  src="/NanoOldSite.mov"
                   autoPlay
                   loop
                   muted
                   playsInline
-                  preload="auto"
+                  preload="metadata"
                   className="w-full h-auto rounded-[2rem] border-2 border-white/5 shadow-2xl object-cover transition-transform duration-500 group-hover:scale-[1.02]"
                   style={{ aspectRatio: '16/9' }}
-                />
+                >
+                  <source src="/NanoOldSite.mp4" type="video/mp4" />
+                  <source src="/NanoOldSite.mov" type="video/quicktime" />
+                </video>
               </div>
               
               {/* After Video */}
@@ -87,15 +89,17 @@ export function Customers() {
                 </div>
                 <video
                   ref={afterVideoRef}
-                  src="/NanoNewSite.mov"
                   autoPlay
                   loop
                   muted
                   playsInline
-                  preload="auto"
+                  preload="metadata"
                   className="w-full h-auto rounded-[2rem] border-2 border-[#059669]/30 shadow-2xl object-cover transition-transform duration-500 group-hover:scale-[1.02]"
                   style={{ aspectRatio: '16/9' }}
-                />
+                >
+                  <source src="/NanoNewSite.mp4" type="video/mp4" />
+                  <source src="/NanoNewSite.mov" type="video/quicktime" />
+                </video>
               </div>
             </div>
             
