@@ -7,6 +7,7 @@ export function Plans() {
   const { t } = useTranslation();
   const STANDARD_TOOL_PRICE = 6000;
   const ADVANCED_TOOL_PRICE = 18000;
+  const BASE_WEBSITE_PRICE = 25000;
   const [selectedTools, setSelectedTools] = useState<Record<string, boolean>>({});
   const plans = [
     {
@@ -70,8 +71,9 @@ export function Plans() {
       (acc, tool) => acc + (selectedTools[tool.id] ? 1 : 0),
       0,
     );
-    const total =
+    const toolsTotal =
       standardCount * STANDARD_TOOL_PRICE + advancedCount * ADVANCED_TOOL_PRICE;
+    const total = toolsTotal + BASE_WEBSITE_PRICE;
 
     const eligiblePlans = plans.filter(
       (plan) =>
@@ -91,6 +93,7 @@ export function Plans() {
     return {
       standardCount,
       advancedCount,
+      toolsTotal,
       total,
       recommendedPlan,
     };
@@ -271,6 +274,10 @@ export function Plans() {
                   <span>{t.planAdvancedToolsLabel}</span>
                   <span>{totals.advancedCount}</span>
                 </div>
+                <div className="flex items-center justify-between text-blue-700">
+                  <span>{t.baseWebsiteLabel}</span>
+                  <span>¥{BASE_WEBSITE_PRICE.toLocaleString("en-US")}</span>
+                </div>
               </div>
 
               <div className="mt-5 pt-5 border-t border-gray-100">
@@ -300,8 +307,14 @@ export function Plans() {
                       <div className="text-sm font-black text-emerald-800">
                         {totals.recommendedPlan.title}
                       </div>
+                      <div className="text-xs font-black text-red-600 line-through">
+                        ¥{totals.total.toLocaleString("en-US")}
+                      </div>
                       <div className="text-2xl font-black text-emerald-700">
                         {totals.recommendedPlan.price}
+                      </div>
+                      <div className="mt-1 text-[11px] font-bold text-emerald-700">
+                        {t.recommendedPlanWhy}
                       </div>
                       <a
                         href={totals.recommendedPlan.formUrl}
