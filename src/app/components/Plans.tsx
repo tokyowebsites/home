@@ -35,7 +35,7 @@ export function Plans() {
       price: t.premiumPlanPrice,
       standardTools: 5,
       advancedTools: 3,
-      bonus: t.planBonusNone,
+      bonus: t.planBonusMeo,
       highlighted: false,
       formUrl: "https://docs.google.com/forms/d/e/1FAIpQLSc4v9fQpzivhHACffG_r4MEhS4TJIpR-u-XqdG31jyRiGxbug/viewform?usp=dialog",
     },
