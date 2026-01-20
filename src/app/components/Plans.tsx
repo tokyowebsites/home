@@ -196,6 +196,9 @@ export function Plans() {
             <p className="text-sm md:text-base font-bold text-gray-600 mt-2">
               {t.toolsMenuHint}
             </p>
+            <div className="mt-2 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 text-xs font-black">
+              {t.baseWebsitePriceNote}
+            </div>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-6">
