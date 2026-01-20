@@ -59,7 +59,7 @@ export function Solutions() {
   ];
 
   return (
-    <section id="solutions" className="py-16 md:py-24 bg-gray-900 relative overflow-hidden">
+    <section id="solutions" className="py-16 md:py-24 bg-[#1b2a4a] relative overflow-hidden">
       {/* Subtle grid pattern for texture */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.03]" style={{ backgroundImage: "radial-gradient(#ffffff 1px, transparent 1px)", backgroundSize: "32px 32px" }}></div>
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gray-700 to-transparent"></div>
