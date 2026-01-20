@@ -28,20 +28,6 @@ export function Solutions() {
       color: "violet",
       span: "col-span-1 md:col-span-3 lg:col-span-2"
     },
-    {
-      icon: Star,
-      title: t.solution4Title,
-      desc: t.solution4Desc,
-      color: "amber",
-      span: "col-span-1 md:col-span-3 lg:col-span-2"
-    },
-    {
-      icon: MessageSquare,
-      title: t.solution5Title,
-      desc: t.solution5Desc,
-      color: "indigo",
-      span: "col-span-1 md:col-span-3 lg:col-span-2"
-    }
   ];
 
   const steps = [
