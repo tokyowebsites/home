@@ -120,16 +120,17 @@ export function Plans() {
         </div>
 
         {/* Plans Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto mb-16">
-          {plans.map((plan) => (
-            <div
-              key={plan.id}
-              className={`rounded-3xl border p-6 md:p-7 flex flex-col h-full ${
-                plan.highlighted
-                  ? "bg-white border-[#059669] shadow-2xl shadow-emerald-900/10 ring-1 ring-emerald-200"
-                  : "bg-white/90 border-white/70 shadow-lg"
-              }`}
-            >
+        <div className="max-w-6xl mx-auto mb-16">
+          <div className="flex overflow-x-auto pb-6 px-4 -mx-4 md:mx-0 md:px-0 md:grid md:grid-cols-3 gap-6 snap-x no-scrollbar md:overflow-visible">
+            {plans.map((plan) => (
+              <div
+                key={plan.id}
+                className={`rounded-3xl border p-6 md:p-7 flex flex-col h-full min-w-[260px] sm:min-w-[320px] md:min-w-0 snap-center ${
+                  plan.highlighted
+                    ? "bg-white border-[#059669] shadow-2xl shadow-emerald-900/10 ring-1 ring-emerald-200"
+                    : "bg-white/90 border-white/70 shadow-lg"
+                }`}
+              >
               <div className="text-xs font-black uppercase tracking-widest text-gray-500 mb-2">
                 {t.planLabel}
               </div>
@@ -180,8 +181,9 @@ export function Plans() {
                 {t.consultThisPlan}
                 <ArrowRight size={14} />
               </a>
-            </div>
-          ))}
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Tools Menu */}
