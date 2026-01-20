@@ -7,7 +7,7 @@ export function BackgroundGradient({ className = "" }: { className?: string }) {
         className="animate-blob-1 absolute -top-[30%] -left-[20%] w-[90%] h-[90%] bg-gradient-to-br from-[#059669] via-emerald-500 to-transparent blur-[140px] opacity-50 mix-blend-multiply"
       />
       <div 
-        className="animate-blob-2 absolute top-[10%] -right-[20%] w-[80%] h-[80%] bg-gradient-to-bl from-[#1b2a4a] via-[#1e40af] to-transparent blur-[120px] opacity-60 mix-blend-multiply"
+        className="animate-blob-2 absolute top-[10%] -right-[20%] w-[80%] h-[80%] bg-gradient-to-bl from-[#047857] via-[#059669] to-transparent blur-[120px] opacity-60 mix-blend-multiply"
       />
       <div 
         className="animate-blob-3 absolute bottom-[-20%] left-[20%] w-[60%] h-[60%] bg-white blur-[90px] opacity-70"

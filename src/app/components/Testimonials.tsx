@@ -12,13 +12,13 @@ export function Testimonials() {
   ];
 
   return (
-    <section id="testimonials" className="py-24 bg-[#1b2a4a] relative overflow-hidden">
+    <section id="testimonials" className="py-24 bg-[#059669] relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
             お客様の声
           </h2>
-          <p className="text-blue-100 text-lg">
+          <p className="text-emerald-100 text-lg">
             Customer Testimonials
           </p>
         </div>

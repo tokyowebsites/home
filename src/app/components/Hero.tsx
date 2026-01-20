@@ -46,7 +46,7 @@ export function Hero() {
   const HomeView = () => (
     <div className="h-full w-full flex flex-col relative overflow-hidden group">
       {/* Background Gradient */}
-      <div className="absolute inset-0 z-0 bg-gradient-to-br from-[#1b2a4a] via-[#273a5a] to-[#1b2a4a]">
+      <div className="absolute inset-0 z-0 bg-gradient-to-br from-[#059669] via-[#047857] to-[#059669]">
         {/* Subtle animated gradient overlay */}
         <motion.div 
           initial={{ opacity: 0 }}
@@ -265,7 +265,7 @@ export function Hero() {
             </div>
             <div className="mt-2 md:mt-3 h-[6px] rounded-full bg-gray-100 overflow-hidden">
               <div
-                className="h-full bg-gradient-to-r from-[#059669] to-[#1b2a4a]"
+                className="h-full bg-gradient-to-r from-[#059669] to-[#047857]"
                 style={{ width: `${70 + i * 7}%` }}
               />
             </div>
@@ -313,7 +313,7 @@ export function Hero() {
       <div className="mt-auto pt-2 md:pt-3">
         <button
           onClick={() => navigate("contact")}
-          className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-[#1b2a4a] text-white py-3 text-xs md:text-sm font-bold hover:bg-slate-800 transition-colors"
+          className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-[#047857] text-white py-3 text-xs md:text-sm font-bold hover:bg-emerald-700 transition-colors"
         >
           {t.consultRequirements} <ArrowRight className="w-4 h-4" />
         </button>
@@ -389,7 +389,7 @@ export function Hero() {
           className="animate-blob-1 absolute -top-[30%] -left-[20%] w-[90%] h-[90%] bg-gradient-to-br from-[#059669] via-emerald-500 to-transparent blur-[140px] opacity-50 mix-blend-multiply"
         />
         <div 
-          className="animate-blob-2 absolute top-[10%] -right-[20%] w-[80%] h-[80%] bg-gradient-to-bl from-[#1b2a4a] via-[#1e40af] to-transparent blur-[120px] opacity-60 mix-blend-multiply"
+          className="animate-blob-2 absolute top-[10%] -right-[20%] w-[80%] h-[80%] bg-gradient-to-bl from-[#047857] via-[#059669] to-transparent blur-[120px] opacity-60 mix-blend-multiply"
         />
         <div 
           className="animate-blob-3 absolute bottom-[-20%] left-[20%] w-[60%] h-[60%] bg-white blur-[90px] opacity-70"
