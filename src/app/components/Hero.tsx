@@ -67,7 +67,7 @@ export function Hero() {
           <div className="flex items-center justify-center mb-3 md:mb-4 w-full">
             <h1>
               <img 
-                src="/images/ロゴ透過PNG (1).png" 
+                src="/images/logo-hero.png" 
                 alt="Tokyo Websites - Web Design & Digital Branding in Tachikawa" 
                 className="w-[85vw] max-w-[240px] sm:max-w-[450px] md:max-w-[600px] lg:max-w-[700px] h-auto drop-shadow-2xl"
                 style={{ objectFit: 'contain', maxHeight: 'min(180px, 25vh)' }}
