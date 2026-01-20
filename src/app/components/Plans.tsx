@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useMemo, useState } from "react";
 import { Check, ArrowRight, Zap } from "lucide-react";
 import { useTranslation } from "../lib/TranslationContext";
 import { BackgroundGradient } from "./ui/BackgroundGradient";
 
 export function Plans() {
   const { t } = useTranslation();
+  const STANDARD_TOOL_PRICE = 6000;
+  const ADVANCED_TOOL_PRICE = 18000;
+  const [selectedTools, setSelectedTools] = useState<Record<string, boolean>>({});
   const plans = [
     {
       id: "basic",
@@ -14,6 +17,7 @@ export function Plans() {
       advancedTools: 0,
       bonus: t.planBonusMeo,
       highlighted: false,
+      formUrl: "https://docs.google.com/forms/d/e/1FAIpQLScDauTW9PD2UFXS1QlSxltGuZe4fan4xIcapLwnBWBa7BAQ9w/viewform?usp=dialog",
     },
     {
       id: "standard",
@@ -23,6 +27,7 @@ export function Plans() {
       advancedTools: 1,
       bonus: t.planBonusMeo,
       highlighted: true,
+      formUrl: "https://docs.google.com/forms/d/e/1FAIpQLSeoV5sm7yOHKjnw9ceodaL-uUtpLf06H1dDM8L6UuQNk4mjfQ/viewform?usp=dialog",
     },
     {
       id: "premium",
@@ -32,28 +37,68 @@ export function Plans() {
       advancedTools: 3,
       bonus: t.planBonusNone,
       highlighted: false,
+      formUrl: "https://docs.google.com/forms/d/e/1FAIpQLSc4v9fQpzivhHACffG_r4MEhS4TJIpR-u-XqdG31jyRiGxbug/viewform?usp=dialog",
     },
   ];
 
   const standardTools = [
-    t.toolContactForm,
-    t.toolInstagramFeed,
-    t.toolGoogleMapEmbed,
-    t.toolMultiLangButtons,
-    t.toolChatbot,
-    t.toolDynamicMenu,
-    t.toolWebsiteRedesign,
-    t.toolLogoCreate,
+    { id: "contactForm", label: t.toolContactForm, price: STANDARD_TOOL_PRICE },
+    { id: "instagramFeed", label: t.toolInstagramFeed, price: STANDARD_TOOL_PRICE },
+    { id: "googleMapEmbed", label: t.toolGoogleMapEmbed, price: STANDARD_TOOL_PRICE },
+    { id: "multiLangButtons", label: t.toolMultiLangButtons, price: STANDARD_TOOL_PRICE },
+    { id: "chatbot", label: t.toolChatbot, price: STANDARD_TOOL_PRICE },
+    { id: "dynamicMenu", label: t.toolDynamicMenu, price: STANDARD_TOOL_PRICE },
+    { id: "websiteRedesign", label: t.toolWebsiteRedesign, price: STANDARD_TOOL_PRICE },
+    { id: "logoCreate", label: t.toolLogoCreate, price: STANDARD_TOOL_PRICE },
   ];
 
   const advancedTools = [
-    t.toolStripeMarketplace,
-    t.toolBookingSystem,
-    t.toolLoyaltySystem,
-    t.toolWifiMarketing,
-    t.toolMailingList,
-    t.toolAdminPanel,
+    { id: "stripeMarketplace", label: t.toolStripeMarketplace, price: ADVANCED_TOOL_PRICE },
+    { id: "bookingSystem", label: t.toolBookingSystem, price: ADVANCED_TOOL_PRICE },
+    { id: "loyaltySystem", label: t.toolLoyaltySystem, price: ADVANCED_TOOL_PRICE },
+    { id: "wifiMarketing", label: t.toolWifiMarketing, price: ADVANCED_TOOL_PRICE },
+    { id: "mailingList", label: t.toolMailingList, price: ADVANCED_TOOL_PRICE },
+    { id: "adminPanel", label: t.toolAdminPanel, price: ADVANCED_TOOL_PRICE },
   ];
+
+  const totals = useMemo(() => {
+    const standardCount = standardTools.reduce(
+      (acc, tool) => acc + (selectedTools[tool.id] ? 1 : 0),
+      0,
+    );
+    const advancedCount = advancedTools.reduce(
+      (acc, tool) => acc + (selectedTools[tool.id] ? 1 : 0),
+      0,
+    );
+    const total =
+      standardCount * STANDARD_TOOL_PRICE + advancedCount * ADVANCED_TOOL_PRICE;
+
+    const eligiblePlans = plans.filter(
+      (plan) =>
+        standardCount <= plan.standardTools &&
+        advancedCount <= plan.advancedTools,
+    );
+    const recommendedPlan =
+      eligiblePlans.length > 0
+        ? eligiblePlans.reduce((cheapest, plan) =>
+            parseInt(plan.price.replace(/[^\d]/g, ""), 10) <
+            parseInt(cheapest.price.replace(/[^\d]/g, ""), 10)
+              ? plan
+              : cheapest,
+          )
+        : null;
+
+    return {
+      standardCount,
+      advancedCount,
+      total,
+      recommendedPlan,
+    };
+  }, [advancedTools, plans, selectedTools, standardTools]);
+
+  const toggleTool = (id: string) => {
+    setSelectedTools((prev) => ({ ...prev, [id]: !prev[id] }));
+  };
 
   return (
     <section id="plans" className="py-24 bg-gray-50 relative overflow-hidden">
@@ -125,7 +170,7 @@ export function Plans() {
               </ul>
 
               <a
-                href="https://docs.google.com/forms/d/e/1FAIpQLSf1sejWp_jKe4SxmAtVtNxCoBnU78Ul6TynXUWtD_9GFRcnUQ/viewform?usp=sharing&ouid=109641339829497082567"
+                href={plan.formUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`mt-auto inline-flex items-center justify-center gap-2 w-full py-3 rounded-2xl text-[11px] md:text-xs font-black uppercase tracking-widest transition-all duration-300 ${
@@ -139,32 +184,134 @@ export function Plans() {
           ))}
         </div>
 
-        {/* Tools Table */}
+        {/* Tools Menu */}
         <div className="max-w-5xl mx-auto mb-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 border border-gray-200 rounded-2xl overflow-hidden bg-white shadow-sm">
-            <div className="border-b md:border-b-0 md:border-r border-gray-200">
-              <div className="bg-gray-50 px-5 py-4 text-sm font-black text-gray-900">
-                {t.standardToolsTitle}
-              </div>
-              <ul className="divide-y divide-gray-200 text-sm font-semibold text-gray-800">
-                {standardTools.map((tool) => (
-                  <li key={tool} className="px-5 py-4">
-                    {tool}
-                  </li>
-                ))}
-              </ul>
+          <div className="text-center mb-6">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900 text-white text-xs font-black uppercase tracking-widest">
+              {t.toolsMenuTitle}
             </div>
-            <div>
-              <div className="bg-gray-50 px-5 py-4 text-sm font-black text-gray-900">
-                {t.advancedToolsTitle}
+            <h3 className="text-2xl md:text-3xl font-black text-gray-900 mt-4">
+              {t.toolsMenuSubtitle}
+            </h3>
+            <p className="text-sm md:text-base font-bold text-gray-600 mt-2">
+              {t.toolsMenuHint}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 border border-gray-200 rounded-2xl overflow-hidden bg-white shadow-sm">
+              <div className="border-b md:border-b-0 md:border-r border-gray-200">
+                <div className="bg-gray-50 px-5 py-4 text-sm font-black text-gray-900 flex items-center justify-between">
+                  <span>{t.standardToolsTitle}</span>
+                  <span className="text-emerald-700">{t.standardToolsPrice}</span>
+                </div>
+                <ul className="divide-y divide-gray-200 text-sm font-semibold text-gray-800">
+                  {standardTools.map((tool) => (
+                    <li key={tool.id} className="px-5 py-4">
+                      <label className="flex items-center gap-3 cursor-pointer">
+                        <input
+                          type="checkbox"
+                          className="h-4 w-4 accent-emerald-600"
+                          checked={!!selectedTools[tool.id]}
+                          onChange={() => toggleTool(tool.id)}
+                        />
+                        <span>{tool.label}</span>
+                        <span className="ml-auto text-xs font-black text-gray-500">
+                          {t.standardToolsPrice}
+                        </span>
+                      </label>
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <ul className="divide-y divide-gray-200 text-sm font-semibold text-gray-800">
-                {advancedTools.map((tool) => (
-                  <li key={tool} className="px-5 py-4">
-                    {tool}
-                  </li>
-                ))}
-              </ul>
+              <div>
+                <div className="bg-gray-50 px-5 py-4 text-sm font-black text-gray-900 flex items-center justify-between">
+                  <span>{t.advancedToolsTitle}</span>
+                  <span className="text-violet-700">{t.advancedToolsPrice}</span>
+                </div>
+                <ul className="divide-y divide-gray-200 text-sm font-semibold text-gray-800">
+                  {advancedTools.map((tool) => (
+                    <li key={tool.id} className="px-5 py-4">
+                      <label className="flex items-center gap-3 cursor-pointer">
+                        <input
+                          type="checkbox"
+                          className="h-4 w-4 accent-violet-600"
+                          checked={!!selectedTools[tool.id]}
+                          onChange={() => toggleTool(tool.id)}
+                        />
+                        <span>{tool.label}</span>
+                        <span className="ml-auto text-xs font-black text-gray-500">
+                          {t.advancedToolsPrice}
+                        </span>
+                      </label>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-3xl border border-gray-100 p-6 shadow-lg">
+              <div className="text-xs font-black uppercase tracking-widest text-gray-500 mb-2">
+                {t.selectionSummaryTitle}
+              </div>
+              <div className="space-y-2 text-sm font-bold text-gray-700">
+                <div className="flex items-center justify-between">
+                  <span>{t.planStandardToolsLabel}</span>
+                  <span>{totals.standardCount}</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span>{t.planAdvancedToolsLabel}</span>
+                  <span>{totals.advancedCount}</span>
+                </div>
+              </div>
+
+              <div className="mt-5 pt-5 border-t border-gray-100">
+                <div className="text-xs font-black uppercase tracking-widest text-gray-500 mb-2">
+                  {t.toolsTotalTitle}
+                </div>
+                <div className="text-3xl font-black text-gray-900">
+                  ¥{totals.total.toLocaleString("en-US")}
+                </div>
+                <div className="mt-2 text-[11px] font-bold text-gray-500">
+                  {t.toolsTotalNote}
+                </div>
+              </div>
+
+              <div className="mt-5 pt-5 border-t border-gray-100">
+                <div className="text-xs font-black uppercase tracking-widest text-gray-500 mb-2">
+                  {t.recommendedPlanTitle}
+                </div>
+                {totals.standardCount + totals.advancedCount === 0 && (
+                  <div className="text-sm font-bold text-gray-500">
+                    {t.recommendedPlanEmpty}
+                  </div>
+                )}
+                {totals.standardCount + totals.advancedCount > 0 &&
+                  totals.recommendedPlan && (
+                    <div className="rounded-2xl border border-emerald-200 bg-emerald-50 p-4">
+                      <div className="text-sm font-black text-emerald-800">
+                        {totals.recommendedPlan.title}
+                      </div>
+                      <div className="text-2xl font-black text-emerald-700">
+                        {totals.recommendedPlan.price}
+                      </div>
+                      <a
+                        href={totals.recommendedPlan.formUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-3 inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest text-emerald-800"
+                      >
+                        {t.recommendedPlanCta} <ArrowRight size={12} />
+                      </a>
+                    </div>
+                  )}
+                {totals.standardCount + totals.advancedCount > 0 &&
+                  !totals.recommendedPlan && (
+                    <div className="text-sm font-bold text-gray-600">
+                      {t.recommendedPlanCustom}
+                    </div>
+                  )}
+              </div>
             </div>
           </div>
         </div>
