@@ -1,164 +1,59 @@
-import React, { useMemo, useState } from "react";
-import { Check, ArrowRight, Zap, UtensilsCrossed, ShoppingBag, Scissors, Coffee, Gift, X } from "lucide-react";
+import React from "react";
+import { Check, ArrowRight, Zap } from "lucide-react";
 import { useTranslation } from "../lib/TranslationContext";
 import { BackgroundGradient } from "./ui/BackgroundGradient";
-import { MiniBrowser } from "./interactive-showcase/MiniBrowser";
-import { CafePreview, RestaurantPreview, RetailPreview, SalonPreview } from "./interactive-showcase/PlanPreviews";
 
 export function Plans() {
   const { t } = useTranslation();
-  const [selectedServices, setSelectedServices] = useState<Record<string, boolean>>({});
-  const [previewPackageId, setPreviewPackageId] = useState<string | null>(null);
-  const [expandedPackages, setExpandedPackages] = useState<Record<string, boolean>>({});
-
-  const services = useMemo(
-    () => [
-      { id: "website", label: t.serviceWebsite, price: 20000, category: "web" as const },
-      { id: "booking", label: t.serviceBooking, price: 15000, category: "web" as const },
-      { id: "multiButtons", label: t.serviceMultiButtons, price: 9000, category: "web" as const },
-      { id: "multiMenu", label: t.serviceMultiMenu, price: 0, category: "web" as const },
-      { id: "stripeMarketplace", label: t.serviceStripeMarketplace, price: 25000, category: "web" as const },
-      { id: "photoshoot", label: t.servicePhotoshoot, price: 9000, category: "web" as const },
-      { id: "wifiCampaign", label: t.serviceWifiCampaign, price: 7000, category: "web" as const },
-      { id: "instagramEmbed", label: t.serviceInstagramEmbed, price: 1000, category: "web" as const },
-      { id: "mapsMaintenance", label: t.serviceMapsMaintenance, price: 0, category: "map" as const },
-      { id: "mapsPhotoMenu", label: t.serviceMapsPhotoMenu, price: 10000, category: "map" as const },
-      { id: "mapsPhotoUpdates", label: t.serviceMapsPhotoUpdates, price: 10000, category: "map" as const },
-      { id: "nfcReviewCard", label: t.serviceNfcReviewCard, price: 8000, category: "map" as const },
-      { id: "reviewsConsulting", label: t.serviceReviewsConsulting, price: 6000, category: "map" as const },
-    ],
-    [t],
-  );
-
-  const totals = useMemo(() => {
-    let webTotal = 0;
-    let mapTotal = 0;
-
-    services.forEach((service) => {
-      if (!selectedServices[service.id]) return;
-      if (service.category === "web") webTotal += service.price;
-      if (service.category === "map") mapTotal += service.price;
-    });
-
-    const webDealEligible = webTotal >= 35000 && mapTotal > 0;
-    const mapDealEligible = mapTotal >= 15000 && webTotal > 0;
-
-    const webDealDiscount = webDealEligible ? 5000 : 0; // Applies to map services
-    const mapDealDiscount = mapDealEligible ? 10000 : 0; // Applies to website services
-
-    const totalDiscount =
-      Math.min(mapTotal, webDealDiscount) + Math.min(webTotal, mapDealDiscount);
-
-    const total = webTotal + mapTotal - totalDiscount;
-
-    return {
-      webTotal,
-      mapTotal,
-      totalDiscount,
-      total,
-      webDealDiscount,
-      mapDealDiscount,
-      webDealEligible,
-      mapDealEligible,
-    };
-  }, [selectedServices, services]);
-
-  const toggleService = (id: string) => {
-    setSelectedServices((prev) => ({ ...prev, [id]: !prev[id] }));
-  };
-
-  const togglePackageDetails = (id: string) => {
-    setExpandedPackages((prev) => ({ ...prev, [id]: !prev[id] }));
-  };
-
-  const formatYen = (value: number) => `¥${value.toLocaleString("en-US")}`;
-  
-  const packages = [
+  const plans = [
     {
-      id: "restaurant",
-      title: t.pkg1Title,
-      icon: UtensilsCrossed,
-      color: "from-orange-500 to-red-500",
-      items: [
-        t.pkg1Item1,
-        t.pkg1Item2,
-        t.pkg1Item3,
-        { text: t.pkg1Item4, free: true },
-        { text: t.pkg1Item5, free: true },
-        t.pkg1Item6,
-      ],
-      math: t.pkg1Math,
-      standardPrice: t.pkg1StandardPrice,
-      bundlePrice: t.pkg1BundlePrice,
-      saveText: t.pkg1Save,
-      sampleSite: t.sampleRestaurantName,
-      formUrl: "https://docs.google.com/forms/d/e/1FAIpQLSeoV5sm7yOHKjnw9ceodaL-uUtpLf06H1dDM8L6UuQNk4mjfQ/viewform",
-      preview: RestaurantPreview,
+      id: "basic",
+      title: t.basicPlanTitle,
+      price: t.basicPlanPrice,
+      standardTools: 1,
+      advancedTools: 0,
+      bonus: t.planBonusMeo,
+      highlighted: false,
     },
     {
-      id: "retail",
-      title: t.pkg2Title,
-      icon: ShoppingBag,
-      color: "from-blue-500 to-indigo-500",
-      items: [
-        t.pkg2Item1,
-        t.pkg2Item2,
-        t.pkg2Item3,
-      ],
-      math: t.pkg2Math,
-      standardPrice: t.pkg2StandardPrice,
-      bundlePrice: t.pkg2BundlePrice,
-      saveText: t.pkg2Save,
-      sampleSite: t.sampleRetailName,
-      formUrl: "https://docs.google.com/forms/d/e/1FAIpQLSeoV5sm7yOHKjnw9ceodaL-uUtpLf06H1dDM8L6UuQNk4mjfQ/viewform",
-      preview: RetailPreview,
-    },
-    {
-      id: "salon",
-      title: t.pkg3Title,
-      icon: Scissors,
-      color: "from-pink-500 to-rose-500",
-      items: [
-        t.pkg3Item1,
-        t.pkg3Item2,
-        t.pkg3Item3,
-        t.pkg3Item4,
-      ],
-      math: t.pkg3Math,
-      standardPrice: t.pkg3StandardPrice,
-      bundlePrice: t.pkg3BundlePrice,
-      saveText: t.pkg3Save,
-      sampleSite: t.sampleSalonName,
-      formUrl: "https://docs.google.com/forms/d/e/1FAIpQLSeoV5sm7yOHKjnw9ceodaL-uUtpLf06H1dDM8L6UuQNk4mjfQ/viewform",
+      id: "standard",
+      title: t.standardPlanTitle,
+      price: t.standardPlanPrice,
+      standardTools: 2,
+      advancedTools: 1,
+      bonus: t.planBonusMeo,
       highlighted: true,
-      preview: SalonPreview,
     },
     {
-      id: "cafe",
-      title: t.pkg4Title,
-      icon: Coffee,
-      color: "from-emerald-500 to-teal-500",
-      items: [
-        t.pkg4Item1,
-        t.pkg4Item2,
-        t.pkg4Item3,
-        { text: t.pkg4Item4, free: true },
-        { text: t.pkg4Item5, free: true },
-        t.pkg4Item6,
-        t.pkg4Item7,
-      ],
-      math: t.pkg4Math,
-      standardPrice: t.pkg4StandardPrice,
-      bundlePrice: t.pkg4BundlePrice,
-      saveText: t.pkg4Save,
-      sampleSite: t.sampleCafeName,
-      formUrl: "https://docs.google.com/forms/d/e/1FAIpQLSeoV5sm7yOHKjnw9ceodaL-uUtpLf06H1dDM8L6UuQNk4mjfQ/viewform",
-      highlighted: true,
-      preview: CafePreview,
+      id: "premium",
+      title: t.premiumPlanTitle,
+      price: t.premiumPlanPrice,
+      standardTools: 5,
+      advancedTools: 3,
+      bonus: t.planBonusNone,
+      highlighted: false,
     },
   ];
 
-  const activePreview = packages.find((pkg) => pkg.id === previewPackageId);
+  const standardTools = [
+    t.toolContactForm,
+    t.toolInstagramFeed,
+    t.toolGoogleMapEmbed,
+    t.toolMultiLangButtons,
+    t.toolChatbot,
+    t.toolDynamicMenu,
+    t.toolWebsiteRedesign,
+    t.toolLogoCreate,
+  ];
+
+  const advancedTools = [
+    t.toolStripeMarketplace,
+    t.toolBookingSystem,
+    t.toolLoyaltySystem,
+    t.toolWifiMarketing,
+    t.toolMailingList,
+    t.toolAdminPanel,
+  ];
 
   return (
     <section id="plans" className="py-24 bg-gray-50 relative overflow-hidden">
@@ -172,287 +67,104 @@ export function Plans() {
              {t.deliveryPossible}
           </div>
           <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-gray-900 mb-6 leading-tight">
-            {t.packagesTitle}
+            {t.plansTitle}
           </h2>
           <p className="text-gray-600 text-lg md:text-xl font-bold">
-            {t.packagesSubtitle}
+            {t.plansSubtitle}
           </p>
         </div>
 
-        {/* Packages Grid */}
-        <div className="flex overflow-x-auto pb-10 px-4 -mx-4 md:mx-0 md:px-0 md:grid md:grid-cols-2 gap-5 md:gap-6 max-w-6xl mx-auto mb-16 snap-x no-scrollbar md:overflow-visible">
-          {packages.map((pkg) => {
-            const Icon = pkg.icon;
-            const isExpanded = !!expandedPackages[pkg.id];
-            return (
-              <div 
-                key={pkg.id} 
-                className={`group relative border rounded-3xl p-5 md:p-6 transition-all duration-500 flex flex-col min-w-[260px] md:min-w-0 snap-center h-full min-h-[560px] ${
-                  pkg.highlighted 
-                    ? "bg-white border-[#059669] shadow-2xl shadow-emerald-900/10 ring-1 ring-emerald-200" 
-                    : "bg-white/80 border-white/60 backdrop-blur-md hover:bg-white hover:shadow-xl"
+        {/* Plans Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto mb-16">
+          {plans.map((plan) => (
+            <div
+              key={plan.id}
+              className={`rounded-3xl border p-6 md:p-7 flex flex-col h-full ${
+                plan.highlighted
+                  ? "bg-white border-[#059669] shadow-2xl shadow-emerald-900/10 ring-1 ring-emerald-200"
+                  : "bg-white/90 border-white/70 shadow-lg"
+              }`}
+            >
+              <div className="text-xs font-black uppercase tracking-widest text-gray-500 mb-2">
+                {t.planLabel}
+              </div>
+              <h3 className="text-2xl font-black text-gray-900 mb-3">
+                {plan.title}
+              </h3>
+              <div className="text-4xl font-black text-gray-900 mb-1">
+                {plan.price}
+              </div>
+              <div className="text-xs font-bold text-gray-500 mb-5">
+                {t.oneTime}
+              </div>
+
+              <div className="text-xs font-black uppercase tracking-widest text-gray-500 mb-3">
+                {t.planIncludesTitle}
+              </div>
+              <ul className="space-y-2 text-sm font-bold text-gray-800 mb-6">
+                <li className="flex items-center gap-2">
+                  <span className="w-5 h-5 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center">
+                    <Check size={12} strokeWidth={3} />
+                  </span>
+                  {t.planStandardToolsLabel} {plan.standardTools}
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="w-5 h-5 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center">
+                    <Check size={12} strokeWidth={3} />
+                  </span>
+                  {t.planAdvancedToolsLabel} {plan.advancedTools}
+                </li>
+                {plan.bonus && (
+                  <li className="flex items-center gap-2 text-emerald-700">
+                    <span className="w-5 h-5 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center">
+                      <Check size={12} strokeWidth={3} />
+                    </span>
+                    {plan.bonus}
+                  </li>
+                )}
+              </ul>
+
+              <a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSf1sejWp_jKe4SxmAtVtNxCoBnU78Ul6TynXUWtD_9GFRcnUQ/viewform?usp=sharing&ouid=109641339829497082567"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`mt-auto inline-flex items-center justify-center gap-2 w-full py-3 rounded-2xl text-[11px] md:text-xs font-black uppercase tracking-widest transition-all duration-300 ${
+                  plan.highlighted ? "bg-[#059669] text-white hover:bg-emerald-600" : "bg-gray-900 text-white hover:bg-gray-800"
                 }`}
               >
-                {/* Icon & Title */}
-                <div className="flex items-start gap-3 mb-4">
-                  <div className={`w-12 h-12 rounded-2xl flex items-center justify-center shadow-lg bg-gradient-to-br ${pkg.color} text-white shrink-0`}>
-                    <Icon size={22} strokeWidth={2} />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-lg md:text-xl font-black text-gray-900 leading-tight">
-                      {pkg.title}
-                    </h3>
-                    <div className="mt-0.5 text-[10px] text-gray-500 font-bold">
-                      {pkg.sampleSite}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Items List */}
-                <ul className="space-y-2 mb-3 flex-grow">
-                  {(isExpanded ? pkg.items : pkg.items.slice(0, 4)).map((item, i) => {
-                    const isFree = typeof item === 'object' && item.free;
-                    const text = typeof item === 'string' ? item : item.text;
-                    return (
-                      <li key={i} className="flex items-start gap-2 text-[11px] text-gray-700 font-bold leading-tight">
-                        <div className={`mt-0.5 w-4 h-4 rounded-full flex items-center justify-center shrink-0 ${
-                          isFree ? 'bg-emerald-100 text-emerald-600' : 'bg-slate-100 text-slate-600'
-                        }`}>
-                          <Check size={10} strokeWidth={4} />
-                        </div>
-                        <span className={isFree ? 'text-emerald-600' : ''}>{text}</span>
-                      </li>
-                    );
-                  })}
-                </ul>
-                {pkg.items.length > 4 && (
-                  <button
-                    type="button"
-                    onClick={() => togglePackageDetails(pkg.id)}
-                    className="mb-4 text-[10px] font-black uppercase tracking-widest text-gray-500 hover:text-gray-800"
-                  >
-                    {isExpanded ? t.closeDetails : t.more}
-                  </button>
-                )}
-
-                {/* Math */}
-                <div className="text-[9px] text-gray-500 font-mono mb-4 border-t pt-3 border-gray-100">
-                  {pkg.math}
-                </div>
-
-                {/* Pricing */}
-                <div className="mb-5 pb-5 border-b border-gray-100">
-                  <div className="text-[11px] text-gray-500 font-bold mb-1">
-                    {t.packageStandardPrice}: <span className="line-through">{pkg.standardPrice}</span>
-                  </div>
-                  <div className="flex items-baseline gap-2">
-                    <span className="text-[11px] text-gray-600 font-bold">{t.bundlePrice}:</span>
-                    <span className={`text-2xl md:text-3xl font-black ${pkg.highlighted ? "text-[#059669]" : "text-gray-900"}`}>
-                      {pkg.bundlePrice}
-                    </span>
-                  </div>
-                  <div className="mt-2 inline-block bg-emerald-50 text-emerald-700 px-3 py-1 rounded-full text-[10px] font-black">
-                    {pkg.saveText}
-                  </div>
-                </div>
-
-                {/* CTA Button */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-auto">
-                  <button
-                    type="button"
-                    onClick={() => setPreviewPackageId(pkg.id)}
-                    className="w-full py-3 rounded-2xl text-[10px] md:text-xs font-black uppercase tracking-widest border border-gray-200 text-gray-700 hover:bg-gray-100"
-                  >
-                    {t.previewWebsiteButton}
-                  </button>
-                  <a 
-                    href={pkg.formUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`w-full py-3 rounded-2xl text-[10px] md:text-xs font-black uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl active:scale-95 ${
-                      pkg.highlighted 
-                        ? 'bg-[#059669] text-white hover:bg-emerald-600' 
-                        : 'bg-gray-900 text-white hover:bg-gray-800'
-                    }`}
-                  >
-                    {t.consultThisPackage} <ArrowRight size={14} />
-                  </a>
-                </div>
-              </div>
-            );
-          })}
+                {t.consultThisPlan}
+                <ArrowRight size={14} />
+              </a>
+            </div>
+          ))}
         </div>
 
-        {/* Web Design Requirements */}
-        <div className="max-w-4xl mx-auto mb-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="rounded-3xl border border-amber-200 bg-amber-50/80 p-6">
-              <div className="text-xs font-black uppercase tracking-widest text-amber-700 mb-2">
-                {t.webRequirementsTitle}
+        {/* Tools Table */}
+        <div className="max-w-5xl mx-auto mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 border border-gray-200 rounded-2xl overflow-hidden bg-white shadow-sm">
+            <div className="border-b md:border-b-0 md:border-r border-gray-200">
+              <div className="bg-gray-50 px-5 py-4 text-sm font-black text-gray-900">
+                {t.standardToolsTitle}
               </div>
-              <div className="text-sm font-black text-gray-900">
-                {t.webRequirementsFoodPhotos}
-              </div>
-              <div className="mt-2 text-xs font-bold text-amber-700">
-                {t.webRequirementsFoodPhotosNote}
-              </div>
+              <ul className="divide-y divide-gray-200 text-sm font-semibold text-gray-800">
+                {standardTools.map((tool) => (
+                  <li key={tool} className="px-5 py-4">
+                    {tool}
+                  </li>
+                ))}
+              </ul>
             </div>
-            <div className="rounded-3xl border border-emerald-200 bg-emerald-50/80 p-6">
-              <div className="text-xs font-black uppercase tracking-widest text-emerald-700 mb-2">
-                {t.webRequirementsLanguagesTitle}
+            <div>
+              <div className="bg-gray-50 px-5 py-4 text-sm font-black text-gray-900">
+                {t.advancedToolsTitle}
               </div>
-              <div className="text-sm font-black text-gray-900">
-                {t.webRequirementsLanguagesList}
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Build Your Own Deal Section */}
-        <div className="max-w-4xl mx-auto mt-20">
-          <div className="text-center mb-10">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-violet-50 text-violet-900 text-xs font-black uppercase tracking-widest mb-4 border border-violet-200">
-              <Gift size={14} />
-              {t.buildYourOwnTitle}
-            </div>
-            <h3 className="text-3xl md:text-4xl font-black text-gray-900 mb-3">
-              {t.buildYourOwnTitle}
-            </h3>
-            <p className="text-gray-600 text-base md:text-lg font-bold">
-              {t.buildYourOwnSubtitle}
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Web Deal */}
-            <div className="group bg-gradient-to-br from-blue-50 to-indigo-50 border-2 border-blue-200 rounded-3xl p-8 hover:shadow-xl transition-all duration-300">
-              <div className="inline-block bg-blue-600 text-white px-4 py-2 rounded-xl text-sm font-black mb-4 shadow-lg">
-                {t.webDealTitle}
-              </div>
-              <p className="text-gray-700 text-sm font-bold leading-relaxed">
-                {t.webDealDesc}
-              </p>
-            </div>
-
-            {/* Map Deal */}
-            <div className="group bg-gradient-to-br from-emerald-50 to-teal-50 border-2 border-emerald-200 rounded-3xl p-8 hover:shadow-xl transition-all duration-300">
-              <div className="inline-block bg-emerald-600 text-white px-4 py-2 rounded-xl text-sm font-black mb-4 shadow-lg">
-                {t.mapDealTitle}
-              </div>
-              <p className="text-gray-700 text-sm font-bold leading-relaxed">
-                {t.mapDealDesc}
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Mix & Match Service Menu */}
-        <div className="max-w-6xl mx-auto mt-20">
-          <div className="text-center mb-10">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900 text-white text-xs font-black uppercase tracking-widest mb-4">
-              {t.mixMatchTitle}
-            </div>
-            <h3 className="text-3xl md:text-4xl font-black text-gray-900 mb-3">
-              {t.mixMatchTitle}
-            </h3>
-            <p className="text-gray-600 text-base md:text-lg font-bold">
-              {t.mixMatchSubtitle}
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            <div className="lg:col-span-2 space-y-6">
-              {[
-                { key: "web", label: t.webServicesLabel },
-                { key: "map", label: t.mapServicesLabel },
-              ].map((group) => (
-                <div key={group.key} className="bg-white rounded-3xl border border-gray-100 p-6 shadow-sm">
-                  <div className="text-sm font-black text-gray-900 mb-4">
-                    {group.label}
-                  </div>
-                  <div className="space-y-3">
-                    {services
-                      .filter((service) => service.category === group.key)
-                      .map((service) => (
-                        <label
-                          key={service.id}
-                          className="flex items-center gap-3 rounded-2xl border border-gray-100 px-4 py-3 hover:border-emerald-200 hover:bg-emerald-50/30 transition-colors cursor-pointer"
-                        >
-                          <input
-                            type="checkbox"
-                            checked={!!selectedServices[service.id]}
-                            onChange={() => toggleService(service.id)}
-                            className="h-4 w-4 accent-emerald-600"
-                          />
-                          <span className="text-sm font-bold text-gray-900">
-                            {service.label}
-                          </span>
-                          <span className="ml-auto text-xs font-black text-gray-700">
-                            {service.price === 0 ? t.free : formatYen(service.price)}
-                          </span>
-                        </label>
-                      ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className="bg-white rounded-3xl border border-gray-100 p-6 shadow-lg h-fit">
-              <div className="text-xs font-black uppercase tracking-widest text-gray-500 mb-2">
-                {t.selectedTotalLabel}
-              </div>
-              <div className="space-y-2 text-sm font-bold text-gray-700">
-                <div className="flex items-center justify-between">
-                  <span>{t.webServicesLabel}</span>
-                  <span>{formatYen(totals.webTotal)}</span>
-                </div>
-                <div className="flex items-center justify-between">
-                  <span>{t.mapServicesLabel}</span>
-                  <span>{formatYen(totals.mapTotal)}</span>
-                </div>
-              </div>
-
-              <div className="mt-5 pt-5 border-t border-gray-100">
-                <div className="text-xs font-black uppercase tracking-widest text-gray-500 mb-2">
-                  {t.discountsLabel}
-                </div>
-                <div className="space-y-2 text-sm font-bold">
-                  <div className="flex items-center justify-between">
-                    <span className="text-gray-700">{t.webDealTitle}</span>
-                    <span className={totals.webDealEligible ? "text-emerald-600" : "text-gray-400"}>
-                      -{formatYen(Math.min(totals.mapTotal, totals.webDealDiscount))}
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-gray-700">{t.mapDealTitle}</span>
-                    <span className={totals.mapDealEligible ? "text-emerald-600" : "text-gray-400"}>
-                      -{formatYen(Math.min(totals.webTotal, totals.mapDealDiscount))}
-                    </span>
-                  </div>
-                  <div className="text-[10px] text-gray-400 font-semibold">
-                    {t.autoDiscountNote}
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-5 pt-5 border-t border-gray-100">
-                <div className="text-xs font-black uppercase tracking-widest text-gray-500 mb-2">
-                  {t.estimatedTotalLabel}
-                </div>
-                <div className="text-3xl font-black text-gray-900">
-                  {formatYen(totals.total)}
-                </div>
-                {totals.totalDiscount > 0 && (
-                  <div className="mt-2 inline-block bg-emerald-50 text-emerald-700 px-3 py-1 rounded-full text-[10px] font-black">
-                    {t.discountsLabel}: {formatYen(totals.totalDiscount)}
-                  </div>
-                )}
-                {totals.webTotal + totals.mapTotal === 0 && (
-                  <div className="mt-3 text-[10px] text-gray-500 font-semibold">
-                    {t.noSelectionLabel}
-                  </div>
-                )}
-              </div>
+              <ul className="divide-y divide-gray-200 text-sm font-semibold text-gray-800">
+                {advancedTools.map((tool) => (
+                  <li key={tool} className="px-5 py-4">
+                    {tool}
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </div>
@@ -469,88 +181,16 @@ export function Plans() {
             <div className="order-1 md:order-2">
               <div className="rounded-[28px] border border-emerald-200 bg-emerald-50/70 p-5 md:p-6 shadow-sm">
                 <div className="text-center text-sm md:text-base font-black text-gray-900 mb-4">
-                  {t.pricingStructureTitle}
+                  {t.toolsNoteTitle}
                 </div>
-                <div className="grid grid-cols-[1fr_auto_1fr_auto_1fr] items-center gap-2 text-[11px] md:text-xs font-black text-gray-800">
-                  <div className="rounded-xl border border-gray-300 bg-white px-3 py-3 text-center leading-tight">
-                    <div>{t.pricingStructureBasicSite}</div>
-                    <div className="mt-1 text-emerald-700">{t.pricingStructureBasicPrice}</div>
-                  </div>
-                  <div className="text-gray-500">+</div>
-                  <div className="rounded-xl border border-gray-300 bg-white px-3 py-3 text-center leading-tight">
-                    <div>{t.pricingStructureOptions}</div>
-                  </div>
-                  <div className="text-gray-500">+</div>
-                  <div className="rounded-xl border border-gray-300 bg-white px-3 py-3 text-center leading-tight">
-                    <div>{t.pricingStructureManagement}</div>
-                    <div className="mt-1 text-emerald-700">{t.pricingStructureManagementPrice}</div>
-                  </div>
-                </div>
-                <div className="mt-4 text-center text-[10px] font-bold text-gray-500">
-                  {t.pricingStructureNote}
+                <div className="text-center text-xs md:text-sm font-bold text-gray-700">
+                  {t.toolsNoteBody}
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-
-      {activePreview && (
-        <div
-          className="fixed inset-0 z-[60] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4"
-          onClick={() => setPreviewPackageId(null)}
-        >
-          <div
-            className="w-full max-w-5xl bg-white rounded-3xl p-4 md:p-6 shadow-2xl"
-            onClick={(event) => event.stopPropagation()}
-          >
-            <div className="mb-3">
-              <div>
-                <div className="text-xs font-black uppercase tracking-widest text-gray-400">
-                  {t.worksSample}
-                </div>
-                <div className="text-lg md:text-2xl font-black text-gray-900">
-                  {activePreview.title}
-                </div>
-              </div>
-            </div>
-
-            <MiniBrowser
-              url={`tokyowebsites.com/${activePreview.id}`}
-              className="w-full rounded-3xl border-gray-200 bg-gray-50"
-              dark={false}
-            >
-              <div
-                className="relative bg-white overflow-hidden"
-                style={{ height: "min(clamp(380px, 60vh, 720px), calc(100vh - 180px))" }}
-              >
-                <div className="h-full overflow-y-auto no-scrollbar">
-                  <activePreview.preview />
-                </div>
-              </div>
-            </MiniBrowser>
-
-            <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <button
-                type="button"
-                onClick={() => setPreviewPackageId(null)}
-                className="w-full py-3 rounded-2xl text-[11px] md:text-xs font-black uppercase tracking-widest border border-gray-200 text-gray-700 hover:bg-gray-100 inline-flex items-center justify-center gap-2"
-              >
-                <X size={14} />
-                {t.closePreview}
-              </button>
-              <a
-                href={activePreview.formUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full py-3 rounded-2xl text-[11px] md:text-xs font-black uppercase tracking-widest bg-[#059669] text-white text-center hover:bg-emerald-600"
-              >
-                {t.consultThisPackage}
-              </a>
-            </div>
-          </div>
-        </div>
-      )}
     </section>
   );
 }
