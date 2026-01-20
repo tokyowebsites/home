@@ -54,11 +54,13 @@ export function Header() {
             aria-label="Tokyo Websites"
           >
             <div className="leading-none">
-              <div
-                className="text-xl font-bold tracking-[0.12em] text-[#5C81D9] uppercase transition-transform group-hover:scale-[1.02]"
-                style={{ fontFamily: "'Damascus', 'Playfair Display', 'Times New Roman', serif" }}
-              >
-                TOKYO WEBSITES
+              <div className="flex items-baseline transition-transform group-hover:scale-[1.02]">
+                <span className="text-xl font-bold tracking-tight text-[#5C81D9] font-sans">
+                  Tokyo
+                </span>
+                <span className="text-xl font-bold tracking-tight text-[#5C81D9] ml-1 font-sans">
+                  Websites
+                </span>
               </div>
               <div className="text-[10px] text-gray-500 font-semibold tracking-wide mt-1">
                 {t.slogan}
@@ -72,7 +74,7 @@ export function Header() {
               <a
                 key={index}
                 href={item.href}
-                className="px-4 py-2 rounded-full text-sm font-bold text-gray-700 hover:bg-slate-50 hover:text-[#1e293b] transition-colors"
+                className="px-4 py-2 rounded-full text-sm font-bold text-gray-700 hover:bg-slate-50 hover:text-[#0f172a] transition-colors"
                 style={{ fontWeight: 600 }}
               >
                 {item.label}
