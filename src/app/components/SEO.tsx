@@ -20,10 +20,10 @@ export function SEO({
   
   // Title Length: ~30-60 chars is optimal. 
   // "Tokyo Websites - ウェブ사이트 제작・디지털 브랜딩"
-  const siteTitle = title ? `${title} | Tokyo Websites` : t.heroTitle + " - " + t.heroSubtitle + t.heroSubtitleHighlight + t.heroSubtitle2;
+  const siteTitle = title ? `${title} | Tokyo Websites` : t.seoTitle;
   
   // Description Length: ~120-160 chars is optimal for SEO.
-  const metaDescription = description || t.serviceDesc + " " + t.serviceDesc2;
+  const metaDescription = description || t.seoDescription;
   
   const siteUrl = "https://tokyowebsites.com";
   const fullUrl = url.startsWith("http") ? url : `${siteUrl}${url}`;

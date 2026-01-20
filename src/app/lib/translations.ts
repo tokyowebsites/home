@@ -44,6 +44,8 @@ export const translations = {
     viewPlans: '料金プランを見る',
     heroTagline: '東京の実店舗向けに、成果直結のWeb制作（2025–）',
     slogan: 'インターネット上での影響力を高める',
+    seoTitle: 'Tokyo Websites - Web Consulting',
+    seoDescription: 'Webサイト制作とオンラインコンサルティング。東京の実店舗向けに、成果直結のWeb制作を提供します。',
     
     // Solutions (Combined About + Consulting)
     solutionsBadge: '制作 + コンサルティング',
@@ -526,6 +528,8 @@ export const translations = {
     viewPlans: 'View Pricing Plans',
     heroTagline: 'Results-driven web production for physical stores in Tokyo (2025–)',
     slogan: 'Enhance your influence on the internet',
+    seoTitle: 'Tokyo Websites - Web Consulting',
+    seoDescription: 'Website production and online consulting for physical stores in Tokyo.',
     
     // Solutions (Combined About + Consulting)
     solutionsBadge: 'Production + Consulting',
@@ -1008,6 +1012,8 @@ export const translations = {
     viewPlans: '요금제 보기',
     heroTagline: '도쿄 실매장을 위한 결과 중심 웹 제작 (2025–)',
     slogan: '인터넷에서의 영향력 키우기',
+    seoTitle: 'Tokyo Websites - Web Consulting',
+    seoDescription: 'Web사이트 제작과 온라인 컨설팅. 도쿄 실매장을 위한 결과 중심 웹 제작을 제공합니다.',
     
     // Solutions (Combined About + Consulting)
     solutionsBadge: '제작 + 컨설팅',
