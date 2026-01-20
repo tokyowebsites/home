@@ -143,6 +143,9 @@ export function Plans() {
               <div className="text-xs font-bold text-gray-500 mb-5">
                 {t.oneTime}
               </div>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-[10px] font-black uppercase tracking-widest mb-5">
+                {t.monthlyFeeAddon}
+              </div>
 
               <div className="text-xs font-black uppercase tracking-widest text-gray-500 mb-3">
                 {t.planIncludesTitle}
@@ -323,11 +326,19 @@ export function Plans() {
 
         {/* Domain Note + Graphic */}
         <div className="mt-16 max-w-5xl mx-auto">
+          <div className="mb-6 rounded-[28px] border border-blue-200 bg-blue-50/80 p-5 md:p-6 shadow-sm text-center">
+            <div className="text-xs md:text-sm font-black uppercase tracking-widest text-blue-700 mb-2">
+              {t.monthlyServiceTitle}
+            </div>
+            <div className="text-sm md:text-base font-bold text-gray-800">
+              {t.monthlyServiceDesc}
+            </div>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
             <div className="order-2 md:order-1 text-center md:text-left">
               <p className="text-gray-900 text-[10px] md:text-xs font-black leading-relaxed px-6 md:px-0 tracking-tight">
                 <span className="text-emerald-600 mr-2 opacity-50 font-black">※</span>
-                {t.domainFeeNote}
+                {t.monthlyServiceNote}
               </p>
             </div>
             <div className="order-1 md:order-2">

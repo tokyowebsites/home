@@ -163,6 +163,10 @@ export const translations = {
     toolAdminPanel: '管理者パネル（別）',
     toolsNoteTitle: 'ツールはプラン内で選択',
     toolsNoteBody: '必要なツールをプランの上限数まで自由に選べます。',
+    monthlyFeeAddon: '+ 月額 ¥3,000',
+    monthlyServiceTitle: '月額サービス 初回トライアルあり',
+    monthlyServiceDesc: '月額¥3,000で、Webサイト保守・月1回コンサル・Googleマップ管理者をセットで対応します。',
+    monthlyServiceNote: '※ 月額¥3,000でWebサイト保守・月1回コンサル・Googleマップ管理者対応。初回トライアルをご用意しています。',
     
     // Google Map Rankings Section
     meoTitle: 'Googleマップ順位向上・評価改善のためのオンラインコンサルティング',
@@ -639,6 +643,10 @@ export const translations = {
     toolAdminPanel: 'Separate Admin Panel',
     toolsNoteTitle: 'Tools are chosen per plan',
     toolsNoteBody: 'Select any tools up to the plan limits.',
+    monthlyFeeAddon: '+ ¥3,000 / month',
+    monthlyServiceTitle: 'Monthly Service First Trial',
+    monthlyServiceDesc: 'For ¥3,000/month, we handle site maintenance, a monthly consult, and Google Maps administrator support.',
+    monthlyServiceNote: '* ¥3,000/month includes site maintenance, monthly consulting, and Google Maps admin support. First trial available.',
     
     // Google Map Rankings Section
     meoTitle: 'Online Web Consulting for Google Map Rankings Improvement',
@@ -1115,6 +1123,10 @@ export const translations = {
     toolAdminPanel: '관리자 패널 분리',
     toolsNoteTitle: '툴은 플랜 내에서 선택',
     toolsNoteBody: '플랜 한도 내에서 필요한 툴을 자유롭게 선택합니다.',
+    monthlyFeeAddon: '+ 월 ¥3,000',
+    monthlyServiceTitle: '월간 서비스 첫 트라이얼',
+    monthlyServiceDesc: '월 ¥3,000에 웹사이트 유지보수, 월 1회 컨설팅, Google 지도 관리자 대응을 포함합니다.',
+    monthlyServiceNote: '※ 월 ¥3,000에 웹사이트 유지보수 + 월 1회 컨설팅 + Google 지도 관리자 대응 포함. 첫 트라이얼 제공.',
 
     // Google Map Rankings Section
     meoTitle: 'Google 지도 순위 향상 및 평가 개선을 위한 온라인 컨설팅',
