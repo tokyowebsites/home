@@ -1,5 +1,5 @@
 import React from "react";
-import { Instagram, Twitter } from "lucide-react";
+import { Instagram, Twitter, MessageCircle } from "lucide-react";
 import { Header } from "./components/Header";
 import { Hero } from "./components/Hero";
 import { Solutions } from "./components/Solutions";
@@ -71,7 +71,16 @@ export default function App() {
               ))}
             </div>
 
-            <div className="flex gap-4">
+            <div className="flex flex-wrap items-center justify-center gap-3">
+              <a
+                href="https://lin.ee/Dtx54uY"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#06C755] text-white text-[10px] md:text-xs font-black uppercase tracking-widest hover:bg-[#06b54c] transition-colors shadow-md shadow-emerald-900/10"
+              >
+                <MessageCircle size={14} />
+                {t.addUsOnLine}
+              </a>
               <a 
                 href="https://instagram.com/TokyoWebsites" 
                 target="_blank" 
