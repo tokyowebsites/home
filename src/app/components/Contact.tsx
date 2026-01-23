@@ -1,4 +1,4 @@
-import { Mail, MapPin, Clock, ArrowRight, Loader2, CheckCircle } from "lucide-react";
+import { Mail, MapPin, Clock, ArrowRight, Loader2, CheckCircle, MessageCircle } from "lucide-react";
 import React, { useState } from "react";
 import { toast } from "sonner";
 import { useTranslation } from "../lib/TranslationContext";
@@ -6,6 +6,7 @@ import { useTranslation } from "../lib/TranslationContext";
 export function Contact() {
   const { t } = useTranslation();
   const meoSurveyLink = "https://docs.google.com/forms/d/e/1FAIpQLSf1sejWp_jKe4SxmAtVtNxCoBnU78Ul6TynXUWtD_9GFRcnUQ/viewform?usp=sharing&ouid=109641339829497082567";
+  const lineLink = "https://lin.ee/Dtx54uY";
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -88,6 +89,23 @@ export function Contact() {
                     className="text-gray-900 hover:text-[#059669] font-black transition-colors underline underline-offset-4"
                   >
                     contact@tokyowebsites.com
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4 group">
+                <div className="w-12 h-12 rounded-xl bg-white border border-gray-200 flex items-center justify-center shadow-sm transition-all group-hover:border-[#059669]">
+                  <MessageCircle size={20} className="text-gray-900 group-hover:text-[#059669] transition-colors" />
+                </div>
+                <div>
+                  <div className="text-sm font-black text-gray-900 uppercase tracking-widest mb-1">LINE</div>
+                  <a
+                    href={lineLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#06C755] text-white text-xs font-black uppercase tracking-widest hover:bg-[#06b54c] transition-colors shadow-md shadow-emerald-900/10"
+                  >
+                    {t.addUsOnLine}
                   </a>
                 </div>
               </div>
