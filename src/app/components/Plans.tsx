@@ -3,12 +3,21 @@ import { Check, ArrowRight, Zap } from "lucide-react";
 import { useTranslation } from "../lib/TranslationContext";
 import { BackgroundGradient } from "./ui/BackgroundGradient";
 
+type Tool = {
+  id: string;
+  label: string;
+  price: number;
+  priceLabel?: string;
+};
+
 export function Plans() {
-  const { t } = useTranslation();
+  const { t, language } = useTranslation();
   const STANDARD_TOOL_PRICE = 6000;
   const ADVANCED_TOOL_PRICE = 18000;
   const BASE_WEBSITE_PRICE = 25000;
   const [selectedTools, setSelectedTools] = useState<Record<string, boolean>>({});
+  const multiLangPriceLabel =
+    language === "ja" ? "¥6,000 / 1言語" : t.standardToolsPrice;
   const plans = [
     {
       id: "basic",
@@ -16,7 +25,7 @@ export function Plans() {
       price: t.basicPlanPrice,
       standardTools: 1,
       advancedTools: 0,
-      bonus: t.planBonusMeo,
+      bonus: t.planBonusNone,
       highlighted: false,
       formUrl: "https://docs.google.com/forms/d/e/1FAIpQLScDauTW9PD2UFXS1QlSxltGuZe4fan4xIcapLwnBWBa7BAQ9w/viewform?usp=dialog",
     },
@@ -26,7 +35,8 @@ export function Plans() {
       price: t.standardPlanPrice,
       standardTools: 2,
       advancedTools: 1,
-      bonus: t.planBonusMeo,
+      bonus: t.planBonusNone,
+      extraIncludes: [t.planWebsiteRedesign],
       highlighted: true,
       formUrl: "https://docs.google.com/forms/d/e/1FAIpQLSeoV5sm7yOHKjnw9ceodaL-uUtpLf06H1dDM8L6UuQNk4mjfQ/viewform?usp=dialog",
     },
@@ -36,28 +46,32 @@ export function Plans() {
       price: t.premiumPlanPrice,
       standardTools: 5,
       advancedTools: 3,
-      bonus: t.planBonusMeo,
+      bonus: t.planBonusNone,
+      extraIncludes: [t.planWebsiteRedesign],
       highlighted: false,
       formUrl: "https://docs.google.com/forms/d/e/1FAIpQLSc4v9fQpzivhHACffG_r4MEhS4TJIpR-u-XqdG31jyRiGxbug/viewform?usp=dialog",
     },
   ];
 
-  const standardTools = [
+  const standardTools: Tool[] = [
     { id: "contactForm", label: t.toolContactForm, price: STANDARD_TOOL_PRICE },
     { id: "instagramFeed", label: t.toolInstagramFeed, price: STANDARD_TOOL_PRICE },
     { id: "googleMapEmbed", label: t.toolGoogleMapEmbed, price: STANDARD_TOOL_PRICE },
-    { id: "multiLangButtons", label: t.toolMultiLangButtons, price: STANDARD_TOOL_PRICE },
+    {
+      id: "multiLangButtons",
+      label: t.toolMultiLangButtons,
+      price: STANDARD_TOOL_PRICE,
+      priceLabel: multiLangPriceLabel,
+    },
     { id: "chatbot", label: t.toolChatbot, price: STANDARD_TOOL_PRICE },
     { id: "dynamicMenu", label: t.toolDynamicMenu, price: STANDARD_TOOL_PRICE },
-    { id: "websiteRedesign", label: t.toolWebsiteRedesign, price: STANDARD_TOOL_PRICE },
     { id: "logoCreate", label: t.toolLogoCreate, price: STANDARD_TOOL_PRICE },
   ];
 
-  const advancedTools = [
+  const advancedTools: Tool[] = [
     { id: "stripeMarketplace", label: t.toolStripeMarketplace, price: ADVANCED_TOOL_PRICE },
     { id: "bookingSystem", label: t.toolBookingSystem, price: ADVANCED_TOOL_PRICE },
     { id: "loyaltySystem", label: t.toolLoyaltySystem, price: ADVANCED_TOOL_PRICE },
-    { id: "wifiMarketing", label: t.toolWifiMarketing, price: ADVANCED_TOOL_PRICE },
     { id: "mailingList", label: t.toolMailingList, price: ADVANCED_TOOL_PRICE },
     { id: "adminPanel", label: t.toolAdminPanel, price: ADVANCED_TOOL_PRICE },
   ];
@@ -174,6 +188,14 @@ export function Plans() {
                     {plan.bonus}
                   </li>
                 )}
+                {plan.extraIncludes?.map((item) => (
+                  <li key={item} className="flex items-center gap-2 text-gray-800">
+                    <span className="w-5 h-5 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center">
+                      <Check size={12} strokeWidth={3} />
+                    </span>
+                    {item}
+                  </li>
+                ))}
               </ul>
 
               <a
@@ -228,7 +250,8 @@ export function Plans() {
                         />
                         <span>{tool.label}</span>
                         <span className="ml-auto text-xs font-black text-gray-500">
-                          {t.standardToolsPrice}
+                          {tool.priceLabel ?? t.standardToolsPrice}
+                          {tool.priceLabel ?? t.standardToolsPrice}
                         </span>
                       </label>
                     </li>
