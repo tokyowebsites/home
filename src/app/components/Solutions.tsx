@@ -12,21 +12,21 @@ export function Solutions() {
       title: t.solution1Title,
       desc: t.solution1Desc,
       color: "blue",
-      span: "col-span-2 md:col-span-3 lg:col-span-3"
+      span: "col-span-2 md:col-span-1 lg:col-span-1"
     },
     {
       icon: MapPin,
       title: t.solution2Title,
       desc: t.solution2Desc,
       color: "blue",
-      span: "col-span-1 md:col-span-3 lg:col-span-3"
+      span: "col-span-1 md:col-span-1 lg:col-span-1"
     },
     {
       icon: Globe,
       title: t.solution3Title,
       desc: t.solution3Desc,
       color: "violet",
-      span: "col-span-1 md:col-span-3 lg:col-span-2"
+      span: "col-span-1 md:col-span-1 lg:col-span-1"
     },
   ];
 
@@ -71,7 +71,7 @@ export function Solutions() {
 
         {/* Bento Grid - Redesigned for Mobile horizontal scroll */}
         <div className="relative -mx-4 px-4 sm:mx-0 sm:px-0">
-          <div className="flex md:grid md:grid-cols-6 overflow-x-auto md:overflow-visible pb-8 md:pb-0 gap-4 md:gap-6 no-scrollbar snap-x snap-mandatory items-stretch">
+          <div className="flex md:grid md:grid-cols-3 lg:grid-cols-3 overflow-x-auto md:overflow-visible pb-8 md:pb-0 gap-4 md:gap-6 no-scrollbar snap-x snap-mandatory items-stretch">
             {solutions.map((item, index) => {
               const Icon = item.icon;
               return (
