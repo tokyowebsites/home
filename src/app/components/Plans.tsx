@@ -64,7 +64,6 @@ export function Plans() {
       priceLabel: multiLangPriceLabel,
     },
     { id: "chatbot", label: t.toolChatbot, price: STANDARD_TOOL_PRICE },
-    { id: "dynamicMenu", label: t.toolDynamicMenu, price: STANDARD_TOOL_PRICE },
     { id: "logoCreate", label: t.toolLogoCreate, price: STANDARD_TOOL_PRICE },
   ];
 
