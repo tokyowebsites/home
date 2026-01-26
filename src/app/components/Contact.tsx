@@ -72,7 +72,7 @@ export function Contact() {
           <h2 className="text-4xl md:text-5xl font-black mb-6 tracking-tighter text-gray-900 leading-tight">
               <span className="text-gray-900">{t.readyToLevelUp}</span> <br/><span className="text-[#5C81D9]">{t.readyToLevelUpQuestion}</span>
             </h2>
-            <p className="text-gray-900 text-lg md:text-xl font-black mb-10 max-w-md leading-relaxed">
+            <p className="text-gray-900 text-lg md:text-xl font-black mb-10 max-w-md leading-relaxed whitespace-pre-line">
               {t.consultationFree}<br/>
               {t.contactUs}
             </p>
