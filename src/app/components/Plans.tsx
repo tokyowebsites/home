@@ -94,14 +94,20 @@ export function Plans() {
         standardCount <= plan.standardTools &&
         advancedCount <= plan.advancedTools,
     );
+    // Only recommend a plan if it's actually cheaper than buying individually
     const recommendedPlan =
       eligiblePlans.length > 0
-        ? eligiblePlans.reduce((cheapest, plan) =>
-            parseInt(plan.price.replace(/[^\d]/g, ""), 10) <
-            parseInt(cheapest.price.replace(/[^\d]/g, ""), 10)
-              ? plan
-              : cheapest,
-          )
+        ? (() => {
+            const cheapestPlan = eligiblePlans.reduce((cheapest, plan) =>
+              parseInt(plan.price.replace(/[^\d]/g, ""), 10) <
+              parseInt(cheapest.price.replace(/[^\d]/g, ""), 10)
+                ? plan
+                : cheapest,
+            );
+            const planPrice = parseInt(cheapestPlan.price.replace(/[^\d]/g, ""), 10);
+            // Only recommend if plan is cheaper than individual total
+            return planPrice < total ? cheapestPlan : null;
+          })()
         : null;
 
     return {
