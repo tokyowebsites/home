@@ -368,21 +368,13 @@ export function Plans() {
               {t.monthlyServiceDesc}
             </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
-            <div className="order-2 md:order-1 text-center md:text-left">
-              <p className="text-gray-900 text-[10px] md:text-xs font-black leading-relaxed px-6 md:px-0 tracking-tight">
-                <span className="text-emerald-600 mr-2 opacity-50 font-black">※</span>
-                {t.monthlyServiceNote}
-              </p>
-            </div>
-            <div className="order-1 md:order-2">
-              <div className="rounded-[28px] border border-emerald-200 bg-emerald-50/70 p-5 md:p-6 shadow-sm">
-                <div className="text-center text-sm md:text-base font-black text-gray-900 mb-4">
-                  {t.toolsNoteTitle}
-                </div>
-                <div className="text-center text-xs md:text-sm font-bold text-gray-700">
-                  {t.toolsNoteBody}
-                </div>
+          <div className="mt-6">
+            <div className="rounded-[28px] border border-emerald-200 bg-emerald-50/70 p-5 md:p-6 shadow-sm">
+              <div className="text-center text-sm md:text-base font-black text-gray-900 mb-4">
+                {t.toolsNoteTitle}
+              </div>
+              <div className="text-center text-xs md:text-sm font-bold text-gray-700">
+                {t.toolsNoteBody}
               </div>
             </div>
           </div>
