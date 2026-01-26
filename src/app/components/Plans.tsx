@@ -239,8 +239,8 @@ export function Plans() {
 
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-6">
             <div className="grid grid-cols-1 md:grid-cols-2 border border-gray-200 rounded-2xl overflow-hidden bg-white shadow-sm">
-              <div className="border-b md:border-b-0 md:border-r border-gray-200">
-                <div className="bg-gray-50 px-5 py-4 text-sm font-black text-gray-900 flex items-center justify-between">
+              <div className="border-b md:border-b-0 md:border-r border-gray-200 bg-emerald-50/30">
+                <div className="bg-emerald-100/50 px-5 py-4 text-sm font-black text-gray-900 flex items-center justify-between">
                   <span>{t.standardToolsTitle}</span>
                   <span className="text-emerald-700">{t.standardToolsPrice}</span>
                 </div>
@@ -255,17 +255,13 @@ export function Plans() {
                           onChange={() => toggleTool(tool.id)}
                         />
                         <span>{tool.label}</span>
-                        <span className="ml-auto text-xs font-black text-gray-500">
-                          {tool.priceLabel ?? t.standardToolsPrice}
-                          {tool.priceLabel ?? t.standardToolsPrice}
-                        </span>
                       </label>
                     </li>
                   ))}
                 </ul>
               </div>
-              <div>
-                <div className="bg-gray-50 px-5 py-4 text-sm font-black text-gray-900 flex items-center justify-between">
+              <div className="bg-violet-50/30">
+                <div className="bg-violet-100/50 px-5 py-4 text-sm font-black text-gray-900 flex items-center justify-between">
                   <span>{t.advancedToolsTitle}</span>
                   <span className="text-violet-700">{t.advancedToolsPrice}</span>
                 </div>
@@ -280,9 +276,6 @@ export function Plans() {
                           onChange={() => toggleTool(tool.id)}
                         />
                         <span>{tool.label}</span>
-                        <span className="ml-auto text-xs font-black text-gray-500">
-                          {t.advancedToolsPrice}
-                        </span>
                       </label>
                     </li>
                   ))}
