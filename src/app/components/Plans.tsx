@@ -1,6 +1,11 @@
 import React, { useMemo, useState } from "react";
 import { Check, ArrowRight, Zap } from "lucide-react";
 import { useTranslation } from "../lib/TranslationContext";
+import {
+  extractCurrencyAmount,
+  formatCurrency,
+  formatCurrencyInText,
+} from "../lib/formatCurrency";
 import { BackgroundGradient } from "./ui/BackgroundGradient";
 
 type Tool = {
@@ -16,13 +21,38 @@ export function Plans() {
   const ADVANCED_TOOL_PRICE = 18000;
   const BASE_WEBSITE_PRICE = 25000;
   const [selectedTools, setSelectedTools] = useState<Record<string, boolean>>({});
-  const multiLangPriceLabel =
-    language === "ja" ? "¥6,000 / 1言語" : t.standardToolsPrice;
+  const multiLangPriceLabel = formatCurrencyInText(
+    language === "ja" ? "¥6,000 / 1言語" : t.standardToolsPrice,
+    language,
+  );
+  const standardToolsPriceLabel = formatCurrencyInText(
+    t.standardToolsPrice,
+    language,
+  );
+  const advancedToolsPriceLabel = formatCurrencyInText(
+    t.advancedToolsPrice,
+    language,
+  );
+  const toolsMenuHintLabel = formatCurrencyInText(t.toolsMenuHint, language);
+  const baseWebsitePriceNoteLabel = formatCurrencyInText(
+    t.baseWebsitePriceNote,
+    language,
+  );
+  const monthlyFeeAddonLabel = formatCurrencyInText(t.monthlyFeeAddon, language);
+  const monthlyServiceDescLabel = formatCurrencyInText(
+    t.monthlyServiceDesc,
+    language,
+  );
+
+  const formatPriceText = (priceText: string) => {
+    const amount = extractCurrencyAmount(priceText);
+    return amount ? formatCurrency(amount, language) : priceText;
+  };
   const plans = [
     {
       id: "basic",
       title: t.basicPlanTitle,
-      price: t.basicPlanPrice,
+      price: formatPriceText(t.basicPlanPrice),
       standardTools: 1,
       advancedTools: 0,
       bonus: t.planBonusNone,
@@ -32,7 +62,7 @@ export function Plans() {
     {
       id: "standard",
       title: t.standardPlanTitle,
-      price: t.standardPlanPrice,
+      price: formatPriceText(t.standardPlanPrice),
       standardTools: 2,
       advancedTools: 1,
       bonus: t.planBonusNone,
@@ -43,7 +73,7 @@ export function Plans() {
     {
       id: "premium",
       title: t.premiumPlanTitle,
-      price: t.premiumPlanPrice,
+      price: formatPriceText(t.premiumPlanPrice),
       standardTools: 5,
       advancedTools: 3,
       bonus: t.planBonusNone,
@@ -166,7 +196,7 @@ export function Plans() {
                 {t.oneTime}
               </div>
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-[10px] font-black uppercase tracking-widest mb-5">
-                {t.monthlyFeeAddon}
+              {monthlyFeeAddonLabel}
               </div>
 
               <div className="text-xs font-black uppercase tracking-widest text-gray-500 mb-3">
@@ -229,10 +259,10 @@ export function Plans() {
               {t.toolsMenuSubtitle}
             </h3>
             <p className="text-sm md:text-base font-bold text-gray-600 mt-2">
-              {t.toolsMenuHint}
+              {toolsMenuHintLabel}
             </p>
             <div className="mt-2 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 text-xs font-black">
-              {t.baseWebsitePriceNote}
+              {baseWebsitePriceNoteLabel}
             </div>
           </div>
 
@@ -241,7 +271,7 @@ export function Plans() {
               <div className="border-b md:border-b-0 md:border-r border-gray-200 bg-emerald-50/30">
                 <div className="bg-emerald-100/50 px-5 py-4 text-sm font-black text-gray-900 flex items-center justify-between">
                   <span>{t.standardToolsTitle}</span>
-                  <span className="text-emerald-700">{t.standardToolsPrice}</span>
+                  <span className="text-emerald-700">{standardToolsPriceLabel}</span>
                 </div>
                 <ul className="divide-y divide-gray-200 text-sm font-semibold text-gray-800">
                   {standardTools.map((tool) => (
@@ -262,7 +292,7 @@ export function Plans() {
               <div className="bg-violet-50/30">
                 <div className="bg-violet-100/50 px-5 py-4 text-sm font-black text-gray-900 flex items-center justify-between">
                   <span>{t.advancedToolsTitle}</span>
-                  <span className="text-violet-700">{t.advancedToolsPrice}</span>
+                  <span className="text-violet-700">{advancedToolsPriceLabel}</span>
                 </div>
                 <ul className="divide-y divide-gray-200 text-sm font-semibold text-gray-800">
                   {advancedTools.map((tool) => (
@@ -297,7 +327,7 @@ export function Plans() {
                 </div>
                 <div className="flex items-center justify-between text-blue-700">
                   <span>{t.baseWebsiteLabel}</span>
-                  <span>¥{BASE_WEBSITE_PRICE.toLocaleString("en-US")}</span>
+                  <span>{formatCurrency(BASE_WEBSITE_PRICE, language)}</span>
                 </div>
               </div>
 
@@ -306,7 +336,7 @@ export function Plans() {
                   {t.toolsTotalTitle}
                 </div>
                 <div className="text-3xl font-black text-gray-900">
-                  ¥{totals.total.toLocaleString("en-US")}
+                  {formatCurrency(totals.total, language)}
                 </div>
                 <div className="mt-2 text-[11px] font-bold text-gray-500">
                   {t.toolsTotalNote}
@@ -329,7 +359,7 @@ export function Plans() {
                         {totals.recommendedPlan.title}
                       </div>
                       <div className="text-xs font-black text-red-600 line-through">
-                        ¥{totals.total.toLocaleString("en-US")}
+                        {formatCurrency(totals.total, language)}
                       </div>
                       <div className="text-2xl font-black text-emerald-700">
                         {totals.recommendedPlan.price}
@@ -365,7 +395,7 @@ export function Plans() {
               {t.monthlyServiceTitle}
             </div>
             <div className="text-sm md:text-base font-bold text-gray-800">
-              {t.monthlyServiceDesc}
+              {monthlyServiceDescLabel}
             </div>
           </div>
           <div className="mt-6">

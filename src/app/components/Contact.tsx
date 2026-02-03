@@ -7,6 +7,7 @@ export function Contact() {
   const { t } = useTranslation();
   const meoSurveyLink = "https://docs.google.com/forms/d/e/1FAIpQLSf1sejWp_jKe4SxmAtVtNxCoBnU78Ul6TynXUWtD_9GFRcnUQ/viewform?usp=sharing&ouid=109641339829497082567";
   const lineLink = "https://lin.ee/Dtx54uY";
+  const kakaoLink = "https://open.kakao.com/";
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -106,6 +107,23 @@ export function Contact() {
                     className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#06C755] text-white text-xs font-black uppercase tracking-widest hover:bg-[#06b54c] transition-colors shadow-md shadow-emerald-900/10"
                   >
                     {t.addUsOnLine}
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4 group">
+                <div className="w-12 h-12 rounded-xl bg-white border border-gray-200 flex items-center justify-center shadow-sm transition-all group-hover:border-[#F59E0B]">
+                  <MessageCircle size={20} className="text-gray-900 group-hover:text-[#F59E0B] transition-colors" />
+                </div>
+                <div>
+                  <div className="text-sm font-black text-gray-900 uppercase tracking-widest mb-1">KakaoTalk</div>
+                  <a
+                    href={kakaoLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#FEE500] text-gray-900 text-xs font-black uppercase tracking-widest hover:bg-[#f7dc00] transition-colors shadow-md shadow-amber-900/10"
+                  >
+                    {t.addUsOnKakao}
                   </a>
                 </div>
               </div>

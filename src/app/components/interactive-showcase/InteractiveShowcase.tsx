@@ -3,6 +3,11 @@ import { motion, AnimatePresence } from "motion/react";
 import { X, Check, ArrowRight, Zap, FileText, Building2, Sparkles, Loader2 } from "lucide-react";
 import { MiniBrowser } from "./MiniBrowser";
 import { useTranslation } from "../../lib/TranslationContext";
+import {
+  extractCurrencyAmount,
+  formatCurrency,
+  formatCurrencyInText,
+} from "../../lib/formatCurrency";
 import { BackgroundGradient } from "../ui/BackgroundGradient";
 
 const EntryPreview = lazy(() => import("./PlanPreviews").then(module => ({ default: module.EntryPreview })));
@@ -125,15 +130,21 @@ const PlanCard = ({ plan, index, onClick }: { plan: Plan; index: number; onClick
 };
 
 export function InteractiveShowcase() {
-  const { t } = useTranslation();
+  const { t, language } = useTranslation();
   const [selectedPlan, setSelectedPlan] = useState<number | null>(null);
+
+  const formatPriceText = (priceText: string | null) => {
+    if (!priceText) return null;
+    const amount = extractCurrencyAmount(priceText);
+    return amount ? formatCurrency(amount, language) : priceText;
+  };
 
   const plans = [
     {
       id: "entry",
       nameJa: t.basic,
       nameEn: t.basicEn,
-      price: t.basicPrice,
+      price: formatPriceText(t.basicPrice) ?? t.basicPrice,
       originalPrice: null,
       turnaround: t.basicTurnaround,
       desc: t.basicDesc,
@@ -156,8 +167,8 @@ export function InteractiveShowcase() {
       id: "standard",
       nameJa: t.standard,
       nameEn: t.standardEn,
-      price: t.standardPrice,
-      originalPrice: t.standardOriginalPrice,
+      price: formatPriceText(t.standardPrice) ?? t.standardPrice,
+      originalPrice: formatPriceText(t.standardOriginalPrice),
       turnaround: t.standardTurnaround,
       desc: t.standardDesc,
       features: [
@@ -182,7 +193,7 @@ export function InteractiveShowcase() {
       id: "premium",
       nameJa: t.premium,
       nameEn: t.premiumEn,
-      price: t.premiumPrice,
+      price: formatPriceText(t.premiumPrice) ?? t.premiumPrice,
       originalPrice: null,
       turnaround: t.premiumTurnaround,
       desc: t.premiumDesc,
@@ -259,7 +270,7 @@ export function InteractiveShowcase() {
         <div className="mt-16 text-center max-w-2xl mx-auto">
           <p className="text-gray-900 text-xs md:text-sm bg-white p-5 md:p-8 rounded-[2rem] border-2 border-emerald-500/20 shadow-[0_10px_30px_rgba(5,150,105,0.1)] leading-relaxed font-black tracking-tight mx-4">
             <span className="inline-block mb-1 text-emerald-600 uppercase text-[10px] tracking-widest bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200/50 mr-2">Notice</span>
-            {t.domainFeeNote}
+            {formatCurrencyInText(t.domainFeeNote, language)}
           </p>
         </div>
 

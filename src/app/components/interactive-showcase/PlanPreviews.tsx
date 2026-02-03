@@ -2,6 +2,7 @@ import { motion } from "motion/react";
 import { ArrowRight, Clock, MapPin, Menu, ShoppingBag, MousePointer2, Phone, Star, ShieldCheck, Sparkles, Quote, Search, User, Truck } from "lucide-react";
 import { useMemo, useState } from "react";
 import { useTranslation } from "../../lib/TranslationContext";
+import { formatCurrency } from "../../lib/formatCurrency";
 
 // --- Shared Components ---
 
@@ -88,6 +89,8 @@ function FloatingCursor({ delay = 0, seed = 1 }: { delay?: number; seed?: number
 // --- Plan Previews ---
 
 export function EntryPreview() {
+  const { t, language } = useTranslation();
+  const formatPrice = (amount: number) => formatCurrency(amount, language);
   return (
     <div className="min-h-full bg-slate-50 relative">
       <MiniHeader title="BAR TACHI" subtitle="TACHIKAWA" links={["Menu", "Access"]} />
@@ -155,14 +158,18 @@ export function EntryPreview() {
               <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&q=80&w=400" alt="Old Fashioned" className="w-full h-full object-cover" loading="lazy" />
             </div>
             <div className="text-[10px] font-bold">Old Fashioned</div>
-            <div className="text-[10px] text-emerald-600 font-bold">¥1,200</div>
+            <div className="text-[10px] text-emerald-600 font-bold">
+              {formatPrice(1200)}
+            </div>
           </div>
           <div className="bg-white p-2 rounded-lg border border-gray-100 shadow-sm">
             <div className="aspect-square bg-gray-100 rounded mb-1.5 overflow-hidden">
               <img src="https://images.unsplash.com/photo-1572116469696-31de0f17cc34?auto=format&fit=crop&q=80&w=400" alt="Gin Tonic" className="w-full h-full object-cover" loading="lazy" />
             </div>
             <div className="text-[10px] font-bold">Gin Tonic</div>
-            <div className="text-[10px] text-emerald-600 font-bold">¥900</div>
+            <div className="text-[10px] text-emerald-600 font-bold">
+              {formatPrice(900)}
+            </div>
           </div>
         </div>
 
@@ -188,7 +195,8 @@ export function EntryPreview() {
 }
 
 export function RestaurantPreview() {
-  const { t } = useTranslation();
+  const { t, language } = useTranslation();
+  const formatPrice = (amount: number) => formatCurrency(amount, language);
   return (
     <div className="min-h-full bg-slate-50 relative">
       <MiniHeader title={t.sampleRestaurantName} subtitle={t.sampleRestaurantSub} links={[t.previewMenu, t.previewBooking]} />
@@ -251,8 +259,8 @@ export function RestaurantPreview() {
 
         <div className="grid grid-cols-2 gap-2">
           {[
-            { name: t.previewSeasonalCourse, price: "¥4,800", img: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&q=80&w=400" },
-            { name: t.previewSignatureSake, price: "¥900", img: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&q=80&w=400" },
+            { name: t.previewSeasonalCourse, price: formatPrice(4800), img: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&q=80&w=400" },
+            { name: t.previewSignatureSake, price: formatPrice(900), img: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&q=80&w=400" },
           ].map((item, i) => (
             <div key={i} className="bg-white p-2 rounded-lg border border-gray-100 shadow-sm">
               <div className="aspect-square bg-gray-100 rounded mb-1.5 overflow-hidden">
@@ -377,7 +385,8 @@ export function StandardPreview() {
 }
 
 export function SalonPreview() {
-  const { t } = useTranslation();
+  const { t, language } = useTranslation();
+  const formatPrice = (amount: number) => formatCurrency(amount, language);
   return (
     <div className="min-h-full bg-rose-50 relative">
       <MiniHeader title={t.sampleSalonName} subtitle={t.sampleSalonSub} links={[t.previewMenu, t.previewBooking]} />
@@ -418,15 +427,15 @@ export function SalonPreview() {
           <div className="grid gap-2 text-[10px] font-bold text-gray-700">
             <div className="flex items-center justify-between">
               <span>{t.previewSalonService1}</span>
-              <span className="text-rose-600">¥6,800</span>
+              <span className="text-rose-600">{formatPrice(6800)}</span>
             </div>
             <div className="flex items-center justify-between">
               <span>{t.previewSalonService2}</span>
-              <span className="text-rose-600">¥9,500</span>
+              <span className="text-rose-600">{formatPrice(9500)}</span>
             </div>
             <div className="flex items-center justify-between">
               <span>{t.previewSalonService3}</span>
-              <span className="text-rose-600">¥5,000</span>
+              <span className="text-rose-600">{formatPrice(5000)}</span>
             </div>
           </div>
         </div>
@@ -466,7 +475,8 @@ export function SalonPreview() {
 }
 
 export function BusinessPreview() {
-  const { t } = useTranslation();
+  const { t, language } = useTranslation();
+  const formatPrice = (amount: number) => formatCurrency(amount, language);
   return (
     <div className="min-h-full bg-slate-50 relative">
       <MiniHeader title={t.sampleRetailName} subtitle={t.sampleRetailSub} links={[t.previewProducts, t.previewNewsLink]} />
@@ -517,10 +527,10 @@ export function BusinessPreview() {
         </div>
         <div className="grid grid-cols-2 gap-2">
           {[
-            { name: t.previewProduct1, price: "¥8,980", tag: t.previewTagNew, img: "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&q=80&w=400" },
-            { name: t.previewProduct2, price: "¥15,800", tag: t.previewTagPopular, img: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&q=80&w=400" },
-            { name: t.previewProduct3, price: "¥3,980", tag: t.previewTagSale, img: "https://images.unsplash.com/photo-1609091839311-d5365f9ff1c5?auto=format&fit=crop&q=80&w=400" },
-            { name: t.previewProduct4, price: "¥4,580", tag: "", img: "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?auto=format&fit=crop&q=80&w=400" },
+            { name: t.previewProduct1, price: formatPrice(8980), tag: t.previewTagNew, img: "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&q=80&w=400" },
+            { name: t.previewProduct2, price: formatPrice(15800), tag: t.previewTagPopular, img: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&q=80&w=400" },
+            { name: t.previewProduct3, price: formatPrice(3980), tag: t.previewTagSale, img: "https://images.unsplash.com/photo-1609091839311-d5365f9ff1c5?auto=format&fit=crop&q=80&w=400" },
+            { name: t.previewProduct4, price: formatPrice(4580), tag: "", img: "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?auto=format&fit=crop&q=80&w=400" },
           ].map((product, i) => (
             <div key={i} className="group cursor-pointer">
               <div className="aspect-square bg-white rounded-lg mb-1.5 overflow-hidden relative border border-gray-200 shadow-sm">
@@ -577,7 +587,8 @@ export function RetailPreview() {
 }
 
 export function CafePreview() {
-  const { t } = useTranslation();
+  const { t, language } = useTranslation();
+  const formatPrice = (amount: number) => formatCurrency(amount, language);
   return (
     <div className="min-h-full bg-amber-50 relative">
       <MiniHeader title={t.sampleCafeName} subtitle={t.sampleCafeSub} links={[t.previewMenu, t.previewInstagram]} />
@@ -623,8 +634,8 @@ export function CafePreview() {
 
         <div className="grid grid-cols-2 gap-2">
           {[
-            { name: t.previewMatchaLatte, price: "¥680", img: "https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&q=80&w=400" },
-            { name: t.previewBerryParfait, price: "¥880", img: "https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&q=80&w=400" },
+            { name: t.previewMatchaLatte, price: formatPrice(680), img: "https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&q=80&w=400" },
+            { name: t.previewBerryParfait, price: formatPrice(880), img: "https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&q=80&w=400" },
           ].map((item, i) => (
             <div key={i} className="bg-white p-2 rounded-lg border border-gray-100 shadow-sm">
               <div className="aspect-square bg-gray-100 rounded mb-1.5 overflow-hidden">

@@ -81,6 +81,15 @@ export default function App() {
                 <MessageCircle size={14} />
                 {t.addUsOnLine}
               </a>
+              <a
+                href="https://open.kakao.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#FEE500] text-gray-900 text-[10px] md:text-xs font-black uppercase tracking-widest hover:bg-[#f7dc00] transition-colors shadow-md shadow-amber-900/10"
+              >
+                <MessageCircle size={14} />
+                {t.addUsOnKakao}
+              </a>
               <a 
                 href="https://instagram.com/TokyoWebsites" 
                 target="_blank" 

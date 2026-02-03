@@ -1,6 +1,11 @@
 import { Helmet } from "react-helmet-async";
+import { useTranslation } from "../lib/TranslationContext";
 
 export function StructuredData() {
+  const { language } = useTranslation();
+  const priceRange =
+    language === "en" ? "$$" : language === "ko" ? "₩₩" : "¥¥";
+
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
@@ -14,7 +19,7 @@ export function StructuredData() {
       "addressRegion": "Tokyo",
       "addressCountry": "JP"
     },
-    "priceRange": "¥¥",
+    "priceRange": priceRange,
     "openingHoursSpecification": {
       "@type": "OpeningHoursSpecification",
       "dayOfWeek": [
