@@ -531,7 +531,7 @@ export const translations = {
     whyCheapPoint3Title: 'Cutting Out Middleman Costs',
     whyCheapPoint3Desc: 'We operate on a "Direct Sales Style" without sales companies or ad agencies. Since there are no extra margins involved, your cost goes purely toward "production fees."',
     viewPlans: 'View Pricing Plans',
-    heroTagline: 'Results-driven web production for physical stores in Tokyo (2025–)',
+    heroTagline: 'International Results-driven web production for physical stores in Tokyo and Korea (2025–)',
     slogan: 'Your customers are online. Are you?',
     seoTitle: 'Tokyo Websites - Web Consulting',
     seoDescription: 'Website production and online consulting for physical stores in Tokyo and internationally.',
