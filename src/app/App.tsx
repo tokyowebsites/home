@@ -22,6 +22,34 @@ export default function App() {
       <Toaster position="top-center" />
       <Header />
       <Hero />
+
+      <section className="py-20 bg-white relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="relative rounded-[2.5rem] overflow-hidden border border-gray-200 shadow-2xl">
+            <img
+              src="/images/tachikawa-station.jpg"
+              alt="Tachikawa Station North Exit"
+              className="w-full h-[280px] md:h-[420px] object-cover"
+              loading="lazy"
+              decoding="async"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+            <div className="absolute inset-0 flex items-end">
+              <div className="p-6 md:p-10 text-white max-w-2xl">
+                <div className="text-[11px] md:text-xs font-black uppercase tracking-[0.3em] text-emerald-200 mb-2">
+                  Tachikawa Station
+                </div>
+                <div className="text-2xl md:text-4xl font-black leading-tight">
+                  {t.slogan}
+                </div>
+                <div className="mt-2 text-xs md:text-sm font-bold text-white/80">
+                  {t.heroTagline}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       
       <Solutions />
 
