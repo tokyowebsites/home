@@ -36,9 +36,6 @@ export default function App() {
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
             <div className="absolute inset-0 flex items-end">
               <div className="p-6 md:p-10 text-white max-w-2xl">
-                <div className="text-[11px] md:text-xs font-black uppercase tracking-[0.3em] text-emerald-200 mb-2">
-                  Tachikawa Station
-                </div>
                 <div className="text-2xl md:text-4xl font-black leading-tight">
                   {t.slogan}
                 </div>
