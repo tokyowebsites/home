@@ -43,7 +43,7 @@ export const translations = {
     whyCheapPoint3Desc: '営業会社や広告代理店を挟まない「直販スタイル」です。余計なマージンが発生しないため、あなたの費用は純粋な「制作費」だけに使われます。',
     viewPlans: '料金プランを見る',
     heroTagline: '東京の実店舗向けに、成果直結のWeb制作（2025–）',
-    slogan: 'インターネット上での影響力を高める',
+    slogan: 'お客様はオンライン上にいます、あなたは？',
     seoTitle: 'Tokyo Websites - Web Consulting',
     seoDescription: 'Webサイト制作とオンラインコンサルティング。東京の実店舗向けに、成果直結のWeb制作を提供します。',
     
@@ -170,8 +170,10 @@ export const translations = {
     toolsNoteBody: '',
     monthlyFeeAddon: '+ 月額 ¥3,000',
     monthlyServiceTitle: '月額サービス 初回トライアルあり',
-    monthlyServiceDesc: '月額¥3,000には、webサイト管理・月に一回のフォローアップ面談・Googleマップの管理が含まれています。',
-    monthlyServiceNote: '月額¥3,000には、webサイト管理・月に一回のフォローアップ面談・Googleマップの管理が含まれています。',
+    monthlyServicePriceOriginal: '月額 ¥7,000',
+    monthlyServiceDiscount: '早期申込割引 月額 ¥3,000',
+    monthlyServiceDesc: 'webサイト管理・月に一回のフォローアップ面談・Googleマップの管理が含まれています。',
+    monthlyServiceNote: '※ 月額 ¥7,000（早期申込割引 月額 ¥3,000）。webサイト管理・月に一回のフォローアップ面談・Googleマップの管理が含まれています。',
     
     // Google Map Rankings Section
     meoTitle: 'Googleマップ順位向上・評価改善のためのオンラインコンサルティング',
@@ -530,7 +532,7 @@ export const translations = {
     whyCheapPoint3Desc: 'We operate on a "Direct Sales Style" without sales companies or ad agencies. Since there are no extra margins involved, your cost goes purely toward "production fees."',
     viewPlans: 'View Pricing Plans',
     heroTagline: 'Results-driven web production for physical stores in Tokyo (2025–)',
-    slogan: 'Enhance your influence on the internet',
+    slogan: 'Your customers are online. Are you?',
     seoTitle: 'Tokyo Websites - Web Consulting',
     seoDescription: 'Website production and online consulting for physical stores in Tokyo and internationally.',
     
@@ -657,8 +659,10 @@ export const translations = {
     toolsNoteBody: 'Select any tools up to the plan limits.',
     monthlyFeeAddon: '+ ¥3,000 / month',
     monthlyServiceTitle: 'Monthly Service First Trial',
-    monthlyServiceDesc: 'For ¥3,000/month, we handle site maintenance, a monthly consult, and Google Maps administrator support.',
-    monthlyServiceNote: '* ¥3,000/month includes site maintenance, monthly consulting, and Google Maps admin support. First trial available.',
+    monthlyServicePriceOriginal: 'For ¥7,000/month',
+    monthlyServiceDiscount: 'Early signers: ¥3,000/month',
+    monthlyServiceDesc: 'we handle site maintenance, a monthly consult, and Google Maps administrator support.',
+    monthlyServiceNote: '* ¥7,000/month (Early signers: ¥3,000/month) includes site maintenance, monthly consulting, and Google Maps admin support. First trial available.',
     
     // Google Map Rankings Section
     meoTitle: 'Online Web Consulting for Google & Naver Map Rankings Improvement',
@@ -1017,7 +1021,7 @@ export const translations = {
     whyCheapPoint3Desc: '영업 회사나 광고 대행사를 거치지 않아 불필요한 마진을 전부 삭감하였고, 오로지 제작 비용과 최상의 솔루션을 위한 컨설턴트 인재 고용에만 비용이 활용됩니다.',
     viewPlans: '요금제 보기',
     heroTagline: '도쿄 실매장을 위한 결과 중심 웹 제작 (2025–)',
-    slogan: '인터넷에서의 영향력 키우기',
+    slogan: '잠재 고객들은 온라인 상에 존재합니다. 당신의 비지니스는?',
     seoTitle: 'Tokyo Websites - Web Consulting',
     seoDescription: 'Web사이트 제작과 온라인 컨설팅. 도쿄 실매장 및 글로벌 비즈니스를 위한 결과 중심 웹 제작을 제공합니다.',
     
@@ -1144,8 +1148,10 @@ export const translations = {
     toolsNoteBody: '선택하신 플랜 한도 내에서 필요한 기능을 자유롭게 선택하실 수 있습니다.',
     monthlyFeeAddon: '+ 월 ¥3,000',
     monthlyServiceTitle: '월간 멤버쉽',
-    monthlyServiceDesc: '월 ¥3,000에 웹사이트 유지보수, 지도 어플 (네이버 지도 & 구글맵) 관리, 월 1회 컨설팅을 포함합니다.',
-    monthlyServiceNote: '※ 월 ¥3,000에 웹사이트 유지보수, 지도 어플 (네이버 지도 & 구글맵) 관리, 월 1회 컨설팅을 포함합니다.',
+    monthlyServicePriceOriginal: '월 ¥7,000',
+    monthlyServiceDiscount: '조기 신청자 월 ¥3,000',
+    monthlyServiceDesc: '웹사이트 유지보수, 지도 어플 (네이버 지도 & 구글맵) 관리, 월 1회 컨설팅을 포함합니다.',
+    monthlyServiceNote: '※ 월 ¥7,000 (조기 신청자 월 ¥3,000). 웹사이트 유지보수, 지도 어플 (네이버 지도 & 구글맵) 관리, 월 1회 컨설팅을 포함합니다.',
 
     // Google Map Rankings Section
     meoTitle: 'Google 지도 & 네이버 지도 순위 향상 및 평가 개선을 위한 온라인 컨설팅',

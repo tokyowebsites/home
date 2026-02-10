@@ -12,7 +12,7 @@ const currencyByLanguage: Record<Language, string> = {
   ko: "KRW",
 };
 
-const jpyToUsd = 1 / 150;
+const jpyToUsd = 1 / 151;
 const jpyToKrw = 9;
 
 function convertFromJpy(amount: number, language: Language) {

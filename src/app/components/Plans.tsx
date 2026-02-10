@@ -39,10 +39,9 @@ export function Plans() {
     language,
   );
   const monthlyFeeAddonLabel = formatCurrencyInText(t.monthlyFeeAddon, language);
-  const monthlyServiceDescLabel = formatCurrencyInText(
-    t.monthlyServiceDesc,
-    language,
-  );
+  const monthlyServicePriceOriginalLabel = t.monthlyServicePriceOriginal;
+  const monthlyServiceDiscountLabel = t.monthlyServiceDiscount;
+  const monthlyServiceDescLabel = t.monthlyServiceDesc;
 
   const formatPriceText = (priceText: string) => {
     const amount = extractCurrencyAmount(priceText);
@@ -395,7 +394,13 @@ export function Plans() {
               {t.monthlyServiceTitle}
             </div>
             <div className="text-sm md:text-base font-bold text-gray-800">
-              {monthlyServiceDescLabel}
+              <div className="flex flex-wrap items-center justify-center gap-2 text-gray-900">
+                <span className="line-through text-gray-400">
+                  {monthlyServicePriceOriginalLabel}
+                </span>
+                <span className="text-emerald-700">{monthlyServiceDiscountLabel}</span>
+              </div>
+              <div className="mt-2">{monthlyServiceDescLabel}</div>
             </div>
           </div>
           <div className="mt-6">
