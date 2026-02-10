@@ -209,7 +209,7 @@ export function Plans() {
                   {t.planStandardToolsLabel} {plan.standardTools}
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="w-5 h-5 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center">
+                  <span className="w-5 h-5 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center">
                     <Check size={12} strokeWidth={3} />
                   </span>
                   {t.planAdvancedToolsLabel} {plan.advancedTools}
@@ -224,7 +224,7 @@ export function Plans() {
                 )}
                 {plan.extraIncludes?.map((item) => (
                   <li key={item} className="flex items-center gap-2 text-gray-800">
-                    <span className="w-5 h-5 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center">
+                    <span className="w-5 h-5 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center">
                       <Check size={12} strokeWidth={3} />
                     </span>
                     {item}

@@ -85,11 +85,7 @@ const PlanCard = ({ plan, index, onClick }: { plan: Plan; index: number; onClick
       <ul className="relative space-y-2 md:space-y-4 mb-5 md:mb-8 flex-grow">
         {(expanded ? plan.features : plan.features.slice(0, 3)).map((feature: string, i: number) => (
           <li key={i} className={`flex items-start gap-2 md:gap-3 text-[10px] md:text-xs font-black ${isHighlighted ? 'text-gray-700' : 'text-gray-800'}`}>
-            <div className={`mt-0.5 w-3.5 h-3.5 rounded-full flex items-center justify-center shrink-0 ${
-              isHighlighted 
-                ? 'bg-emerald-100 text-emerald-600' 
-                : plan.id === 'entry' ? 'bg-slate-100 text-slate-600' : 'bg-violet-100 text-violet-600'
-            }`}>
+            <div className="mt-0.5 w-3.5 h-3.5 rounded-full flex items-center justify-center shrink-0 bg-emerald-100 text-emerald-600">
                <Check size={8} strokeWidth={4} />
             </div>
             <span className="truncate">{feature}</span>
